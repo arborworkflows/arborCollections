@@ -1,0 +1,42 @@
+{
+    "inputs": [
+        {
+            "format": "r.dataframe",
+            "name": "input",
+            "type": "table"
+        },
+        {
+            "domain": {
+                "format": "column.names",
+                "input": "input"
+            },
+            "format": "text",
+            "name": "columnOne",
+            "type": "string"
+        },
+        {
+            "domain": {
+                "format": "column.names",
+                "input": "input"
+            },
+            "format": "text",
+            "name": "columnTwo",
+            "type": "string"
+        },
+        {
+            "format": "text",
+            "name": "outputColumn",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "Add columns",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "name": "output",
+            "type": "table"
+        }
+    ],
+    "script": "\n# Add some columns\noutput = input\noutput[,outputColumn] = input[,columnOne] + input[,columnTwo]\n"
+}
