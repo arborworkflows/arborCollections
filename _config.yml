@@ -2,6 +2,7 @@ name: Arbor
 markdown: redcarpet
 highlighter: pygments
 permalink: pretty
+baseurl: /arborCollections
 
 defaults:
   -
