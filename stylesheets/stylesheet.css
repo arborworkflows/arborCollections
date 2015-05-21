@@ -162,7 +162,12 @@ a.button span {
   background: transparent url(../images/octocat-icon.png) 12px 50% no-repeat;
 }
 #arbor-workflows span {
-  background: transparent url(../images/Arbor_32px.png) 12px 12% no-repeat;
+  background: transparent url(../images/Arbor_32px.png) 12px 50% no-repeat;
+	background-size: 15%;
+}
+#easy span {
+  background: transparent url(../images/easy_mode.png) 12px 50% no-repeat;
+	background-size: 13%;
 }
 #view-on-github {
   margin-right: 0;
