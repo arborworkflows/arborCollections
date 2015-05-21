@@ -6,9 +6,12 @@ baseurl: /arborCollections
 
 collections:
   - easy_mode
+  - arbor_docs
 
 collections:
   easy_mode:
+    output: true
+  arbor_docs:
     output: true
 
 defaults:
@@ -28,5 +31,11 @@ defaults:
     scope:
       path: ""
       type: easy_mode
+    values:
+      layout: page
+  -
+    scope:
+      path: ""
+      type: arbor_docs
     values:
       layout: page

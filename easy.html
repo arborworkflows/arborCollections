@@ -6,6 +6,10 @@ author: Luke Harmon
 
 <h2>Easy mode</h2>
 
+<ul>
 {% for easy_mode in site.easy_mode %}
-  {{ easy_mode.title}}<br>
+  <li>
+    <a href="{{ easy_mode.url }}">{{ easy_mode.title}}</a>
+  </li>
 {% endfor %}
+</ul>

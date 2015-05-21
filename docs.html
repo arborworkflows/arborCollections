@@ -1,0 +1,15 @@
+---
+layout: default
+title: Arbor Documentation
+author: Luke Harmon
+---
+
+<h2>Arbor Functions and Workflows</h2>
+
+<ul>
+{% for arbor_docs in site.arbor_docs %}
+  <li>
+    <a href="{{ arbor_docs.url }}">{{ arbor_docs.title}}</a>
+  </li>
+{% endfor %}
+</ul>
