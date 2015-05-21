@@ -17,16 +17,16 @@ Right now! And Arbor's functionality will continue to grow through the end of 20
 
 To start out with, Arbor will be able to do the most common comparative analyses, including:
 
-<ul>
-<li>Phylogenetic signal</li>
-<li>Ancestral state reconstruction</li>
-<li>Independent contrasts</li>
-<li>Comparative model fitting (e.g. Mk, threshold, and continuous character models)</li>
-<li>PGLS</li>
-<li>Fitting Birth-death models</li>
-<li>Community phylogenetics</li>
-<li>BiSSE / MuSSE / QuaSSE / GeoSSE</li>
-<li>Analyses of cospeciation</li>
+
+- Phylogenetic signal
+- Ancestral state reconstruction
+- Independent contrasts
+- Comparative model fitting (e.g. Mk, threshold, and continuous character models)
+- PGLS
+- Fitting Birth-death models
+- Community phylogenetics
+- BiSSE / MuSSE / QuaSSE / GeoSSE
+- Analyses of cospeciation
 
 We are building up towards more complicated analyses.
 
@@ -36,14 +36,14 @@ Phylogenetic trees are increasingly [available](http://blog.opentreeoflife.org),
 
 Building an Arbor workflow will have more in common with making something out of legos than with computer programming. For example, the figure below shows a mockup of an Arbor workflow to calculate phylogenetic independent contrasts (PICs). End users will import a phylogenetic tree and some traits data - perhaps from their local computer, or maybe from a remote source like [Open Tree of Life](https://tree.opentreeoflife.org/opentree/argus/opentree3.0@1) or [Encyclopedia of Life](http://eol.org). The workflow below then allows the user to connect a few steps together to calculate PICs and use them to test for a correlation between two traits.
 
-![PIC workflow]({{ site.url }}/assets/simple_pic_workflow.jpg)
+![PIC workflow]({{ site.baseurl }}/assets/simple_pic_workflow.jpg)
 
 **A sample workflow for calculating phylogenetic independent contrasts (PICs) to test for an evolutionary correlation between two traits.**
 
 
 The PIC workflow above is simple, but Arbor will enable more complex analyses as well. For example, imagine you are interested in analyzing geographic range evolution in your group of species.
 
-![Web workflow]({{ site.url }}/assets/cartoon_workflow.png)
+![Web workflow]({{ site.baseurl }}/assets/cartoon_workflow.png)
 
 **A more complex workflow that uses data from web services to combine ecological niche models, Lagrange, and phylogenetic comparative analyses.**
 
