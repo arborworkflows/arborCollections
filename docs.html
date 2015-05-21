@@ -9,7 +9,7 @@ author: Luke Harmon
 <ul>
 {% for arbor_docs in site.arbor_docs %}
   <li>
-    <a href="{{ arbor_docs.url }}">{{ arbor_docs.title}}</a>
+    <a href="{{ site.baseurl }}{{ arbor_docs.url }}">{{ arbor_docs.title}}</a>
   </li>
 {% endfor %}
 </ul>
