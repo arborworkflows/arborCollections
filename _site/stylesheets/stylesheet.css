@@ -179,6 +179,11 @@ a.button span {
 	height: 23px;
 	padding-left: 10px;
 }
+#blog span {
+	display: block;
+	height: 23px;
+	padding-left: 10px;
+}
 #view-on-github {
   margin-right: 0;
 }
