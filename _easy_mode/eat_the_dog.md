@@ -1,6 +1,6 @@
 ---
 layout: post
-title: fit the dog
+title: eat the dog
 author: Ankur Gupta
 ---
 

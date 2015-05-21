@@ -5,3 +5,7 @@ author: Luke Harmon
 ---
 
 <h2>Easy mode</h2>
+
+{% for easy_mode in site.easy_mode %}
+  {{ easy_mode.title}}<br>
+{% endfor %}
