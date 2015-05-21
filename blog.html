@@ -1,0 +1,15 @@
+---
+layout: default
+title: Arbor Blog
+author: Luke Harmon
+---
+
+<h2>Arbor blog index</h2>
+
+<ul>
+{% for post in site.posts %}
+  <li>
+    <a href="{{ post.url }}">{{ post.title}}</a>
+  </li>
+{% endfor %}
+</ul>
