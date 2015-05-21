@@ -4,6 +4,13 @@ highlighter: pygments
 permalink: pretty
 baseurl: /arborCollections
 
+collections:
+  - easy_mode
+
+collections:
+  easy_mode:
+    output: true
+
 defaults:
   -
     scope:
@@ -17,3 +24,9 @@ defaults:
       type: "posts"
     values:
       layout: "default"
+  -
+    scope:
+      path: ""
+      type: easy_mode
+    values:
+      layout: page
