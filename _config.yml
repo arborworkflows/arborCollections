@@ -30,12 +30,12 @@ defaults:
   -
     scope:
       path: ""
-      type: easy_mode
+      type: "easy_mode"
     values:
-      layout: page
+      layout: "page"
   -
     scope:
       path: ""
-      type: arbor_docs
+      type: "arbor_docs"
     values:
-      layout: page
+      layout: "documentation"

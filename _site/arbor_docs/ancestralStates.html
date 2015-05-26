@@ -27,6 +27,7 @@
       <header>
         <h1><a href="/">Arbor</a></h1>
         <h2>Comparative methods workflows</h2>
+        Documentation
       </header>
 
       <section id="downloads" class="clearfix">
@@ -37,12 +38,25 @@
       <hr/>
 
       <section id="main_content">
-        <header class="post-header">
-    <h1>aceArbor</h1>
-    <p class="meta"> • Arbor core team</p>
-</header>
+        <h1>aceArbor: function</h1>
 
-<h2>aceArbor: function</h2>
+<h3>collection: phylogenies</h3>
+
+<h2>Overview</h2>
+
+<p>aceArbor is a function for carrying out ancestral state reconstruction. It works for
+both discrete and continuous variables, and can reconstruct ancestral character states
+under both a maximum-likelihood and a Bayesian framework. The function returns results
+in two formats: a table of ancestral state estimates for each node in the tree, and a plot
+of the results.</p>
+
+<h2>Example</h2>
+
+<p>From the <a href="/../docs/">docs</a> page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
+the &quot;ecomorph&quot; column for analysis, and select type: discrete and method: marginal.</p>
+
+<h2>Technical etails</h2>
 
 <h3>Arbor collection</h3>
 
@@ -85,7 +99,6 @@ various methods.</p>
 <h3>See also</h3>
 
 <h3>Examples</h3>
-
 
       </section>
       <footer>

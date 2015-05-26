@@ -1,10 +1,27 @@
 ---
-layout: post
 title: aceArbor
 author: Arbor core team
 ---
 
-## aceArbor: function
+# aceArbor: function
+
+### collection: phylogenies
+
+## Overview
+
+aceArbor is a function for carrying out ancestral state reconstruction. It works for
+both discrete and continuous variables, and can reconstruct ancestral character states
+under both a maximum-likelihood and a Bayesian framework. The function returns results
+in two formats: a table of ancestral state estimates for each node in the tree, and a plot
+of the results.
+
+## Example
+
+From the [docs] ({{ site.baseurl}}/../docs/ ) page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
+the "ecomorph" column for analysis, and select type: discrete and method: marginal.
+
+## Technical etails
 
 ### Arbor collection
 phylogenies
