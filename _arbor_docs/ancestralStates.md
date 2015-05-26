@@ -21,10 +21,7 @@ From the [docs] ({{ site.baseurl}}/../docs/ ) page, get anolis.phy and anolis.cs
 Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
 the "ecomorph" column for analysis, and select type: discrete and method: marginal.
 
-## Technical etails
-
-### Arbor collection
-phylogenies
+## Technical details
 
 ### Description
 Estimates ancestral states for either discrete or continuous variables using
