@@ -21,7 +21,7 @@ From the [docs] ({{ site.baseurl}}/../docs/ ) page, get anolis.phy and anolis.cs
 Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
 the "ecomorph" column for analysis, and select type: discrete and method: marginal.
 
-### Arguments
+## Arguments
 - table: A data table including species names
 - tree: A phylogenetic tree
 - column: The name of the column to analyze
@@ -35,5 +35,5 @@ the "ecomorph" column for analysis, and select type: discrete and method: margin
   - mcmc: reconstruct ancestral states using Bayesian MCMC. Note that the discrete version of this doesn't seem to work, and even if it did work it is not a full MCMC ancestral state method}
   - stochastic: create stochastic character map}
 
-###Outputs
+## Outputs
 Function outputs a table and a plot with results of the ancestral state reconstruction.

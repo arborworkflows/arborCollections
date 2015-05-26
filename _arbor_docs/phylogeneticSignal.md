@@ -19,11 +19,11 @@ From the [docs] ({{ site.baseurl}}/../docs/ ) page, get anolis.phy and anolis.cs
 Load these files into Arbor, and use them as inputs to the phylogeneticSignal function. Choose
 the "SVL" column for analysis, and select type: lambda.
 
-### Arguments
+## Arguments
 - table: A data table including species names
 - tree: A phylogenetic tree
 - column: The name of the column to analyze
 - method: either "K" for Blomberg's K or "lambda" for Pagel's lambda
 
-###Outputs
+## Outputs
 Function outputs a table with results from the test of phylogenetic signal.
