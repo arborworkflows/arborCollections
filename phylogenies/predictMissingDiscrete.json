@@ -1,0 +1,52 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree"
+        },
+        {
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "default": "equal",
+            "description": "prior probabilities for missing values",
+            "domain": [
+                "equal",
+                "stationary"
+            ],
+            "format": "text",
+            "name": "prior",
+            "type": "string"
+        },
+        {
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "name": "column",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "predictMissingDiscrete",
+    "outputs": [
+        {
+            "description": "table of missing data and posterior probabilities",
+            "format": "r.dataframe",
+            "name": "missingSummary",
+            "type": "table"
+        },
+        {
+            "description": "Ancestral and predicted state reconstructions",
+            "format": "png.base64",
+            "name": "treePlot",
+            "type": "image"
+        }
+    ],
+    "script": "library(devtools)\nlibrary(cardoonTools)\n#options(repos=\"http://cran.cnr.Berkeley.edu\")\n#install_github(\"aRbor\", \"arborworkflows\")\nrequire(aRbor)\n\n# Removed this parameter to restore automated use of the analyses from Easy Mode apps\nfont_size <- 1\n\ntd<-make.treedata(tree, table)\nif(column==\"alldiscrete\"){\n  res <- aceArbor(td, charType=\"discrete\", aceType=\"marginal\")\n} else {\n  td1 <- select(td, which(colnames(td$dat)==column))\n  res <- aceArbor(td1, charType=\"discrete\", aceType=\"marginal\")\n}\n\npredict <- predictMissingTips(res, prior)\n\nmissingSummary <- predict$missing\n\nTH <- max(branching.times(td$phy))\n\n#if(type==\"discrete\"){\n#  plot.ace <- function(td, x, ...){\n#    cols <- rainbow(ncol(x))\n#    plot(td$phy, cex=font_size, label.offset=0.02*TH,...)\n#    nodelabels(pie=x, cex=0.5, piecol=cols)\n#    tiplabels(pch=21, bg=cols[as.numeric(td$dat[,column])])\n#  }\n#} \n\n#if(type==\"continuous\"){\n#  plot.ace <- function(td, x, ...){\n#    z <- c(x[[1]][,2], setNames(td$dat[,column], rownames(td$dat)))\n#    phenogram(td$phy, z, fsize=font_size, ...)\n#  }\n#} \n\ntreePlot <- cardoonPlot(expression(predictMissingTips(res, prior, label.offset=0.05*TH)), width=1000, height=1000, res=100)\ntreePlot <- treePlot$png"
+}

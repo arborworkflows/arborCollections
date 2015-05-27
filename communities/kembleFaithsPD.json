@@ -1,0 +1,27 @@
+{
+    "inputs": [
+        {
+            "description": "community data maitrx",
+            "format": "r.dataframe",
+            "name": "comm",
+            "type": "table"
+        },
+        {
+            "description": "phylogeny",
+            "format": "r.apetree",
+            "name": "phy",
+            "type": "tree"
+        }
+    ],
+    "mode": "r",
+    "name": "kembleFaithsPD",
+    "outputs": [
+        {
+            "description": "FaithsPD output",
+            "format": "r.dataframe",
+            "name": "comm_pd",
+            "type": "table"
+        }
+    ],
+    "script": "require(picante)\ncomm_pd<-pd(comm,phy)\n### Doesn't propoerly print out the species richness. \n## This is probably a row issue.  Need to add code to remove rownames and then add them back.  Otherwise, do a specnumber(comm) and cbind to get Faith's PD and species richness in one table. "
+}

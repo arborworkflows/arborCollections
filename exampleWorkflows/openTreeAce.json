@@ -1,0 +1,280 @@
+{
+    "connections": [
+        {
+            "input": "table",
+            "input_step": "Extract species names from a trait matrix",
+            "name": "table"
+        },
+        {
+            "input": "nameTable",
+            "input_step": "Lookup names using OpenTree Taxonomy",
+            "output": "outtable",
+            "output_step": "Extract species names from a trait matrix"
+        },
+        {
+            "input": "table",
+            "input_step": "Return the OpenTree subtree from a node list",
+            "output": "outTable",
+            "output_step": "Lookup names using OpenTree Taxonomy"
+        },
+        {
+            "input": "tree",
+            "input_step": "aceArbor",
+            "output": "tree",
+            "output_step": "Return the OpenTree subtree from a node list"
+        },
+        {
+            "input": "table",
+            "input_step": "aceArbor",
+            "name": "table"
+        },
+        {
+            "input": "column",
+            "input_step": "aceArbor",
+            "name": "column"
+        },
+        {
+            "input": "type",
+            "input_step": "aceArbor",
+            "name": "type"
+        },
+        {
+            "input": "method",
+            "input_step": "aceArbor",
+            "name": "method"
+        },
+        {
+            "name": "res",
+            "output": "res",
+            "output_step": "aceArbor"
+        },
+        {
+            "name": "treePlot",
+            "output": "treePlot",
+            "output_step": "aceArbor"
+        }
+    ],
+    "inputs": [
+        {
+            "description": "output single column table of only unique names from the input char. matrix",
+            "format": "csv",
+            "name": "table",
+            "type": "table",
+            "x": 13,
+            "y": 120
+        },
+        {
+            "default": "island",
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "name": "column",
+            "type": "string",
+            "x": 491,
+            "y": 302
+        },
+        {
+            "default": "discrete",
+            "domain": [
+                "discrete",
+                "continuous"
+            ],
+            "format": "text",
+            "name": "type",
+            "type": "string",
+            "x": 478,
+            "y": 412
+        },
+        {
+            "default": "marginal",
+            "domain": [
+                "marginal"
+            ],
+            "format": "text",
+            "name": "method",
+            "type": "string",
+            "x": 478,
+            "y": 535
+        }
+    ],
+    "mode": "workflow",
+    "name": "openTreeAce",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "name": "res",
+            "type": "table",
+            "x": 1109,
+            "y": 21
+        },
+        {
+            "format": "png.base64",
+            "name": "treePlot",
+            "type": "image",
+            "x": 1095,
+            "y": 298
+        }
+    ],
+    "steps": [
+        {
+            "id": "Extract species names from a trait matrix",
+            "name": "Extract species names from a trait matrix",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "output single column table of only unique names from the input char. matrix",
+                        "format": "csv",
+                        "name": "table",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Extract species names from a trait matrix",
+                "outputs": [
+                    {
+                        "description": "single column table with unique names from input character matrix",
+                        "format": "rows",
+                        "name": "outtable",
+                        "type": "table"
+                    }
+                ],
+                "script": "#\n# input a character matrix in CSV. Output a table of unique species names from the matrix. Each\n# name appears in only one row and is suitable for lookup in OpenTree. \nimport csv\n\nlines = table.splitlines(True)\nrownum = 0\nouttable = []\nfieldrecord = []\nnamelist = []\n\nfor row in csv.reader(lines):\n    if rownum == 0:\n        header = row\n        print \"header row: \",header\n        # setup the column header for the output table \n        for colnum,columntitle in enumerate(row):\n            if header[colnum] in ['Scientific Name','species','Species','scientific name','name']:\n                fieldrecord.append(header[colnum])\n        rownum = rownum+1\n    else:\n        characterEntry = dict()\n        for colnum,columntitle in enumerate(row):\n            characterEntry[header[colnum]] = columntitle\n        if ('Scientific Name' in characterEntry.keys()) and (characterEntry['Scientific Name'] not in namelist) :\n            namelist.append({'Scientific Name': characterEntry['Scientific Name']})\n        elif ('scientific name' in characterEntry.keys()) and (characterEntry['scientific name'] not in namelist):\n            namelist.append({'scientific name' : characterEntry['scientific name']})\n        elif ('species' in characterEntry.keys()) and (characterEntry['species'] not in namelist):\n            namelist.append({'species': characterEntry['species']})\n        elif ('Species' in characterEntry.keys()) and (characterEntry['Species'] not in namelist):\n            namelist.append({'Species': characterEntry['Species']})\n        elif ('name' in characterEntry.keys()) and (characterEntry['name'] not in namelist):\n            namelist.append({'name': characterEntry['name']})\n\n\n# create an output table one column wide with an entry for each unique name in the character matrix\nouttable = {'fields': fieldrecord,\n            'rows':  namelist}\n            \n            ",
+                "x": 227,
+                "y": 27
+            },
+            "x": 177,
+            "y": 295
+        },
+        {
+            "id": "Lookup names using OpenTree Taxonomy",
+            "name": "Lookup names using OpenTree Taxonomy",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "single column table of scientific names",
+                        "format": "rows",
+                        "name": "nameTable",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Lookup names using OpenTree Taxonomy",
+                "outputs": [
+                    {
+                        "description": "three column table of original names, OpenTree TNRS names, and OpenTree taxonomy IDs",
+                        "format": "rows",
+                        "name": "outTable",
+                        "type": "table"
+                    }
+                ],
+                "script": "#\n# Lookup names using OpenTree Taxonomy\n#\n# description: this analysis expects a single-column input table consisting of scientific names.\n# The analysis consults the OpenTree API and extracts canonical names from the OpenTree taxonomy.\n# The output table consists of three-columns, with the OpenTree name and taxonomy ID columns added to the input. \n#\n# Note:  OpenTree V2 match_names call is being used (development server currently)\n# \n# input: nameTable - single column of scientific names (table:rows format)\n# output: outTable - three column table with OpenTree name and ID appended.\n#\n\n\nimport requests\n\n# look at the rows of the input table\nmatrixEntries = nameTable['rows']\n\n# find out the title of the columns in this matrix. Assuming this is a single column table\ncolumnHeader = nameTable['fields'][0]\n\noutRows = []\ncount = 0\ninputNameList = []\n\nfor matrixEntry in matrixEntries:\n    # build an OTL query to return the matching ottId we want to use to request taxa \n    inputNameList.append(matrixEntry[columnHeader])\n    \n# pack the names into a payload and perform the OpenTree lookup using v2\npayload = {'names': inputNameList}\nresp = requests.post('http://api.opentreeoflife.org/v2/tnrs/match_names',data=payload)\n\nreturnedrecs = resp.json()['results']\nfor index in range(len(returnedrecs)):\n    thisresult = returnedrecs[index]\n    for j in range(len(thisresult['matches'])):\n        candidate = thisresult['matches']\n        \n        # if this match candidate is a non-taxon, then the flags attribute will have an entry like 'SIBLING_LOWER',\n        # so we will filter out any of these and only match on empty flags.  Also if there are synonym returns, filter them out\n        # and pick the main match instead. We add the returned information into a new row and accumulate the rows for an output table.\n        \n        if (len(candidate[j]['flags']) ==0) and (candidate[j]['is_synonym']==False):\n            outrow = {}\n            outrow[columnHeader] = candidate[j]['search_string']\n            outrow['ottName'] = candidate[j]['ot:ottTaxonName']\n            outrow['ottId'] = candidate[j]['ot:ottId']\n            outRows.append(outrow)\n\n# build the headers for the output table\naugmentedColumnHeaders = [columnHeader, 'ottName','ottId']\n\n# setup the output in table:rows format with the headers explicitly listed\noutTable = {'fields': augmentedColumnHeaders,\n            'rows':  outRows}\n            \n     ",
+                "x": 426,
+                "y": 144
+            },
+            "x": 421,
+            "y": 170
+        },
+        {
+            "id": "Return the OpenTree subtree from a node list",
+            "name": "Return the OpenTree subtree from a node list",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "input matrix containing a column ottid",
+                        "format": "rows",
+                        "name": "table",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Return the OpenTree subtree from a node list",
+                "outputs": [
+                    {
+                        "format": "newick",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "description": "quick preview read out of the tree as a newick string",
+                        "format": "text",
+                        "name": "treeNewickString",
+                        "type": "string"
+                    }
+                ],
+                "script": "import requests\n\nrows = table['rows']\nidList = []\nfor i in range(len(rows)):\n    idList.append(rows[i]['ottId'])\n\n# lookup the tree that contains these nodes\n#payload = {\"ottIds\": idList}\n#resp = requests.post('http://api.opentreeoflife.org/treemachine/v1/getDraftTreeSubtreeForNodes',data=payload)\n#tree = str(resp.json()[\"subtree\"])\n\n# moving to API v2\npayload = {\"ott_ids\": idList}\nresp = requests.post('http://api.opentreeoflife.org/v2/tree_of_life/induced_subtree',data=payload)\ntree = str(resp.json()[\"subtree\"])\n\n# create output table to list any problem IDs\n# u'ott_ids_not_in_tree': [], u'node_ids_not_in_tree': [], u'node_ids_not_in_graph': [], 'ott_ids_not_in_graph': [xxxxxxx]\n\n# tree as a string to preview \ntreeNewickString = tree\n",
+                "x": 633,
+                "y": 32
+            },
+            "x": 633,
+            "y": 32
+        },
+        {
+            "id": "aceArbor",
+            "name": "aceArbor",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    },
+                    {
+                        "default": "island",
+                        "domain": {
+                            "format": "column.names",
+                            "input": "table"
+                        },
+                        "format": "text",
+                        "name": "column",
+                        "type": "string"
+                    },
+                    {
+                        "default": "discrete",
+                        "domain": [
+                            "discrete",
+                            "continuous"
+                        ],
+                        "format": "text",
+                        "name": "type",
+                        "type": "string"
+                    },
+                    {
+                        "default": "marginal",
+                        "domain": [
+                            "marginal"
+                        ],
+                        "format": "text",
+                        "name": "method",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "aceArbor",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "res",
+                        "type": "table"
+                    },
+                    {
+                        "format": "png.base64",
+                        "name": "treePlot",
+                        "type": "image"
+                    }
+                ],
+                "script": "library(devtools)\nlibrary(cardoonTools)\n#options(repos=\"http://cran.cnr.Berkeley.edu\")\n#install_github(\"aRbor\", \"arborworkflows\")\nrequire(aRbor)\n\n# Removed this parameter to restore automated use of the analyses from Easy Mode apps\nfont_size <- 1\n\ntd<-make.treedata(tree, table, name_column=0)\nif(column==\"alldiscrete\"){\n  res <- aceArbor(td, charType=type, aceType=method)\n} else {\n  td1 <- select(td, which(colnames(td$dat)==column))\n  res <- aceArbor(td1, charType=type, aceType=method)\n}\n\nTH <- max(branching.times(td$phy))\n\n#if(type==\"discrete\"){\n#  plot.ace <- function(td, x, ...){\n#    cols <- rainbow(ncol(x))\n#    plot(td$phy, cex=font_size, label.offset=0.02*TH,...)\n#    nodelabels(pie=x, cex=0.5, piecol=cols)\n#    tiplabels(pch=21, bg=cols[as.numeric(td$dat[,column])])\n#  }\n#} \n\n#if(type==\"continuous\"){\n#  plot.ace <- function(td, x, ...){\n#    z <- c(x[[1]][,2], setNames(td$dat[,column], rownames(td$dat)))\n#    phenogram(td$phy, z, fsize=font_size, ...)\n#  }\n#} \n\ntreePlot <- cardoonPlot(expression(plot(res, label.offset=0.05*TH)), width=1000, height=1000, res=100)\ntreePlot <- treePlot$png",
+                "x": 922,
+                "y": 55
+            },
+            "x": 918,
+            "y": 141
+        }
+    ]
+}

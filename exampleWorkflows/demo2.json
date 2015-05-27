@@ -1,0 +1,263 @@
+{
+    "connections": [
+        {
+            "input": "tree",
+            "input_step": "make.treedata",
+            "name": "tree"
+        },
+        {
+            "input": "table",
+            "input_step": "make.treedata",
+            "output": "dat",
+            "output_step": "make.treedata"
+        },
+        {
+            "input": "table",
+            "input_step": "make.treedata",
+            "name": "table"
+        },
+        {
+            "input": "type",
+            "input_step": "make.treedata",
+            "name": "type"
+        },
+        {
+            "input": "table",
+            "input_step": "Fit continuous",
+            "output": "columns",
+            "output_step": "make.treedata"
+        },
+        {
+            "input": "tree",
+            "input_step": "Fit continuous",
+            "output": "phy",
+            "output_step": "make.treedata"
+        },
+        {
+            "name": "treePlot",
+            "output": "treePlot",
+            "output_step": "Fit continuous"
+        },
+        {
+            "name": "result",
+            "output": "result",
+            "output_step": "Fit continuous"
+        },
+        {
+            "name": "fit",
+            "output": "fit",
+            "output_step": "Fit continuous"
+        },
+        {
+            "input": "column",
+            "input_step": "Fit continuous",
+            "name": "column"
+        },
+        {
+            "input": "model",
+            "input_step": "Fit continuous",
+            "name": "model"
+        }
+    ],
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree",
+            "x": 64,
+            "y": 39
+        },
+        {
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table",
+            "x": 57,
+            "y": 182
+        },
+        {
+            "default": "both",
+            "domain": [
+                "both",
+                "discrete",
+                "continuous"
+            ],
+            "format": "text",
+            "name": "type",
+            "type": "string",
+            "x": 66,
+            "y": 344
+        },
+        {
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "name": "column",
+            "type": "string",
+            "x": 491,
+            "y": 329
+        },
+        {
+            "default": {
+                "data": "BM",
+                "format": "text"
+            },
+            "domain": [
+                "BM",
+                "OU",
+                "EB"
+            ],
+            "format": "text",
+            "name": "model",
+            "type": "string",
+            "x": 510,
+            "y": 464
+        }
+    ],
+    "mode": "workflow",
+    "name": "demo2",
+    "outputs": [
+        {
+            "format": "png.base64",
+            "name": "treePlot",
+            "type": "image",
+            "x": 1433,
+            "y": 59
+        },
+        {
+            "format": "r.apetree",
+            "name": "result",
+            "type": "tree",
+            "x": 1395,
+            "y": 212
+        },
+        {
+            "format": "r.dataframe",
+            "name": "fit",
+            "type": "table",
+            "x": 1410,
+            "y": 378
+        }
+    ],
+    "steps": [
+        {
+            "id": "make.treedata",
+            "name": "make.treedata",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    },
+                    {
+                        "default": "both",
+                        "domain": [
+                            "both",
+                            "discrete",
+                            "continuous"
+                        ],
+                        "format": "text",
+                        "name": "type",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "make.treedata",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "columns",
+                        "type": "table"
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "phy",
+                        "type": "tree"
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "dat",
+                        "type": "table"
+                    }
+                ],
+                "script": "library(aRbor)\n\nif(is.binary.tree(tree)==FALSE){\n  tree <- multi2di(tree)\n}\ntd <- make.treedata(tree, table)\nif(type!=\"both\"){\n    if(type==\"discrete\"){\n      td <- checkFactor(td)\n        }\n    if(type==\"continuous\"){\n      td <- checkNumeric(td)\n        }\n    }\n#### Return these columns \ncolumns <- colnames(td$dat)\nphy <- td$phy\ndat <- td$dat",
+                "x": 500,
+                "y": 130
+            },
+            "x": 500,
+            "y": 130
+        },
+        {
+            "id": "Fit continuous",
+            "name": "Fit continuous",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "domain": {
+                            "format": "column.names",
+                            "input": "table"
+                        },
+                        "format": "text",
+                        "name": "column",
+                        "type": "string"
+                    },
+                    {
+                        "default": {
+                            "data": "BM",
+                            "format": "text"
+                        },
+                        "domain": [
+                            "BM",
+                            "OU",
+                            "EB"
+                        ],
+                        "format": "text",
+                        "name": "model",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "Fit continuous",
+                "outputs": [
+                    {
+                        "format": "png.base64",
+                        "name": "treePlot",
+                        "type": "image"
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "result",
+                        "type": "tree"
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "fit",
+                        "type": "table"
+                    }
+                ],
+                "script": "#data(anolis); tree <- anolis$phy; table <- anolis$dat; column <- \"PCI_limbs\"; model=\"EB\"\n\n## fitContinuous script\n#require(devtools)\n# options(repos=\"http://cran.cnr.Berkeley.edu\")\n# install_github(\"aRbor\", \"arborworkflows\")\nlibrary(aRbor)\nlibrary(geiger)\nlibrary(cardoonTools)\n\ntd <- make.treedata(tree, table)\ntd <- checkNumeric(td)\nvalid.numeric <- which(colnames(td$dat)==column)\nif(length(valid.numeric)==0){\n  stop(\"The supplied column is not present, or is not a valid continuous trait\")\n}\ntd <- select(td, valid.numeric)\n\no <- fitContinuous(td$phy, td$dat, model=model, SE=0)\nopt = o$opt\n\nif (model == \"OU\") {\n  fit=list(z0=opt$z0, sigsq=opt$sigsq, alpha=opt$alpha, lnL=opt$lnL, AIC=opt$aic, AICc=opt$aicc)\n  result<-rescale(tree, \"OU\", o$opt$alpha)\n} else if (model == \"BM\") {\n  fit=list(z0=opt$z0, sigsq=opt$sigsq, lnL=opt$lnL, AIC=opt$aic, AICc=opt$aicc)\n  result<-tree\n} else if (model == \"EB\") {\n  fit=list(z0=opt$z0, sigsq=opt$sigsq, a=opt$a, lnL=opt$lnL, AIC=opt$aic, AICc=opt$aicc)\n  result<-rescale(tree, \"EB\", o$opt$a)\n}\n\ntreePlot = cardoonPlot(expression(plotContrasts(td$phy, setNames(td$dat[,1], td$phy$tip.label), cex.tip.label=0.5)), width=1000, height=1000, res=100)\ntreePlot = treePlot$png",
+                "x": 908,
+                "y": 162
+            },
+            "x": 908,
+            "y": 162
+        }
+    ]
+}

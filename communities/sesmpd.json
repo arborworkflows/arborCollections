@@ -1,0 +1,27 @@
+{
+    "inputs": [
+        {
+            "description": "a phylogeny tree matched to the columns of the community data matrix (comm)",
+            "format": "r.apetree",
+            "name": "phy",
+            "type": "tree"
+        },
+        {
+            "description": "community data matrix matched to phylogeny",
+            "format": "r.dataframe",
+            "name": "comm",
+            "type": "table"
+        }
+    ],
+    "mode": "r",
+    "name": "sesmpd",
+    "outputs": [
+        {
+            "description": "sesmpd output",
+            "format": "r.dataframe",
+            "name": "comm_sesmpd",
+            "type": "table"
+        }
+    ],
+    "script": "#this analysis calculates the standard effect size mean pairwise distance\n## not currently working.  \nrequire(picante)\nphy.dist<-cophenetic(phy)\ncomm_sesmpd<-ses.mpd(comm,phy.dist, null.model=\"richness\", runs=999)\n## should make the model and abundance weighted selectable options in the future\n"
+}

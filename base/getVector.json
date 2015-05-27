@@ -1,0 +1,31 @@
+{
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree"
+        },
+        {
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "description": "Column to get a vector from",
+            "format": "text",
+            "name": "gV_column",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "getVector",
+    "outputs": [
+        {
+            "description": "A returned named data vector",
+            "format": "r.dataframe",
+            "name": "data_vector",
+            "type": "table"
+        }
+    ],
+    "script": "require(aRbor)\n\ntd <- make.treedata(tree, table)\ndata_vector <- eval.string.dplyr(td$dat, \"getVector\", gV_column)\n"
+}

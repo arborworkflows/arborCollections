@@ -1,0 +1,26 @@
+{
+    "inputs": [
+        {
+            "description": "The table to match the order to",
+            "format": "r.dataframe",
+            "name": "staticTable",
+            "type": "table"
+        },
+        {
+            "description": "The table to reorder",
+            "format": "r.dataframe",
+            "name": "reorderedTable",
+            "type": "table"
+        }
+    ],
+    "mode": "r",
+    "name": "matchTables",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "name": "newTable",
+            "type": "table"
+        }
+    ],
+    "script": "rn <- rownames(staticTable)\nnewTable <- reorderedTable[rn, ]\n"
+}

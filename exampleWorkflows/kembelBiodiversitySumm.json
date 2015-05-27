@@ -1,0 +1,130 @@
+{
+    "connections": [
+        {
+            "name": "aov_out",
+            "output": "aov_out",
+            "output_step": "summarizeDiversity"
+        },
+        {
+            "name": "diversity_summary",
+            "output": "diversity_summary",
+            "output_step": "summarizeDiversity"
+        },
+        {
+            "name": "raw_communities",
+            "output": "raw_communities",
+            "output_step": "summarizeDiversity"
+        },
+        {
+            "input": "comm",
+            "input_step": "summarizeDiversity",
+            "name": "comm"
+        },
+        {
+            "input": "metadata",
+            "input_step": "summarizeDiversity",
+            "name": "metadata"
+        }
+    ],
+    "inputs": [
+        {
+            "description": "Community Table",
+            "format": "r.dataframe",
+            "name": "comm",
+            "type": "table",
+            "x": 221,
+            "y": 84
+        },
+        {
+            "description": "metadata table",
+            "format": "r.dataframe",
+            "name": "metadata",
+            "type": "table",
+            "x": 226,
+            "y": 195
+        }
+    ],
+    "mode": "workflow",
+    "name": "kembelBiodiversitySumm",
+    "outputs": [
+        {
+            "description": "Output AOV tables",
+            "format": "r.dataframe",
+            "name": "aov_out",
+            "type": "table",
+            "x": 1281,
+            "y": 74
+        },
+        {
+            "description": "Diversity summary table",
+            "format": "r.dataframe",
+            "name": "diversity_summary",
+            "type": "table",
+            "x": 1284,
+            "y": 184
+        },
+        {
+            "description": "raw diversity output for specimens and species",
+            "format": "r.dataframe",
+            "name": "raw_communities",
+            "type": "table",
+            "x": 1287,
+            "y": 296
+        }
+    ],
+    "steps": [
+        {
+            "id": "summarizeDiversity",
+            "name": "summarizeDiversity",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "Community Table",
+                        "format": "r.dataframe",
+                        "name": "comm",
+                        "type": "table"
+                    },
+                    {
+                        "description": "metadata table",
+                        "format": "r.dataframe",
+                        "name": "metadata",
+                        "type": "table"
+                    }
+                ],
+                "mode": "r",
+                "name": "summarizeDiversity",
+                "outputs": [
+                    {
+                        "description": "Output AOV tables",
+                        "format": "r.dataframe",
+                        "name": "aov_out",
+                        "type": "table"
+                    },
+                    {
+                        "description": "Diversity summary table",
+                        "format": "r.dataframe",
+                        "name": "diversity_summary",
+                        "type": "table"
+                    },
+                    {
+                        "description": "raw diversity output for specimens and species",
+                        "format": "r.dataframe",
+                        "name": "raw_communities",
+                        "type": "table"
+                    },
+                    {
+                        "description": "Raw Community data for drawing figures",
+                        "format": "r.dataframe",
+                        "name": "raw_communities_fig",
+                        "type": "table"
+                    }
+                ],
+                "script": "library(picante)\nse<-function(x) sqrt(var(x)/length(x)) \nrownames(comm) <- comm[,1]\ncomm <- comm[,-1]\nrownames(metadata) <- metadata[,1]\n# compare species richness among host species\nrichness.comm <- specnumber(comm)\n#par(mar=c(12,5,1,1)+0.5)\n#boxplot(specnumber(comm) ~ metadata$Species, xlab = \"\", ylab = \"# of OTUs\", las=2)\nrich.comm <- as.matrix(specnumber(comm))\nrich.mean<- aggregate(rich.comm, by=list(metadata$Species), FUN=mean)\nrich.se <- aggregate(rich.comm, by=list(metadata$Species), FUN=se)\n# statistical test of difference\nrichness.aov <- aov(specnumber(comm) ~ Species, data = metadata)\n# compare Shannon diversity among host species\ndiversity.comm <- diversity(comm, index = \"shannon\")\n#pdf('Host.Species.Shannon.pdf')\n#par(mar=c(12,5,1,1)+0.5)\n#boxplot(diversity.comm ~ metadata$Species, xlab = \"\", ylab = \"Shannon-Weaver Index\", las=2)\n#dev.off()\nshannon.comm <- as.matrix(diversity.comm)\nshannon.mean<- aggregate(diversity.comm, by=list(metadata$Species), FUN=mean)\nshannon.se <- aggregate(diversity.comm, by=list(metadata$Species), FUN=se)\n# statistical test of difference\nshannon.aov <- aov(diversity.comm ~ Species, data = metadata)\n# compare species Simpson diversity between host species\ninvsimpson.comm <- diversity(comm, index = \"invsimpson\")\n#pdf('Host.Species.InvSimpson.pdf')\n#par(mar=c(12,5,1,1)+0.5)\n#boxplot(invsimpson.comm ~ metadata$Species, xlab = \"\", ylab = \"InvSimpson Index\", las=2)\n#dev.off()\ninvsimpson.comm <- as.matrix(invsimpson.comm)\ninvsimpson.mean<- aggregate(invsimpson.comm, by=list(metadata$Species), FUN=mean)\ninvsimpson.se <- aggregate(invsimpson.comm, by=list(metadata$Species), FUN=se)\ninvsimpson.aov <- aov(invsimpson.comm ~ Species, data = metadata)\naov_out <- list(cbind(metric=\"richness\",factor=rownames(summary(richness.aov)[[1]]), as.data.frame(summary(richness.aov)[[1]])),\n    cbind(metric=\"shannon\", factor=rownames(summary(shannon.aov)[[1]]), as.data.frame(summary(shannon.aov)[[1]])),\n    cbind(metric=\"invsimpson\",  factor=rownames(summary(invsimpson.aov)[[1]]), as.data.frame(summary(invsimpson.aov)[[1]])))\n      \naov_out <- do.call(rbind,aov_out)\nrownames(aov_out) <- NULL\n# Make Summary table of Diversity indicies\ndiversity_summary <- cbind(rich.mean, rich.se$V1, shannon.mean$x, shannon.se$x, invsimpson.mean$V1, invsimpson.se$V1)\nnames(diversity_summary) <- c(\"Species\", \"Mean.Richness\", \"se.Richness\", \"Mean.Shannon\", \"se.Shannon\", \"Mean.InvSimpson\", \"se.InvSimpson\")\n\n\ncomms <- list(richness=rich.comm, shannon=diversity.comm, invsimpson=invsimpson.comm)\ntmp <- lapply(1:length(comms), function(x) data.frame(comms[[x]], names(comms)[x], metadata$Species))\ncommunities <- do.call(rbind, tmp)\n\ncolnames(communities) <- c(\"mean_diversity\", \"metric\", \"host_species\")\ncommunities$specimenID <- rownames(communities)\nraw_communities <- communities[,c(4,1:3)]\nraw_communities_fig <- communities[,c(4,1:3)]",
+                "x": 736,
+                "y": 220
+            },
+            "x": 736,
+            "y": 220
+        }
+    ]
+}

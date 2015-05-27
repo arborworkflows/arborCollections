@@ -1,0 +1,27 @@
+{
+    "inputs": [
+        {
+            "description": "File containing traits in columns for species in rows",
+            "format": "r.dataframe",
+            "name": "traits",
+            "type": "table"
+        },
+        {
+            "description": "Phylogeny of species that match row labels of \"traits\" file",
+            "format": "r.apetree",
+            "name": "phy",
+            "type": "tree"
+        }
+    ],
+    "mode": "r",
+    "name": "kembelKcalc",
+    "outputs": [
+        {
+            "description": "Table containing the K calculations for each trait",
+            "format": "r.dataframe",
+            "name": "Kcalc_out",
+            "type": "table"
+        }
+    ],
+    "script": "##Not working at this time\n\nrequire(picante)\n\n# Apply a Kcalc to each column of the file \"traits\"\nKcalc_out<-apply(traits,2,Kcalc,phy)\n#Kcalc_out<-as.data.frame(K)\n\n"
+}
