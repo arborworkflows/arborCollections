@@ -1,0 +1,1603 @@
+{
+    "connections": [
+        {
+            "input": "input",
+            "input_step": "coleDataPrep 1",
+            "name": "input 1"
+        },
+        {
+            "input": "tree",
+            "input_step": "coleDataPrep 1",
+            "name": "tree 1"
+        },
+        {
+            "input": "table",
+            "input_step": "coleDataPrep 1",
+            "name": "table 1"
+        },
+        {
+            "input": "type 1",
+            "input_step": "coleDataPrep 1",
+            "name": "type 1"
+        },
+        {
+            "input": "parameter 1",
+            "input_step": "coleDataPrep 1",
+            "name": "parameter 1"
+        },
+        {
+            "input": "model 1",
+            "input_step": "coleDataPrep 1",
+            "name": "model 1"
+        },
+        {
+            "input": "tree 1",
+            "input_step": "coleDataPrep 1",
+            "name": "tree 1 1"
+        },
+        {
+            "input": "metadata 1",
+            "input_step": "coleAnalysis 1",
+            "output": "dat",
+            "output_step": "coleDataPrep 1"
+        },
+        {
+            "input": "treedist 2",
+            "input_step": "coleAnalysis 1",
+            "output": "distance.matrix 2",
+            "output_step": "coleDataPrep 1"
+        },
+        {
+            "input": "table",
+            "input_step": "coleAnalysis 1",
+            "output": "comTable",
+            "output_step": "coleDataPrep 1"
+        },
+        {
+            "input": "matrixPartial 1",
+            "input_step": "coleAnalysis 1",
+            "output": "distance.matrix",
+            "output_step": "coleDataPrep 1"
+        },
+        {
+            "input": "matrixX 1",
+            "input_step": "coleAnalysis 1",
+            "output": "distance.matrix 1",
+            "output_step": "coleDataPrep 1"
+        },
+        {
+            "input": "matrix1",
+            "input_step": "coleAnalysis 1",
+            "output": "comm.bc.dist",
+            "output_step": "coleDataPrep 1"
+        },
+        {
+            "input": "formula 1",
+            "input_step": "coleAnalysis 1",
+            "name": "formula 1 1"
+        },
+        {
+            "name": "mantel_output",
+            "output": "mantel_output",
+            "output_step": "coleAnalysis 1"
+        },
+        {
+            "name": "adonis_out 1",
+            "output": "adonis_out",
+            "output_step": "coleAnalysis 1"
+        },
+        {
+            "name": "partial_mantel_output",
+            "output": "partial_mantel_output",
+            "output_step": "coleAnalysis 1"
+        },
+        {
+            "name": "aov_out",
+            "output": "aov_out",
+            "output_step": "coleAnalysis 1"
+        },
+        {
+            "name": "diversity_summary",
+            "output": "diversity_summary",
+            "output_step": "coleAnalysis 1"
+        },
+        {
+            "name": "raw_communities 1",
+            "output": "raw_communities 1",
+            "output_step": "coleAnalysis 1"
+        },
+        {
+            "input": "dataframe",
+            "input_step": "coleVisualization",
+            "output": "raw_communities_fig",
+            "output_step": "coleAnalysis 1"
+        },
+        {
+            "input": "table",
+            "input_step": "coleVisualization",
+            "output": "comm.bc.dist",
+            "output_step": "coleDataPrep 1"
+        },
+        {
+            "name": "boxPlot",
+            "output": "boxPlot",
+            "output_step": "coleVisualization"
+        },
+        {
+            "name": "plotClust",
+            "output": "plotClust",
+            "output_step": "coleVisualization"
+        },
+        {
+            "input": "y_label",
+            "input_step": "coleVisualization",
+            "name": "y_label"
+        },
+        {
+            "input": "y_value_col",
+            "input_step": "coleVisualization",
+            "name": "y_value_col"
+        },
+        {
+            "input": "factor_col",
+            "input_step": "coleVisualization",
+            "name": "factor_col"
+        },
+        {
+            "input": "panel_col",
+            "input_step": "coleVisualization",
+            "name": "panel_col"
+        }
+    ],
+    "description": "",
+    "inputs": [
+        {
+            "format": "csv",
+            "id": "input 1",
+            "name": "input 1",
+            "type": "table",
+            "x": 45,
+            "y": 23
+        },
+        {
+            "format": "r.apetree",
+            "id": "tree 1",
+            "name": "tree 1",
+            "type": "tree",
+            "x": 41,
+            "y": 262
+        },
+        {
+            "format": "r.dataframe",
+            "id": "table 1",
+            "name": "table 1",
+            "type": "table",
+            "x": 31,
+            "y": 398
+        },
+        {
+            "default": "both",
+            "domain": [
+                "both",
+                "discrete",
+                "continuous"
+            ],
+            "format": "text",
+            "id": "type 1",
+            "name": "type 1",
+            "type": "string",
+            "x": 34,
+            "y": 139
+        },
+        {
+            "format": "number",
+            "id": "parameter 1",
+            "name": "parameter 1",
+            "type": "number",
+            "x": 38,
+            "y": 507
+        },
+        {
+            "default": "lambda",
+            "domain": [
+                "lambda",
+                "BM",
+                "OU",
+                "EB",
+                "nrate",
+                "lrate",
+                "trend",
+                "kappa",
+                "delta",
+                "white",
+                "depth"
+            ],
+            "format": "text",
+            "id": "model 1",
+            "name": "model 1",
+            "type": "string",
+            "x": 40,
+            "y": 637
+        },
+        {
+            "format": "r.apetree",
+            "id": "tree 1 1",
+            "name": "tree 1 1",
+            "type": "tree",
+            "x": 34,
+            "y": 748
+        },
+        {
+            "description": "The formula to be used",
+            "format": "text",
+            "id": "formula 1 1",
+            "name": "formula 1 1",
+            "type": "string",
+            "x": 490,
+            "y": 439
+        },
+        {
+            "default": "distance",
+            "description": "Label for y-axis",
+            "format": "text",
+            "id": "y_label",
+            "name": "y_label",
+            "type": "string",
+            "x": 574,
+            "y": 876
+        },
+        {
+            "description": "Values to plot",
+            "domain": {
+                "format": "column.names",
+                "input": "dataframe"
+            },
+            "format": "text",
+            "id": "y_value_col",
+            "name": "y_value_col",
+            "type": "string",
+            "x": 762,
+            "y": 549
+        },
+        {
+            "description": "A factor to group boxplots over",
+            "domain": {
+                "format": "column.names",
+                "input": "dataframe"
+            },
+            "format": "text",
+            "id": "factor_col",
+            "name": "factor_col",
+            "type": "string",
+            "x": 758,
+            "y": 656
+        },
+        {
+            "description": "The column to use as a grouping factor for panels",
+            "domain": {
+                "format": "column.names",
+                "input": "dataframe"
+            },
+            "format": "text",
+            "id": "panel_col",
+            "name": "panel_col",
+            "type": "string",
+            "x": 755,
+            "y": 760
+        }
+    ],
+    "mode": "workflow",
+    "name": "coleFullAnalysis",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "id": "mantel_output",
+            "name": "mantel_output",
+            "type": "table",
+            "x": 1412,
+            "y": 58
+        },
+        {
+            "format": "r.dataframe",
+            "id": "adonis_out 1",
+            "name": "adonis_out 1",
+            "type": "table",
+            "x": 1380,
+            "y": 163
+        },
+        {
+            "format": "r.dataframe",
+            "id": "partial_mantel_output",
+            "name": "partial_mantel_output",
+            "type": "table",
+            "x": 1417,
+            "y": 266
+        },
+        {
+            "description": "Output AOV tables",
+            "format": "r.dataframe",
+            "id": "aov_out",
+            "name": "aov_out",
+            "type": "table",
+            "x": 1525,
+            "y": 368
+        },
+        {
+            "description": "Diversity summary table",
+            "format": "r.dataframe",
+            "id": "diversity_summary",
+            "name": "diversity_summary",
+            "type": "table",
+            "x": 1375,
+            "y": 394
+        },
+        {
+            "description": "raw diversity output for specimens and species",
+            "format": "r.dataframe",
+            "id": "raw_communities 1",
+            "name": "raw_communities 1",
+            "type": "table",
+            "x": 1472,
+            "y": 496
+        },
+        {
+            "format": "png.base64",
+            "id": "boxPlot",
+            "name": "boxPlot",
+            "type": "image",
+            "x": 1868,
+            "y": 556
+        },
+        {
+            "description": "A dendrogram",
+            "format": "png.base64",
+            "id": "plotClust",
+            "name": "plotClust",
+            "type": "image",
+            "x": 1853,
+            "y": 756
+        }
+    ],
+    "steps": [
+        {
+            "id": "coleDataPrep 1",
+            "name": "coleDataPrep 1",
+            "task": {
+                "connections": [
+                    {
+                        "input": "input",
+                        "input_step": "decostand",
+                        "name": "input"
+                    },
+                    {
+                        "input": "table",
+                        "input_step": "make.treedata",
+                        "name": "table"
+                    },
+                    {
+                        "input": "type",
+                        "input_step": "make.treedata",
+                        "name": "type 1"
+                    },
+                    {
+                        "input": "tree",
+                        "input_step": "make.treedata",
+                        "name": "tree"
+                    },
+                    {
+                        "input": "staticTable",
+                        "input_step": "matchTables 1",
+                        "output": "dat",
+                        "output_step": "make.treedata"
+                    },
+                    {
+                        "input": "reorderedTable",
+                        "input_step": "matchTables 1",
+                        "output": "output",
+                        "output_step": "decostand"
+                    },
+                    {
+                        "name": "dat",
+                        "output": "dat",
+                        "output_step": "make.treedata"
+                    },
+                    {
+                        "input": "tree",
+                        "input_step": "rescalePhylo 1",
+                        "output": "phy",
+                        "output_step": "make.treedata"
+                    },
+                    {
+                        "input": "model",
+                        "input_step": "rescalePhylo 1",
+                        "name": "model 1"
+                    },
+                    {
+                        "input": "parameter",
+                        "input_step": "rescalePhylo 1",
+                        "name": "parameter 1"
+                    },
+                    {
+                        "input": "phy",
+                        "input_step": "Cophenetic Distance Matrix from Tree 2",
+                        "output": "rscTree",
+                        "output_step": "rescalePhylo 1"
+                    },
+                    {
+                        "name": "distance.matrix",
+                        "output": "distance.matrix",
+                        "output_step": "Cophenetic Distance Matrix from Tree 2"
+                    },
+                    {
+                        "input": "phy",
+                        "input_step": "Cophenetic Distance Matrix from Tree 1",
+                        "output": "phy",
+                        "output_step": "make.treedata"
+                    },
+                    {
+                        "name": "distance.matrix 1",
+                        "output": "distance.matrix",
+                        "output_step": "Cophenetic Distance Matrix from Tree 1"
+                    },
+                    {
+                        "name": "distance.matrix 2",
+                        "output": "distance.matrix",
+                        "output_step": "Cophenetic Distance Matrix from Tree"
+                    },
+                    {
+                        "input": "table",
+                        "input_step": "matchPhyloComm 1",
+                        "output": "newTable",
+                        "output_step": "matchTables 1"
+                    },
+                    {
+                        "input": "tree",
+                        "input_step": "matchPhyloComm 1",
+                        "name": "tree 1"
+                    },
+                    {
+                        "name": "comTable",
+                        "output": "comTable",
+                        "output_step": "matchPhyloComm 1"
+                    },
+                    {
+                        "input": "phy",
+                        "input_step": "Cophenetic Distance Matrix from Tree",
+                        "output": "comPhy",
+                        "output_step": "matchPhyloComm 1"
+                    },
+                    {
+                        "name": "comm.bc.dist",
+                        "output": "comm.bc.dist",
+                        "output_step": "Bray-Curtis Dissimilarity UAB 1"
+                    },
+                    {
+                        "input": "table",
+                        "input_step": "Bray-Curtis Dissimilarity UAB 1",
+                        "output": "comTable",
+                        "output_step": "matchPhyloComm 1"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "format": "csv",
+                        "name": "input",
+                        "type": "table",
+                        "x": 9,
+                        "y": 12
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree",
+                        "x": 14,
+                        "y": 172
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table",
+                        "x": 295,
+                        "y": 206
+                    },
+                    {
+                        "default": "both",
+                        "domain": [
+                            "both",
+                            "discrete",
+                            "continuous"
+                        ],
+                        "format": "text",
+                        "name": "type 1",
+                        "type": "string",
+                        "x": 9,
+                        "y": 496
+                    },
+                    {
+                        "default": "lambda",
+                        "domain": [
+                            "lambda",
+                            "BM",
+                            "OU",
+                            "EB",
+                            "nrate",
+                            "lrate",
+                            "trend",
+                            "kappa",
+                            "delta",
+                            "white",
+                            "depth"
+                        ],
+                        "format": "text",
+                        "name": "model 1",
+                        "type": "string",
+                        "x": 10,
+                        "y": 278
+                    },
+                    {
+                        "format": "number",
+                        "name": "parameter 1",
+                        "type": "number",
+                        "x": 10,
+                        "y": 388
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "tree 1",
+                        "type": "tree",
+                        "x": 12,
+                        "y": 606
+                    }
+                ],
+                "mode": "workflow",
+                "name": "coleDataPrep 1",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "dat",
+                        "type": "table",
+                        "x": 1497,
+                        "y": 150
+                    },
+                    {
+                        "description": "Output cophenetic distance matrix",
+                        "format": "r.dataframe",
+                        "name": "distance.matrix",
+                        "type": "table",
+                        "x": 1523,
+                        "y": 730
+                    },
+                    {
+                        "description": "Output cophenetic distance matrix",
+                        "format": "r.dataframe",
+                        "name": "distance.matrix 1",
+                        "type": "table",
+                        "x": 1517,
+                        "y": 580
+                    },
+                    {
+                        "description": "Output cophenetic distance matrix",
+                        "format": "r.dataframe",
+                        "name": "distance.matrix 2",
+                        "type": "table",
+                        "x": 1516,
+                        "y": 427
+                    },
+                    {
+                        "description": "Bray-Curtis dissimilarity matrix",
+                        "format": "r.dataframe",
+                        "name": "comm.bc.dist",
+                        "type": "table",
+                        "x": 1499,
+                        "y": 20
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "comTable",
+                        "type": "table",
+                        "x": 1511,
+                        "y": 286
+                    }
+                ],
+                "steps": [
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "input",
+                                    "type": "table"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "decostand",
+                            "outputs": [
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "output",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "library(picante)\nrownames(input) <- input[,1]\noutput<- decostand(input[,-1], method=\"total\")",
+                            "x": 351,
+                            "y": 29
+                        },
+                        "id": "decostand",
+                        "x": 351,
+                        "y": 29
+                    },
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "format": "r.apetree",
+                                    "name": "tree",
+                                    "type": "tree"
+                                },
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "table",
+                                    "type": "table"
+                                },
+                                {
+                                    "default": "both",
+                                    "domain": [
+                                        "both",
+                                        "discrete",
+                                        "continuous"
+                                    ],
+                                    "format": "text",
+                                    "name": "type",
+                                    "type": "string"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "make.treedata",
+                            "outputs": [
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "columns",
+                                    "type": "table"
+                                },
+                                {
+                                    "format": "r.apetree",
+                                    "name": "phy",
+                                    "type": "tree"
+                                },
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "dat",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "library(aRbor)\n\nif(is.binary.tree(tree)==FALSE){\n  tree <- multi2di(tree)\n}\ntd <- make.treedata(tree, table)\nif(type!=\"both\"){\n    if(type==\"discrete\"){\n      td <- checkFactor(td)\n        }\n    if(type==\"continuous\"){\n      td <- checkNumeric(td)\n        }\n    }\n#### Return these columns \ncolumns <- colnames(td$dat)\nphy <- td$phy\ndat <- td$dat",
+                            "x": 538,
+                            "y": 169
+                        },
+                        "id": "make.treedata",
+                        "x": 538,
+                        "y": 169
+                    },
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "description": "The table to match the order to",
+                                    "format": "r.dataframe",
+                                    "name": "staticTable",
+                                    "type": "table"
+                                },
+                                {
+                                    "description": "The table to reorder",
+                                    "format": "r.dataframe",
+                                    "name": "reorderedTable",
+                                    "type": "table"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "matchTables 1",
+                            "outputs": [
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "newTable",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "rn <- rownames(staticTable)\nnewTable <- reorderedTable[rn, ]\n",
+                            "x": 759,
+                            "y": 27
+                        },
+                        "id": "matchTables 1",
+                        "x": 759,
+                        "y": 27
+                    },
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "format": "r.apetree",
+                                    "name": "tree",
+                                    "type": "tree"
+                                },
+                                {
+                                    "default": "lambda",
+                                    "domain": [
+                                        "lambda",
+                                        "BM",
+                                        "OU",
+                                        "EB",
+                                        "nrate",
+                                        "lrate",
+                                        "trend",
+                                        "kappa",
+                                        "delta",
+                                        "white",
+                                        "depth"
+                                    ],
+                                    "format": "text",
+                                    "name": "model",
+                                    "type": "string"
+                                },
+                                {
+                                    "format": "number",
+                                    "name": "parameter",
+                                    "type": "number"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "rescalePhylo 1",
+                            "outputs": [
+                                {
+                                    "format": "r.apetree",
+                                    "name": "rscTree",
+                                    "type": "tree"
+                                },
+                                {
+                                    "format": "png.base64",
+                                    "name": "plotrstree",
+                                    "type": "image"
+                                }
+                            ],
+                            "script": "require(geiger)\nrequire(cardoonTools)\nrscFn <- rescale(tree, model=model)\nrscTree <- rscFn(parameter)\n\nTH <- max(branching.times(rscTree))\nplotrstree <- cardoonPlot(expression(plot(rscTree, label.offset=0.05*TH)), width=1000, height=1000, res=100)\nplotrstree <- plotrstree$png",
+                            "x": 758,
+                            "y": 549
+                        },
+                        "id": "rescalePhylo 1",
+                        "x": 758,
+                        "y": 549
+                    },
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "description": "Input tree",
+                                    "format": "r.apetree",
+                                    "name": "phy",
+                                    "type": "tree"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "Cophenetic Distance Matrix from Tree",
+                            "outputs": [
+                                {
+                                    "description": "Output cophenetic distance matrix",
+                                    "format": "r.dataframe",
+                                    "name": "distance.matrix",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "distance.matrix<-cophenetic(phy)",
+                            "x": 1069,
+                            "y": 431
+                        },
+                        "id": "Cophenetic Distance Matrix from Tree",
+                        "x": 1069,
+                        "y": 431
+                    },
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "description": "Input tree",
+                                    "format": "r.apetree",
+                                    "name": "phy",
+                                    "type": "tree"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "Cophenetic Distance Matrix from Tree 1",
+                            "outputs": [
+                                {
+                                    "description": "Output cophenetic distance matrix",
+                                    "format": "r.dataframe",
+                                    "name": "distance.matrix",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "distance.matrix<-cophenetic(phy)",
+                            "x": 1037,
+                            "y": 533
+                        },
+                        "id": "Cophenetic Distance Matrix from Tree 1",
+                        "x": 1037,
+                        "y": 533
+                    },
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "description": "Input tree",
+                                    "format": "r.apetree",
+                                    "name": "phy",
+                                    "type": "tree"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "Cophenetic Distance Matrix from Tree 2",
+                            "outputs": [
+                                {
+                                    "description": "Output cophenetic distance matrix",
+                                    "format": "r.dataframe",
+                                    "name": "distance.matrix",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "distance.matrix<-cophenetic(phy)",
+                            "x": 1013,
+                            "y": 635
+                        },
+                        "id": "Cophenetic Distance Matrix from Tree 2",
+                        "x": 1013,
+                        "y": 635
+                    },
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "description": "Community matrix",
+                                    "format": "r.dataframe",
+                                    "name": "table",
+                                    "type": "table"
+                                },
+                                {
+                                    "format": "r.apetree",
+                                    "name": "tree",
+                                    "type": "tree"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "matchPhyloComm 1",
+                            "outputs": [
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "comTable",
+                                    "type": "table"
+                                },
+                                {
+                                    "format": "r.apetree",
+                                    "name": "comPhy",
+                                    "type": "tree"
+                                }
+                            ],
+                            "script": "require(picante)\ncombinedPhyloComm <- match.phylo.comm(tree, table)\ncomTable <- combinedPhyloComm$comm\nrownames(comTable) <- paste(\"N\",1:nrow(comTable), sep=\"\")\n#comTable <- rownames(table)\ncomPhy <- combinedPhyloComm$phy\n\n##If you don't do this line, the row names are dropped from the output table, even though rownames are properly read in and identified for r.dataframes otherwise.\ncomTable <- cbind(rownames=rownames(table), comTable)\n",
+                            "x": 978,
+                            "y": 72
+                        },
+                        "id": "matchPhyloComm 1",
+                        "x": 978,
+                        "y": 72
+                    },
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "description": "Community data matrix",
+                                    "format": "r.dataframe",
+                                    "name": "table",
+                                    "type": "table"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "Bray-Curtis Dissimilarity UAB",
+                            "outputs": [
+                                {
+                                    "description": "Bray-Curtis dissimilarity matrix",
+                                    "format": "r.dataframe",
+                                    "name": "comm.bc.dist",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "library(picante)\n#input community data matrix with column headers and row names\n#comm<- (table, header=TRUE)#, row.names=1)\n# convert table to relative abundance\n#comm<-decostand(comm, method=\"total\")\n#convert 'comm' to a Bray-Curtis distance matrix\n#Same rownames fix\nrownames(table) <- table[,1]\ntable <- table[,-1]\n\ncomm.bc.dist<-vegdist(table, method=\"bray\")\ncomm.bc.dist <- as.matrix(comm.bc.dist)\n\n## Shouldn't have to do this, remove the column names before exporting to prevent an additional row for entering the matrix.\n#colnames(comm.bc.dist) <- paste(\"N\", colnames(comm.bc.dist), sep=\"\")"
+                        },
+                        "id": "Bray-Curtis Dissimilarity UAB 1",
+                        "x": 1260,
+                        "y": 43
+                    }
+                ],
+                "x": 441,
+                "y": 134
+            },
+            "x": 441,
+            "y": 134
+        },
+        {
+            "id": "coleAnalysis 1",
+            "name": "coleAnalysis 1",
+            "task": {
+                "connections": [
+                    {
+                        "input": "matrix2",
+                        "input_step": "Mantel Test",
+                        "output": "comm_mntd_dist",
+                        "output_step": "Mean Nearest Taxon Distance 2"
+                    },
+                    {
+                        "input": "treedist",
+                        "input_step": "Mean Nearest Taxon Distance 2",
+                        "name": "treedist 2"
+                    },
+                    {
+                        "input": "table",
+                        "input_step": "Mean Nearest Taxon Distance 2",
+                        "name": "table"
+                    },
+                    {
+                        "input": "matrix1",
+                        "input_step": "Mantel Test",
+                        "name": "matrix1"
+                    },
+                    {
+                        "name": "mantel_output",
+                        "output": "mantel_output",
+                        "output_step": "Mantel Test"
+                    },
+                    {
+                        "input": "metadata",
+                        "input_step": "adonis UAB 1",
+                        "name": "metadata 1"
+                    },
+                    {
+                        "input": "formula",
+                        "input_step": "adonis UAB 1",
+                        "name": "formula 1"
+                    },
+                    {
+                        "input": "dist",
+                        "input_step": "adonis UAB 1",
+                        "name": "matrix1"
+                    },
+                    {
+                        "name": "adonis_out",
+                        "output": "adonis_out",
+                        "output_step": "adonis UAB 1"
+                    },
+                    {
+                        "input": "matrixPartial",
+                        "input_step": "Partial Mantel Test",
+                        "name": "matrixPartial 1"
+                    },
+                    {
+                        "input": "matrixX",
+                        "input_step": "Partial Mantel Test",
+                        "name": "matrixX 1"
+                    },
+                    {
+                        "input": "matrixY",
+                        "input_step": "Partial Mantel Test",
+                        "name": "matrix1"
+                    },
+                    {
+                        "name": "partial_mantel_output",
+                        "output": "partial_mantel_output",
+                        "output_step": "Partial Mantel Test"
+                    },
+                    {
+                        "input": "comm",
+                        "input_step": "summarizeDiversity",
+                        "name": "table"
+                    },
+                    {
+                        "input": "metadata",
+                        "input_step": "summarizeDiversity",
+                        "name": "metadata 1"
+                    },
+                    {
+                        "name": "aov_out",
+                        "output": "aov_out",
+                        "output_step": "summarizeDiversity"
+                    },
+                    {
+                        "name": "diversity_summary",
+                        "output": "diversity_summary",
+                        "output_step": "summarizeDiversity"
+                    },
+                    {
+                        "name": "raw_communities 1",
+                        "output": "raw_communities",
+                        "output_step": "summarizeDiversity"
+                    },
+                    {
+                        "name": "raw_communities_fig",
+                        "output": "raw_communities_fig",
+                        "output_step": "summarizeDiversity"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "description": "A phylogenetic distance matrix",
+                        "format": "r.dataframe",
+                        "name": "treedist 2",
+                        "type": "table",
+                        "x": 79,
+                        "y": 135
+                    },
+                    {
+                        "description": "Standardized community data matrix",
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table",
+                        "x": 80,
+                        "y": 243
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "matrix1",
+                        "type": "table",
+                        "x": 80,
+                        "y": 26
+                    },
+                    {
+                        "description": "Metadata file (row names match comm)",
+                        "format": "r.dataframe",
+                        "name": "metadata 1",
+                        "type": "table",
+                        "x": 80,
+                        "y": 348
+                    },
+                    {
+                        "description": "The formula to be used",
+                        "format": "text",
+                        "name": "formula 1",
+                        "type": "string",
+                        "x": 77,
+                        "y": 456
+                    },
+                    {
+                        "description": "A distance matrix",
+                        "format": "r.dataframe",
+                        "name": "matrixX 1",
+                        "type": "table",
+                        "x": 76,
+                        "y": 564
+                    },
+                    {
+                        "description": "A distance matrix, will be used to calculate residual matrices for matrixY and matrixX",
+                        "format": "r.dataframe",
+                        "name": "matrixPartial 1",
+                        "type": "table",
+                        "x": 71,
+                        "y": 672
+                    }
+                ],
+                "mode": "workflow",
+                "name": "coleAnalysis 1",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "mantel_output",
+                        "type": "table",
+                        "x": 1171,
+                        "y": 6
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "adonis_out",
+                        "type": "table",
+                        "x": 1205,
+                        "y": 448
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "partial_mantel_output",
+                        "type": "table",
+                        "x": 1239,
+                        "y": 565
+                    },
+                    {
+                        "description": "Output AOV tables",
+                        "format": "r.dataframe",
+                        "name": "aov_out",
+                        "type": "table",
+                        "x": 1307,
+                        "y": 110
+                    },
+                    {
+                        "description": "Diversity summary table",
+                        "format": "r.dataframe",
+                        "name": "diversity_summary",
+                        "type": "table",
+                        "x": 1152,
+                        "y": 172
+                    },
+                    {
+                        "description": "raw diversity output for specimens and species",
+                        "format": "r.dataframe",
+                        "name": "raw_communities 1",
+                        "type": "table",
+                        "x": 1182,
+                        "y": 293
+                    },
+                    {
+                        "description": "Raw Community data for drawing figures",
+                        "format": "r.dataframe",
+                        "name": "raw_communities_fig",
+                        "type": "table",
+                        "x": 1422,
+                        "y": 283
+                    }
+                ],
+                "steps": [
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "matrix1",
+                                    "type": "table"
+                                },
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "matrix2",
+                                    "type": "table"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "Mantel Test",
+                            "outputs": [
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "mantel_output",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "require(picante)\nres <- mantel(matrix1, matrix2)\n\nquantPerm <- quantile(res$perm, c(0.9, 0.95, 0.975, 0.99))\npvalue <- res$signif\nstat <- res$statistic\npermutations <- res$permutations\n\nmantel_output <- data.frame(\"Mantel_r\"=stat, \"p_value\"=pvalue, \"No_Perm\"=permutations, \"quant_90\"=quantPerm[1], \"quant_95\"=quantPerm[2], \"quant_97.5\"=quantPerm[3],  \"quant_99\"=quantPerm[4])",
+                            "x": 553,
+                            "y": 31
+                        },
+                        "id": "Mantel Test",
+                        "x": 553,
+                        "y": 31
+                    },
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "description": "A phylogenetic distance matrix",
+                                    "format": "r.dataframe",
+                                    "name": "treedist",
+                                    "type": "table"
+                                },
+                                {
+                                    "description": "Standardized community data matrix",
+                                    "format": "r.dataframe",
+                                    "name": "table",
+                                    "type": "table"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "Mean Nearest Taxon Distance 2",
+                            "outputs": [
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "comm_mntd_dist",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "require(picante)\n#dist <- as.dist(treedist)\n##More rownames hacking...\nrownames(treedist) <- colnames(treedist)\nrownames(table) <- table[,1]\ntable <- table[,-1]\n\ncomm_mntd_dist <- comdistnt(table, treedist, abundance.weighted=TRUE)\n\ncomm_mntd_dist <- as.matrix(comm_mntd_dist)",
+                            "x": 322,
+                            "y": 160
+                        },
+                        "id": "Mean Nearest Taxon Distance 2",
+                        "x": 322,
+                        "y": 160
+                    },
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "description": "Metadata file (row names match comm)",
+                                    "format": "r.dataframe",
+                                    "name": "metadata",
+                                    "type": "table"
+                                },
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "dist",
+                                    "type": "table"
+                                },
+                                {
+                                    "description": "The formula to be used",
+                                    "format": "text",
+                                    "name": "formula",
+                                    "type": "string"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "adonis UAB 1",
+                            "outputs": [
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "adonis_out",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "library(picante)\ndist <- as.dist(dist)\nf1 <- as.formula(paste(\"dist~\", formula, collapse=\"\"))\nres <- adonis(f1, data=metadata)\n\nadonis_out <- as.matrix(res$aov.tab)\n",
+                            "x": 862,
+                            "y": 238
+                        },
+                        "id": "adonis UAB 1",
+                        "x": 862,
+                        "y": 238
+                    },
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "description": "A distance matrix, will be permuted",
+                                    "format": "r.dataframe",
+                                    "name": "matrixY",
+                                    "type": "table"
+                                },
+                                {
+                                    "description": "A distance matrix",
+                                    "format": "r.dataframe",
+                                    "name": "matrixX",
+                                    "type": "table"
+                                },
+                                {
+                                    "description": "A distance matrix, will be used to calculate residual matrices for matrixY and matrixX",
+                                    "format": "r.dataframe",
+                                    "name": "matrixPartial",
+                                    "type": "table"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "Partial Mantel Test",
+                            "outputs": [
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "partial_mantel_output",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "require(picante)\n\n#matrixY <- as.dist(matrixY)\n##matrixX <- as.dist(matrixX)\n#matrixPartial <- as.dist(matrixPartial)\n\nres <- mantel.partial(matrixY, matrixX, matrixPartial)\n\nquantPerm <- quantile(res$perm, c(0.9, 0.95, 0.975, 0.99))\npvalue <- res$signif\nstat <- res$statistic\npermutations <- res$permutations\n\npartial_mantel_output <- data.frame(\"Mantel_r\"=stat, \"p_value\"=pvalue, \"No_Perm\"=permutations, \"quant_90\"=quantPerm[1], \"quant_95\"=quantPerm[2], \"quant_97.5\"=quantPerm[3],  \"quant_99\"=quantPerm[4])",
+                            "x": 645,
+                            "y": 569
+                        },
+                        "id": "Partial Mantel Test",
+                        "x": 645,
+                        "y": 569
+                    },
+                    {
+                        "analysis": {
+                            "inputs": [
+                                {
+                                    "description": "Community Table",
+                                    "format": "r.dataframe",
+                                    "name": "comm",
+                                    "type": "table"
+                                },
+                                {
+                                    "description": "metadata table",
+                                    "format": "r.dataframe",
+                                    "name": "metadata",
+                                    "type": "table"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "summarizeDiversity",
+                            "outputs": [
+                                {
+                                    "description": "Output AOV tables",
+                                    "format": "r.dataframe",
+                                    "name": "aov_out",
+                                    "type": "table"
+                                },
+                                {
+                                    "description": "Diversity summary table",
+                                    "format": "r.dataframe",
+                                    "name": "diversity_summary",
+                                    "type": "table"
+                                },
+                                {
+                                    "description": "raw diversity output for specimens and species",
+                                    "format": "r.dataframe",
+                                    "name": "raw_communities",
+                                    "type": "table"
+                                },
+                                {
+                                    "description": "Raw Community data for drawing figures",
+                                    "format": "r.dataframe",
+                                    "name": "raw_communities_fig",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "library(picante)\nse<-function(x) sqrt(var(x)/length(x)) \nrownames(comm) <- comm[,1]\ncomm <- comm[,-1]\nrownames(metadata) <- metadata[,1]\n# compare species richness among host species\nrichness.comm <- specnumber(comm)\n#par(mar=c(12,5,1,1)+0.5)\n#boxplot(specnumber(comm) ~ metadata$Species, xlab = \"\", ylab = \"# of OTUs\", las=2)\nrich.comm <- as.matrix(specnumber(comm))\nrich.mean<- aggregate(rich.comm, by=list(metadata$Species), FUN=mean)\nrich.se <- aggregate(rich.comm, by=list(metadata$Species), FUN=se)\n# statistical test of difference\nrichness.aov <- aov(specnumber(comm) ~ Species, data = metadata)\n# compare Shannon diversity among host species\ndiversity.comm <- diversity(comm, index = \"shannon\")\n#pdf('Host.Species.Shannon.pdf')\n#par(mar=c(12,5,1,1)+0.5)\n#boxplot(diversity.comm ~ metadata$Species, xlab = \"\", ylab = \"Shannon-Weaver Index\", las=2)\n#dev.off()\nshannon.comm <- as.matrix(diversity.comm)\nshannon.mean<- aggregate(diversity.comm, by=list(metadata$Species), FUN=mean)\nshannon.se <- aggregate(diversity.comm, by=list(metadata$Species), FUN=se)\n# statistical test of difference\nshannon.aov <- aov(diversity.comm ~ Species, data = metadata)\n# compare species Simpson diversity between host species\ninvsimpson.comm <- diversity(comm, index = \"invsimpson\")\n#pdf('Host.Species.InvSimpson.pdf')\n#par(mar=c(12,5,1,1)+0.5)\n#boxplot(invsimpson.comm ~ metadata$Species, xlab = \"\", ylab = \"InvSimpson Index\", las=2)\n#dev.off()\ninvsimpson.comm <- as.matrix(invsimpson.comm)\ninvsimpson.mean<- aggregate(invsimpson.comm, by=list(metadata$Species), FUN=mean)\ninvsimpson.se <- aggregate(invsimpson.comm, by=list(metadata$Species), FUN=se)\ninvsimpson.aov <- aov(invsimpson.comm ~ Species, data = metadata)\naov_out <- list(cbind(metric=\"richness\",factor=rownames(summary(richness.aov)[[1]]), as.data.frame(summary(richness.aov)[[1]])),\n    cbind(metric=\"shannon\", factor=rownames(summary(shannon.aov)[[1]]), as.data.frame(summary(shannon.aov)[[1]])),\n    cbind(metric=\"invsimpson\",  factor=rownames(summary(invsimpson.aov)[[1]]), as.data.frame(summary(invsimpson.aov)[[1]])))\n      \naov_out <- do.call(rbind,aov_out)\nrownames(aov_out) <- NULL\n# Make Summary table of Diversity indicies\ndiversity_summary <- cbind(rich.mean, rich.se$V1, shannon.mean$x, shannon.se$x, invsimpson.mean$V1, invsimpson.se$V1)\nnames(diversity_summary) <- c(\"Species\", \"Mean.Richness\", \"se.Richness\", \"Mean.Shannon\", \"se.Shannon\", \"Mean.InvSimpson\", \"se.InvSimpson\")\n\n\ncomms <- list(richness=rich.comm, shannon=diversity.comm, invsimpson=invsimpson.comm)\ntmp <- lapply(1:length(comms), function(x) data.frame(comms[[x]], names(comms)[x], metadata$Species))\ncommunities <- do.call(rbind, tmp)\n\ncolnames(communities) <- c(\"mean_diversity\", \"metric\", \"host_species\")\ncommunities$specimenID <- rownames(communities)\nraw_communities <- communities[,c(4,1:3)]\nraw_communities_fig <- communities[,c(4,1:3)]"
+                        },
+                        "id": "summarizeDiversity",
+                        "x": 827,
+                        "y": 94
+                    }
+                ],
+                "x": 861,
+                "y": 318
+            },
+            "x": 861,
+            "y": 318
+        },
+        {
+            "girderId": "545ba95bd591e4636e0ddd2b",
+            "id": "coleVisualization",
+            "modified": "2015-04-22 18:09:27.167000",
+            "name": "coleVisualization",
+            "task": {
+                "connections": [
+                    {
+                        "input": "dataframe",
+                        "input_step": "boxplot",
+                        "name": "dataframe"
+                    },
+                    {
+                        "name": "boxPlot",
+                        "output": "boxPlot",
+                        "output_step": "boxplot"
+                    },
+                    {
+                        "input": "panel_col",
+                        "input_step": "boxplot",
+                        "name": "panel_col"
+                    },
+                    {
+                        "input": "factor_col",
+                        "input_step": "boxplot",
+                        "name": "factor_col"
+                    },
+                    {
+                        "input": "y_value_col",
+                        "input_step": "boxplot",
+                        "name": "y_value_col"
+                    },
+                    {
+                        "input": "table",
+                        "input_step": "Bray-Curtis dissimilarity for hclust (adds rownames) 1",
+                        "name": "table"
+                    },
+                    {
+                        "input": "dist",
+                        "input_step": "hclustDendrogram",
+                        "output": "comm.bc.dist",
+                        "output_step": "Bray-Curtis dissimilarity for hclust (adds rownames) 1"
+                    },
+                    {
+                        "input": "y_label",
+                        "input_step": "hclustDendrogram",
+                        "name": "y_label"
+                    },
+                    {
+                        "name": "plotClust",
+                        "output": "plotClust",
+                        "output_step": "hclustDendrogram"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "description": "A data frame to plot boxplots over",
+                        "format": "r.dataframe",
+                        "name": "dataframe",
+                        "type": "table",
+                        "x": 195,
+                        "y": 342
+                    },
+                    {
+                        "description": "The column to use as a grouping factor for panels",
+                        "domain": {
+                            "format": "column.names",
+                            "input": "dataframe"
+                        },
+                        "format": "text",
+                        "name": "panel_col",
+                        "type": "string",
+                        "x": 203,
+                        "y": 28
+                    },
+                    {
+                        "description": "A factor to group boxplots over",
+                        "domain": {
+                            "format": "column.names",
+                            "input": "dataframe"
+                        },
+                        "format": "text",
+                        "name": "factor_col",
+                        "type": "string",
+                        "x": 204,
+                        "y": 134
+                    },
+                    {
+                        "description": "Values to plot",
+                        "domain": {
+                            "format": "column.names",
+                            "input": "dataframe"
+                        },
+                        "format": "text",
+                        "name": "y_value_col",
+                        "type": "string",
+                        "x": 201,
+                        "y": 240.00001525878906
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table",
+                        "x": 193,
+                        "y": 451
+                    },
+                    {
+                        "default": "distance",
+                        "description": "Label for y-axis",
+                        "format": "text",
+                        "name": "y_label",
+                        "type": "string",
+                        "x": 189,
+                        "y": 584
+                    }
+                ],
+                "mode": "workflow",
+                "name": "coleVisualization",
+                "outputs": [
+                    {
+                        "format": "png.base64",
+                        "name": "boxPlot",
+                        "type": "image",
+                        "x": 830,
+                        "y": 211
+                    },
+                    {
+                        "description": "A dendrogram",
+                        "format": "png.base64",
+                        "name": "plotClust",
+                        "type": "image",
+                        "x": 1214,
+                        "y": 333
+                    }
+                ],
+                "steps": [
+                    {
+                        "id": "boxplot",
+                        "name": "boxplot",
+                        "task": {
+                            "inputs": [
+                                {
+                                    "description": "A data frame to plot boxplots over",
+                                    "format": "r.dataframe",
+                                    "name": "dataframe",
+                                    "type": "table"
+                                },
+                                {
+                                    "description": "The column to use as a grouping factor for panels",
+                                    "domain": {
+                                        "format": "column.names",
+                                        "input": "dataframe"
+                                    },
+                                    "format": "text",
+                                    "name": "panel_col",
+                                    "type": "string"
+                                },
+                                {
+                                    "description": "A factor to group boxplots over",
+                                    "domain": {
+                                        "format": "column.names",
+                                        "input": "dataframe"
+                                    },
+                                    "format": "text",
+                                    "name": "factor_col",
+                                    "type": "string"
+                                },
+                                {
+                                    "description": "Values to plot",
+                                    "domain": {
+                                        "format": "column.names",
+                                        "input": "dataframe"
+                                    },
+                                    "format": "text",
+                                    "name": "y_value_col",
+                                    "type": "string"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "boxplot",
+                            "outputs": [
+                                {
+                                    "format": "png.base64",
+                                    "name": "boxPlot",
+                                    "type": "image"
+                                }
+                            ],
+                            "script": "require(cardoonTools)\npanels <- as.character(dataframe[,panel_col])\nfactor <- as.character(dataframe[,factor_col])\ny_value <- dataframe[,y_value_col]\n\n\nif(!is.null(panels)){\n  npanels <- length(unique(panels))\n  nr <- ceiling(npanels/2)\n  nc <- ifelse(npanels > 2, 2, npanels)\n  \n  uniqPanels <- as.character(unique(panels))\n  boxplotfn <- function() {\n  par(mfrow=c(nr,nc), mar=c(12,5,1,1)+0.5)\n    for(i in 1:npanels){\n        boxplot(y_value[panels==uniqPanels[i]]~factor[panels==uniqPanels[i]], main=uniqPanels[i], xlab=\"\", ylab=y_value_col, las=2)\n        }\n    }\n} else {\n  nr=1\n  nc=1\n  boxplotfn <- function() {\n    par(mfrow=c(nr,nc), mar=c(12,5,1,1)+0.5)\n    boxplot(y_value~factor, xlab=factor_col, ylab=y_value_col, las=2)\n  }\n}\n\n\n\nboxPlot <- cardoonPlot(expression(boxplotfn()), width=1000, height=1000, res=100)\nboxPlot <- boxPlot$png",
+                            "x": 554,
+                            "y": 111
+                        },
+                        "x": 554,
+                        "y": 111
+                    },
+                    {
+                        "id": "Bray-Curtis dissimilarity for hclust (adds rownames) 1",
+                        "name": "Bray-Curtis dissimilarity for hclust (adds rownames) 1",
+                        "task": {
+                            "inputs": [
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "table",
+                                    "type": "table"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "Bray-Curtis dissimilarity for hclust (adds rownames) 1",
+                            "outputs": [
+                                {
+                                    "format": "r.dataframe",
+                                    "name": "comm.bc.dist",
+                                    "type": "table"
+                                }
+                            ],
+                            "script": "library(picante)\n#input community data matrix with column headers and row names\n#comm<- (table, header=TRUE)#, row.names=1)\n# convert table to relative abundance\n#comm<-decostand(comm, method=\"total\")\n#convert 'comm' to a Bray-Curtis distance matrix\n#Same rownames fix\nrownames(table) <- table[,1]\ntable <- table[,-1]\n\ncomm.bc.dist<-vegdist(table, method=\"bray\")\ncomm.bc.dist <- as.matrix(comm.bc.dist);comm.bc.dist <- cbind(rownames(comm.bc.dist), comm.bc.dist);colnames(comm.bc.dist)[1] <- \"rownames\"\n## Shouldn't have to do this, remove the column names before exporting to prevent an additional row for entering the matrix.\n#colnames(comm.bc.dist) <- paste(\"N\", colnames(comm.bc.dist), sep=\"\")",
+                            "x": 517,
+                            "y": 397
+                        },
+                        "x": 517,
+                        "y": 397
+                    },
+                    {
+                        "id": "hclustDendrogram",
+                        "name": "hclustDendrogram",
+                        "task": {
+                            "inputs": [
+                                {
+                                    "description": "A distance matrix",
+                                    "format": "r.dataframe",
+                                    "name": "dist",
+                                    "type": "table"
+                                },
+                                {
+                                    "default": "distance",
+                                    "description": "Label for y-axis",
+                                    "format": "text",
+                                    "name": "y_label",
+                                    "type": "string"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "hclustDendrogram",
+                            "outputs": [
+                                {
+                                    "description": "A dendrogram",
+                                    "format": "png.base64",
+                                    "name": "plotClust",
+                                    "type": "image"
+                                }
+                            ],
+                            "script": "require(cardoonTools)\n\n##Can expose these options later, going to leave hidden for now\nfont_size = 0.5\nmethod=\"average\"\n##\n#dist <- cbind(rownames(dist), dist)\nrownames(dist)<- dist[,1];dist<- dist[,-1];dist <- as.dist(dist)\n\nclust <- hclust(dist, method = method)\nplotClust <- cardoonPlot(expression(plot(clust,labels = rownames(dist),cex=font_size, ylab=y_label)), width=1000, height=1000, res=100)\nplotClust <- plotClust$png\n#",
+                            "x": 852,
+                            "y": 374
+                        },
+                        "x": 852,
+                        "y": 374
+                    }
+                ],
+                "x": 1258,
+                "y": 551
+            },
+            "x": 1370,
+            "y": 745
+        }
+    ]
+}

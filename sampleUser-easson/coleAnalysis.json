@@ -1,0 +1,412 @@
+{
+    "connections": [
+        {
+            "input": "matrix2",
+            "input_step": "Mantel Test",
+            "output": "comm_mntd_dist",
+            "output_step": "Mean Nearest Taxon Distance 2"
+        },
+        {
+            "input": "treedist",
+            "input_step": "Mean Nearest Taxon Distance 2",
+            "name": "treedist 2"
+        },
+        {
+            "input": "table",
+            "input_step": "Mean Nearest Taxon Distance 2",
+            "name": "table"
+        },
+        {
+            "input": "matrix1",
+            "input_step": "Mantel Test",
+            "name": "matrix1"
+        },
+        {
+            "name": "mantel_output",
+            "output": "mantel_output",
+            "output_step": "Mantel Test"
+        },
+        {
+            "input": "metadata",
+            "input_step": "adonis UAB 1",
+            "name": "metadata 1"
+        },
+        {
+            "input": "formula",
+            "input_step": "adonis UAB 1",
+            "name": "formula 1"
+        },
+        {
+            "input": "dist",
+            "input_step": "adonis UAB 1",
+            "name": "matrix1"
+        },
+        {
+            "name": "adonis_out",
+            "output": "adonis_out",
+            "output_step": "adonis UAB 1"
+        },
+        {
+            "input": "matrixPartial",
+            "input_step": "Partial Mantel Test",
+            "name": "matrixPartial 1"
+        },
+        {
+            "input": "matrixX",
+            "input_step": "Partial Mantel Test",
+            "name": "matrixX 1"
+        },
+        {
+            "input": "matrixY",
+            "input_step": "Partial Mantel Test",
+            "name": "matrix1"
+        },
+        {
+            "name": "partial_mantel_output",
+            "output": "partial_mantel_output",
+            "output_step": "Partial Mantel Test"
+        },
+        {
+            "input": "comm",
+            "input_step": "summarizeDiversity",
+            "name": "table"
+        },
+        {
+            "input": "metadata",
+            "input_step": "summarizeDiversity",
+            "name": "metadata 1"
+        },
+        {
+            "name": "aov_out",
+            "output": "aov_out",
+            "output_step": "summarizeDiversity"
+        },
+        {
+            "name": "diversity_summary",
+            "output": "diversity_summary",
+            "output_step": "summarizeDiversity"
+        },
+        {
+            "name": "raw_communities 1",
+            "output": "raw_communities",
+            "output_step": "summarizeDiversity"
+        },
+        {
+            "name": "raw_communities_fig",
+            "output": "raw_communities_fig",
+            "output_step": "summarizeDiversity"
+        }
+    ],
+    "inputs": [
+        {
+            "description": "A phylogenetic distance matrix",
+            "format": "r.dataframe",
+            "name": "treedist 2",
+            "type": "table",
+            "x": 79,
+            "y": 135
+        },
+        {
+            "description": "Standardized community data matrix",
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table",
+            "x": 80,
+            "y": 243
+        },
+        {
+            "format": "r.dataframe",
+            "name": "matrix1",
+            "type": "table",
+            "x": 80,
+            "y": 26
+        },
+        {
+            "description": "Metadata file (row names match comm)",
+            "format": "r.dataframe",
+            "name": "metadata 1",
+            "type": "table",
+            "x": 80,
+            "y": 348
+        },
+        {
+            "description": "The formula to be used",
+            "format": "text",
+            "name": "formula 1",
+            "type": "string",
+            "x": 77,
+            "y": 456
+        },
+        {
+            "description": "A distance matrix",
+            "format": "r.dataframe",
+            "name": "matrixX 1",
+            "type": "table",
+            "x": 76,
+            "y": 564
+        },
+        {
+            "description": "A distance matrix, will be used to calculate residual matrices for matrixY and matrixX",
+            "format": "r.dataframe",
+            "name": "matrixPartial 1",
+            "type": "table",
+            "x": 71,
+            "y": 672
+        }
+    ],
+    "mode": "workflow",
+    "name": "coleAnalysis",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "name": "mantel_output",
+            "type": "table",
+            "x": 1171,
+            "y": 6
+        },
+        {
+            "format": "r.dataframe",
+            "name": "adonis_out",
+            "type": "table",
+            "x": 1205,
+            "y": 448
+        },
+        {
+            "format": "r.dataframe",
+            "name": "partial_mantel_output",
+            "type": "table",
+            "x": 1239,
+            "y": 565
+        },
+        {
+            "description": "Output AOV tables",
+            "format": "r.dataframe",
+            "name": "aov_out",
+            "type": "table",
+            "x": 1307,
+            "y": 110
+        },
+        {
+            "description": "Diversity summary table",
+            "format": "r.dataframe",
+            "name": "diversity_summary",
+            "type": "table",
+            "x": 1152,
+            "y": 172
+        },
+        {
+            "description": "raw diversity output for specimens and species",
+            "format": "r.dataframe",
+            "name": "raw_communities 1",
+            "type": "table",
+            "x": 1182,
+            "y": 293
+        },
+        {
+            "description": "Raw Community data for drawing figures",
+            "format": "r.dataframe",
+            "name": "raw_communities_fig",
+            "type": "table",
+            "x": 1422,
+            "y": 283
+        }
+    ],
+    "steps": [
+        {
+            "id": "Mantel Test",
+            "name": "Mantel Test",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "matrix1",
+                        "type": "table"
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "matrix2",
+                        "type": "table"
+                    }
+                ],
+                "mode": "r",
+                "name": "Mantel Test",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "mantel_output",
+                        "type": "table"
+                    }
+                ],
+                "script": "require(picante)\nres <- mantel(matrix1, matrix2)\n\nquantPerm <- quantile(res$perm, c(0.9, 0.95, 0.975, 0.99))\npvalue <- res$signif\nstat <- res$statistic\npermutations <- res$permutations\n\nmantel_output <- data.frame(\"Mantel_r\"=stat, \"p_value\"=pvalue, \"No_Perm\"=permutations, \"quant_90\"=quantPerm[1], \"quant_95\"=quantPerm[2], \"quant_97.5\"=quantPerm[3],  \"quant_99\"=quantPerm[4])",
+                "x": 553,
+                "y": 31
+            },
+            "x": 553,
+            "y": 31
+        },
+        {
+            "id": "Mean Nearest Taxon Distance 2",
+            "name": "Mean Nearest Taxon Distance 2",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "A phylogenetic distance matrix",
+                        "format": "r.dataframe",
+                        "name": "treedist",
+                        "type": "table"
+                    },
+                    {
+                        "description": "Standardized community data matrix",
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    }
+                ],
+                "mode": "r",
+                "name": "Mean Nearest Taxon Distance 2",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "comm_mntd_dist",
+                        "type": "table"
+                    }
+                ],
+                "script": "require(picante)\n#dist <- as.dist(treedist)\n##More rownames hacking...\nrownames(treedist) <- colnames(treedist)\nrownames(table) <- table[,1]\ntable <- table[,-1]\n\ncomm_mntd_dist <- comdistnt(table, treedist, abundance.weighted=TRUE)\n\ncomm_mntd_dist <- as.matrix(comm_mntd_dist)",
+                "x": 322,
+                "y": 160
+            },
+            "x": 322,
+            "y": 160
+        },
+        {
+            "id": "adonis UAB 1",
+            "name": "adonis UAB 1",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "Metadata file (row names match comm)",
+                        "format": "r.dataframe",
+                        "name": "metadata",
+                        "type": "table"
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "dist",
+                        "type": "table"
+                    },
+                    {
+                        "description": "The formula to be used",
+                        "format": "text",
+                        "name": "formula",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "adonis UAB 1",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "adonis_out",
+                        "type": "table"
+                    }
+                ],
+                "script": "library(picante)\ndist <- as.dist(dist)\nf1 <- as.formula(paste(\"dist~\", formula, collapse=\"\"))\nres <- adonis(f1, data=metadata)\n\nadonis_out <- as.matrix(res$aov.tab)\n",
+                "x": 862,
+                "y": 238
+            },
+            "x": 862,
+            "y": 238
+        },
+        {
+            "id": "Partial Mantel Test",
+            "name": "Partial Mantel Test",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "A distance matrix, will be permuted",
+                        "format": "r.dataframe",
+                        "name": "matrixY",
+                        "type": "table"
+                    },
+                    {
+                        "description": "A distance matrix",
+                        "format": "r.dataframe",
+                        "name": "matrixX",
+                        "type": "table"
+                    },
+                    {
+                        "description": "A distance matrix, will be used to calculate residual matrices for matrixY and matrixX",
+                        "format": "r.dataframe",
+                        "name": "matrixPartial",
+                        "type": "table"
+                    }
+                ],
+                "mode": "r",
+                "name": "Partial Mantel Test",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "partial_mantel_output",
+                        "type": "table"
+                    }
+                ],
+                "script": "require(picante)\n\n#matrixY <- as.dist(matrixY)\n##matrixX <- as.dist(matrixX)\n#matrixPartial <- as.dist(matrixPartial)\n\nres <- mantel.partial(matrixY, matrixX, matrixPartial)\n\nquantPerm <- quantile(res$perm, c(0.9, 0.95, 0.975, 0.99))\npvalue <- res$signif\nstat <- res$statistic\npermutations <- res$permutations\n\npartial_mantel_output <- data.frame(\"Mantel_r\"=stat, \"p_value\"=pvalue, \"No_Perm\"=permutations, \"quant_90\"=quantPerm[1], \"quant_95\"=quantPerm[2], \"quant_97.5\"=quantPerm[3],  \"quant_99\"=quantPerm[4])",
+                "x": 645,
+                "y": 569
+            },
+            "x": 645,
+            "y": 569
+        },
+        {
+            "id": "summarizeDiversity",
+            "name": "summarizeDiversity",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "Community Table",
+                        "format": "r.dataframe",
+                        "name": "comm",
+                        "type": "table"
+                    },
+                    {
+                        "description": "metadata table",
+                        "format": "r.dataframe",
+                        "name": "metadata",
+                        "type": "table"
+                    }
+                ],
+                "mode": "r",
+                "name": "summarizeDiversity",
+                "outputs": [
+                    {
+                        "description": "Output AOV tables",
+                        "format": "r.dataframe",
+                        "name": "aov_out",
+                        "type": "table"
+                    },
+                    {
+                        "description": "Diversity summary table",
+                        "format": "r.dataframe",
+                        "name": "diversity_summary",
+                        "type": "table"
+                    },
+                    {
+                        "description": "raw diversity output for specimens and species",
+                        "format": "r.dataframe",
+                        "name": "raw_communities",
+                        "type": "table"
+                    },
+                    {
+                        "description": "Raw Community data for drawing figures",
+                        "format": "r.dataframe",
+                        "name": "raw_communities_fig",
+                        "type": "table"
+                    }
+                ],
+                "script": "library(picante)\nse<-function(x) sqrt(var(x)/length(x)) \nrownames(comm) <- comm[,1]\ncomm <- comm[,-1]\nrownames(metadata) <- metadata[,1]\n# compare species richness among host species\nrichness.comm <- specnumber(comm)\n#par(mar=c(12,5,1,1)+0.5)\n#boxplot(specnumber(comm) ~ metadata$Species, xlab = \"\", ylab = \"# of OTUs\", las=2)\nrich.comm <- as.matrix(specnumber(comm))\nrich.mean<- aggregate(rich.comm, by=list(metadata$Species), FUN=mean)\nrich.se <- aggregate(rich.comm, by=list(metadata$Species), FUN=se)\n# statistical test of difference\nrichness.aov <- aov(specnumber(comm) ~ Species, data = metadata)\n# compare Shannon diversity among host species\ndiversity.comm <- diversity(comm, index = \"shannon\")\n#pdf('Host.Species.Shannon.pdf')\n#par(mar=c(12,5,1,1)+0.5)\n#boxplot(diversity.comm ~ metadata$Species, xlab = \"\", ylab = \"Shannon-Weaver Index\", las=2)\n#dev.off()\nshannon.comm <- as.matrix(diversity.comm)\nshannon.mean<- aggregate(diversity.comm, by=list(metadata$Species), FUN=mean)\nshannon.se <- aggregate(diversity.comm, by=list(metadata$Species), FUN=se)\n# statistical test of difference\nshannon.aov <- aov(diversity.comm ~ Species, data = metadata)\n# compare species Simpson diversity between host species\ninvsimpson.comm <- diversity(comm, index = \"invsimpson\")\n#pdf('Host.Species.InvSimpson.pdf')\n#par(mar=c(12,5,1,1)+0.5)\n#boxplot(invsimpson.comm ~ metadata$Species, xlab = \"\", ylab = \"InvSimpson Index\", las=2)\n#dev.off()\ninvsimpson.comm <- as.matrix(invsimpson.comm)\ninvsimpson.mean<- aggregate(invsimpson.comm, by=list(metadata$Species), FUN=mean)\ninvsimpson.se <- aggregate(invsimpson.comm, by=list(metadata$Species), FUN=se)\ninvsimpson.aov <- aov(invsimpson.comm ~ Species, data = metadata)\naov_out <- list(cbind(metric=\"richness\",factor=rownames(summary(richness.aov)[[1]]), as.data.frame(summary(richness.aov)[[1]])),\n    cbind(metric=\"shannon\", factor=rownames(summary(shannon.aov)[[1]]), as.data.frame(summary(shannon.aov)[[1]])),\n    cbind(metric=\"invsimpson\",  factor=rownames(summary(invsimpson.aov)[[1]]), as.data.frame(summary(invsimpson.aov)[[1]])))\n      \naov_out <- do.call(rbind,aov_out)\nrownames(aov_out) <- NULL\n# Make Summary table of Diversity indicies\ndiversity_summary <- cbind(rich.mean, rich.se$V1, shannon.mean$x, shannon.se$x, invsimpson.mean$V1, invsimpson.se$V1)\nnames(diversity_summary) <- c(\"Species\", \"Mean.Richness\", \"se.Richness\", \"Mean.Shannon\", \"se.Shannon\", \"Mean.InvSimpson\", \"se.InvSimpson\")\n\n\ncomms <- list(richness=rich.comm, shannon=diversity.comm, invsimpson=invsimpson.comm)\ntmp <- lapply(1:length(comms), function(x) data.frame(comms[[x]], names(comms)[x], metadata$Species))\ncommunities <- do.call(rbind, tmp)\n\ncolnames(communities) <- c(\"mean_diversity\", \"metric\", \"host_species\")\ncommunities$specimenID <- rownames(communities)\nraw_communities <- communities[,c(4,1:3)]\nraw_communities_fig <- communities[,c(4,1:3)]"
+            },
+            "x": 827,
+            "y": 94
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "inputs": [
+        {
+            "description": "A data frame to plot boxplots over",
+            "format": "r.dataframe",
+            "name": "dataframe",
+            "type": "table"
+        },
+        {
+            "description": "The column to use as a grouping factor for panels",
+            "domain": {
+                "format": "column.names",
+                "input": "dataframe"
+            },
+            "format": "text",
+            "name": "panel_col",
+            "type": "string"
+        },
+        {
+            "description": "A factor to group boxplots over",
+            "domain": {
+                "format": "column.names",
+                "input": "dataframe"
+            },
+            "format": "text",
+            "name": "factor_col",
+            "type": "string"
+        },
+        {
+            "description": "Values to plot",
+            "domain": {
+                "format": "column.names",
+                "input": "dataframe"
+            },
+            "format": "text",
+            "name": "y_value_col",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "boxplot",
+    "outputs": [
+        {
+            "format": "png.base64",
+            "name": "boxPlot",
+            "type": "image"
+        }
+    ],
+    "script": "require(cardoonTools)\npanels <- as.character(dataframe[,panel_col])\nfactor <- as.character(dataframe[,factor_col])\ny_value <- dataframe[,y_value_col]\n\n\nif(!is.null(panels)){\n  npanels <- length(unique(panels))\n  nr <- ceiling(npanels/2)\n  nc <- ifelse(npanels > 2, 2, npanels)\n  \n  uniqPanels <- as.character(unique(panels))\n  boxplotfn <- function() {\n  par(mfrow=c(nr,nc), mar=c(12,5,1,1)+0.5)\n    for(i in 1:npanels){\n        boxplot(y_value[panels==uniqPanels[i]]~factor[panels==uniqPanels[i]], main=uniqPanels[i], xlab=\"\", ylab=y_value_col, las=2)\n        }\n    }\n} else {\n  nr=1\n  nc=1\n  boxplotfn <- function() {\n    par(mfrow=c(nr,nc), mar=c(12,5,1,1)+0.5)\n    boxplot(y_value~factor, xlab=factor_col, ylab=y_value_col, las=2)\n  }\n}\n\n\n\nboxPlot <- cardoonPlot(expression(boxplotfn()), width=1000, height=1000, res=100)\nboxPlot <- boxPlot$png"
+}

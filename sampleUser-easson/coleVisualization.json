@@ -1,0 +1,254 @@
+{
+    "connections": [
+        {
+            "input": "dataframe",
+            "input_step": "boxplot",
+            "name": "dataframe"
+        },
+        {
+            "name": "boxPlot",
+            "output": "boxPlot",
+            "output_step": "boxplot"
+        },
+        {
+            "input": "panel_col",
+            "input_step": "boxplot",
+            "name": "panel_col"
+        },
+        {
+            "input": "factor_col",
+            "input_step": "boxplot",
+            "name": "factor_col"
+        },
+        {
+            "input": "y_value_col",
+            "input_step": "boxplot",
+            "name": "y_value_col"
+        },
+        {
+            "input": "table",
+            "input_step": "Bray-Curtis dissimilarity for hclust (adds rownames) 1",
+            "name": "table"
+        },
+        {
+            "input": "dist",
+            "input_step": "hclustDendrogram",
+            "output": "comm.bc.dist",
+            "output_step": "Bray-Curtis dissimilarity for hclust (adds rownames) 1"
+        },
+        {
+            "input": "y_label",
+            "input_step": "hclustDendrogram",
+            "name": "y_label"
+        },
+        {
+            "name": "plotClust",
+            "output": "plotClust",
+            "output_step": "hclustDendrogram"
+        }
+    ],
+    "inputs": [
+        {
+            "description": "A data frame to plot boxplots over",
+            "format": "r.dataframe",
+            "name": "dataframe",
+            "type": "table",
+            "x": 195,
+            "y": 342
+        },
+        {
+            "description": "The column to use as a grouping factor for panels",
+            "domain": {
+                "format": "column.names",
+                "input": "dataframe"
+            },
+            "format": "text",
+            "name": "panel_col",
+            "type": "string",
+            "x": 203,
+            "y": 28
+        },
+        {
+            "description": "A factor to group boxplots over",
+            "domain": {
+                "format": "column.names",
+                "input": "dataframe"
+            },
+            "format": "text",
+            "name": "factor_col",
+            "type": "string",
+            "x": 204,
+            "y": 134
+        },
+        {
+            "description": "Values to plot",
+            "domain": {
+                "format": "column.names",
+                "input": "dataframe"
+            },
+            "format": "text",
+            "name": "y_value_col",
+            "type": "string",
+            "x": 201,
+            "y": 240.00001525878906
+        },
+        {
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table",
+            "x": 193,
+            "y": 451
+        },
+        {
+            "default": "distance",
+            "description": "Label for y-axis",
+            "format": "text",
+            "name": "y_label",
+            "type": "string",
+            "x": 189,
+            "y": 584
+        }
+    ],
+    "mode": "workflow",
+    "name": "coleVisualization",
+    "outputs": [
+        {
+            "format": "png.base64",
+            "name": "boxPlot",
+            "type": "image",
+            "x": 830,
+            "y": 211
+        },
+        {
+            "description": "A dendrogram",
+            "format": "png.base64",
+            "name": "plotClust",
+            "type": "image",
+            "x": 1214,
+            "y": 333
+        }
+    ],
+    "steps": [
+        {
+            "id": "boxplot",
+            "name": "boxplot",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "A data frame to plot boxplots over",
+                        "format": "r.dataframe",
+                        "name": "dataframe",
+                        "type": "table"
+                    },
+                    {
+                        "description": "The column to use as a grouping factor for panels",
+                        "domain": {
+                            "format": "column.names",
+                            "input": "dataframe"
+                        },
+                        "format": "text",
+                        "name": "panel_col",
+                        "type": "string"
+                    },
+                    {
+                        "description": "A factor to group boxplots over",
+                        "domain": {
+                            "format": "column.names",
+                            "input": "dataframe"
+                        },
+                        "format": "text",
+                        "name": "factor_col",
+                        "type": "string"
+                    },
+                    {
+                        "description": "Values to plot",
+                        "domain": {
+                            "format": "column.names",
+                            "input": "dataframe"
+                        },
+                        "format": "text",
+                        "name": "y_value_col",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "boxplot",
+                "outputs": [
+                    {
+                        "format": "png.base64",
+                        "name": "boxPlot",
+                        "type": "image"
+                    }
+                ],
+                "script": "require(cardoonTools)\npanels <- as.character(dataframe[,panel_col])\nfactor <- as.character(dataframe[,factor_col])\ny_value <- dataframe[,y_value_col]\n\n\nif(!is.null(panels)){\n  npanels <- length(unique(panels))\n  nr <- ceiling(npanels/2)\n  nc <- ifelse(npanels > 2, 2, npanels)\n  \n  uniqPanels <- as.character(unique(panels))\n  boxplotfn <- function() {\n  par(mfrow=c(nr,nc), mar=c(12,5,1,1)+0.5)\n    for(i in 1:npanels){\n        boxplot(y_value[panels==uniqPanels[i]]~factor[panels==uniqPanels[i]], main=uniqPanels[i], xlab=\"\", ylab=y_value_col, las=2)\n        }\n    }\n} else {\n  nr=1\n  nc=1\n  boxplotfn <- function() {\n    par(mfrow=c(nr,nc), mar=c(12,5,1,1)+0.5)\n    boxplot(y_value~factor, xlab=factor_col, ylab=y_value_col, las=2)\n  }\n}\n\n\n\nboxPlot <- cardoonPlot(expression(boxplotfn()), width=1000, height=1000, res=100)\nboxPlot <- boxPlot$png",
+                "x": 554,
+                "y": 111
+            },
+            "x": 554,
+            "y": 111
+        },
+        {
+            "id": "Bray-Curtis dissimilarity for hclust (adds rownames) 1",
+            "name": "Bray-Curtis dissimilarity for hclust (adds rownames) 1",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    }
+                ],
+                "mode": "r",
+                "name": "Bray-Curtis dissimilarity for hclust (adds rownames) 1",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "comm.bc.dist",
+                        "type": "table"
+                    }
+                ],
+                "script": "library(picante)\n#input community data matrix with column headers and row names\n#comm<- (table, header=TRUE)#, row.names=1)\n# convert table to relative abundance\n#comm<-decostand(comm, method=\"total\")\n#convert 'comm' to a Bray-Curtis distance matrix\n#Same rownames fix\nrownames(table) <- table[,1]\ntable <- table[,-1]\n\ncomm.bc.dist<-vegdist(table, method=\"bray\")\ncomm.bc.dist <- as.matrix(comm.bc.dist);comm.bc.dist <- cbind(rownames(comm.bc.dist), comm.bc.dist);colnames(comm.bc.dist)[1] <- \"rownames\"\n## Shouldn't have to do this, remove the column names before exporting to prevent an additional row for entering the matrix.\n#colnames(comm.bc.dist) <- paste(\"N\", colnames(comm.bc.dist), sep=\"\")",
+                "x": 517,
+                "y": 397
+            },
+            "x": 517,
+            "y": 397
+        },
+        {
+            "id": "hclustDendrogram",
+            "name": "hclustDendrogram",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "A distance matrix",
+                        "format": "r.dataframe",
+                        "name": "dist",
+                        "type": "table"
+                    },
+                    {
+                        "default": "distance",
+                        "description": "Label for y-axis",
+                        "format": "text",
+                        "name": "y_label",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "hclustDendrogram",
+                "outputs": [
+                    {
+                        "description": "A dendrogram",
+                        "format": "png.base64",
+                        "name": "plotClust",
+                        "type": "image"
+                    }
+                ],
+                "script": "require(cardoonTools)\n\n##Can expose these options later, going to leave hidden for now\nfont_size = 0.5\nmethod=\"average\"\n##\n#dist <- cbind(rownames(dist), dist)\nrownames(dist)<- dist[,1];dist<- dist[,-1];dist <- as.dist(dist)\n\nclust <- hclust(dist, method = method)\nplotClust <- cardoonPlot(expression(plot(clust,labels = rownames(dist),cex=font_size, ylab=y_label)), width=1000, height=1000, res=100)\nplotClust <- plotClust$png\n#",
+                "x": 852,
+                "y": 374
+            },
+            "x": 852,
+            "y": 374
+        }
+    ]
+}
