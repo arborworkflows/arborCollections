@@ -9,7 +9,7 @@ author: Luke Harmon
 <ul>
 {% for easy_mode in site.easy_mode %}
   <li>
-    <a href="{{ easy_mode.url }}">{{ easy_mode.title}}</a>
+    <a href="{{ site.baseurl }}{{ easy_mode.url }}">{{ easy_mode.title}}</a>
   </li>
 {% endfor %}
 </ul>
