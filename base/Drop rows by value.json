@@ -1,0 +1,36 @@
+{
+    "inputs": [
+        {
+            "description": "input multi-row table we are going to drop rows from",
+            "format": "rows",
+            "name": "datatable",
+            "type": "table"
+        },
+        {
+            "domain": {
+                "format": "column.names",
+                "input": "datatable"
+            },
+            "format": "text",
+            "name": "indexcolumn",
+            "type": "string"
+        },
+        {
+            "description": "comma separated set of values to look for in the index column",
+            "format": "text",
+            "name": "values",
+            "type": "string"
+        }
+    ],
+    "mode": "python",
+    "name": "Drop rows by value",
+    "outputs": [
+        {
+            "description": "output table with a subset of the input rows",
+            "format": "rows",
+            "name": "outtable",
+            "type": "table"
+        }
+    ],
+    "script": "# this analysis expects an input table with requires some rows to be filtered out. \n# The analysis also expects a comma separated list of values to find and filter out of the table \n# This is similar to the fieldfile format for mongoDB, with one field per line....\n\n# input: datatable - data table with lots of rows (relatively speaking)\n# input: indexcolumn - single string with column name to use as an index\n# input: values - comma separated list of value(s) to look for in the index column and drop these rows\n# output: outtable - smaller data table that does not have the rows which matched the filtering criteria\n\n\n# revision history:\n# 09/04/14 CRL initial version\n# 09/13/14 CRL updated comments\n\ninfields = datatable['fields']\n\n# process character string list of values into a Python list of values\nnoSpaceValuesString = values.replace(\" \",\"\")\nvaluelist = noSpaceValuesString.split(',')\n\n\n# now loop through the source table and remove the selected rows from the output data record\n\noutrows = []\nfor row in datatable['rows']:\n    if row[indexcolumn] not in valuelist:\n        outrows.append(row)\n        \nouttable = {}\nouttable['fields'] = infields\nouttable['rows'] = outrows\n"
+}

@@ -1,0 +1,27 @@
+{
+    "inputs": [
+        {
+            "description": "first input table",
+            "format": "rows",
+            "name": "inTable1",
+            "type": "table"
+        },
+        {
+            "description": "second input table",
+            "format": "rows",
+            "name": "inTable2",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "Append rows",
+    "outputs": [
+        {
+            "description": "table which contains all rows in either input table; columns are union of input columns",
+            "format": "rows",
+            "name": "outTable",
+            "type": "table"
+        }
+    ],
+    "script": "\n# input: inTable1 - a list of rows (2D table)\n# input: inTable2 = a second list of rows\n# output: outTable\n\n# merge all rows of the two tables together.  Generally we might want to assume that both\n# tables would have the same column headers, but this may not always be the case.  In this case, lets\n# have the output column headers be the union of the input sets, so data is never lost.  We may generate\n# a sparse table, but we will guarantee not to lose any information. \n\noutTable = {}\n\n        \n# prepare for the output table format of table:rows        \ncolumnHeaders1 = inTable1['fields']\ncolumnHeaders2 = inTable2['fields']\n\noutRows = []\noutColumns = []\n\n# copy rows from the first table\nfor i in range(len(inTable1['rows'])):\n    row = inTable1['rows'][i]\n    outRows.append(row)\n\n# copy rows from the second table\nfor i in range(len(inTable2['rows'])):\n    row = inTable2['rows'][i]\n    outRows.append(row) \n    \n# now fix the column headers to be the union of both sets of input column headers\n\nfor i in columnHeaders1:\n    if i not in outColumns:\n        outColumns.append(i)\n\nfor i in columnHeaders2:\n    if i not in outColumns:\n        outColumns.append(i)\n        \noutTable = {'fields': outColumns,'rows':outRows}"
+}

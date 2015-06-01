@@ -1,0 +1,341 @@
+{
+    "connections": [
+        {
+            "input": "datatable",
+            "input_step": "TableChooseColumns",
+            "name": "datatable"
+        },
+        {
+            "input": "columnsToKeep",
+            "input_step": "TableChooseColumns",
+            "name": "columnsToKeep"
+        },
+        {
+            "input": "tree",
+            "input_step": "Make Tree Tips Match Matrix",
+            "name": "tree"
+        },
+        {
+            "input": "truncateLength",
+            "input_step": "Make Tree Tips Match Matrix",
+            "name": "truncateLength"
+        },
+        {
+            "name": "tree_fullnames",
+            "output": "tree_fullnames",
+            "output_step": "Make Tree Tips Match Matrix"
+        },
+        {
+            "input": "tree",
+            "input_step": "Merge Tree and Combined MorphLoc Table V3",
+            "output": "tree_fullnames",
+            "output_step": "Make Tree Tips Match Matrix"
+        },
+        {
+            "name": "treeWithLocations",
+            "output": "treeWithLocations",
+            "output_step": "Merge Tree and Combined MorphLoc Table V3"
+        },
+        {
+            "name": "statusTable",
+            "output": "statusTable",
+            "output_step": "Merge Tree and Combined MorphLoc Table V3"
+        },
+        {
+            "name": "matchingTable",
+            "output": "matchingTable",
+            "output_step": "Merge Tree and Combined MorphLoc Table V3"
+        },
+        {
+            "input": "table",
+            "input_step": "Convert Morph Matrix to Numeric",
+            "output": "outtable",
+            "output_step": "TableChooseColumns"
+        },
+        {
+            "input": "columnsToIgnore",
+            "input_step": "Convert Morph Matrix to Numeric",
+            "name": "columnsToIgnore"
+        },
+        {
+            "input": "matrix",
+            "input_step": "Make Tree Tips Match Matrix",
+            "output": "outtable",
+            "output_step": "Convert Morph Matrix to Numeric"
+        },
+        {
+            "input": "occurrences",
+            "input_step": "Merge Tree and Combined MorphLoc Table V3",
+            "output": "outtable",
+            "output_step": "Convert Morph Matrix to Numeric"
+        },
+        {
+            "name": "legend",
+            "output": "legend",
+            "output_step": "Convert Morph Matrix to Numeric"
+        }
+    ],
+    "description": "",
+    "inputs": [
+        {
+            "format": "rows",
+            "id": "datatable",
+            "name": "datatable",
+            "type": "table",
+            "x": 131,
+            "y": 98
+        },
+        {
+            "format": "rows",
+            "id": "columnsToKeep",
+            "name": "columnsToKeep",
+            "type": "table",
+            "x": 130,
+            "y": 290
+        },
+        {
+            "description": "table with columnHeader header of fields to prevent history substitution",
+            "format": "rows",
+            "id": "columnsToIgnore",
+            "name": "columnsToIgnore",
+            "type": "table",
+            "x": 121,
+            "y": 555
+        },
+        {
+            "description": "a phylo tree with shortened names on the tips",
+            "format": "nested",
+            "id": "tree",
+            "name": "tree",
+            "type": "tree",
+            "x": 696,
+            "y": 30
+        },
+        {
+            "description": "how many characters to truncate to if the genus name is longer than this",
+            "format": "number",
+            "id": "truncateLength",
+            "name": "truncateLength",
+            "type": "number",
+            "x": 145,
+            "y": 424
+        }
+    ],
+    "mode": "workflow",
+    "name": "Workflow occurrence level morph",
+    "outputs": [
+        {
+            "format": "nested",
+            "id": "tree_fullnames",
+            "name": "tree_fullnames",
+            "type": "tree",
+            "x": 1313,
+            "y": 169
+        },
+        {
+            "description": "output tree with extra information on the taxa nodes",
+            "format": "nested",
+            "id": "treeWithLocations",
+            "name": "treeWithLocations",
+            "type": "tree",
+            "x": 1412,
+            "y": 336
+        },
+        {
+            "description": "output status of merging process",
+            "format": "rows",
+            "id": "statusTable",
+            "name": "statusTable",
+            "type": "table",
+            "x": 1415,
+            "y": 471
+        },
+        {
+            "description": "output detailed information on individual matches found",
+            "format": "rows",
+            "id": "matchingTable",
+            "name": "matchingTable",
+            "type": "table",
+            "x": 1338,
+            "y": 616
+        },
+        {
+            "description": "matching legend of codes to original values",
+            "format": "rows",
+            "id": "legend",
+            "name": "legend",
+            "type": "table",
+            "x": 961,
+            "y": 684
+        }
+    ],
+    "steps": [
+        {
+            "girderId": "554bd3f656c02c080256161b",
+            "id": "TableChooseColumns",
+            "modified": "2015-05-07 21:07:02.511000",
+            "name": "TableChooseColumns",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "rows",
+                        "name": "datatable",
+                        "type": "table"
+                    },
+                    {
+                        "format": "rows",
+                        "name": "columnsToKeep",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "TableChooseColumns",
+                "outputs": [
+                    {
+                        "format": "rows",
+                        "name": "outtable",
+                        "type": "table"
+                    }
+                ],
+                "script": "# this analysis expects an input table with a larger number of columns than are desired in the output table.  \n# The analysis also expects a single column input table containing the names of columns to keep in the output table. \n# This is similar to the fieldfile format for mongoDB, with one field per line....\n\n# input: datatable - data table with lots of columns (relatively speaking)\n# input: columnsToKeep - single column table with column names to keep\n# output: outtable - smaller data table that preserves only the named columns from the input datatable\n\ninfields = datatable['fields']\n\noutfields = []\noutstring = ''\n# loop through the columnsToKeep table and collect the names of columns we want to preserve in the output\nfor row in columnsToKeep['rows']:\n    outfields.append(row['columnHeader'])\n\n# now loop through the source table and append only selected columns to the output data record\n\noutrows = []\nfor row in datatable['rows']:\n    outrow = {}\n    for field in outfields:\n        outrow[field] = row[field]\n    outrows.append(outrow)\n        \nouttable = {}\nouttable['fields'] = outfields\nouttable['rows'] = outrows\n",
+                "x": 422,
+                "y": 162
+            },
+            "x": 422,
+            "y": 162
+        },
+        {
+            "girderId": "554be0de56c02c0802561678",
+            "id": "Make Tree Tips Match Matrix",
+            "modified": "2015-05-07 22:02:06.372000",
+            "name": "Make Tree Tips Match Matrix",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "a phylo tree with shortened names on the tips",
+                        "format": "nested",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "description": "a character matrix with full species names and character columsn",
+                        "format": "rows",
+                        "name": "matrix",
+                        "type": "table"
+                    },
+                    {
+                        "description": "how many characters to truncate to if the genus name is longer than this",
+                        "format": "number",
+                        "name": "truncateLength",
+                        "type": "number"
+                    }
+                ],
+                "mode": "python",
+                "name": "Make Tree Tips Match Matrix",
+                "outputs": [
+                    {
+                        "format": "nested",
+                        "name": "tree_fullnames",
+                        "type": "tree"
+                    }
+                ],
+                "script": "# Make Tree Tip Names Match Matrix\n#\n# C. Lisle\n# KnowledgeVis, LLC\n# \n# released under Apache 2.0 open-source license\n#\n# This analysis is an algorithm to modify truncated taxa tip names to match the full names in a provided character matrix.  The character names are read in as \n# an authoritative name list.  Then the taxa nodes are processed and each name is matched against the name list to be replaced with its full name.\n\n# inputs:\n# tree - a tree (nested format) with shortened names on the tips.  Names are the prefix (up to 9 chars) of the genus name\n# matrix - a character matrix with full species names of the form (genus_species)\n# truncateLength - integer indicating how long the maximum name would be in the tree; used to prepare a matching name list\n\n# output:\n# tree_fullnames - tree (in nested format) with modified names that match the matrix\n\n# setup global lists\nspeciesNames = []\nspeciesNamesShort = []\n\n# utility function to detect and return the species name column.\ndef returnSpeciesColumnName():\n    possibleNames = ['species','Species','scientific name','X','x','Scientific Name','name','Name','scientific_name','Scientific_Name','Column 1']\n    for name in enumerate(possibleNames):\n        if name in matrix['fields']:\n            return name\n    # default to species if operation fails\n    return 'species'\n\n\n# return a matching name from the name list.  A name is matched against the list and the fullname is\n# returned if a match is found.  If no match is found, the name is returned unchanged.\n\ndef returnNameMatch(name,shortNameList,fullNameList):\n    for i in range(len(shortNameList)):\n        if shortNameList[i] == name:\n            return fullNameList[i]\n    return name\n    \n    \n# build a list of the species named in the matrix.  A list of full-length names is build and a list with the names truncated to the genus name\n# up to length 'truncateLength' characters are built, indexed in the same order.  This will speed up matching against names\n\ndef buildSpeciesNameLists():\n    columnName = returnSpeciesColumnName()\n    for row in matrix['rows']:\n        speciesNames.append(row[columnName])\n        shortName = row[columnName].split('_')[0][:truncateLength]\n        speciesNamesShort.append(shortName)\n\n\n# this is an operation to perform on a taxon node to replace its name.  It is called for each taxon of the tree\ndef taxonOperation(node):\n    # only replace names if they exist.  test first so routine doesn't cause a runtime exception if a name is missing\n    if ('node name' in node['node_data'].keys()):\n        originalName = node['node_data']['node name']\n        newName = returnNameMatch(originalName,speciesNamesShort,speciesNames)\n        node['node_data']['node name'] = newName\n\n    \n\n# utility routine to recursively traverse through a phylo tree in nested format.  This traversal starts at the top and recursively traverses the tree.\n# once it finds a taxon, then the routine 'taxonOperation' is called with the taxon node as an argument.  \n\ndef treeTraversal(treenode):\n    # look at the current tree node and see if there are children or not\n    if 'children' in treenode.keys():\n        #case for a hierarchy node, traverse to all the children\n        for node in treenode['children']:\n            treeTraversal(node)\n    else:\n        #case for a taxa. Run a previously-defined operation on the taxon node\n        taxonOperation(treenode)    \n\n# Top Level Operations \n\n#  setup the structures and go through the tree nodes and replace any names with full names from the reference name list.  The traversal replaces names\n# in place, so when the traversal is done the tree has new node names\n\n\nbuildSpeciesNameLists()\ntreeTraversal(tree)\ntree_fullnames = tree\n\n",
+                "x": 1007,
+                "y": 242
+            },
+            "x": 1007,
+            "y": 242
+        },
+        {
+            "girderId": "554bc1b056c02c08025615ab",
+            "id": "Merge Tree and Combined MorphLoc Table V3",
+            "modified": "2015-05-07 20:55:25.671000",
+            "name": "Merge Tree and Combined MorphLoc Table V3",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "description": "input tree for merging with occurrences and morphology",
+                        "format": "nested",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "description": "table with rows for each occurrence.  Rows include arbitrary number of attributes",
+                        "format": "rows",
+                        "name": "occurrences",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Merge Tree and Combined MorphLoc Table V3",
+                "outputs": [
+                    {
+                        "description": "output tree with extra information on the taxa nodes",
+                        "format": "nested",
+                        "name": "treeWithLocations",
+                        "type": "tree"
+                    },
+                    {
+                        "description": "output status of merging process",
+                        "format": "rows",
+                        "name": "statusTable",
+                        "type": "table"
+                    },
+                    {
+                        "description": "output detailed information on individual matches found",
+                        "format": "rows",
+                        "name": "matchingTable",
+                        "type": "table"
+                    }
+                ],
+                "script": "#  Phylotree and species occurrence matching analysis\n#  Curtis Lisle\n#  KnowledgeVis, LLC\n\n# Copyright by KnowledgeVis,LLC and Kitware, Inc.\n\n# This analysis step scans through a species occurence table (of the format of Chodon's Heliconia location table) and tries to \n# add as many of these location observations as possible to the taxa of an input phylogenetic tree.  Species name and collection number\n# are used to try to find matches.  The output tree has the locations added as attributes so they can be traversed using phyloTraitMap \n# and support interactive exploration. \n\n# Update History:\n# 10/16/14 - added collection/accession number match column input option (previously hard coded to \"Numb\").  Incorporated unique\n#            nodeids so separate analysis step is not required.\n# 05/05/15 - adapted for newest heliconia occurrences and morph merged\n#\n\n# NOTE: it has been observed with the Heliconia dataset (2014) that occurrences appear to match more than one taxon, because\n# total matches discovered can be greater than the number of occurrence entries. \n\n# inputs\n# ------\n# occurrences - table with the occurrrences one per line\n# morphtable -  table with morphology at the species level (occurrence morphology can be rolled up) \n# matchColumn - which column to use to match with\n# tree - tree we want to merge the occurrences into (nested format)\n#\n# outputs\n# -------\n# treeWithLocations - nested format tree with location arrays added to the taxa\n# statusTable - output table showing matches summary counts\n# matchingTable - output detailed matching information\n\ncount = 0\nfoundSpecies = 0\nfoundSpeciesAndCollectorNumber = 0\nfoundCollector = 0\nfoundMorphology = 0\n\nstatusTable = {}\nstatusTable['fields'] = ['description','value']\nstatusTable['rows'] = []\n\nmatchingTable = {}\nmatchingTable['fields'] = ['matchType','occSpecies','occMatch','taxonSpecies','taxonMatch','taxonFullName']\nmatchingTable['rows'] = []\n\nunmatchedTable = {}\nunmatchedTable['fields'] = ['occSpecies','occNumber','collectorNumber','inputTableIndex']\nunmatchedTable['rows'] = []\n\n# have a counter for unique nodeIDs.  the nodes only have to be unique within\n# this tree, so a counter can be used. Initialize with count=1\nnodecount = 1\n\n\n# add an entry to the matching table.  This is called by addLocationsToTaxon to keep records of how matching\n# was performed during the occurrrence & tree matching process\n\ndef makeMatchingEntry(matchtype,occ,taxSpecies,tax):\n    global matchingTable\n    row = {}\n    row['matchType'] = matchtype\n    if 'species' in occ:\n        row['occSpecies'] = occ['species']\n    else:\n        row['occSpecies'] = 'NA'\n        row['taxonSpecies'] = taxSpecies\n        row['taxonFullName'] = tax['node_data']['node name']\n    matchingTable['rows'].append(row)\n    \n''' this is currently unused, but it might be nice to list occurrences that didn't match anything    \n# add an entry to the un-matched table.  \ndef makeUnmatchedEntry(occ,index):\n    global unmatchedTable\n    row = {}\n    row['occSpecies'] = occ['species']\n    row['occNumber'] = occ['Numb']\n    row['collectorNumber'] = occ['Collector_Numb']\n    row['inputTableIndex'] = index\n    unmatchedTable['rows'].append(row)\n'''\n    \n# this routine looks through the occurrence data to find a matches for a particular taxon and adds the location\n# information as a new list attribute 'loc' on each taxon where observations are mapped.  Mapping occurs first when\n# there are both species and collector matches.  Then if there is no match on species and collector, collection only is used to match\n# as a second option, finally species only is used. \n# Records of the matching process are output in the \"matchingTable\" output of this step. \n\ndef addLocationsToTaxon(taxon): \n    global occurrences\n    global foundSpeciesAndCollectorNumber\n    global foundSpecies\n    global foundCollector\n    global inputTableIndex\n    \n    #some taxon names are in single quotes because of a dot in the name, \n    # i.e. 'standleyi_L80,0894', so remove the single quotes\n    taxon_species = taxon['node_data']['node name']\n    \n    print \"found taxon:\",taxon_species\n    # now look for matches\n    occurencesOnThisTaxon = 0\n    for occurrence in occurrences['rows']:\n        if (occurrence['species'] == taxon_species):\n            foundSpecies = foundSpecies+1            \n            #if this is the first occurrence found, create a new list, otherwise add to the existing list\n            if 'loc' in taxon['node_data'].keys():\n                taxon['node_data']['loc'].append([occurrence['long'],occurrence['lat']])\n            else:\n                taxon['node_data']['loc'] = [[occurrence['long'],occurrence['lat']]]\n            \n            if occurencesOnThisTaxon < 2:\n                attribRecord = {}\n                for attrib in occurrence:\n                    attribRecord[attrib] = occurrence[attrib]\n\n                if 'attributes' in taxon['node_data'].keys():\n                    taxon['node_data']['attributes'].append(attribRecord)\n                else:\n                    taxon['node_data']['attributes'] = [attribRecord] \n            \n            # loop through the attributes in the occurrernces and create a record of all traits\n            #for attrib in occurrence:\n            #    attribRecord[attrib] = occurrence[attrib]\n            #print occurrence\n\n            # assign this trait record to the taxon as a taxon-level morphology\n            #taxon['node_data']['attributes'] = attribRecord\n                \n            # store the individual occurrence morphology into a list of morphology blocks (stored as dicitonaries) on the taxon node\n            #if 'attributeList' in taxon['node_data'].keys():\n            #    taxon[n'node_data']['attributeList'].append(attribRecord)\n            #else:\n            #    taxon['node_data']['attributeList'] = [attribRecord]\n                \n            makeMatchingEntry('species',occurrence,taxon_species,taxon)\n            occurencesOnThisTaxon += 1\n\n        \n                \n\n\n# look through the morph matrix and return a row that matches the search key (e.g. particular value for field 'Numb')\n# if there is no matching key records in the morph table, return no matches.  \n\ndef returnMatchingMorphRecord(searchkey):\n    global morphtable\n    for row in morphtable['rows']:\n        # only continue if there is a matching header in the morph table\n        if matchColumn in row.keys():\n            if row[matchColumn] == searchkey:\n                return {'status': True, 'data': row}\n    return  {'status': False}\n            \n\n# this routine looks through the morphology matrix for key matches to the attribute added to the taxon.\n# all matching attributes are added to the 'attributes' list stored at the taxon level. The taxon 'attributes'\n# list has a list of records, each corresponding to a single occurrence that was matched to the taxon. In this \n# method, we simply find a matching record in the morphology table and copy the attribute columns into the taxon\n# node of the tree to \"flush out\" the tree with trait data for later analysis and visualization\n\ndef addMorphologyToTaxon(taxon):\n    global foundMorphology\n    global matchColumn\n    if 'attributes' in taxon['node_data'].keys():\n        # loop through each occurrence record and expand the attribute record from just the number to include attributes\n        for attribRecord in taxon['node_data']['attributes']:\n            morphRecord = returnMatchingMorphRecord(attribRecord['species'])\n            if morphRecord['status']:\n                foundMorphology += 1\n                # rebuild the components of the taxon name for the reporting\n                taxon_species = taxon['node_data']['node name']\n                makeMatchingEntry('morph',morphRecord['data'],taxon_species,taxon)\n                #print morphRecord['data']\n                for attrib in morphRecord['data']:\n                    # store all records besides the key, because we have that already\n                    if attrib != matchColumn:\n                        attribRecord[attrib] = morphRecord['data'][attrib]\n  \n\n# -------- top level methods below --------------------\n\n# this routine traverses a phylo tree in nested format and add lat,long from\n# the occurrence records to the node.  This is the top level of the recursive traversal of the tree. Traversal\n# starts from the top and continues past the intermediate nodes,  for each taxon reached, addLocationsToTaxon is called\n# a single time to possibly add any matching occurrences to the taxon's attributes\n\ndef addLocationsToTreeNodes(treenode):\n    # look at the current tree node and see if there are children or not\n    if 'children' in treenode.keys():\n        #case for a hierarchy node, traverse to all the children\n        for node in treenode['children']:\n            addLocationsToTreeNodes(node)\n    else:\n        #case for a taxa. Look through the occurrence and add records to \n        # this node\n        addLocationsToTaxon(treenode)\n        \n        \n# this routine traverses a phylo tree in nested format and adds attributes from\n# the morphology matrix to the taxa nodes.  This should be run AFTER the \n# locations traversal because it relies on the matchColumn value (the ascension or \n# collection index number) to be present in the taxon node.  This traversal\n# could be combined with the location/match traversal for improved speed, but \n# this separate traversal is simpler in design.\n\ndef addMorphologyToTreeNodes(treenode):\n    # look at the current tree node and see if there are children or not\n    if 'children' in treenode.keys():\n        #case for a hierarchy node, traverse to all the children\n        for node in treenode['children']:\n            addMorphologyToTreeNodes(node)\n    else:\n        #case for a taxa. Look through the occurrence and add records to \n        # this node\n        addMorphologyToTaxon(treenode)        \n\n\n\n# this routine traverses a phylo tree in nested format. Add a nodeid and then\n# increment the count every time we encounter a node during a depth first search\n\ndef addUniqueIDsToTreeNodes(treenode):\n    global nodecount\n    treenode['node_data']['nodeid'] = nodecount\n    nodecount += 1\n    # look at the current tree node and see if there are children or not\n    if 'children' in treenode.keys():\n        #case for a hierarchy node, traverse to all the children\n        for node in treenode['children']:\n            addUniqueIDsToTreeNodes(node)\n        \n    \n# here are the top level actions, add locations and output the tree\naddLocationsToTreeNodes(tree)\n#addMorphologyToTreeNodes(tree)\naddUniqueIDsToTreeNodes(tree)\ntreeWithLocations = tree\n\n#print \"species and collector matches:\",foundSpeciesAndCollectorNumber\n#print \"species matches:\",foundSpecies\n\n# output status records\nstatusTable['rows'].append({'description': 'total occurrence records','value': len(occurrences['rows'])})\n#statusTable['rows'].append({'description': 'species and collection matches','value':foundSpeciesAndCollectorNumber})\n#statusTable['rows'].append({'description': 'collection only matches','value':foundCollector})\n#statusTable['rows'].append({'description': 'species only matches','value':foundSpecies})\n#statusTable['rows'].append({'description': 'morphology records merged','value':foundMorphology})\n\n\n",
+                "x": 1168,
+                "y": 435
+            },
+            "x": 1168,
+            "y": 435
+        },
+        {
+            "girderId": "554bd2fa56c02c0802561610",
+            "id": "Convert Morph Matrix to Numeric",
+            "modified": "2015-05-07 21:16:03.453000",
+            "name": "Convert Morph Matrix to Numeric",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "format": "rows",
+                        "name": "table",
+                        "type": "table"
+                    },
+                    {
+                        "description": "table with columnHeader header of fields to prevent history substitution",
+                        "format": "rows",
+                        "name": "columnsToIgnore",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Convert Morph Matrix to Numeric",
+                "outputs": [
+                    {
+                        "description": "output table (fully numeric)",
+                        "format": "rows",
+                        "name": "outtable",
+                        "type": "table"
+                    },
+                    {
+                        "description": "matching legend of codes to original values",
+                        "format": "rows",
+                        "name": "legend",
+                        "type": "table"
+                    }
+                ],
+                "script": "#\n# input: table (a character matrix with a mix of numeric and textual cell entries\n# output: outtable (a matrix where all textual entries have been converted to integers)\n# output: status  (a table describing the processing of the matrix)\n# output: legend (a table that indicates what the integer code means for each value in each column\n#\n\n# algorithm:\n# a dictionary for each input column is maintained.  The dictionary keys are the integers assigned, the values \n# are the original cell values.  This way, this output table can be used as a lookup to restore the table or display \n# with the original entries.  The algorithm uses two passes.  During the first pass, a matching integer code is created for each\n# unique value encountered in each column.  During the second pass, the output table is generated using codes read out from the history\n# mechanism.\n\nstatusTable = {}\nstatusTable['fields'] = ['description','value']\nstatusTable['rows'] = []\n\nlegend = {}\nlegend['fields'] = ['column','original','code']\nlegend['rows'] = []\n\n# values in these columns are not replaced with numeric values\nnameColumns = ['name','species','SPECIES','Species','Scientific Name','scientific name']\n\nuniqueValueCount = 0\n\n# loop through the columnsToIgnore table and collect the names of columns we want to preserve in the output without history substitution\nignorefields = []\nfor row in columnsToIgnore['rows']:\n    ignorefields.append(row['columnHeader'])\n    \n    \n# helper function to check for numberic values only \ndef isNumber(s):\n    try:\n        float(s)\n        return True\n    except ValueError:\n        return False\n\n# this routine initializes the history mechanism to have an entry for each column in the input table. Records\n# will be added to each column's dictionary later.\n\nmatchingDict = {}\ndef initEmptyHistory():   \n    global matchingDict\n    matchingDict = {}\n    for column in table['fields']:\n        # start with an empty dictionary for each column\n        matchingDict[column] = {}\n        \n# if a particular entry is already in the dictionary, return True.  Otherwise return False. \ndef entryInHistory(column,value):\n    try:\n        x = matchingDict[column][value]\n        return True\n    except:\n        return False\n    \n    \n# during the first pass through the table, this routine is called to create new codes and \n# store them in a history mechanism (the matchingDict).  The history will be used to output the \n# translated table during the second pass\n\ndef makeHistoryEntry(column,value):\n    global legend\n    global matchingDict\n    global uniqueValueCount\n    newCode = len(matchingDict[column])\n    row = {}\n    row['column'] = column\n    row['original'] = value\n    row['code'] = newCode\n    # store a code in the matching dictionary for this new unique column value\n    matchingDict[column][value] = newCode\n    legend['rows'].append(row)\n    # count how many entries we have overall\n    uniqueValueCount += 1\n\n# return an entry from the history mechanism\ndef getHistory(column,value):\n    global matchingDict\n    return matchingDict[column][value]\n\n# Below is the main loop of the algorithm.  Each pass is listed below.  The first pass accumulates, the second pass \n# generates the output table using numerical code substitution so the output is a purely numerical table. \n\n# First pass: go through the table, record each unique value and assign a code to it.\ninitEmptyHistory()  \nrowCount = 0\nfor row in table['rows']:\n    print rowCount\n    for column in row:\n        if (column not in ignorefields):\n            if ( not isNumber(row[column]) and not entryInHistory(column,row[column]) and (column not in nameColumns)):\n                # this entry is not a number but is not yet in the history, so add it\n                #print 'adding',row[column],'to history for',column\n                makeHistoryEntry(column,row[column])\n    rowCount += 1\n\n# prepare output table with same schema as input table, but empty\nouttable = {}\nouttable['fields'] = table['fields']\nouttable['rows'] = []\n\nprint 'second pass'\n# second pass: output numerically coded table\nfor row in table['rows']:\n    outrow = {}\n    for column in row:\n        if entryInHistory(column,row[column]):\n            # if entry in history, substitute for coded value\n            outrow[column] = getHistory(column,row[column])\n        else:\n            # copy original value, this wasn't coded during pass one\n            outrow[column] = row[column]\n    outtable['rows'].append(outrow)    \n\nstatusTable['rows'].append({'description': 'total coding records','value': uniqueValueCount})\n\n            \n            \n            \n"
+            },
+            "x": 735,
+            "y": 499
+        }
+    ]
+}

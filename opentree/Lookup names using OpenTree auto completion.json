@@ -8,7 +8,7 @@
         }
     ],
     "mode": "python",
-    "name": "LookupOpenTreeNames",
+    "name": "Lookup names using OpenTree auto completion",
     "outputs": [
         {
             "description": "three column table of original names, OpenTree TNRS names, and OpenTree taxonomy IDs",

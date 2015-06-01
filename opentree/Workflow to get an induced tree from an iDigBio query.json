@@ -1,0 +1,238 @@
+{
+    "connections": [
+        {
+            "input": "table",
+            "input_step": "Extract species names from a trait matrix",
+            "output": "rankedScientificNames",
+            "output_step": "Get 100 ranked scientific names from iDigBio"
+        },
+        {
+            "input": "nameTable",
+            "input_step": "Lookup names using OpenTree Taxonomy",
+            "output": "outtable",
+            "output_step": "Extract species names from a trait matrix"
+        },
+        {
+            "input": "table",
+            "input_step": "Return the OpenTree subtree from a node list",
+            "output": "outTable",
+            "output_step": "Lookup names using OpenTree Taxonomy"
+        },
+        {
+            "input": "tree",
+            "input_step": "Plot a tree using R and ape",
+            "output": "tree",
+            "output_step": "Return the OpenTree subtree from a node list"
+        },
+        {
+            "input": "scientificname",
+            "input_step": "Get 100 ranked scientific names from iDigBio",
+            "name": "scientificname"
+        },
+        {
+            "name": "treePlot",
+            "output": "treePlot",
+            "output_step": "Plot a tree using R and ape"
+        },
+        {
+            "name": "tree",
+            "output": "tree",
+            "output_step": "Return the OpenTree subtree from a node list"
+        },
+        {
+            "name": "treeNewickString",
+            "output": "treeNewickString",
+            "output_step": "Return the OpenTree subtree from a node list"
+        }
+    ],
+    "inputs": [
+        {
+            "default": "Mammalia",
+            "description": "Provide a scientific name to search in iDigBio in full-text manner",
+            "format": "text",
+            "name": "scientificname",
+            "type": "string",
+            "x": 33,
+            "y": 205
+        }
+    ],
+    "mode": "workflow",
+    "name": "Workflow to get an induced tree from an iDigBio query",
+    "outputs": [
+        {
+            "description": "R-based plot of a tree",
+            "format": "png.base64",
+            "name": "treePlot",
+            "type": "image",
+            "x": 1192,
+            "y": 12
+        },
+        {
+            "format": "newick",
+            "name": "tree",
+            "type": "tree",
+            "x": 1005,
+            "y": 137
+        },
+        {
+            "description": "quick preview read out of the tree as a newick string",
+            "format": "text",
+            "name": "treeNewickString",
+            "type": "string",
+            "x": 1026,
+            "y": 278
+        }
+    ],
+    "steps": [
+        {
+            "id": "Get 100 ranked scientific names from iDigBio",
+            "name": "Get 100 ranked scientific names from iDigBio",
+            "task": {
+                "inputs": [
+                    {
+                        "default": "Mammalia",
+                        "description": "Provide a scientific name to search in iDigBio in full-text manner",
+                        "format": "text",
+                        "name": "scientificname",
+                        "type": "string"
+                    }
+                ],
+                "mode": "python",
+                "name": "Get 100 ranked scientific names from iDigBio",
+                "outputs": [
+                    {
+                        "description": "Ranked Scientific names found in iDigBio",
+                        "format": "rows",
+                        "name": "rankedScientificNames",
+                        "type": "table"
+                    }
+                ],
+                "script": "import json\r\nimport urllib2\r\nimport requests\r\nimport csv\r\n\r\nurl = \"http://search.idigbio.org/idigbio/records/_search\"\r\ndata = {\r\n    \"query\": {\r\n\t\"query_string\" : {\r\n       \t\t\"query\" : scientificname.lower()\r\n    \t}\r\n    },\r\n    \"aggregations\": {\r\n        \"my_agg\": {\r\n            \"terms\": {\r\n               \"field\": \"scientificname\",\r\n               \"size\": 100\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\nheaders = {'Content-type': 'application/json', 'Accept': 'text/plain'}\r\nr = requests.post(url, data=json.dumps(data), headers=headers)\r\ndata = json.loads(r.text)\r\n\r\nuniqKeys = {}\r\noutrows = []\r\n#print data[\"aggregations\"][\"my_agg\"][\"buckets\"]\r\nfor item in  data[\"aggregations\"][\"my_agg\"][\"buckets\"]:\r\n    parts = item[\"key\"].split()\r\n    if len(parts) == 2:\r\n        if not \"sp\" in parts[0] and not \"sp\" in parts[1]:\r\n            if not (\"?\" in parts[0] or \"?\" in parts[1]):\r\n                if not (\".\" in parts[0] or \".\" in parts[1]):\r\n                    if item[\"key\"] in uniqKeys:\r\n                        print \"Warning: already counted\", item[\"key\"], \"parts:\", parts\r\n                    uniqKeys[item[\"key\"]] = \"\"\r\n                    outrows.append({\"species\": item[\"key\"], \"#Occurrences\": item[\"doc_count\"]})\r\n                    \r\nrankedScientificNames = {'fields': [\"species\", \"#Occurrences\"],\r\n            'rows': outrows}",
+                "x": 194,
+                "y": 36
+            },
+            "x": 194,
+            "y": 36
+        },
+        {
+            "id": "Extract species names from a trait matrix",
+            "name": "Extract species names from a trait matrix",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "output single column table of only unique names from the input char. matrix",
+                        "format": "csv",
+                        "name": "table",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Extract species names from a trait matrix",
+                "outputs": [
+                    {
+                        "description": "single column table with unique names from input character matrix",
+                        "format": "rows",
+                        "name": "outtable",
+                        "type": "table"
+                    }
+                ],
+                "script": "#\n# input a character matrix in CSV. Output a table of unique species names from the matrix. Each\n# name appears in only one row and is suitable for lookup in OpenTree. \n#\n# update history:\n# 9/18/14 CRL added 'x' for species columns as it is assigned by R sometimes\n#\n\nimport csv\n\nlines = table.splitlines(True)\nrownum = 0\nouttable = []\nfieldrecord = []\nnamelist = []\n\nfor row in csv.reader(lines):\n    if rownum == 0:\n        header = row\n        print \"header row: \",header\n        # setup the column header for the output table \n        for colnum,columntitle in enumerate(row):\n            if header[colnum] in ['Scientific Name','species','Species','scientific name','name']:\n                fieldrecord.append(header[colnum])\n        rownum = rownum+1\n    else:\n        characterEntry = dict()\n        for colnum,columntitle in enumerate(row):\n            characterEntry[header[colnum]] = columntitle\n        if ('Scientific Name' in characterEntry.keys()) and (characterEntry['Scientific Name'] not in namelist) :\n            namelist.append({'Scientific Name': characterEntry['Scientific Name']})\n        elif ('scientific name' in characterEntry.keys()) and (characterEntry['scientific name'] not in namelist):\n            namelist.append({'scientific name' : characterEntry['scientific name']})\n        elif ('species' in characterEntry.keys()) and (characterEntry['species'] not in namelist):\n            namelist.append({'species': characterEntry['species']})\n        elif ('Species' in characterEntry.keys()) and (characterEntry['Species'] not in namelist):\n            namelist.append({'Species': characterEntry['Species']})\n        elif ('name' in characterEntry.keys()) and (characterEntry['name'] not in namelist):\n            namelist.append({'name': characterEntry['name']})\n        elif ('x' in characterEntry.keys()) and (characterEntry['x'] not in namelist):\n            namelist.append({'name': characterEntry['name']})\n\n\n# create an output table one column wide with an entry for each unique name in the character matrix\nouttable = {'fields': fieldrecord,\n            'rows':  namelist}\n            \n            ",
+                "x": 369,
+                "y": 203
+            },
+            "x": 369,
+            "y": 203
+        },
+        {
+            "id": "Lookup names using OpenTree Taxonomy",
+            "name": "Lookup names using OpenTree Taxonomy",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "single column table of scientific names",
+                        "format": "rows",
+                        "name": "nameTable",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Lookup names using OpenTree Taxonomy",
+                "outputs": [
+                    {
+                        "description": "three column table of original names, OpenTree TNRS names, and OpenTree taxonomy IDs",
+                        "format": "rows",
+                        "name": "outTable",
+                        "type": "table"
+                    }
+                ],
+                "script": "#\n# Lookup names using OpenTree Taxonomy\n#\n# description: this analysis expects a single-column input table consisting of scientific names.\n# The analysis consults the OpenTree API and extracts canonical names from the OpenTree taxonomy.\n# The output table consists of three-columns, with the OpenTree name and taxonomy ID columns added to the input. \n#\n# Note:  OpenTree V2 match_names call is being used (development server currently)\n# \n# input: nameTable - single column of scientific names (table:rows format)\n# output: outTable - three column table with OpenTree name and ID appended.\n#\n\n\nimport requests\n\n# look at the rows of the input table\nmatrixEntries = nameTable['rows']\n\n# find out the title of the columns in this matrix. Assuming this is a single column table\ncolumnHeader = nameTable['fields'][0]\n\noutRows = []\ncount = 0\ninputNameList = []\n\nfor matrixEntry in matrixEntries:\n    # build an OTL query to return the matching ottId we want to use to request taxa \n    inputNameList.append(matrixEntry[columnHeader])\n    \n# pack the names into a payload and perform the OpenTree lookup using v2\npayload = {'names': inputNameList}\nresp = requests.post('http://api.opentreeoflife.org/v2/tnrs/match_names',data=payload)\n\nreturnedrecs = resp.json()['results']\nfor index in range(len(returnedrecs)):\n    thisresult = returnedrecs[index]\n    for j in range(len(thisresult['matches'])):\n        candidate = thisresult['matches']\n        \n        # if this match candidate is a non-taxon, then the flags attribute will have an entry like 'SIBLING_LOWER',\n        # so we will filter out any of these and only match on empty flags.  Also if there are synonym returns, filter them out\n        # and pick the main match instead. We add the returned information into a new row and accumulate the rows for an output table.\n        \n        if (len(candidate[j]['flags']) ==0) and (candidate[j]['is_synonym']==False):\n            outrow = {}\n            outrow[columnHeader] = candidate[j]['search_string']\n            outrow['ottName'] = candidate[j]['ot:ottTaxonName']\n            outrow['ottId'] = candidate[j]['ot:ottId']\n            outRows.append(outrow)\n\n# build the headers for the output table\naugmentedColumnHeaders = [columnHeader, 'ottName','ottId']\n\n# setup the output in table:rows format with the headers explicitly listed\noutTable = {'fields': augmentedColumnHeaders,\n            'rows':  outRows}\n            \n     ",
+                "x": 535,
+                "y": 33
+            },
+            "x": 535,
+            "y": 33
+        },
+        {
+            "id": "Return the OpenTree subtree from a node list",
+            "name": "Return the OpenTree subtree from a node list",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "input matrix containing a column ottid",
+                        "format": "rows",
+                        "name": "table",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Return the OpenTree subtree from a node list",
+                "outputs": [
+                    {
+                        "format": "newick",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "description": "quick preview read out of the tree as a newick string",
+                        "format": "text",
+                        "name": "treeNewickString",
+                        "type": "string"
+                    }
+                ],
+                "script": "import requests\n\nrows = table['rows']\nidList = []\nfor i in range(len(rows)):\n    idList.append(rows[i]['ottId'])\n\n# lookup the tree that contains these nodes\n#payload = {\"ottIds\": idList}\n#resp = requests.post('http://api.opentreeoflife.org/treemachine/v1/getDraftTreeSubtreeForNodes',data=payload)\n#tree = str(resp.json()[\"subtree\"])\n\n# moving to API v2\npayload = {\"ott_ids\": idList}\nresp = requests.post('http://api.opentreeoflife.org/v2/tree_of_life/induced_subtree',data=payload)\ntree = str(resp.json()[\"subtree\"])\n\n# create output table to list any problem IDs\n# u'ott_ids_not_in_tree': [], u'node_ids_not_in_tree': [], u'node_ids_not_in_graph': [], 'ott_ids_not_in_graph': [xxxxxxx]\n\n# tree as a string to preview \ntreeNewickString = tree\n",
+                "x": 717,
+                "y": 212
+            },
+            "x": 717,
+            "y": 212
+        },
+        {
+            "id": "Plot a tree using R and ape",
+            "name": "Plot a tree using R and ape",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    }
+                ],
+                "mode": "r",
+                "name": "Plot a tree using R and ape",
+                "outputs": [
+                    {
+                        "description": "R-based plot of a tree",
+                        "format": "png.base64",
+                        "name": "treePlot",
+                        "type": "image"
+                    }
+                ],
+                "script": "library(geiger)\nlibrary(cardoonTools)\n\npicplot <- function(mytree){\n  plot(mytree,type=\"phylogram\",use.edge.length=TRUE,show.tip.label=TRUE)\n}\n\ntreePlot = cardoonPlot(expression(picplot(tree)), width=1000, height=1000, res=100)\ntreePlot = treePlot$png",
+                "x": 894,
+                "y": 22
+            },
+            "x": 894,
+            "y": 22
+        }
+    ]
+}

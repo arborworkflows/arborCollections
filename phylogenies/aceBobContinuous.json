@@ -1,0 +1,43 @@
+{
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree"
+        },
+        {
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "default": "island",
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "name": "column",
+            "type": "string"
+        },
+        {
+            "default": "discrete",
+            "domain": [
+                "continuous"
+            ],
+            "format": "text",
+            "name": "type",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "aceBobContinuous",
+    "outputs": [
+        {
+            "format": "png.base64",
+            "name": "treePlot",
+            "type": "image"
+        }
+    ],
+    "script": "library(devtools)\nlibrary(cardoonTools)\n#options(repos=\"http://cran.cnr.Berkeley.edu\")\n#install.packages(\"diversitree\", type=\"source\")\n#install_github(\"aRbor\", \"arborworkflows\")\n#require(aRbor)\n# Removed this parameter to restore automated use of the analyses from Easy Mode apps\nfont_size <- 1\nlibrary(picante)\nlibrary(geiger)\n\ntree<-as.phylo(tree)\nrow.names(table)<-table[[1]]\ncombined<-match.phylo.data(tree, table)\n\nphy<-combined$phy\ndata<-combined$data\nphy$edge.length <- phy$edge.length + 0.000001\n\ntrait<-data[[column]]\ntrait<-as.numeric(as.character(trait))\nstandard<-trait-min(trait)\nstandard<-100*standard/max(standard)\nstandard<-round(standard,0)\nres<-ace(trait,phy,type=\"continuous\")\nstdAce<-res$ace-min(res$ace)\nstdAce<-100*stdAce/max(stdAce)\nstdAce<-round(stdAce,0)\naceContinuousPlot<-function(phy, trait, stdAce, ...){\n      cols<-rainbow(100)\n      plot(phy, type=\"p\", FALSE, cex=0.5, label.offset=1, main=column)\n      tiplabels(pch=21, bg=cols[standard], cex=1, adj=1)\n      nodelabels(pch=21, bg=cols[stdAce], cex=1)\n}\n\ntreePlot <- cardoonPlot(expression(aceContinuousPlot(phy, standard, stdAce)), width=1000, height=1000, res=100)\ntreePlot <- treePlot$png"
+}

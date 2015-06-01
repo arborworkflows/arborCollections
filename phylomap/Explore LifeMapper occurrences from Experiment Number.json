@@ -1,0 +1,20 @@
+{
+    "inputs": [
+        {
+            "description": "Life Mapper experiment number to request feature points from",
+            "format": "number",
+            "name": "experimentNumber",
+            "type": "number"
+        }
+    ],
+    "mode": "python",
+    "name": "Explore LifeMapper occurrences from Experiment Number",
+    "outputs": [
+        {
+            "format": "rows",
+            "name": "occurrenceTable",
+            "type": "table"
+        }
+    ],
+    "script": "#\n# LifeMapper occurrences from Experiment Number\n#\n# retrieve a list of points and output them as a table.  The input is the lifemapper experiment number (discoverable from the LifeMapper website)\n#\n# input: experimentNumber\n# output: occurrenceTable\n\n\nimport requests\nimport json\n\nexperimentNumberString = str(experimentNumber)\n\nresp = requests.get('http://lifemapper.org/services/sdm/occurrences/'+experimentNumberString+'/json')\n\n# load the response as a json object\n# the string replace is needed because LM sometimes returns '\\N' as a NA.  this crashes json encoding, so mask it away\noccurrences = json.loads(resp.text.replace('\\\\N',''))\n\n\n# return the entire feature list as a table.  Keep all attribute fields \noutrows = []\nfor feature in occurrences['feature']:\n    outrows.append(feature)\n    \n# build a list of the fields so the table can be specified\noutcolumns = []\nif len(outrows)>0:\n    for attrib in occurrences['feature'][0]:\n        outcolumns.append(attrib)\n\n# create the output in table:rows format\noccurrenceTable = {}\noccurrenceTable['fields'] = outcolumns\noccurrenceTable['rows'] = outrows\n    \n    "
+}

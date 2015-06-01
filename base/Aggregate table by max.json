@@ -1,0 +1,30 @@
+{
+    "inputs": [
+        {
+            "description": "input table",
+            "format": "rows",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "name": "column",
+            "type": "string"
+        }
+    ],
+    "mode": "python",
+    "name": "Aggregate table by max",
+    "outputs": [
+        {
+            "description": "aggregated table output",
+            "format": "rows",
+            "name": "output",
+            "type": "table"
+        }
+    ],
+    "script": "# roll up the values of a table's rows according to discrete values in a selected \"groupBy\" column.  \n# The number of output rows in the table will be equal to the number of discrete values in the \n# groupBy column.  \n\n# This is the MAX version of aggregation, so the values in the other columns will be the max value encountered out\n# of all rows which belonged to this group from the input table.   \n\n# input: table - input table of continuous values\n# input: column - column name used as the \"group by\" control\n# output: output - output table \n\n_LargeNegativeValue = -9e50\n\n# helper function to check for numberic values only \ndef is_number(s):\n    try:\n        float(s)\n        return True\n    except ValueError:\n        return False\n\n\n# loop through the control column and build a list of the discrete values it contains\nvaluelist = []\nfor row in table['rows']:\n    if row[column] not in valuelist:\n        valuelist.append(row[column])\n\noutputrows = []\n    \n# now loop through the entire table once for each \"class\" and find the largest of the values for each attribute in order\n# to return this max value for each continuous attribute for each class.\n\nfor classValue in valuelist:\n    maxobject = {}\n    classMemberCount = 0\n    # initialize an empty summation object\n    for field in table['fields']:\n        maxobject[field] = _LargeNegativeValue\n    # now loop through this class's entries and accumulate values\n    for row in table['rows']:\n       if (row[column] == classValue):\n           # this row is a member of the current class, so add its contribution and update the count of class members\n            for attrib in row:\n                # if this is a continuous variable, accumulate.  If it is not numberic, just copy it across\n                if is_number(row[attrib]):\n                    # make sure the previous accumulations are also numbers. Select the MAX value between the current value and the \n                    # previously saved values from other entries in this class\n                    if is_number(maxobject[attrib]):\n                        maxobject[attrib] = max(maxobject[attrib], float(row[attrib]))\n                else:\n                    #if this is non-numeric, just copy it, except ignore NA and empty cells\n                    if (row[attrib] != \"NA\")  and (len(row[attrib]) != 0):\n                        maxobject[attrib] = row[attrib]\n            classMemberCount += 1\n    # copy the output row corresponding to this class into the output datastructure \n    outrow = {}\n    for field in maxobject:\n        if is_number(maxobject[field]):\n            outrow[field] = maxobject[field]\n        else:\n            # if this field is a non-numeric value, just copy it across instead of averaging\n            outrow[field] = maxobject[field]\n    outputrows.append(outrow)\n        \n# create an output table in the table:rows format by creating a list of the fields and a list of the table rows\noutput = {}\noutput['fields'] = table['fields']\noutput['rows'] = outputrows\n"
+}

@@ -1,0 +1,19 @@
+{
+    "inputs": [
+        {
+            "format": "text",
+            "name": "hintString",
+            "type": "string"
+        }
+    ],
+    "mode": "python",
+    "name": "Explore LifeMapper Occurrence Sets by Name",
+    "outputs": [
+        {
+            "format": "rows",
+            "name": "hintReturnTable",
+            "type": "table"
+        }
+    ],
+    "script": "#\n# LifeMapperHint\n#\n# revision history:\n# 9/17/14 CRL - installed  Jeff Cavner's hint script as Arbor method\n#\n# input: hintString - A full or partial species name, (e.g. \"Gulo\", \"heliconia stricta\", \"heliconia\")\n# output: hintReturnTable - a table with name, number of points, and occurrence set ID columns (LifeMapper query return)\n\nimport requests\nimport json\n\nLMHOST = \"http://lifemapper.org\"\n\ndef hint(query, maxRet=50):\n   \"\"\"\n   @summary: hint method\n   \"\"\"\n   if len(query) < 3:\n      raise Exception, \"Please provide at least 3 characters to hint service\"\n   \n   url = \"%s/hint/species/%s\" % (LMHOST, query)\n   params =  {'maxReturned': maxRet, 'format': 'json'}\n   res = requests.get(url,params=params)\n   jObj = json.loads(res.text)\n   \n   try:\n      # Old json format\n      jsonItems = jObj.get('columns')[0]\n   except:\n      # New json format\n      jsonItems = jObj.get('hits')\n      \n   # write out a list of JSON objects, suitable for outputting as a table in Arbor. Modified\n   # slightly from original hint syntax to be easier to parse\n   \n   items = []\n   for item in jsonItems:\n      items.append({'name': item.get('name'),\n                    'id': int(item.get('occurrenceSet')),\n                    'numPoints': int(item.get('numPoints'))})\n   if maxRet is not None and maxRet < len(items):\n      items = items[:maxRet]\n   return items\n\n# perform the hint lookup\nhintReturnList = hint(hintString)\n\n# build the column names that correspond to the fields received from LifeMapper\noutColumns = []\nfor attrib in hintReturnList[0]:\n    outColumns.append(attrib)\n\n# compose into an output table    \nhintReturnTable = {\n    'fields': outColumns,\n    'rows' : hintReturnList }\n    "
+}

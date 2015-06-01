@@ -1,0 +1,24 @@
+{
+    "inputs": [
+        {
+            "format": "rows",
+            "name": "table",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "Find Duplicate Rows",
+    "outputs": [
+        {
+            "format": "rows",
+            "name": "duplicateTable",
+            "type": "table"
+        },
+        {
+            "format": "text",
+            "name": "outstring",
+            "type": "string"
+        }
+    ],
+    "script": "from random import randint\n#\n# output only rows that are duplicated.  Duplicate means each value of each field is the same between two \n# different rows\n\n# input: table\n# output: duplcateTable\n\nsavedRows = []\ntableRowCount = len(table['rows'])\ninrows = table['rows']\noutColumns = []\noutstring = ''\n\n# this routine is called whenever two rows match.  It checks to see if this\n# row has been discovered before and outputs it just once.  A record is kept for\n# both matching indices so the row will only be output once, even if it occurs multiple\n# times in the source table\n#\n \ndef saveRowTheFirstTimeOnly(i,j,inrow):\n    global outColumns\n    if (i not in savedRows) and (j not in savedRows):\n        outColumns.append(inrow)\n    if i not in savedRows:\n        savedRows.append(i)\n    if j not in savedRows:\n        savedRows.append(j)\n\n# loop the number of times in the output row count; selecting a random row each time\nfor i in range(tableRowCount):\n    for j in range(tableRowCount):\n        if i ==j:\n            match = False\n        else:\n            match = True\n            for attrib in inrows[i].keys():\n                # bitwise AND to make sure if any attributes don't agree, the match=False\n                outstring += 'comparing '+str(inrows[i][attrib])+' and '+str(inrows[j][attrib])+'; '\n                match = match and (inrows[i][attrib] == inrows[j][attrib])\n                if match:\n                    outstring += 'match is True\\n'\n                else:\n                    outstring += 'match is False\\n'\n        if match:\n            saveRowTheFirstTimeOnly(i,j,inrows[j])\n    \nduplicateTable = {}\nduplicateTable['fields'] = table['fields']\nduplicateTable['rows'] = outColumns\n"
+}

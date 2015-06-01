@@ -1,0 +1,276 @@
+{
+    "connections": [
+        {
+            "input": "scientificname",
+            "input_step": "Get ranked scoped scientific names from iDigBio",
+            "name": "scientificname"
+        },
+        {
+            "input": "scope",
+            "input_step": "Get ranked scoped scientific names from iDigBio",
+            "name": "scope"
+        },
+        {
+            "input": "samplesize",
+            "input_step": "Get ranked scoped scientific names from iDigBio",
+            "name": "samplesize"
+        },
+        {
+            "input": "mode",
+            "input_step": "Get ranked scoped scientific names from iDigBio",
+            "name": "mode"
+        },
+        {
+            "input": "table",
+            "input_step": "Return the OpenTree subtree from a node list",
+            "output": "outTable",
+            "output_step": "Lookup names using OpenTree Taxonomy"
+        },
+        {
+            "input": "tree",
+            "input_step": "Plot a tree using R and ape",
+            "output": "tree",
+            "output_step": "Return the OpenTree subtree from a node list"
+        },
+        {
+            "name": "treePlot",
+            "output": "treePlot",
+            "output_step": "Plot a tree using R and ape"
+        },
+        {
+            "name": "treeNewickString",
+            "output": "treeNewickString",
+            "output_step": "Return the OpenTree subtree from a node list"
+        },
+        {
+            "input": "nameTable",
+            "input_step": "Lookup names using OpenTree Taxonomy",
+            "output": "rankedScientificName",
+            "output_step": "Get ranked scoped scientific names from iDigBio"
+        }
+    ],
+    "inputs": [
+        {
+            "default": "Mammalia",
+            "description": "Scientific name to search in iDigBio",
+            "format": "text",
+            "name": "scientificname",
+            "type": "string",
+            "x": 42,
+            "y": 30
+        },
+        {
+            "default": "[object Object]",
+            "description": "Scope of the search",
+            "domain": [
+                "_all",
+                "phylum",
+                "class",
+                "order",
+                "family"
+            ],
+            "format": "text",
+            "name": "scope",
+            "type": "string",
+            "x": 41,
+            "y": 145
+        },
+        {
+            "default": "50",
+            "description": "Number of names to return",
+            "format": "number",
+            "name": "samplesize",
+            "type": "number",
+            "x": 41,
+            "y": 258
+        },
+        {
+            "default": "top",
+            "description": "Indicate if random or top names should be returned",
+            "domain": [
+                "top",
+                "random"
+            ],
+            "format": "text",
+            "name": "mode",
+            "type": "string",
+            "x": 43,
+            "y": 369
+        }
+    ],
+    "mode": "workflow",
+    "name": "Workflow to get an induced tree from a configurable iDigBio query",
+    "outputs": [
+        {
+            "description": "R-based plot of a tree",
+            "format": "png.base64",
+            "name": "treePlot",
+            "type": "image",
+            "x": 1268,
+            "y": 61
+        },
+        {
+            "description": "quick preview read out of the tree as a newick string",
+            "format": "text",
+            "name": "treeNewickString",
+            "type": "string",
+            "x": 1012,
+            "y": 360
+        }
+    ],
+    "steps": [
+        {
+            "id": "Get ranked scoped scientific names from iDigBio",
+            "name": "Get ranked scoped scientific names from iDigBio",
+            "task": {
+                "inputs": [
+                    {
+                        "default": "Mammalia",
+                        "description": "Scientific name to search in iDigBio",
+                        "format": "text",
+                        "name": "scientificname",
+                        "type": "string"
+                    },
+                    {
+                        "default": "[object Object]",
+                        "description": "Scope of the search",
+                        "domain": [
+                            "_all",
+                            "phylum",
+                            "class",
+                            "order",
+                            "family"
+                        ],
+                        "format": "text",
+                        "name": "scope",
+                        "type": "string"
+                    },
+                    {
+                        "default": "50",
+                        "description": "Number of names to return",
+                        "format": "number",
+                        "name": "samplesize",
+                        "type": "number"
+                    },
+                    {
+                        "default": "top",
+                        "description": "Indicate if random or top names should be returned",
+                        "domain": [
+                            "top",
+                            "random"
+                        ],
+                        "format": "text",
+                        "name": "mode",
+                        "type": "string"
+                    }
+                ],
+                "mode": "python",
+                "name": "Get ranked scoped scientific names from iDigBio",
+                "outputs": [
+                    {
+                        "description": "Table of scientific names ranked according to number of occurrences found in iDigBio",
+                        "format": "rows",
+                        "name": "rankedScientificName",
+                        "type": "table"
+                    }
+                ],
+                "script": "import json\nimport urllib2\nimport random\nimport requests\n\nurl = \"http://search.idigbio.org/idigbio/records/_search\"\ndata = {\n    \"query\": {\n\t    \"query_string\" : {\n\t        \"default_field\": scope.lower(),\n       \t\t\"query\" : scientificname.lower()\n    \t}\n    },\n    \"aggregations\": {\n        \"my_agg\": {\n            \"terms\": {\n               \"field\": \"scientificname\",\n               \"size\": samplesize * 10\n            }\n        }\n    }\n}\n\nheaders = {'Content-type': 'application/json', 'Accept': 'text/plain'}\nr = requests.post(url, data=json.dumps(data), headers=headers)\ndata = json.loads(r.text)\n\nuniqKeys = {}\noutrows = []\ncount = 0\n#print data[\"aggregations\"][\"my_agg\"][\"buckets\"]\naggr = data[\"aggregations\"][\"my_agg\"][\"buckets\"]\nif mode == \"random\":\n    random.shuffle(aggr)\nfor item in aggr:\n    parts = item[\"key\"].split()\n    if len(parts) == 2:\n        if not \"sp\" in parts[0] and not \"sp\" in parts[1]:\n            if not (\"?\" in parts[0] or \"?\" in parts[1]):\n                if not (\".\" in parts[0] or \".\" in parts[1]):\n                    if not (\"(\" in parts[0] or \"(\" in parts[1] or \")\" in parts[0] or \")\" in parts[1]):\n                        if item[\"key\"] in uniqKeys:\n                            print \"Warning: already counted\", item[\"key\"], \"parts:\", parts\n                        else:\n                            count = count + 1\n                        uniqKeys[item[\"key\"]] = \"\"\n                        outrows.append({\"species\": item[\"key\"], \"#Occurrences\": item[\"doc_count\"]})\n                        if count == samplesize:\n                            break\n                    \nrankedScientificName = {'fields': [\"species\", \"#Occurrences\"],\n            'rows': outrows}",
+                "x": 295,
+                "y": 169
+            },
+            "x": 295,
+            "y": 169
+        },
+        {
+            "id": "Lookup names using OpenTree Taxonomy",
+            "name": "Lookup names using OpenTree Taxonomy",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "single column table of scientific names",
+                        "format": "rows",
+                        "name": "nameTable",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Lookup names using OpenTree Taxonomy",
+                "outputs": [
+                    {
+                        "description": "three column table of original names, OpenTree TNRS names, and OpenTree taxonomy IDs",
+                        "format": "rows",
+                        "name": "outTable",
+                        "type": "table"
+                    }
+                ],
+                "script": "#\n# Lookup names using OpenTree Taxonomy\n#\n# description: this analysis expects a single-column input table consisting of scientific names.\n# The analysis consults the OpenTree API and extracts canonical names from the OpenTree taxonomy.\n# The output table consists of three-columns, with the OpenTree name and taxonomy ID columns added to the input. \n#\n# Note:  OpenTree V2 match_names call is being used (development server currently)\n# \n# input: nameTable - single column of scientific names (table:rows format)\n# output: outTable - three column table with OpenTree name and ID appended.\n#\n\n\nimport requests\n\n# look at the rows of the input table\nmatrixEntries = nameTable['rows']\n\n# find out the title of the columns in this matrix. Assuming this is a single column table\ncolumnHeader = nameTable['fields'][0]\n\noutRows = []\ncount = 0\ninputNameList = []\n\nfor matrixEntry in matrixEntries:\n    # build an OTL query to return the matching ottId we want to use to request taxa \n    inputNameList.append(matrixEntry[columnHeader])\n    \n# pack the names into a payload and perform the OpenTree lookup using v2\npayload = {'names': inputNameList}\nresp = requests.post('http://api.opentreeoflife.org/v2/tnrs/match_names',data=payload)\n\nreturnedrecs = resp.json()['results']\nfor index in range(len(returnedrecs)):\n    thisresult = returnedrecs[index]\n    for j in range(len(thisresult['matches'])):\n        candidate = thisresult['matches']\n        \n        # if this match candidate is a non-taxon, then the flags attribute will have an entry like 'SIBLING_LOWER',\n        # so we will filter out any of these and only match on empty flags.  Also if there are synonym returns, filter them out\n        # and pick the main match instead. We add the returned information into a new row and accumulate the rows for an output table.\n        \n        if (len(candidate[j]['flags']) ==0) and (candidate[j]['is_synonym']==False):\n            outrow = {}\n            outrow[columnHeader] = candidate[j]['search_string']\n            outrow['ottName'] = candidate[j]['ot:ottTaxonName']\n            outrow['ottId'] = candidate[j]['ot:ottId']\n            outRows.append(outrow)\n\n# build the headers for the output table\naugmentedColumnHeaders = [columnHeader, 'ottName','ottId']\n\n# setup the output in table:rows format with the headers explicitly listed\noutTable = {'fields': augmentedColumnHeaders,\n            'rows':  outRows}\n            \n     ",
+                "x": 706,
+                "y": 205
+            },
+            "x": 547,
+            "y": 31
+        },
+        {
+            "id": "Return the OpenTree subtree from a node list",
+            "name": "Return the OpenTree subtree from a node list",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "input matrix containing a column ottid",
+                        "format": "rows",
+                        "name": "table",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Return the OpenTree subtree from a node list",
+                "outputs": [
+                    {
+                        "format": "newick",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "description": "quick preview read out of the tree as a newick string",
+                        "format": "text",
+                        "name": "treeNewickString",
+                        "type": "string"
+                    }
+                ],
+                "script": "import requests\n\nrows = table['rows']\nidList = []\nfor i in range(len(rows)):\n    idList.append(rows[i]['ottId'])\n\n# lookup the tree that contains these nodes\n#payload = {\"ottIds\": idList}\n#resp = requests.post('http://api.opentreeoflife.org/treemachine/v1/getDraftTreeSubtreeForNodes',data=payload)\n#tree = str(resp.json()[\"subtree\"])\n\n# moving to API v2\npayload = {\"ott_ids\": idList}\nresp = requests.post('http://api.opentreeoflife.org/v2/tree_of_life/induced_subtree',data=payload)\ntree = str(resp.json()[\"subtree\"])\n\n# create output table to list any problem IDs\n# u'ott_ids_not_in_tree': [], u'node_ids_not_in_tree': [], u'node_ids_not_in_graph': [], 'ott_ids_not_in_graph': [xxxxxxx]\n\n# tree as a string to preview \ntreeNewickString = tree\n",
+                "x": 900,
+                "y": 43
+            },
+            "x": 755,
+            "y": 251
+        },
+        {
+            "id": "Plot a tree using R and ape",
+            "name": "Plot a tree using R and ape",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    }
+                ],
+                "mode": "r",
+                "name": "Plot a tree using R and ape",
+                "outputs": [
+                    {
+                        "description": "R-based plot of a tree",
+                        "format": "png.base64",
+                        "name": "treePlot",
+                        "type": "image"
+                    }
+                ],
+                "script": "library(geiger)\nlibrary(cardoonTools)\n\npicplot <- function(mytree){\n  plot(mytree,type=\"phylogram\",use.edge.length=TRUE,show.tip.label=TRUE)\n}\n\ntreePlot = cardoonPlot(expression(picplot(tree)), width=1000, height=1000, res=100)\ntreePlot = treePlot$png",
+                "x": 1162,
+                "y": 103
+            },
+            "x": 1026,
+            "y": 61
+        }
+    ]
+}
