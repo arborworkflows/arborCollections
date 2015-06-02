@@ -6,12 +6,15 @@ baseurl: /arborCollections
 
 collections:
   - easy_mode
-  - arbor_docs
+  - arbordocs_base
+  - arbordocs_phylogeny
 
 collections:
   easy_mode:
     output: true
-  arbor_docs:
+  arbordocs_base:
+    output: true
+  arbordocs_phylogeny:
     output: true
 
 defaults:
@@ -36,6 +39,12 @@ defaults:
   -
     scope:
       path: ""
-      type: "arbor_docs"
+      type: "arbordocs_base"
+    values:
+      layout: "documentation"
+  -
+    scope:
+      path: ""
+      type: "arbordocs_phylogeny"
     values:
       layout: "documentation"
