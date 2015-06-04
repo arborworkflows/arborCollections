@@ -4,6 +4,9 @@ highlighter: pygments
 permalink: pretty
 baseurl: /arborCollections
 
+# Google analytics
+google_analytics:   UA-63774905-2
+
 collections:
   - easy_mode
   - arbordocs_base
