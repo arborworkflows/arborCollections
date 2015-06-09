@@ -108,7 +108,7 @@ The p-value is the top number in the column denoted "Pr(>F)."
 
 Now let's try to harness the real power of Arbor by building a simple visual workflow for our analysis. For this part to work you need to be logged in! If you are not logged in you can run existing functions and workflows but you cannot create new ones. You can create an account in Arbor quite easily.
 
-Follow the instructions on this page to create an account and start a private collection. Make sure to click on the "write" tab in your new collection, then come back here and finish the tutorial!
+Follow the instructions on [this page]({{ site.baseurl}}/2015/06/09/creating-a-new-collection/) to create an account and start a private collection. Make sure to click on the "write" tab in your new collection, then come back here and finish the tutorial!
 
 ---
 
