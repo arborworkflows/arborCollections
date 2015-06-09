@@ -6,8 +6,9 @@ author: Luke Harmon
 
 ## Use Arbor
 
-- [Build workflows](https://arbor.kitware.com/#)
-- [Easy mode]({{ site.baseurl }}/easy)
+[![arbor]({{ site.baseurl}}/assets/arbor_square.jpeg) Build workflows](https://arbor.kitware.com/#)
+
+[![easy]({{ site.baseurl}}/assets/easy_mode.jpeg) Easy mode]({{ site.baseurl }}/easy)
 
 ---
 
