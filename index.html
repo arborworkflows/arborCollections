@@ -24,8 +24,7 @@ author: Luke Harmon
 
 <hr>
 
-<h3> Recent blog posts </h3>
-  <div class="posts">
+<div class="posts">
     {% for post in paginator.posts %}
       <div class="post">
         <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
