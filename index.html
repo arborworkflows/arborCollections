@@ -22,12 +22,14 @@ author: Luke Harmon
 
 <p><a href="/arborCollections/blog"><i class="fa fa-quote-left fa-2x"></i> Arbor blog</a></p>
 
-<h3> Recent posts </h3>
+<hr>
+
+<h3> Recent blog posts </h3>
   <div class="posts">
     {% for post in paginator.posts %}
       <div class="post">
         <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
-        <a href="{{ post.url | prepend: site.baseurl }}" class="post-link"><h3 class="h2 post-title">{{ post.title }}</h3></a>
+        <a href="{{ post.url | prepend: site.baseurl }}" class="post-link"><h5 class="h5 post-title">{{ post.title }}</h5></a>
         <p class="post-summary">
           {% if post.summary %}
             {{ post.summary }}

@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Using the Arbor web app
+title: Using the Arbor webapp
+summary: Basics on using the webapp to build workflows
 ---
 
 ## Overview

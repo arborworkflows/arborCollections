@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Creating a new collection
+summary: How to make your own collection of Arbor functions and workflows
 ---
 
 ## Overview

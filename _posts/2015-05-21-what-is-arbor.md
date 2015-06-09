@@ -1,6 +1,7 @@
 ---
 layout: post
 title: What is Arbor?
+summary: An introduction to our workflow software
 ---
 
 <h2>What is Arbor?</h2>
