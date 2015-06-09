@@ -2,7 +2,8 @@
 title:       Arbor
 email:       lukeh@uidaho.edu
 author:      Luke Harmon
-baseurl: /arborCollections
+url:         "http://lukejharmon.github.io/arborCollections"
+baseurl:     "/arborCollections"
 
 
 # Google analytics

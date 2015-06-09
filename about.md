@@ -1,19 +1,17 @@
 ---
 layout: page
-title: About Pixyll
+title: About Arbor
 permalink: /about/
 ---
 
-This Jekyll theme was crafted with <3 by [John Otander](http://johnotander.com)
-([@4lpine](https://twitter.com/4lpine)).
+Arbor core team is:
 
-Checkout the [Github repository](https://github.com/johnotander/pixyll) to download it,
-request a feature, report a bug, or contribute. It's free, and open source
-([MIT](http://opensource.org/licenses/MIT)).
-
-Thanks to the following:
-
-* [BASSCSS](http://basscss.com)
-* [Jekyll](http://jekyllrb.com)
-* [Refills](http://refills.bourbon.io/)
-* [Solarized](http://ethanschoonover.com/solarized)
+- [Luke J. Harmon](https://lukejharmon.github.io/)
+- [Chelsea Specht](http://spechtlab.berkeley.edu/)
+- [Bob Thacker](http://thackerlab.weebly.com/)
+- [Jorge Soberon](http://eeb.ku.edu/soberon)
+- [Charlie Hughes](http://www.cs.ucf.edu/~ceh/)
+- [Curtis Lisle]
+(https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&cad=rja&uact=8&ved=0CDcQFjAEahUKEwjAzZ_4oYPGAhUSOIgKHTX8AD8&url=http%3A%2F%2Fscholar.google.com%2Fcitations%3Fuser%3DGytCYfcAAAAJ%26hl%3Den&ei=mDN3VcChF5LwoAS1-IP4Aw&usg=AFQjCNHvoOkWsJQr1fGfeXVJq4En5XpkRg&sig2=zWBqOps9ltaU52WlL38S-A&bvm=bv.95277229,d.cGU)
+from [KnowledgeVis](http://www.knowledgevis.com/Kvis-v4/Welcome.html)
+- [Jeff Baumes](http://www.kitware.com/company/team/baumes.html) from [KitWare](http://www.kitware.com/)
