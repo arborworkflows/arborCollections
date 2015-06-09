@@ -1,0 +1,269 @@
+{
+    "connections": [
+        {
+            "input": "tree",
+            "input_step": "ResolvePolytomy",
+            "output": "outtree",
+            "output_step": "Geiger TreeData"
+        },
+        {
+            "input": "tree",
+            "input_step": "Fit continuous",
+            "output": "outtree",
+            "output_step": "ResolvePolytomy"
+        },
+        {
+            "input": "table",
+            "input_step": "Fit continuous",
+            "output": "outmatrix",
+            "output_step": "Geiger TreeData"
+        },
+        {
+            "input": "tree",
+            "input_step": "Geiger TreeData",
+            "name": "tree"
+        },
+        {
+            "input": "matrix",
+            "input_step": "Geiger TreeData",
+            "name": "matrix"
+        },
+        {
+            "name": "treePlot",
+            "output": "treePlot",
+            "output_step": "Fit continuous"
+        },
+        {
+            "name": "result",
+            "output": "result",
+            "output_step": "Fit continuous"
+        },
+        {
+            "input": "column",
+            "input_step": "Fit continuous",
+            "name": "column"
+        },
+        {
+            "name": "fit",
+            "output": "fit",
+            "output_step": "Fit continuous"
+        },
+        {
+            "input": "model",
+            "input_step": "Fit continuous",
+            "name": "model"
+        }
+    ],
+    "description": "",
+    "inputs": [
+        {
+            "description": "input tree for matching",
+            "format": "r.apetree",
+            "id": "tree",
+            "name": "tree",
+            "type": "tree",
+            "x": 108,
+            "y": 94
+        },
+        {
+            "description": "input character matrix for matching against the tree",
+            "format": "r.dataframe",
+            "id": "matrix",
+            "name": "matrix",
+            "type": "table",
+            "x": 95,
+            "y": 282
+        },
+        {
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "id": "column",
+            "name": "column",
+            "type": "string",
+            "x": 356,
+            "y": 395
+        },
+        {
+            "default": {
+                "data": "BM",
+                "format": "text"
+            },
+            "domain": [
+                "BM",
+                "OU",
+                "EB"
+            ],
+            "format": "text",
+            "id": "model",
+            "name": "model",
+            "type": "string",
+            "x": 627,
+            "y": 399
+        }
+    ],
+    "mode": "workflow",
+    "name": "mywork",
+    "outputs": [
+        {
+            "format": "png.base64",
+            "id": "treePlot",
+            "name": "treePlot",
+            "type": "image",
+            "x": 1315,
+            "y": 88
+        },
+        {
+            "format": "r.apetree",
+            "id": "result",
+            "name": "result",
+            "type": "tree",
+            "x": 1287,
+            "y": 229
+        },
+        {
+            "format": "r.dataframe",
+            "id": "fit",
+            "name": "fit",
+            "type": "table",
+            "x": 1282,
+            "y": 394
+        }
+    ],
+    "steps": [
+        {
+            "name": "Geiger TreeData",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "input tree for matching",
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "description": "input character matrix for matching against the tree",
+                        "format": "r.dataframe",
+                        "name": "matrix",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Geiger TreeData",
+                "outputs": [
+                    {
+                        "description": "tree that has been matched against the matrix",
+                        "format": "r.apetree",
+                        "name": "outtree",
+                        "type": "tree"
+                    },
+                    {
+                        "description": "character matrix that has been matched against the tree",
+                        "format": "r.dataframe",
+                        "name": "outmatrix",
+                        "type": "table"
+                    }
+                ],
+                "script": "#\n# input variables:\n# tree - input tree in APE format\n# matrix - input table as R dataframe\n\nrequire(ape)\nrequire(geiger)\nlibrary(cardoonTools)\n\n\n# match tips and data\ntd<-treedata(tree,matrix)\n\nouttree <- td$phy\noutmatrix <- td$dat\n\n",
+                "x": 416,
+                "y": 215
+            },
+            "x": 416,
+            "y": 215
+        },
+        {
+            "name": "ResolvePolytomy",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "input tree with polytomies",
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    }
+                ],
+                "mode": "r",
+                "name": "ResolvePolytomy",
+                "outputs": [
+                    {
+                        "description": "tree with no polytomies",
+                        "format": "r.apetree",
+                        "name": "outtree",
+                        "type": "tree"
+                    }
+                ],
+                "script": "library(ape)\nlibrary(geiger)\nouttree <- multi2di(tree, random = TRUE)",
+                "x": 628,
+                "y": 63
+            },
+            "x": 628,
+            "y": 63
+        },
+        {
+            "name": "Fit continuous",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "domain": {
+                            "format": "column.names",
+                            "input": "table"
+                        },
+                        "format": "text",
+                        "name": "column",
+                        "type": "string"
+                    },
+                    {
+                        "default": {
+                            "data": "BM",
+                            "format": "text"
+                        },
+                        "domain": [
+                            "BM",
+                            "OU",
+                            "EB"
+                        ],
+                        "format": "text",
+                        "name": "model",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "Fit continuous",
+                "outputs": [
+                    {
+                        "format": "png.base64",
+                        "name": "treePlot",
+                        "type": "image"
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "result",
+                        "type": "tree"
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "fit",
+                        "type": "table"
+                    }
+                ],
+                "script": "#data(anolis); tree <- anolis$phy; table <- anolis$dat; column <- \"PCI_limbs\"; model=\"EB\"\n\n## fitContinuous script\n#require(devtools)\n# options(repos=\"http://cran.cnr.Berkeley.edu\")\n# install_github(\"aRbor\", \"arborworkflows\")\nlibrary(aRbor)\nlibrary(geiger)\nlibrary(cardoonTools)\n\ntd <- make.treedata(tree, table)\ntd <- checkNumeric(td)\nvalid.numeric <- which(colnames(td$dat)==column)\nif(length(valid.numeric)==0){\n  stop(\"The supplied column is not present, or is not a valid continuous trait\")\n}\ntd <- select(td, valid.numeric)\n\no <- fitContinuous(td$phy, td$dat, model=model, SE=0)\nopt = o$opt\n\nif (model == \"OU\") {\n  fit=list(z0=opt$z0, sigsq=opt$sigsq, alpha=opt$alpha, lnL=opt$lnL, AIC=opt$aic, AICc=opt$aicc)\n  result<-rescale(tree, \"OU\", o$opt$alpha)\n} else if (model == \"BM\") {\n  fit=list(z0=opt$z0, sigsq=opt$sigsq, lnL=opt$lnL, AIC=opt$aic, AICc=opt$aicc)\n  result<-tree\n} else if (model == \"EB\") {\n  fit=list(z0=opt$z0, sigsq=opt$sigsq, a=opt$a, lnL=opt$lnL, AIC=opt$aic, AICc=opt$aicc)\n  result<-rescale(tree, \"EB\", o$opt$a)\n}\n\ntreePlot = cardoonPlot(expression(plotContrasts(td$phy, setNames(td$dat[,1], td$phy$tip.label), cex.tip.label=0.5)), width=1000, height=1000, res=100)\ntreePlot = treePlot$png",
+                "x": 926,
+                "y": 199
+            },
+            "x": 926,
+            "y": 199
+        }
+    ]
+}
