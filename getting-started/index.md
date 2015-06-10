@@ -16,7 +16,7 @@ The basics for getting started with Arbor.
 
 {% include toc.html %}
 
-## Installation
+## Running Arbor
 
 You can run Arbor on our [server](arbor.kitware.com).
 
@@ -24,7 +24,7 @@ Alternatively, you can [download and install your own Arbor instance using Vagra
 
 ---
 
-## Running Arbor
+## Easy Mode
 
 Boobspoop.
 
