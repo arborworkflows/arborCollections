@@ -1,0 +1,1344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  
+
+  <title>Arbor</title>
+  <generator uri="https://github.com/jekyll/jekyll">Jekyll v2.4.0</generator>
+    <icon>/arborCollections/apple-touch-icon-precomposed.png</icon>
+  <subtitle>Arbor workflows</subtitle>
+  <link href="/arborCollections/atom.xml" rel="self"/>
+  <link href="/arborCollections/" rel="alternate" type="text/html"/>
+  <updated>2015-06-10T14:48:04-07:00</updated>
+  <id>/arborCollections/</id>
+  <author>
+    <name>Michael Rose</name>
+    <uri>/arborCollections/</uri>
+    <email>michael@mademistakes.com</email>
+  </author>
+
+  
+  <entry>
+    <title>Discrete ancestral character states</title>
+    <link href="/arborCollections/reconstructing-ancestral-characters-discrete/"/>
+    <updated>2015-06-10T00:00:00-07:00</updated>
+    <id>/arborCollections/reconstructing-ancestral-characters-discrete</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;In this exercise, we will learn how to reconstruct ancestral character states in Arbor for a discrete character - that is, a character that can take on one of a number of discrete values. Examples might be lizards, “legs” versus “no legs” - this would be a two-state discrete character. Another example would be animal locomotion - “walks,” “swims,” or “flies.” This is an example of a three-state discrete character.&lt;/p&gt;
+
+&lt;p&gt;Imagine that you have a phylogenetic tree with information on some discrete character for some or all of the tips. You want to use mathematical methods to reconstruct the ancestral character states on the internal nodes of the tree. Then, this is the exercise for you!&lt;/p&gt;
+
+&lt;h2 id=&quot;loading-example-data&quot;&gt;Loading example data&lt;/h2&gt;
+
+&lt;p&gt;You will need the anolis example data files, anolis.phy and anolis.csv, from [Arbor datasets] (/arborCollections/docs_datasets/). Save those files somewhere on your computer.&lt;/p&gt;
+
+&lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Drag and drop the two anolis data files on the blue “Browse or drop files” box to load them into your browser.&lt;/p&gt;
+
+&lt;p&gt;Finally, &lt;a href=&quot;/arborCollections/2015/06/09/creating-a-new-collection/&quot;&gt;log in and create a personal collection&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;selecting-the-collections-that-you-need&quot;&gt;Selecting the collections that you need&lt;/h2&gt;
+
+&lt;p&gt;For this example, everything required is in the “phylogeny” collection - so click on that eyeball and you will be able to access the functions that you need.&lt;/p&gt;
+
+&lt;p&gt;At this point, you should have the two anolis datafiles stored in Arbor and the “phylogeny” collection available. You should be logged in and have write access to your own private collection.&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-your-workflow&quot;&gt;Set up your workflow&lt;/h2&gt;
+
+&lt;p&gt;The main function in Arbor for ancestral state reconstruction is aceAcbor in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called “DiscreteAncestralStatesWorkflow”. Make sure to choose “New workflow” and not “New analysis”!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now create the connections you need to make the workflow run. First, click the “edit” button to start working on the workflow.&lt;/p&gt;
+
+&lt;p&gt;Now add the aceArbor function by selecting it under “Select analysis.” When you click “Add to workflow” then the function shoud appear in your workspace.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen3.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now create the inputs and outputs of the function by clicking on the “spokes” coming out of aceArbor. You should also move the blocks around to make your workflow look nice.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/functionPopup.gif&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Final result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen4.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Once you have a workflow that looks the way you want, click save!&lt;/strong&gt; If you do not do this you will be running the workflow at the last point it was saved and not what is shown on the screen.&lt;/p&gt;
+
+&lt;h2 id=&quot;run-your-workflow&quot;&gt;Run your workflow&lt;/h2&gt;
+
+&lt;p&gt;Click “Setup and run” to run your workflow. Select these options:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen5.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If your analysis worked, you should see the following message:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen6.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;see-your-results&quot;&gt;See your results&lt;/h2&gt;
+
+&lt;p&gt;Now move over to the “visualization” tab to see your results. First, select “image” under “Select visualization”, and choose your tree plot under “data” (it should be called DiscreteAncestralStatesWorkflow treePlot). Click “update” to see this result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen7.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To see the results in table format, choose “table” and “DiscreteAncestralStatesWorkflow res”. Update gives you this table, which is presently useless. Sorry!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen8.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Creating a new collection</title>
+    <link href="/arborCollections/creating-a-new-collection/"/>
+    <updated>2015-06-09T00:00:00-07:00</updated>
+    <id>/arborCollections/creating-a-new-collection</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;When working in Arbor, you will be uploading your own data, and may want to create your own functions and workflows. Everything in Arbor is organized into collections (for example, the phylogeny and base collections). You can create your own collection to store data and workflows. Later I will discuss how you can share any items in your collection with colleagues.&lt;/p&gt;
+
+&lt;h2 id=&quot;get-started&quot;&gt;Get started&lt;/h2&gt;
+
+&lt;p&gt;You will need to open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. For this exercise, you will need to log in; we will post more information about Arbor user accounts later.&lt;/p&gt;
+
+&lt;p&gt;Once you are logged in, your screen should look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen1.png&quot; alt=&quot;Screenshot 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You will eventually need the anolis example data files, anolis.phy and anolis.csv, from [Arbor datasets] (/arborCollections/docs_datasets/). Save those files somewhere on your computer.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-a-new-collection&quot;&gt;Create a new collection&lt;/h2&gt;
+
+&lt;p&gt;On the left side of the screen, just below the “Browse or drop files” box, is the place you will need to focus to create your new collection. In the box there you can type the name of a new collection - let’s use &lt;em&gt;testCollection&lt;/em&gt; here, so type that in the box. If you want the collection to be public, you can tick the &lt;em&gt;public&lt;/em&gt; box. Otherwise, the collection will be private and only visible to you. Keep this test collection private for this example. Now click the “New collection” button, and your collection will be created.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen2.png&quot; alt=&quot;Screenshot 2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Immediately after creating my new collection. Did it work?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Scroll down to see more collections, the one you just created will be at the bottom. Click on both the “eye” and the “pencil” next to your collection. The “eye” lets you see the things in your collection, and the pencil gives write access so that you can add things to the collection (and delete!).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen3.png&quot; alt=&quot;Screenshot 3&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;saving-data-to-your-new-collection&quot;&gt;Saving data to your new collection&lt;/h2&gt;
+
+&lt;p&gt;Once you have created your collection, you can add data to it. Drag the “anolis.csv” file to the “Browse or drop files” box to load it into your browser. You can now save this file to your new collection. To do that, scroll down to the very bottom of the bottom browser frame, where you should see “Save or download data.” “anolis.csv” should show up there.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen4.png&quot; alt=&quot;Screenshot 4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As long as the pencil next to your new collection is highlighted, you can now click “Save to checked collection” to save this data file to the new collection. Try that now. The name of the collection should show up next to the datafile:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen5.png&quot; alt=&quot;Screenshot 5&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-new-analyses-and-workflows-in-your-new-collection&quot;&gt;Creating new analyses and workflows in your new collection&lt;/h2&gt;
+
+&lt;p&gt;Now, move over to the “Analysis” tab. You can create new analyses and workflows in your new collection by clicking on “+ New analysis” or “+ New workflow.” Since those will both be covered in other tutorial pages, I will show you how to load in a workflow file that has been downloaded in JSON format. Imagine, for example, that a colleague emailed you an arbor workflow called mywork.json. You can download such a file &lt;a href=&quot;/arborCollections/assets/creatingaCollection/mywork.json&quot;&gt;here&lt;/a&gt;. Now, to load that workflow into your new collection, click on “Upload… “ and find the mywork.json file. The new workflow is now in your collection!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen6.png&quot; alt=&quot;Screenshot 6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can see the new workflow by clicking “Show script.”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen7.png&quot; alt=&quot;Screenshot 7&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can even edit this workflow using the “Edit” button (keep in mind that you have to hit “Save” for the changes to go into effect).&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Using the Arbor webapp</title>
+    <link href="/arborCollections/using-the-arbor-webapp/"/>
+    <updated>2015-06-02T00:00:00-07:00</updated>
+    <id>/arborCollections/using-the-arbor-webapp</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;So, you want to use the Arbor web app to do some comparative analyses?&lt;/p&gt;
+
+&lt;p&gt;The Arbor web app is a flexible workflow engine that will let you carry out a wide range of visualizations
+and analyses. You can upload data files from your computer, or use data from a range of web services.&lt;/p&gt;
+
+&lt;p&gt;For this example, I will walk you through the steps you need to use the Arbor web app. I will set up a
+basic analysis of a correlation between two continuous characters using independent contrasts.&lt;/p&gt;
+
+&lt;h2 id=&quot;get-started&quot;&gt;Get started&lt;/h2&gt;
+
+&lt;p&gt;You will need the anolis example data files, anolis.phy and anolis.csv, from [Arbor datasets] (/arborCollections/docs_datasets/). Save those files somewhere on your computer.&lt;/p&gt;
+
+&lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Your screen should look something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_1.png&quot; alt=&quot;Screenshot 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want, you can log in here; we will post more information about Arbor user accounts later. For now, you don’t need to log in, you can do the analyses for this example without an account.&lt;/p&gt;
+
+&lt;h2 id=&quot;upload-your-data&quot;&gt;Upload your data&lt;/h2&gt;
+
+&lt;p&gt;Near the bottom of the Arbor web app screen you will see a blue box that says “Browse or drop files.” This is how you can get your data into Arbor. There are two options: either you can click the box and browse to the file you want, or you can drag the file onto the box and let go. Arbor should recognize what type of file you have added (in this case, tree or datafile) and store them in the correct way.&lt;/p&gt;
+
+&lt;p&gt;Using this method, load in both anolis.phy and anolis.csv. If you want to make sure that your upload worked, you can use the dropdown menu that says “Save or download data.” If you have properly loaded the files you will see them appear in that list.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_2.png&quot; alt=&quot;Screenshot 2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This is what my screen looks like after uploading anolis.csv - note that anolis.phy is also in the “Save or download data” dropdown, as I uploaded it just before.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Note: Since you have not added your files to any collections, they will appear like this:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;anolis.csv&lt;/li&gt;
+  &lt;li&gt;anolis.phy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You may also see the same files stored in a collection, depending on how your web app is set up. If you see versions of those stored files from the “datasets” collection, for example, they will look like this:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;anolis.csv (datasets)&lt;/li&gt;
+  &lt;li&gt;anolis.phy (datasets)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Those stored files will work fine for the exercise, but try to use the ones you uploaded so that you can get the hang of using your own data in Arbor. Also, since these datasets are uploaded but not saved, if you &lt;strong&gt;refresh your browser&lt;/strong&gt; or even &lt;strong&gt;accidentally go to a different page&lt;/strong&gt;, the datasets will be gone when you come back. If you want to save your uploaded data then you should login and make a personal collection.&lt;/p&gt;
+
+&lt;h2 id=&quot;select-the-collections-you-want&quot;&gt;Select the collections you want&lt;/h2&gt;
+
+&lt;p&gt;For this exercise, you will use functions from two arbor collections, “base” and “phylogeny.” All available collections are listed to the right side of the Data Management tab.&lt;/p&gt;
+
+&lt;p&gt;To gain access to functions in those collections, click the little eyeball next to “base” and “phylogeny.” Your screen should now look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_3.png&quot; alt=&quot;Screenshot 3&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;navigate-to-the-analysis-tab&quot;&gt;Navigate to the “analysis” tab&lt;/h2&gt;
+
+&lt;p&gt;You are done with the Data Management tab, and will need to move to the “Analysis” tab to carry out your analysis. Click on the Analysis tab to switch. Your screen should now look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_4.png&quot; alt=&quot;Screenshot 4&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;try-out-the-piccorrelation-function&quot;&gt;Try out the picCorrelation &lt;strong&gt;function&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;We can now do some comparative analyses! Arbor has two types of analyses: functions and workflows. Later, we will build a workflow - but actually, for this problem, there is a single function that we can use to get output immediately.&lt;/p&gt;
+
+&lt;p&gt;The function we need is called &lt;strong&gt;picCorrelation&lt;/strong&gt;, and it is part of the &lt;em&gt;phylogeny&lt;/em&gt; package.&lt;/p&gt;
+
+&lt;p&gt;First, select this function (in the &lt;em&gt;Select analysis&lt;/em&gt; dropdown menu). You can inspect the function by clicking “Show script” (this example is in R). You should see this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_5.png&quot; alt=&quot;Screenshot 5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can now run the function by clicking the small blue button that says “&amp;gt; Setup and run.” This brings up a dialog box. Fill in the missing details in this box to analyze hostility (dep_variable) as a function of awesomeness (ind_variable). Choose the table and tree that you entered earlier, and set “plotPICs” to “yes.” Your form should look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_6.png&quot; alt=&quot;Screenshot 6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now press “&amp;gt; Run” and see what happens. If your run works, you should see a &lt;em&gt;success&lt;/em&gt; message:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_7.png&quot; alt=&quot;Screenshot 7&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, Arbor is telling us that the function had two outputs:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;picCorrelation picPlot, which is an &lt;em&gt;image&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;picCorrelation tableResults, which is a &lt;em&gt;table&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s have a look at the outputs.&lt;/p&gt;
+
+&lt;h2 id=&quot;visualize-the-outputs-of-the-piccorrelation-function&quot;&gt;Visualize the outputs of the picCorrelation function&lt;/h2&gt;
+
+&lt;p&gt;To see the outputs of an Arbor function (or workflow) we can go to the &lt;strong&gt;Visualization&lt;/strong&gt; tab. Click on it now. Your screen should look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_8.png&quot; alt=&quot;Screenshot 8&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note that the top part of the screen did not change, but the bottom tabs and buttons did. That’s ok! Keep going.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We can look at the plot first. Set the “Select visualization” dropdown to “image”, and you should see your output, called “picCorrelation picPlot”, appear under “data.” To activate this visualization click on the blue &lt;strong&gt;Update&lt;/strong&gt; button. The result should be a plot.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_9.png&quot; alt=&quot;Screenshot 9&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;(You can see more of the plot by clicking on the small downward-facing arrow above the “Log In or Register” section of the screen).&lt;/p&gt;
+
+&lt;p&gt;Next, let’s see some numbers. Change “Select visualization” to “table”, and “data” to “picCorrelation tableResults.” Hit update again to see an ANOVA table summarizing the results of the phylogenetic regression.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_10.png&quot; alt=&quot;Screenshot 10&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The p-value is the top number in the column denoted “Pr(&amp;gt;F).”&lt;/p&gt;
+
+&lt;h2 id=&quot;build-a-pic-workflow&quot;&gt;Build a pic &lt;strong&gt;workflow&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Now let’s try to harness the real power of Arbor by building a simple visual workflow for our analysis. For this part to work you need to be logged in! If you are not logged in you can run existing functions and workflows but you cannot create new ones. You can create an account in Arbor quite easily.&lt;/p&gt;
+
+&lt;p&gt;Follow the instructions on &lt;a href=&quot;/arborCollections/2015/06/09/creating-a-new-collection/&quot;&gt;this page&lt;/a&gt; to create an account and start a private collection. Make sure to click on the “write” tab in your new collection, then come back here and finish the tutorial!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;OK I will assume you did that. Now, go back to the “Analysis” tab. To start your workflow, type a name into the box under “Create new analysis,” then click the “+ New workflow” button. I am going to call my analysis “myPICWorkflow.”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_11.png&quot; alt=&quot;Screenshot 11&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have done that, your new (empty) workflow will be available under the “Select analysis” tab. To confirm that it is there (and empty!), select it, and click “Show script.” As we’ll be building this workflow, you can also click “Edit.”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_12.png&quot; alt=&quot;Screenshot 12&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now all of that empty white space is a blank canvass for your new workflow.&lt;/p&gt;
+
+&lt;p&gt;We will build our workflow in three steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Select the function that we need, picCorrelation&lt;/li&gt;
+  &lt;li&gt;Link the function inputs that we need&lt;/li&gt;
+  &lt;li&gt;Link the function outputs that we need&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For step one, use the drop-down menu labeled “Select analysis.” Find the picCorrelation function - it should be labeled “picCorrelation (phylogeny)” to let you know which collection it belongs with. Then click “+ Add to workflow” and you should see this function appear in the workflow as a block.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_13.png&quot; alt=&quot;Screenshot 13&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The function itself is a large rectangular block. The things sticking out on the left are inputs - you can see their type by hovering the mouse over each one. Squares are data matrices, triangles are phylogenies, and circles represent text values - typically, these circles control how the function works.&lt;/p&gt;
+
+&lt;p&gt;Now let’s make some inputs. Click on each of the input tabs for your function to automatically generate function input boxes.&lt;/p&gt;
+
+&lt;p&gt;These input boxes are blue to differentiate them from grey functions. They also only have output tabs, no inputs. All of the input boxes that you create will have to be specified by the user when you run the function, as you will see in a second.&lt;/p&gt;
+
+&lt;p&gt;In more complicated workflows later, you will use outputs from previous steps as inputs for the next - but don’t worry about that for now.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Beware! Sometimes new input blocks pop up right on top of function blocks - so it might look like nothing has happened. Don’t panic - just click on their center and drag them out of the way.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;You can also rearrange the inputs to look nice.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_14.png&quot; alt=&quot;Screenshot 14&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note: every tab for function input needs to be connected to something! Either a block that is specified by the user, or another part of the workflow.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Almost done - we only need to connect some outputs to see our results. We can do that in the same way that we created inputs - by clicking on function tabs, in this case on the output side, and creating output boxes.&lt;/p&gt;
+
+&lt;p&gt;Output boxes are the same color as input boxes but they only have connectors on the left side. Your workflow will create a different output object for each of the output boxes that you create.&lt;/p&gt;
+
+&lt;p&gt;You can arrange these to look nice too.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_15.png&quot; alt=&quot;Screenshot 15&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;run-mypicworkflow-workflow&quot;&gt;Run myPICWorkflow &lt;strong&gt;workflow&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Once you have built your workflow, you need to save it before running.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;If you just click run then Arbor will run the workflow as it was the last time you saved - which might not match the workflow you see on the screen!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have saved, then click “Setup and run” to start the workflow. You will again have to specify inputs and options. Let’s do the same analysis we did before.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_16.png&quot; alt=&quot;Screenshot 16&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now click “&amp;gt; Run.” If your workflow works you will see a green &lt;em&gt;success&lt;/em&gt; message.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_17.png&quot; alt=&quot;Screenshot 17&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You will see that we have two new output objects, one is an image and one is a table. You can visualize both of them in the same way as above, using the “Visualization” tab.&lt;/p&gt;
+
+&lt;p&gt;If you made it this far, nice work - you built and ran an Arbor workflow!&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>What is Arbor?</title>
+    <link href="/arborCollections/what-is-arbor/"/>
+    <updated>2015-05-21T00:00:00-07:00</updated>
+    <id>/arborCollections/what-is-arbor</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2&gt;What is Arbor?&lt;/h2&gt;
+
+&lt;p&gt;Arbor is a software package for phylogenetic comparative analyses. Our main website is:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;www.arborworkflows.com&quot;&gt;www.arborworkflows.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;When will Arbor be available?&lt;/h2&gt;
+
+&lt;p&gt;Right now! And Arbor’s functionality will continue to grow through the end of 2015.&lt;/p&gt;
+
+&lt;h2&gt;What will Arbor be able to do for me?&lt;/h2&gt;
+
+&lt;p&gt;To start out with, Arbor will be able to do the most common comparative analyses, including:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Phylogenetic signal&lt;/li&gt;
+  &lt;li&gt;Ancestral state reconstruction&lt;/li&gt;
+  &lt;li&gt;Independent contrasts&lt;/li&gt;
+  &lt;li&gt;Comparative model fitting (e.g. Mk, threshold, and continuous character models)&lt;/li&gt;
+  &lt;li&gt;PGLS&lt;/li&gt;
+  &lt;li&gt;Fitting Birth-death models&lt;/li&gt;
+  &lt;li&gt;Community phylogenetics&lt;/li&gt;
+  &lt;li&gt;BiSSE / MuSSE / QuaSSE / GeoSSE&lt;/li&gt;
+  &lt;li&gt;Analyses of cospeciation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We are building up towards more complicated analyses.&lt;/p&gt;
+
+&lt;h2&gt;What is an Arbor workflow?&lt;/h2&gt;
+
+&lt;p&gt;Phylogenetic trees are increasingly &lt;a href=&quot;http://blog.opentreeoflife.org&quot;&gt;available&lt;/a&gt;, and can be used for a wide range of analyses, including studies of speciation, trait evolution, range size evolution, and many other things. Phylogenetic comparative methods have been developing rapidly in recent years. Most analyses are currently done in R, and a number of useful packages are available (e.g. ape, diversitree, geiger, caper, phytools, &lt;a href=&quot;http://cran.r-project.org/web/views/Phylogenetics.html&quot;&gt;and others&lt;/a&gt;). Arbor seeks to enable end-users to carry out these analyses by building workflows.&lt;/p&gt;
+
+&lt;p&gt;Building an Arbor workflow will have more in common with making something out of legos than with computer programming. For example, the figure below shows a mockup of an Arbor workflow to calculate phylogenetic independent contrasts (PICs). End users will import a phylogenetic tree and some traits data - perhaps from their local computer, or maybe from a remote source like &lt;a href=&quot;https://tree.opentreeoflife.org/opentree/argus/opentree3.0@1&quot;&gt;Open Tree of Life&lt;/a&gt; or &lt;a href=&quot;http://eol.org&quot;&gt;Encyclopedia of Life&lt;/a&gt;. The workflow below then allows the user to connect a few steps together to calculate PICs and use them to test for a correlation between two traits.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/simple_pic_workflow.jpg&quot; alt=&quot;PIC workflow&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A sample workflow for calculating phylogenetic independent contrasts (PICs) to test for an evolutionary correlation between two traits.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The PIC workflow above is simple, but Arbor will enable more complex analyses as well. For example, imagine you are interested in analyzing geographic range evolution in your group of species.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/cartoon_workflow.png&quot; alt=&quot;Web workflow&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A more complex workflow that uses data from web services to combine ecological niche models, Lagrange, and phylogenetic comparative analyses.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The workflow above shows how you might use Arbor to link phylogenetic, trait, and geographic data together in a comprehensive set of comparative analyses. If you want to get an idea of other examples of workflow software in biology, you can check out other examples like &lt;a href=&quot;https://usegalaxy.org/&quot;&gt;Galaxy&lt;/a&gt; and the &lt;a href=&quot;http://www.iplantcollaborative.org/ci/discovery-environment&quot;&gt;iPlant Discovery Environment&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;How can I participate in the project?&lt;/h2&gt;
+
+&lt;p&gt;You can follow our blog, visit our main site, and find our code on github. We will also be hosting a series of hackathons to be announced at a later date.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Easy mode</title>
+    <link href="/arborCollections/easy-mode/"/>
+    <updated>2015-05-21T00:00:00-07:00</updated>
+    <id>/arborCollections/easy-mode</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;what-is-easy-mode&quot;&gt;What is Easy Mode?&lt;/h2&gt;
+
+&lt;p&gt;As a part of the Arbor project, we are developing a few simple-to-use web apps that allow users to quickly and easily carry out a few of the most common comparative methods. These pages present a drag-and-drop interface to test for phylogenetic signal, reconstruct ancestral character states, test for character correlations, and other common analyses.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-can-i-do-in-arbor-easy-mode&quot;&gt;What can I do in Arbor Easy Mode?&lt;/h2&gt;
+
+&lt;p&gt;To use easy mode, you can navigate to one of our &lt;a href=&quot;/arborCollections/easy/index.html&quot;&gt;easy mode pages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;walkthrough---phylogenetic-signal-in-easy-mode&quot;&gt;Walkthrough - Phylogenetic Signal in Easy Mode&lt;/h2&gt;
+
+&lt;p&gt;Let’s walk through one example analysis in easy mode. We will work on testing for phylogenetic signal. I will use two data files for &lt;em&gt;Anolis&lt;/em&gt; lizards, linked below.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/arborCollections/assets/anolis.phy&quot;&gt;anolis.phy&lt;/a&gt;: a phylogenetic tree of anoles&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/arborCollections/assets/anolis.csv&quot;&gt;anolis.csv&lt;/a&gt;: character data for anoles (comma-separated format)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Download these two files, and locate them on your computer’s file browser.&lt;/p&gt;
+
+&lt;p&gt;Now, navigate to the Arbor easy mode page for phylogenetic signal. You should see something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, you need to input your datafiles into the website. You can do that by dragging and dropping the files onto the blue box that says “browse or drop files here.”&lt;/p&gt;
+
+&lt;p&gt;When you hover over the correct place, the box will turn green. Arbor can automatically detect whether you have uploaded a tree or a data file.&lt;/p&gt;
+
+&lt;p&gt;After you upload both files, you should see them listed in the appropriate place, like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_3.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You might also notice that you can see a preview of your input table at the bottom of the page:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_4.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you need to specify a column that will define the trait that you want to use for the phylogenetic signal test. Right now, this test can only handle one trait at a time! Let’s choose “SVL.” Grab that column name from the left hand side and drag and drop it onto the box that says “Drag column of interest here.” You should end up with this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_5.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;No just press “Go!” and your analysis will run. You should get back a table of results, like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_6.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The last table shows the results of the analysis. The first two columns are the likelihoods of a Brownian motion model and Brownian motion + lambda. The third and fourth represent a chi-squared test comparing a “full” phylogenetic signal model (Brownian motion) with a model where signal is less than Brownian motion (lambda). P &amp;lt; 0.05 means that you can reject BM in favor of the lambda model. The last two columns show AICC scores for these two models. This output is formatted in a very confusing way, we are going to fix it!&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Syntax Highlighting Test</title>
+    <link href="/arborCollections/articles/syntax-highlighting-test/"/>
+    <updated>2014-11-29T19:08:14-08:00</updated>
+    <id>/arborCollections/articles/syntax-highlighting-test</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Syntax_highlighting&quot;&gt;Syntax highlighting&lt;/a&gt; is a feature that displays source code, in different colors and fonts according to the category of terms. This feature facilitates writing in a structured language such as a programming language or a markup language as both structures and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.&lt;/p&gt;
+
+&lt;nav class=&quot;toc&quot;&gt;
+
+&lt;/nav&gt;
+
+&lt;h3 id=&quot;code-blocks&quot;&gt;&lt;code&gt;&amp;lt;code&amp;gt;&lt;/code&gt; Blocks&lt;/h3&gt;
+
+&lt;pre&gt;
+	&lt;code&gt;
+.site-title {
+	@include row;
+	@include media($large) {
+		@include span-columns(4);
+	}
+	padding: (.25 * $masthead-height) 0; // fourth the height to center vertically
+	height: $masthead-height;
+	text-decoration: none;
+	color: $black;
+	font-family: $alt-font;
+	font-weight: 700;
+	@include font-size(20,no);
+	line-height: .5 * $masthead-height; // half the height to center vertically
+	text-transform: uppercase;
+}
+	&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;pygments-code-blocks&quot;&gt;Pygments Code Blocks&lt;/h3&gt;
+
+&lt;p&gt;To modify styling and highlight colors edit &lt;code&gt;/assets/less/pygments.less&lt;/code&gt; and compile &lt;code&gt;main.less&lt;/code&gt; with your favorite preprocessor. Or edit &lt;code&gt;main.css&lt;/code&gt; if that’s your thing, the classes you want to modify all begin with &lt;code&gt;.highlight&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-240px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Line numbering enabled:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;pagination&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;navigation&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;     {% if page.previous %}
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt;         &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{ site.baseurl }}{{ page.previous.url }}&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;btn&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{ page.previous.title }}&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Previous article&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt;     {% endif %}
+&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt;     {% if page.next %}
+&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt;         &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{ site.baseurl }}{{ page.next.url }}&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;btn&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{ page.next.title }}&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Next article&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt;     {% endif %}
+&lt;span class=&quot;lineno&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- /.pagination --&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Jekyll&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TagIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Page&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@site&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;index.html&amp;#39;&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_yaml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;_layouts&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;tag_index.html&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;tag&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;tag_title_prefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;tag_title_prefix&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Tagged: &amp;#39;&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;tag_title_suffix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;tag_title_suffix&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;amp;#8211;&amp;#39;&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag_title_prefix&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;An archive of posts tagged &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;standard-code-block&quot;&gt;Standard Code Block&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;nav class=&quot;pagination&quot; role=&quot;navigation&quot;&amp;gt;
+    {% if page.previous %}
+        &amp;lt;a href=&quot;{{ site.baseurl }}{{ page.previous.url }}&quot; class=&quot;btn&quot; title=&quot;{{ page.previous.title }}&quot;&amp;gt;Previous article&amp;lt;/a&amp;gt;
+    {% endif %}
+    {% if page.next %}
+        &amp;lt;a href=&quot;{{ site.baseurl }}{{ page.next.url }}&quot; class=&quot;btn&quot; title=&quot;{{ page.next.title }}&quot;&amp;gt;Next article&amp;lt;/a&amp;gt;
+    {% endif %}
+&amp;lt;/nav&amp;gt;&amp;lt;!-- /.pagination --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;fenced-code-blocks&quot;&gt;Fenced Code Blocks&lt;/h3&gt;
+
+&lt;p&gt;To modify styling and highlight colors edit &lt;code&gt;/assets/less/coderay.less&lt;/code&gt; and compile &lt;code&gt;main.less&lt;/code&gt; with your favorite preprocessor. Or edit &lt;code&gt;main.css&lt;/code&gt; if that’s your thing, the classes you want to modify all begin with &lt;code&gt;.coderay&lt;/code&gt;. Line numbers and a few other things can be modified in &lt;code&gt;_config.yml&lt;/code&gt; under &lt;code&gt;coderay&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;#container {
+    float: left;
+    margin: 0 -240px 0 0;
+    width: 100%;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;nav class=&quot;pagination&quot; role=&quot;navigation&quot;&amp;gt;
+    {% if page.previous %}
+        &amp;lt;a href=&quot;{{ site.baseurl }}{{ page.previous.url }}&quot; class=&quot;btn&quot; title=&quot;{{ page.previous.title }}&quot;&amp;gt;Previous article&amp;lt;/a&amp;gt;
+    {% endif %}
+    {% if page.next %}
+        &amp;lt;a href=&quot;{{ site.baseurl }}{{ page.next.url }}&quot; class=&quot;btn&quot; title=&quot;{{ page.next.title }}&quot;&amp;gt;Next article&amp;lt;/a&amp;gt;
+    {% endif %}
+&amp;lt;/nav&amp;gt;&amp;lt;!-- /.pagination --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-ruby&quot;&gt;module Jekyll
+  class TagIndex &amp;lt; Page
+    def initialize(site, base, dir, tag)
+      @site = site
+      @base = base
+      @dir = dir
+      @name = 'index.html'
+      self.process(@name)
+      self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
+      self.data['tag'] = tag
+      tag_title_prefix = site.config['tag_title_prefix'] || 'Tagged: '
+      tag_title_suffix = site.config['tag_title_suffix'] || '&amp;amp;#8211;'
+      self.data['title'] = &quot;#{tag_title_prefix}#{tag}&quot;
+      self.data['description'] = &quot;An archive of posts tagged #{tag}.&quot;
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;github-gist-embed&quot;&gt;GitHub Gist Embed&lt;/h3&gt;
+
+&lt;p&gt;An example of a Gist embed below.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/mmistakes/6589546.js&quot;&gt; &lt;/script&gt;
+
+&lt;script src=&quot;https://gist.github.com/8531391.js&quot;&gt; &lt;/script&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Author Override</title>
+    <link href="/arborCollections/articles/author-override/"/>
+    <updated>2014-06-23T13:19:16-07:00</updated>
+    <id>/arborCollections/articles/author-override</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;For those of you who may have content written by multiple authors on your site you can assign different authors to each post if desired.&lt;/p&gt;
+
+&lt;p&gt;Traditionally you would assign a global author for the entire site and those attributes would be used in all post bylines, social networking links in the footer, Twitter Cards, and Google Authorship. These &lt;code&gt;owner&lt;/code&gt; variables defined in your &lt;code&gt;config.yml&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Start by creating an &lt;code&gt;authors.yml&lt;/code&gt; file in the &lt;code&gt;_data&lt;/code&gt; folder and add your authors using the following format.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Authors&lt;/span&gt;
+
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;billy_rick&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;Billy Rick&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;http://thewhip.com&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;billy@rick.com&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;bio&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;What&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;you&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;want,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;jewels?&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;am&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;very&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;extravagant&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;man.&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;avatar&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;bio-photo.jpg&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;twitter&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;extravagantman&lt;/span&gt;
+
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;cornelius_fiddlebone&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;Cornelius Fiddlebone&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;cornelius@thewhip.com&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;bio&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;I&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ordered&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;what?&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;avatar&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;bio-photo.jpg&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;twitter&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;rhymeswithsackit&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;To assign Billy Rick as an author for our post. We’d add the following YAML front matter to a post:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;l-Scalar-Plain&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;billy_rick&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Video Post Test</title>
+    <link href="/arborCollections/articles/video-post-test/"/>
+    <updated>2014-05-31T20:14:02-07:00</updated>
+    <id>/arborCollections/articles/video-post-test</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Here’s a sample video to test FitVid.js&lt;/p&gt;
+
+&lt;p&gt;If this is working correctly the video should fill the main content container.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/9e1nPyHXCFQ&quot; frameborder=&quot;0&quot;&gt; &lt;/iframe&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Image Grids</title>
+    <link href="/arborCollections/articles/image-grids/"/>
+    <updated>2014-05-30T08:51:25-07:00</updated>
+    <id>/arborCollections/articles/image-grids</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;This is a post to test image grids.&lt;/p&gt;
+
+&lt;ul class=&quot;th-grid&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Another Media Post with Large Feature Image</title>
+    <link href="/arborCollections/media/another-sample-media-page/"/>
+    <updated>2014-05-10T00:00:00-07:00</updated>
+    <id>/arborCollections/media/another-sample-media-page</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      &lt;img src=&quot;/arborCollections/images/branch-1600x800.jpg&quot;&gt;&lt;br/&gt;
+      &lt;p&gt;This is a sample media post with a large feature image up top and tons of text. Odio ad blue bottle vinyl, 90’s narwhal commodo bitters pour-over nostrud. Ugh est hashtag in, fingerstache adipisicing laboris esse Pinterest shabby chic Portland. Shoreditch bicycle rights anim, flexitarian laboris put a bird on it vinyl cupidatat narwhal. Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney’s. Cliche pour-over chambray nulla four loko skateboard sapiente hashtag.&lt;/p&gt;
+
+&lt;h2 id=&quot;thundercats-ho&quot;&gt;Thundercats Ho!&lt;/h2&gt;
+
+&lt;p&gt;Fingerstache thundercats Williamsburg, deep v scenester Banksy ennui vinyl selfies mollit biodiesel duis odio pop-up. Banksy 3 wolf moon try-hard, sapiente enim stumptown deep v ad letterpress. Squid beard brunch, exercitation raw denim yr sint direct trade. Raw denim narwhal id, flannel DIY McSweeney’s seitan. Letterpress artisan bespoke accusamus, meggings laboris consequat Truffaut qui in seitan. Sustainable cornhole Schlitz, twee Cosby sweater banh mi deep v forage letterpress flannel whatever keffiyeh. Sartorial cred irure, semiotics ethical sed blue bottle nihil letterpress.&lt;/p&gt;
+
+&lt;h2 id=&quot;tools-used&quot;&gt;Tools Used&lt;/h2&gt;
+
+&lt;p&gt;Occupy et selvage squid, pug brunch blog nesciunt hashtag mumblecore skateboard yr kogi. Ugh small batch swag four loko. Fap post-ironic qui tote bag farm-to-table american apparel scenester keffiyeh vero, swag non pour-over gentrify authentic pitchfork. Schlitz scenester lo-fi voluptate, tote bag irony bicycle rights pariatur vero Vice freegan wayfarers exercitation nisi shoreditch. Chambray tofu vero sed. Street art swag literally leggings, Cosby sweater mixtape PBR lomo Banksy non in pitchfork ennui McSweeney’s selfies. Odd Future Banksy non authentic.&lt;/p&gt;
+
+&lt;p&gt;Aliquip enim artisan dolor post-ironic. Pug tote bag Marfa, deserunt pour-over Portland wolf eu odio intelligentsia american apparel ugh ea. Sunt viral et, 3 wolf moon gastropub pug id. Id fashion axe est typewriter, mlkshk Portland art party aute brunch. Sint pork belly Cosby sweater, deep v mumblecore kitsch american apparel. Try-hard direct trade tumblr sint skateboard. Adipisicing bitters excepteur biodiesel, pickled gastropub aute veniam.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Welcome to Jekyll!</title>
+    <link href="/arborCollections/articles/welcome-to-jekyll/"/>
+    <updated>2014-02-17T00:00:00-08:00</updated>
+    <id>/arborCollections/articles/welcome-to-jekyll</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
+To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+
+&lt;nav class=&quot;toc&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#sample-heading&quot;&gt;Sample Heading&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/nav&gt;
+
+&lt;h2 id=&quot;sample-heading&quot;&gt;Sample Heading&lt;/h2&gt;
+
+&lt;h3 id=&quot;sample-heading-2&quot;&gt;Sample Heading 2&lt;/h3&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Media Post with Large Feature Image</title>
+    <link href="/arborCollections/media/sample-media-page/"/>
+    <updated>2014-02-03T00:00:00-08:00</updated>
+    <id>/arborCollections/media/sample-media-page</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      &lt;img src=&quot;/arborCollections/images/lock-1600x800.jpg&quot;&gt;&lt;br/&gt;
+      &lt;p&gt;This is a sample media post with a large feature image up top and tons of text. Odio ad blue bottle vinyl, 90’s narwhal commodo bitters pour-over nostrud. Ugh est hashtag in, fingerstache adipisicing laboris esse Pinterest shabby chic Portland. Shoreditch bicycle rights anim, flexitarian laboris put a bird on it vinyl cupidatat narwhal. Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney’s. Cliche pour-over chambray nulla four loko skateboard sapiente hashtag.&lt;/p&gt;
+
+&lt;h3 id=&quot;thundercats-ho&quot;&gt;Thundercats Ho!&lt;/h3&gt;
+
+&lt;p&gt;Fingerstache thundercats Williamsburg, deep v scenester Banksy ennui vinyl selfies mollit biodiesel duis odio pop-up. Banksy 3 wolf moon try-hard, sapiente enim stumptown deep v ad letterpress. Squid beard brunch, exercitation raw denim yr sint direct trade. Raw denim narwhal id, flannel DIY McSweeney’s seitan. Letterpress artisan bespoke accusamus, meggings laboris consequat Truffaut qui in seitan. Sustainable cornhole Schlitz, twee Cosby sweater banh mi deep v forage letterpress flannel whatever keffiyeh. Sartorial cred irure, semiotics ethical sed blue bottle nihil letterpress.&lt;/p&gt;
+
+&lt;p&gt;Occupy et selvage squid, pug brunch blog nesciunt hashtag mumblecore skateboard yr kogi. Ugh small batch swag four loko. Fap post-ironic qui tote bag farm-to-table american apparel scenester keffiyeh vero, swag non pour-over gentrify authentic pitchfork. Schlitz scenester lo-fi voluptate, tote bag irony bicycle rights pariatur vero Vice freegan wayfarers exercitation nisi shoreditch. Chambray tofu vero sed. Street art swag literally leggings, Cosby sweater mixtape PBR lomo Banksy non in pitchfork ennui McSweeney’s selfies. Odd Future Banksy non authentic.&lt;/p&gt;
+
+&lt;p&gt;Aliquip enim artisan dolor post-ironic. Pug tote bag Marfa, deserunt pour-over Portland wolf eu odio intelligentsia american apparel ugh ea. Sunt viral et, 3 wolf moon gastropub pug id. Id fashion axe est typewriter, mlkshk Portland art party aute brunch. Sint pork belly Cosby sweater, deep v mumblecore kitsch american apparel. Try-hard direct trade tumblr sint skateboard. Adipisicing bitters excepteur biodiesel, pickled gastropub aute veniam.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Post with Large Feature Image and Text</title>
+    <link href="/arborCollections/articles/readability-feature-post/"/>
+    <updated>2013-05-23T00:00:00-07:00</updated>
+    <id>/arborCollections/articles/readability-feature-post</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      &lt;img src=&quot;/arborCollections/images/1600x800.gif&quot;&gt;&lt;br/&gt;
+      &lt;p&gt;This is a sample post with a large feature image up top and tons of text. Odio ad blue bottle vinyl, 90’s narwhal commodo bitters pour-over nostrud. Ugh est hashtag in, fingerstache adipisicing laboris esse Pinterest shabby chic Portland. Shoreditch bicycle rights anim, flexitarian laboris put a bird on it vinyl cupidatat narwhal. Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney’s. Cliche pour-over chambray nulla four loko skateboard sapiente hashtag.&lt;/p&gt;
+
+&lt;nav class=&quot;toc&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hoodie-duis&quot;&gt;Hoodie Duis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/nav&gt;
+
+&lt;p&gt;Vero laborum commodo occupy. Semiotics voluptate mumblecore pug. Cosby sweater ullamco quinoa ennui assumenda, sapiente occupy delectus lo-fi. Ea fashion axe Marfa cillum aliquip. Retro Bushwick keytar cliche. Before they sold out sustainable gastropub Marfa readymade, ethical Williamsburg skateboard brunch qui consectetur gentrify semiotics. Mustache cillum irony, fingerstache magna pour-over keffiyeh tousled selfies.&lt;/p&gt;
+
+&lt;h2 id=&quot;cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/h2&gt;
+
+&lt;p&gt;In pug Portland incididunt mlkshk put a bird on it vinyl quinoa. Terry Richardson shabby chic +1, scenester Tonx excepteur tempor fugiat voluptate fingerstache aliquip nisi next level. Farm-to-table hashtag Truffaut, Odd Future ex meggings gentrify single-origin coffee try-hard 90’s. &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sartorial hoodie &lt;/li&gt;
+  &lt;li&gt;Labore viral forage&lt;/li&gt;
+  &lt;li&gt;Tote bag selvage &lt;/li&gt;
+  &lt;li&gt;DIY exercitation et id ugh tumblr church-key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Incididunt umami sriracha, ethical fugiat VHS ex assumenda yr irure direct trade. Marfa Truffaut bicycle rights, kitsch placeat Etsy kogi asymmetrical. Beard locavore flexitarian, kitsch photo booth hoodie plaid ethical readymade leggings yr.&lt;/p&gt;
+
+&lt;p&gt;Aesthetic odio dolore, meggings disrupt qui readymade stumptown brunch Terry Richardson pour-over gluten-free. Banksy american apparel in selfies, biodiesel flexitarian organic meh wolf quinoa gentrify banjo kogi. Readymade tofu ex, scenester dolor umami fingerstache occaecat fashion axe Carles jean shorts minim. Keffiyeh fashion axe nisi Godard mlkshk dolore. Lomo you probably haven’t heard of them eu non, Odd Future Truffaut pug keytar meggings McSweeney’s Pinterest cred. Etsy literally aute esse, eu bicycle rights qui meggings fanny pack. Gentrify leggings pug flannel duis.&lt;/p&gt;
+
+&lt;h2 id=&quot;forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/h2&gt;
+
+&lt;p&gt;Fashion axe hella gastropub lo-fi kogi 90’s aliquip +1 veniam delectus tousled. Cred sriracha locavore gastropub kale chips, iPhone mollit sartorial. Anim dolore 8-bit, pork belly dolor photo booth aute flannel small batch. Dolor disrupt ennui, tattooed whatever salvia Banksy sartorial roof party selfies raw denim sint meh pour-over. Ennui eu cardigan sint, gentrify iPhone cornhole. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Whatever velit occaecat quis deserunt gastropub, leggings elit tousled roof party 3 wolf moon kogi pug blue bottle ea. Fashion axe shabby chic Austin quinoa pickled laborum bitters next level, disrupt deep v accusamus non fingerstache.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Tote bag asymmetrical elit sunt. Occaecat authentic Marfa, hella McSweeney’s next level irure veniam master cleanse. Sed hoodie letterpress artisan wolf leggings, 3 wolf moon commodo ullamco. Anim occupy ea labore Terry Richardson. Tofu ex master cleanse in whatever pitchfork banh mi, occupy fugiat fanny pack Austin authentic. Magna fugiat 3 wolf moon, labore McSweeney’s sustainable vero consectetur. Gluten-free disrupt enim, aesthetic fugiat jean shorts trust fund keffiyeh magna try-hard.&lt;/p&gt;
+
+&lt;h2 id=&quot;hoodie-duis&quot;&gt;Hoodie Duis&lt;/h2&gt;
+
+&lt;p&gt;Actually salvia consectetur, hoodie duis lomo YOLO sunt sriracha. Aute pop-up brunch farm-to-table odio, salvia irure occaecat. Sriracha small batch literally skateboard. Echo Park nihil hoodie, aliquip forage artisan laboris. Trust fund reprehenderit nulla locavore. Stumptown raw denim kitsch, keffiyeh nulla twee dreamcatcher fanny pack ullamco 90’s pop-up est culpa farm-to-table. Selfies 8-bit do pug odio.&lt;/p&gt;
+
+&lt;h3 id=&quot;thundercats-ho&quot;&gt;Thundercats Ho!&lt;/h3&gt;
+
+&lt;p&gt;Fingerstache thundercats Williamsburg, deep v scenester Banksy ennui vinyl selfies mollit biodiesel duis odio pop-up. Banksy 3 wolf moon try-hard, sapiente enim stumptown deep v ad letterpress. Squid beard brunch, exercitation raw denim yr sint direct trade. Raw denim narwhal id, flannel DIY McSweeney’s seitan. Letterpress artisan bespoke accusamus, meggings laboris consequat Truffaut qui in seitan. Sustainable cornhole Schlitz, twee Cosby sweater banh mi deep v forage letterpress flannel whatever keffiyeh. Sartorial cred irure, semiotics ethical sed blue bottle nihil letterpress.&lt;/p&gt;
+
+&lt;p&gt;Occupy et selvage squid, pug brunch blog nesciunt hashtag mumblecore skateboard yr kogi. Ugh small batch swag four loko. Fap post-ironic qui tote bag farm-to-table american apparel scenester keffiyeh vero, swag non pour-over gentrify authentic pitchfork. Schlitz scenester lo-fi voluptate, tote bag irony bicycle rights pariatur vero Vice freegan wayfarers exercitation nisi shoreditch. Chambray tofu vero sed. Street art swag literally leggings, Cosby sweater mixtape PBR lomo Banksy non in pitchfork ennui McSweeney’s selfies. Odd Future Banksy non authentic.&lt;/p&gt;
+
+&lt;p&gt;Aliquip enim artisan dolor post-ironic. Pug tote bag Marfa, deserunt pour-over Portland wolf eu odio intelligentsia american apparel ugh ea. Sunt viral et, 3 wolf moon gastropub pug id. Id fashion axe est typewriter, mlkshk Portland art party aute brunch. Sint pork belly Cosby sweater, deep v mumblecore kitsch american apparel. Try-hard direct trade tumblr sint skateboard. Adipisicing bitters excepteur biodiesel, pickled gastropub aute veniam.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>A Post with Images</title>
+    <link href="/arborCollections/articles/sample-post-images/"/>
+    <updated>2013-05-22T00:00:00-07:00</updated>
+    <id>/arborCollections/articles/sample-post-images</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Here are some examples of what a post with images might look like. If you want to display two or three images next to each other responsively use &lt;code&gt;figure&lt;/code&gt; with the appropriate &lt;code&gt;class&lt;/code&gt;. Each instance of &lt;code&gt;figure&lt;/code&gt; is auto-numbered and displayed in the caption.&lt;/p&gt;
+
+&lt;nav class=&quot;toc&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#markdown-images&quot;&gt;Markdown images&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#figures-for-images-or-video&quot;&gt;Figures (for images or video)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/nav&gt;
+
+&lt;h2 id=&quot;markdown-images&quot;&gt;Markdown images&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://placehold.it/900x450.gif&quot; alt=&quot;sample image&quot; title=&quot;placeholder&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://placehold.it&quot; title=&quot;A simple image placeholder service.&quot;&gt;&lt;img src=&quot;http://placehold.it/900x450.gif&quot; alt=&quot;sample image&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;figures-for-images-or-video&quot;&gt;Figures (for images or video)&lt;/h2&gt;
+
+&lt;h3 id=&quot;one-up&quot;&gt;One Up&lt;/h3&gt;
+
+&lt;figure&gt;
+	&lt;a href=&quot;http://placehold.it/900x450.gif&quot;&gt;&lt;img src=&quot;http://placehold.it/900x450.gif&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;Image caption.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;two-up&quot;&gt;Two Up&lt;/h3&gt;
+
+&lt;p&gt;Apply the &lt;code&gt;half&lt;/code&gt; class like so to display two images side by side that share the same caption.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;figure&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;half&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/arborCollections/images/image-filename-1.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/arborCollections/images/image-filename-2.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;figcaption&amp;gt;&lt;/span&gt;Caption describing these two images.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figcaption&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And you’ll get something that looks like this:&lt;/p&gt;
+
+&lt;figure class=&quot;half&quot;&gt;
+	&lt;a href=&quot;http://placehold.it/1200x600.gif&quot;&gt;&lt;img src=&quot;http://placehold.it/900x450.gif&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://placehold.it/1200x600.gif&quot;&gt;&lt;img src=&quot;http://placehold.it/900x450.gif&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;Two images.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;three-up&quot;&gt;Three Up&lt;/h3&gt;
+
+&lt;p&gt;Apply the &lt;code&gt;third&lt;/code&gt; class like so to display three images side by side that share the same caption.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;figure&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;third&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/arborCollections/images/image-filename-1.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/arborCollections/images/image-filename-2.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/arborCollections/images/image-filename-3.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;figcaption&amp;gt;&lt;/span&gt;Caption describing these three images.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figcaption&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And you’ll get something that looks like this:&lt;/p&gt;
+
+&lt;figure class=&quot;third&quot;&gt;
+	&lt;img src=&quot;http://placehold.it/900x450.gif&quot; /&gt;
+	&lt;img src=&quot;http://placehold.it/900x450.gif&quot; /&gt;
+	&lt;img src=&quot;http://placehold.it/900x450.gif&quot; /&gt;
+	&lt;figcaption&gt;Three images.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Testing images with links to larger images:&lt;/p&gt;
+
+&lt;figure class=&quot;third&quot;&gt;
+	&lt;a href=&quot;http://placehold.it/1200x600.gif&quot;&gt;&lt;img src=&quot;http://placehold.it/900x450.gif&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://placehold.it/1200x600.gif&quot;&gt;&lt;img src=&quot;http://placehold.it/900x450.gif&quot; /&gt;&lt;/a&gt;
+	&lt;a href=&quot;http://placehold.it/1200x600.gif&quot;&gt;&lt;img src=&quot;http://placehold.it/900x450.gif&quot; /&gt;&lt;/a&gt;
+	&lt;figcaption&gt;Three linked images.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Testing Readability with a Bunch of Text</title>
+    <link href="/arborCollections/articles/readability-post/"/>
+    <updated>2012-05-22T00:00:00-07:00</updated>
+    <id>/arborCollections/articles/readability-post</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Portland in shoreditch Vice, labore typewriter pariatur hoodie fap sartorial Austin. Pinterest literally occupy Schlitz forage. Odio ad blue bottle vinyl, 90’s narwhal&lt;sup id=&quot;fnref:footnote&quot;&gt;&lt;a href=&quot;#fn:footnote&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; commodo bitters pour-over nostrud. Ugh est hashtag in, fingerstache adipisicing laboris esse &lt;a href=&quot;http://pinterest.com&quot;&gt;Pinterest&lt;/a&gt; shabby chic Portland. Shoreditch bicycle rights anim, flexitarian laboris put a bird on it vinyl cupidatat narwhal. Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney’s. Cliche pour-over chambray nulla four loko skateboard sapiente hashtag.&lt;/p&gt;
+
+&lt;nav class=&quot;toc&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hoodie-duis&quot;&gt;Hoodie Duis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/nav&gt;
+
+&lt;p&gt;Vero laborum commodo occupy. &lt;a href=&quot;http://hipsum.co/&quot;&gt;&lt;em&gt;Semiotics voluptate mumblecore&lt;/em&gt;&lt;/a&gt; pug. Cosby sweater ullamco quinoa ennui assumenda, sapiente occupy delectus lo-fi. Ea fashion axe Marfa cillum aliquip. Retro Bushwick keytar cliche. Before they sold out sustainable gastropub Marfa readymade, ethical Williamsburg skateboard brunch qui consectetur gentrify semiotics. Mustache cillum irony, fingerstache magna pour-over keffiyeh tousled selfies.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/h2&gt;
+
+&lt;p&gt;In pug Portland incididunt mlkshk put a bird on it vinyl quinoa. Terry Richardson shabby chic +1, scenester Tonx excepteur tempor fugiat voluptate fingerstache aliquip nisi next level. Farm-to-table hashtag Truffaut, Odd Future ex meggings gentrify single-origin coffee&lt;sup id=&quot;fnref:coffee&quot;&gt;&lt;a href=&quot;#fn:coffee&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; try-hard 90’s.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sartorial hoodie &lt;/li&gt;
+  &lt;li&gt;Labore viral forage&lt;/li&gt;
+  &lt;li&gt;Tote bag selvage &lt;/li&gt;
+  &lt;li&gt;DIY exercitation et id ugh tumblr church-key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Incididunt umami sriracha, ethical fugiat VHS ex assumenda yr irure direct trade. Marfa Truffaut bicycle rights, kitsch placeat Etsy kogi asymmetrical. Beard locavore flexitarian, kitsch photo booth hoodie plaid ethical readymade leggings yr.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://placehold.it/600x250.gif&quot; alt=&quot;&quot; /&gt;
+	&lt;figcaption&gt;Image caption goes here. Aesthetic odio dolore, meggings disrupt.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Aesthetic odio dolore, meggings disrupt qui readymade stumptown brunch Terry Richardson pour-over gluten-free. Banksy american apparel in selfies, biodiesel flexitarian organic meh wolf quinoa gentrify banjo kogi. Readymade tofu ex, scenester dolor umami fingerstache occaecat fashion axe Carles jean shorts minim. Keffiyeh fashion axe nisi Godard mlkshk dolore. Lomo you probably haven’t heard of them eu non, Odd Future Truffaut pug keytar meggings McSweeney’s Pinterest cred. Etsy literally aute esse, eu bicycle rights qui meggings fanny pack. Gentrify leggings pug flannel duis.&lt;/p&gt;
+
+&lt;h2 id=&quot;forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/h2&gt;
+
+&lt;p&gt;Fashion axe hella gastropub lo-fi kogi 90’s aliquip +1 veniam delectus tousled. Cred sriracha locavore gastropub kale chips, iPhone mollit sartorial. Anim dolore 8-bit, pork belly dolor photo booth aute flannel small batch. Dolor disrupt ennui, tattooed whatever salvia Banksy sartorial roof party selfies raw denim sint meh pour-over. Ennui eu cardigan sint, gentrify iPhone cornhole. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Whatever velit occaecat quis deserunt gastropub, leggings elit tousled roof party 3 wolf moon kogi pug blue bottle ea. Fashion axe shabby chic Austin quinoa pickled laborum bitters next level, disrupt deep v accusamus non fingerstache.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Tote bag asymmetrical elit sunt. Occaecat authentic Marfa, hella McSweeney’s next level irure veniam master cleanse. Sed hoodie letterpress artisan wolf leggings, 3 wolf moon commodo ullamco. Anim occupy ea labore Terry Richardson. Tofu ex master cleanse in whatever pitchfork banh mi, occupy fugiat fanny pack Austin authentic. Magna fugiat 3 wolf moon, labore McSweeney’s sustainable vero consectetur. Gluten-free disrupt enim, aesthetic fugiat jean shorts trust fund keffiyeh magna try-hard.&lt;/p&gt;
+
+&lt;h2 id=&quot;hoodie-duis&quot;&gt;Hoodie Duis&lt;/h2&gt;
+
+&lt;p&gt;Actually salvia consectetur, hoodie duis lomo YOLO sunt sriracha. Aute pop-up brunch farm-to-table odio, salvia irure occaecat. Sriracha small batch literally skateboard. Echo Park nihil hoodie, aliquip forage artisan laboris. Trust fund reprehenderit nulla locavore. Stumptown raw denim kitsch, keffiyeh nulla twee dreamcatcher fanny pack ullamco 90’s pop-up est culpa farm-to-table. Selfies 8-bit do pug odio.&lt;/p&gt;
+
+&lt;h3 id=&quot;thundercats-ho&quot;&gt;Thundercats Ho!&lt;/h3&gt;
+
+&lt;p&gt;Fingerstache thundercats Williamsburg, deep v scenester Banksy ennui vinyl selfies mollit biodiesel duis odio pop-up. Banksy 3 wolf moon try-hard, sapiente enim stumptown deep v ad letterpress. Squid beard brunch, exercitation raw denim yr sint direct trade. Raw denim narwhal id, flannel DIY McSweeney’s seitan. Letterpress artisan bespoke accusamus, meggings laboris consequat Truffaut qui in seitan. Sustainable cornhole Schlitz, twee Cosby sweater banh mi deep v forage letterpress flannel whatever keffiyeh. Sartorial cred irure, semiotics ethical sed blue bottle nihil letterpress.&lt;/p&gt;
+
+&lt;p&gt;Occupy et selvage squid, pug brunch blog nesciunt hashtag mumblecore skateboard yr kogi. Ugh small batch swag four loko. Fap post-ironic qui tote bag farm-to-table american apparel scenester keffiyeh vero, swag non pour-over gentrify authentic pitchfork. Schlitz scenester lo-fi voluptate, tote bag irony bicycle rights pariatur vero Vice freegan wayfarers exercitation nisi shoreditch. Chambray tofu vero sed. Street art swag literally leggings, Cosby sweater mixtape PBR lomo Banksy non in pitchfork ennui McSweeney’s selfies. Odd Future Banksy non authentic.&lt;/p&gt;
+
+&lt;p&gt;Aliquip enim artisan dolor post-ironic. Pug tote bag Marfa, deserunt pour-over Portland wolf eu odio intelligentsia american apparel ugh ea. Sunt viral et, 3 wolf moon gastropub pug id. Id fashion axe est typewriter, mlkshk Portland art party aute brunch. Sint pork belly Cosby sweater, deep v mumblecore kitsch american apparel. Try-hard direct trade tumblr sint skateboard. Adipisicing bitters excepteur biodiesel, pickled gastropub aute veniam.&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:footnote&quot;&gt;
+      &lt;p&gt;Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney’s. &lt;a href=&quot;#fnref:footnote&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:coffee&quot;&gt;
+      &lt;p&gt;I like coffee, coffee is good.  &lt;a href=&quot;#fnref:coffee&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Sample Post Style Guide</title>
+    <link href="/arborCollections/articles/sample-post/"/>
+    <updated>2011-03-10T00:00:00-08:00</updated>
+    <id>/arborCollections/articles/sample-post</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Below is just about everything you’ll need to style in the theme. Check the source code to see the many embedded elements within paragraphs.&lt;/p&gt;
+
+&lt;nav class=&quot;toc&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#heading-2-lorem-ipsum-dolor-sit-amet-test-link-adipiscing-elit-this-is-strong-nullam-dignissim-convallis-est-quisque-aliquam&quot;&gt;Heading 2: Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#list-types&quot;&gt;List Types&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#tables&quot;&gt;Tables&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#code-snippets&quot;&gt;Code Snippets&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#buttons&quot;&gt;Buttons&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#badges&quot;&gt;Badges&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#notices&quot;&gt;Notices&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#fieldsets-and-form-elements&quot;&gt;Fieldsets and Form Elements&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/nav&gt;
+
+&lt;h2 id=&quot;heading-2-lorem-ipsum-dolor-sit-amet-test-link-adipiscing-elit-this-is-strong-nullam-dignissim-convallis-est-quisque-aliquam&quot;&gt;Heading 2: Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/h2&gt;
+
+&lt;h3 id=&quot;heading-3-lorem-ipsum-dolor-sit-amet-test-link-adipiscing-elit-this-is-strong-nullam-dignissim-convallis-est-quisque-aliquam&quot;&gt;Heading 3: Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/h3&gt;
+
+&lt;h4 id=&quot;heading-4-lorem-ipsum-dolor-sit-amet-test-link-adipiscing-elit-this-is-strong-nullam-dignissim-convallis-est-quisque-aliquam&quot;&gt;Heading 4: Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/h4&gt;
+
+&lt;h5 id=&quot;heading-5-lorem-ipsum-dolor-sit-amet-test-link-adipiscing-elit-this-is-strong-nullam-dignissim-convallis-est-quisque-aliquam&quot;&gt;Heading 5: Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/h5&gt;
+
+&lt;h6 id=&quot;heading-6-lorem-ipsum-dolor-sit-amet-test-link-adipiscing-elit-this-is-strong-nullam-dignissim-convallis-est-quisque-aliquam&quot;&gt;Heading 6: Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/h6&gt;
+
+&lt;h3 id=&quot;body-text&quot;&gt;Body text&lt;/h3&gt;
+
+&lt;p&gt;Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This is emphasized&lt;/em&gt;. Donec faucibus. Nunc iaculis suscipit dui. 53 = 125. Water is H&lt;sub&gt;2&lt;/sub&gt;O. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. The New York Times &lt;cite&gt;(That’s a citation)&lt;/cite&gt;. &lt;u&gt;Underline&lt;/u&gt;. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.&lt;/p&gt;
+
+&lt;p&gt;HTML and &lt;abbr title=&quot;cascading stylesheets&quot;&gt;CSS&lt;abbr&gt; are our tools. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus.&lt;/abbr&gt;&lt;/abbr&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est. Quisque aliquam.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;cite&gt;First Lastname, &lt;em&gt;The Greatest Article&lt;/em&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;list-types&quot;&gt;List Types&lt;/h2&gt;
+
+&lt;h3 id=&quot;ordered-lists&quot;&gt;Ordered Lists&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Item one
+    &lt;ol&gt;
+      &lt;li&gt;sub item one&lt;/li&gt;
+      &lt;li&gt;sub item two&lt;/li&gt;
+      &lt;li&gt;sub item three&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Item two&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;unordered-lists&quot;&gt;Unordered Lists&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Item one&lt;/li&gt;
+  &lt;li&gt;Item two&lt;/li&gt;
+  &lt;li&gt;Item three&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Header1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Header2&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Header3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cell1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cell2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;cell3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cell4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cell5&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;cell6&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cell1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cell2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;cell3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cell4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cell5&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;cell6&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;code-snippets&quot;&gt;Code Snippets&lt;/h2&gt;
+
+&lt;p&gt;Syntax highlighting via Pygments&lt;/p&gt;
+
+&lt;table class=&quot;highlighttable&quot;&gt;&lt;tr&gt;&lt;td class=&quot;linenos&quot;&gt;&lt;div class=&quot;linenodiv&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;1
+2
+3
+4
+5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
+	&lt;span class=&quot;k&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-240px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
+	&lt;span class=&quot;k&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Non Pygments code example&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&quot;awesome&quot;&amp;gt;
+		&amp;lt;p&amp;gt;This is great isn't it?&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;buttons&quot;&gt;Buttons&lt;/h2&gt;
+
+&lt;p&gt;Make any link standout more when applying the &lt;code&gt;.btn&lt;/code&gt; class.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;btn&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Default Button&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;.btn&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-inverse&quot;&gt;.btn-inverse&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-info&quot;&gt;.btn-info&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-warning&quot;&gt;.btn-warning&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-danger&quot;&gt;.btn-danger&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-success&quot;&gt;.btn-success&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;social-media-buttons&quot;&gt;Social Media Buttons&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;#&quot; class=&quot;btn-social facebook&quot;&gt;&lt;i class=&quot;fa fa-facebook&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Facebook&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-social flickr&quot;&gt;&lt;i class=&quot;fa fa-flickr&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Flickr&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-social foursquare&quot;&gt;&lt;i class=&quot;fa fa-foursquare&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Foursquare&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-social google-plus&quot;&gt;&lt;i class=&quot;fa fa-google-plus&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Google+&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-social instagram&quot;&gt;&lt;i class=&quot;fa fa-instagram&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Instagram&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-social linkedin&quot;&gt;&lt;i class=&quot;fa fa-linkedin&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; LinkedIn&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-social pinterest&quot;&gt;&lt;i class=&quot;fa fa-pinterest&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Pinterest&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-social rss&quot;&gt;&lt;i class=&quot;fa fa-rss&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; RSS&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-social tumblr&quot;&gt;&lt;i class=&quot;fa fa-tumblr&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Tumblr&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-social twitter&quot;&gt;&lt;i class=&quot;fa fa-twitter&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Twitter&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-social vimeo&quot;&gt;&lt;i class=&quot;fa fa-vimeo-square&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Vimeo&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn-social youtube&quot;&gt;&lt;i class=&quot;fa fa-youtube&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; YouTube&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;badges&quot;&gt;Badges&lt;/h2&gt;
+
+&lt;div class=&quot;badges&quot;&gt;
+	&lt;span class=&quot;badge&quot;&gt;1&lt;/span&gt;
+	&lt;span class=&quot;badge inverse&quot;&gt;2&lt;/span&gt;
+	&lt;span class=&quot;badge info&quot;&gt;3&lt;/span&gt;
+	&lt;span class=&quot;badge warning&quot;&gt;4&lt;/span&gt;
+	&lt;span class=&quot;badge danger&quot;&gt;5&lt;/span&gt;
+	&lt;span class=&quot;badge success&quot;&gt;6&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;notices&quot;&gt;Notices&lt;/h2&gt;
+
+&lt;p&gt;Set a block of text off from the rest.&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;&lt;strong&gt;Default Notice:&lt;/strong&gt; &lt;code&gt;.notice&lt;/code&gt; Maecenas ornare tortor. &lt;a href=&quot;&quot;&gt;Donec sed tellus&lt;/a&gt; eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at.&lt;/p&gt;
+
+&lt;div class=&quot;notice&quot;&gt;
+	&lt;h3&gt;Headline&lt;/h3&gt;
+	&lt;div class=&quot;inline-btn&quot;&gt;
+		&lt;a href=&quot;#&quot; class=&quot;btn-social instagram&quot;&gt;&lt;i class=&quot;fa fa-instagram&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Instagram&lt;/a&gt;
+		&lt;a href=&quot;#&quot; class=&quot;btn-social linkedin&quot;&gt;&lt;i class=&quot;fa fa-linkedin&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; LinkedIn&lt;/a&gt;
+	&lt;/div&gt;&lt;!-- /.inline-btn --&gt;
+&lt;/div&gt;
+&lt;!-- /.notice --&gt;
+
+&lt;p class=&quot;notice-inverse&quot;&gt;&lt;strong&gt;Inverse Notice:&lt;/strong&gt; &lt;code&gt;.notice-inverse&lt;/code&gt; Maecenas ornare tortor. Donec sed tellus &lt;a href=&quot;&quot;&gt;eget sapien fringilla&lt;/a&gt; nonummy. Mauris a ante. Suspendisse quam sem, consequat at.&lt;/p&gt;
+
+&lt;p class=&quot;notice-info&quot;&gt;&lt;strong&gt;Info Notice:&lt;/strong&gt; &lt;code&gt;.notice-info&lt;/code&gt; &lt;a href=&quot;&quot;&gt;Maecenas ornare tortor&lt;/a&gt;. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at.&lt;/p&gt;
+
+&lt;p class=&quot;notice-warning&quot;&gt;&lt;strong&gt;Warning Notice:&lt;/strong&gt; &lt;code&gt;.notice-warning&lt;/code&gt; Maecenas ornare tortor. Donec sed &lt;a href=&quot;&quot;&gt;tellus eget&lt;/a&gt; sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at.&lt;/p&gt;
+
+&lt;p class=&quot;notice-danger&quot;&gt;&lt;strong&gt;Danger Notice:&lt;/strong&gt; &lt;code&gt;.notice-danger&lt;/code&gt; Maecenas ornare tortor.&lt;a href=&quot;&quot;&gt; Donec sed tellus&lt;/a&gt; eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at.&lt;/p&gt;
+
+&lt;p class=&quot;notice-success&quot;&gt;&lt;strong&gt;Success Notice:&lt;/strong&gt; &lt;code&gt;.notice-success&lt;/code&gt; Maecenas ornare tortor. Donec sed tellus eget &lt;a href=&quot;&quot;&gt;sapien fringilla&lt;/a&gt; nonummy. Mauris a ante. Suspendisse quam sem, consequat at.&lt;/p&gt;
+
+&lt;h2 id=&quot;fieldsets-and-form-elements&quot;&gt;Fieldsets and Form Elements&lt;/h2&gt;
+
+&lt;fieldset&gt;
+	&lt;form&gt;
+		&lt;h2&gt;Form Element&lt;/h2&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.&lt;/p&gt;
+		&lt;label for=&quot;text_field&quot;&gt;Text Field:&lt;/label&gt;
+		&lt;input type=&quot;text&quot; id=&quot;text_field&quot; /&gt;
+		&lt;label for=&quot;text_area&quot;&gt;Text Area:&lt;/label&gt;
+		&lt;textarea id=&quot;text_area&quot;&gt;&lt;/textarea&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;select_element&quot;&gt;Select Element:&lt;/label&gt;
+			&lt;select name=&quot;select_element&quot;&gt;
+				&lt;optgroup label=&quot;Option Group 1&quot;&gt;
+					&lt;option value=&quot;1&quot;&gt;Option 1&lt;/option&gt;
+					&lt;option value=&quot;2&quot;&gt;Option 2&lt;/option&gt;
+					&lt;option value=&quot;3&quot;&gt;Option 3&lt;/option&gt;
+				&lt;/optgroup&gt;
+				&lt;optgroup label=&quot;Option Group 2&quot;&gt;
+					&lt;option value=&quot;1&quot;&gt;Option 1&lt;/option&gt;
+					&lt;option value=&quot;2&quot;&gt;Option 2&lt;/option&gt;
+					&lt;option value=&quot;3&quot;&gt;Option 3&lt;/option&gt;
+				&lt;/optgroup&gt;
+			&lt;/select&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;radio_buttons&quot;&gt;Radio Buttons:&lt;/label&gt;
+			&lt;label&gt;&lt;input type=&quot;radio&quot; class=&quot;radio&quot; name=&quot;radio_button&quot; value=&quot;radio_1&quot; /&gt;Radio 1&lt;/label&gt;
+			&lt;label&gt;&lt;input type=&quot;radio&quot; class=&quot;radio&quot; name=&quot;radio_button&quot; value=&quot;radio_2&quot; /&gt;Radio 2&lt;/label&gt;
+			&lt;label&gt;&lt;input type=&quot;radio&quot; class=&quot;radio&quot; name=&quot;radio_button&quot; value=&quot;radio_3&quot; /&gt;Radio 3&lt;/label&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;checkboxes&quot;&gt;Checkboxes:&lt;/label&gt;
+			&lt;label&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; name=&quot;checkboxes&quot; value=&quot;check_1&quot; /&gt;Checkbox 1&lt;/label&gt;
+			&lt;label&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; name=&quot;checkboxes&quot; value=&quot;check_2&quot; /&gt;Checkbox 2&lt;/label&gt;
+			&lt;label&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; name=&quot;checkboxes&quot; value=&quot;check_3&quot; /&gt;Checkbox 3&lt;/label&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;password&quot;&gt;Password:&lt;/label&gt;
+			&lt;input type=&quot;password&quot; class=&quot;password&quot; name=&quot;password&quot; /&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;file&quot;&gt;File Input:&lt;/label&gt;
+			&lt;input type=&quot;file&quot; class=&quot;file&quot; name=&quot;file&quot; /&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;input class=&quot;btn&quot; type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+		&lt;/p&gt;
+	&lt;/form&gt;
+&lt;/fieldset&gt;
+
+    </content>
+  </entry>
+  
+  
+</feed>

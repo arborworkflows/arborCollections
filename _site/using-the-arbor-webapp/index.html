@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Using the Arbor webapp • Arbor</title>
+    <meta name="description" content="Overview
+
+">
+    <meta name="keywords" content="">
+    
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="Using the Arbor webapp">
+	<meta name="twitter:description" content="Overview
+
+">
+	<meta name="twitter:site" content="@mmistakes">
+	<meta name="twitter:creator" content="@mmistakes">
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="/arborCollections/images/120x120.gif">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Using the Arbor webapp">
+	<meta property="og:description" content="Overview
+
+">
+	<meta property="og:url" content="/arborCollections/using-the-arbor-webapp/">
+	<meta property="og:site_name" content="Arbor">
+
+    <link rel="canonical" href="/arborCollections/using-the-arbor-webapp/">
+
+    <link href="/arborCollections/atom.xml" type="application/atom+xml" rel="alternate" title="Arbor Atom Feed">
+    <link href="/arborCollections/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="/arborCollections/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="/arborCollections/js/vendor/html5shiv.min.js"></script>
+      <script src="/arborCollections/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="/arborCollections/" class="site-title">Arbor</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Arbor</a></li>
+	
+    
+        
+    
+    <li><a href="/arborCollections/getting-started/" >Getting Started</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/articles/" >Sample Articles</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/media/" >Media</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/about/" >About</a></li>
+  
+</ul>
+
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Arbor <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="/arborCollections/getting-started/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Getting Started</div>
+        <p class="excerpt">Everything you need to know to get started with Skinny Bones and Jekyll.</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/articles/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Sample Articles</div>
+        <p class="excerpt">Examples of long form posts.</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/media/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Media</div>
+        <p class="excerpt">Examples of media posts perfect for showcasing work, photographs, etc.</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/about/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">About</div>
+        <p class="excerpt">All about Skinny Bones for Jekyll.</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      
+
+
+<div class="post-header mb2">
+  <h1>Using the Arbor webapp</h1>
+  <span class="post-meta">Jun 2, 2015</span><br>
+  
+  <span class="post-meta small">9 minute read</span>
+</div>
+
+<article class="post-content">
+  <h2 id="overview">Overview</h2>
+
+<p>So, you want to use the Arbor web app to do some comparative analyses?</p>
+
+<p>The Arbor web app is a flexible workflow engine that will let you carry out a wide range of visualizations
+and analyses. You can upload data files from your computer, or use data from a range of web services.</p>
+
+<p>For this example, I will walk you through the steps you need to use the Arbor web app. I will set up a
+basic analysis of a correlation between two continuous characters using independent contrasts.</p>
+
+<h2 id="get-started">Get started</h2>
+
+<p>You will need the anolis example data files, anolis.phy and anolis.csv, from [Arbor datasets] (/arborCollections/docs_datasets/). Save those files somewhere on your computer.</p>
+
+<p>Now open the <a href="https://arbor.kitware.com">Arbor web app</a>. Your screen should look something like this:</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_1.png" alt="Screenshot 1" /></p>
+
+<p>If you want, you can log in here; we will post more information about Arbor user accounts later. For now, you don’t need to log in, you can do the analyses for this example without an account.</p>
+
+<h2 id="upload-your-data">Upload your data</h2>
+
+<p>Near the bottom of the Arbor web app screen you will see a blue box that says “Browse or drop files.” This is how you can get your data into Arbor. There are two options: either you can click the box and browse to the file you want, or you can drag the file onto the box and let go. Arbor should recognize what type of file you have added (in this case, tree or datafile) and store them in the correct way.</p>
+
+<p>Using this method, load in both anolis.phy and anolis.csv. If you want to make sure that your upload worked, you can use the dropdown menu that says “Save or download data.” If you have properly loaded the files you will see them appear in that list.</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_2.png" alt="Screenshot 2" /></p>
+
+<p><em>This is what my screen looks like after uploading anolis.csv - note that anolis.phy is also in the “Save or download data” dropdown, as I uploaded it just before.</em></p>
+
+<p>Note: Since you have not added your files to any collections, they will appear like this:</p>
+
+<ul>
+  <li>anolis.csv</li>
+  <li>anolis.phy</li>
+</ul>
+
+<p>You may also see the same files stored in a collection, depending on how your web app is set up. If you see versions of those stored files from the “datasets” collection, for example, they will look like this:</p>
+
+<ul>
+  <li>anolis.csv (datasets)</li>
+  <li>anolis.phy (datasets)</li>
+</ul>
+
+<p>Those stored files will work fine for the exercise, but try to use the ones you uploaded so that you can get the hang of using your own data in Arbor. Also, since these datasets are uploaded but not saved, if you <strong>refresh your browser</strong> or even <strong>accidentally go to a different page</strong>, the datasets will be gone when you come back. If you want to save your uploaded data then you should login and make a personal collection.</p>
+
+<h2 id="select-the-collections-you-want">Select the collections you want</h2>
+
+<p>For this exercise, you will use functions from two arbor collections, “base” and “phylogeny.” All available collections are listed to the right side of the Data Management tab.</p>
+
+<p>To gain access to functions in those collections, click the little eyeball next to “base” and “phylogeny.” Your screen should now look like this:</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_3.png" alt="Screenshot 3" /></p>
+
+<h2 id="navigate-to-the-analysis-tab">Navigate to the “analysis” tab</h2>
+
+<p>You are done with the Data Management tab, and will need to move to the “Analysis” tab to carry out your analysis. Click on the Analysis tab to switch. Your screen should now look like this:</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_4.png" alt="Screenshot 4" /></p>
+
+<h2 id="try-out-the-piccorrelation-function">Try out the picCorrelation <strong>function</strong></h2>
+
+<p>We can now do some comparative analyses! Arbor has two types of analyses: functions and workflows. Later, we will build a workflow - but actually, for this problem, there is a single function that we can use to get output immediately.</p>
+
+<p>The function we need is called <strong>picCorrelation</strong>, and it is part of the <em>phylogeny</em> package.</p>
+
+<p>First, select this function (in the <em>Select analysis</em> dropdown menu). You can inspect the function by clicking “Show script” (this example is in R). You should see this:</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_5.png" alt="Screenshot 5" /></p>
+
+<p>You can now run the function by clicking the small blue button that says “&gt; Setup and run.” This brings up a dialog box. Fill in the missing details in this box to analyze hostility (dep_variable) as a function of awesomeness (ind_variable). Choose the table and tree that you entered earlier, and set “plotPICs” to “yes.” Your form should look like this:</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_6.png" alt="Screenshot 6" /></p>
+
+<p>Now press “&gt; Run” and see what happens. If your run works, you should see a <em>success</em> message:</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_7.png" alt="Screenshot 7" /></p>
+
+<p>Here, Arbor is telling us that the function had two outputs:</p>
+
+<ul>
+  <li>picCorrelation picPlot, which is an <em>image</em></li>
+  <li>picCorrelation tableResults, which is a <em>table</em></li>
+</ul>
+
+<p>Let’s have a look at the outputs.</p>
+
+<h2 id="visualize-the-outputs-of-the-piccorrelation-function">Visualize the outputs of the picCorrelation function</h2>
+
+<p>To see the outputs of an Arbor function (or workflow) we can go to the <strong>Visualization</strong> tab. Click on it now. Your screen should look like this:</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_8.png" alt="Screenshot 8" /></p>
+
+<p><em>Note that the top part of the screen did not change, but the bottom tabs and buttons did. That’s ok! Keep going.</em></p>
+
+<p>We can look at the plot first. Set the “Select visualization” dropdown to “image”, and you should see your output, called “picCorrelation picPlot”, appear under “data.” To activate this visualization click on the blue <strong>Update</strong> button. The result should be a plot.</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_9.png" alt="Screenshot 9" /></p>
+
+<p>(You can see more of the plot by clicking on the small downward-facing arrow above the “Log In or Register” section of the screen).</p>
+
+<p>Next, let’s see some numbers. Change “Select visualization” to “table”, and “data” to “picCorrelation tableResults.” Hit update again to see an ANOVA table summarizing the results of the phylogenetic regression.</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_10.png" alt="Screenshot 10" /></p>
+
+<p>The p-value is the top number in the column denoted “Pr(&gt;F).”</p>
+
+<h2 id="build-a-pic-workflow">Build a pic <strong>workflow</strong></h2>
+
+<p>Now let’s try to harness the real power of Arbor by building a simple visual workflow for our analysis. For this part to work you need to be logged in! If you are not logged in you can run existing functions and workflows but you cannot create new ones. You can create an account in Arbor quite easily.</p>
+
+<p>Follow the instructions on <a href="/arborCollections/2015/06/09/creating-a-new-collection/">this page</a> to create an account and start a private collection. Make sure to click on the “write” tab in your new collection, then come back here and finish the tutorial!</p>
+
+<hr />
+
+<p>OK I will assume you did that. Now, go back to the “Analysis” tab. To start your workflow, type a name into the box under “Create new analysis,” then click the “+ New workflow” button. I am going to call my analysis “myPICWorkflow.”</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_11.png" alt="Screenshot 11" /></p>
+
+<p>Once you have done that, your new (empty) workflow will be available under the “Select analysis” tab. To confirm that it is there (and empty!), select it, and click “Show script.” As we’ll be building this workflow, you can also click “Edit.”</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_12.png" alt="Screenshot 12" /></p>
+
+<p>Now all of that empty white space is a blank canvass for your new workflow.</p>
+
+<p>We will build our workflow in three steps:</p>
+
+<ol>
+  <li>Select the function that we need, picCorrelation</li>
+  <li>Link the function inputs that we need</li>
+  <li>Link the function outputs that we need</li>
+</ol>
+
+<p>For step one, use the drop-down menu labeled “Select analysis.” Find the picCorrelation function - it should be labeled “picCorrelation (phylogeny)” to let you know which collection it belongs with. Then click “+ Add to workflow” and you should see this function appear in the workflow as a block.</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_13.png" alt="Screenshot 13" /></p>
+
+<p>The function itself is a large rectangular block. The things sticking out on the left are inputs - you can see their type by hovering the mouse over each one. Squares are data matrices, triangles are phylogenies, and circles represent text values - typically, these circles control how the function works.</p>
+
+<p>Now let’s make some inputs. Click on each of the input tabs for your function to automatically generate function input boxes.</p>
+
+<p>These input boxes are blue to differentiate them from grey functions. They also only have output tabs, no inputs. All of the input boxes that you create will have to be specified by the user when you run the function, as you will see in a second.</p>
+
+<p>In more complicated workflows later, you will use outputs from previous steps as inputs for the next - but don’t worry about that for now.</p>
+
+<p><em>Beware! Sometimes new input blocks pop up right on top of function blocks - so it might look like nothing has happened. Don’t panic - just click on their center and drag them out of the way.</em></p>
+
+<p>You can also rearrange the inputs to look nice.</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_14.png" alt="Screenshot 14" /></p>
+
+<p><em>Note: every tab for function input needs to be connected to something! Either a block that is specified by the user, or another part of the workflow.</em></p>
+
+<p>Almost done - we only need to connect some outputs to see our results. We can do that in the same way that we created inputs - by clicking on function tabs, in this case on the output side, and creating output boxes.</p>
+
+<p>Output boxes are the same color as input boxes but they only have connectors on the left side. Your workflow will create a different output object for each of the output boxes that you create.</p>
+
+<p>You can arrange these to look nice too.</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_15.png" alt="Screenshot 15" /></p>
+
+<h2 id="run-mypicworkflow-workflow">Run myPICWorkflow <strong>workflow</strong></h2>
+
+<p>Once you have built your workflow, you need to save it before running.</p>
+
+<p><em>If you just click run then Arbor will run the workflow as it was the last time you saved - which might not match the workflow you see on the screen!</em></p>
+
+<p>Once you have saved, then click “Setup and run” to start the workflow. You will again have to specify inputs and options. Let’s do the same analysis we did before.</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_16.png" alt="Screenshot 16" /></p>
+
+<p>Now click “&gt; Run.” If your workflow works you will see a green <em>success</em> message.</p>
+
+<p><img src="/arborCollections/assets/usingArborwebapp/usingArborwebapp_17.png" alt="Screenshot 17" /></p>
+
+<p>You will see that we have two new output objects, one is an image and one is a table. You can visualize both of them in the same way as above, using the “Visualization” tab.</p>
+
+<p>If you made it this far, nice work - you built and ran an Arbor workflow!</p>
+
+</article>
+
+
+
+
+
+
+
+
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+        
+      
+			<li><a href="/arborCollections/" >Home</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/getting-started/" >Getting Started</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/about/" >About</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/terms/" >Terms</a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2015 <a href="/arborCollections">Arbor</a> powered by <a href="http://jekyllrb.com">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/">Skinny Bones</a>.</p>
+</footer>
+
+    </div>
+
+    <script src="/arborCollections/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/arborCollections/js/main.js"></script>
+
+  </body>
+</html>
