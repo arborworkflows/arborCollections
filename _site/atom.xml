@@ -9,7 +9,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2015-06-10T14:48:04-07:00</updated>
+  <updated>2015-06-10T15:28:14-07:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Michael Rose</name>
@@ -20,9 +20,9 @@
   
   <entry>
     <title>Discrete ancestral character states</title>
-    <link href="/arborCollections/reconstructing-ancestral-characters-discrete/"/>
+    <link href="/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/"/>
     <updated>2015-06-10T00:00:00-07:00</updated>
-    <id>/arborCollections/reconstructing-ancestral-characters-discrete</id>
+    <id>/arborCollections/tutorials/reconstructing-ancestral-characters-discrete</id>
     <author>
       <name>Michael Rose</name>
       <uri>/arborCollections/</uri>
@@ -101,9 +101,9 @@
   
   <entry>
     <title>Creating a new collection</title>
-    <link href="/arborCollections/creating-a-new-collection/"/>
+    <link href="/arborCollections/tutorials/creating-a-new-collection/"/>
     <updated>2015-06-09T00:00:00-07:00</updated>
-    <id>/arborCollections/creating-a-new-collection</id>
+    <id>/arborCollections/tutorials/creating-a-new-collection</id>
     <author>
       <name>Michael Rose</name>
       <uri>/arborCollections/</uri>
@@ -164,9 +164,9 @@
   
   <entry>
     <title>Using the Arbor webapp</title>
-    <link href="/arborCollections/using-the-arbor-webapp/"/>
+    <link href="/arborCollections/tutorials/using-the-arbor-webapp/"/>
     <updated>2015-06-02T00:00:00-07:00</updated>
-    <id>/arborCollections/using-the-arbor-webapp</id>
+    <id>/arborCollections/tutorials/using-the-arbor-webapp</id>
     <author>
       <name>Michael Rose</name>
       <uri>/arborCollections/</uri>
@@ -358,9 +358,9 @@ basic analysis of a correlation between two continuous characters using independ
   
   <entry>
     <title>What is Arbor?</title>
-    <link href="/arborCollections/what-is-arbor/"/>
+    <link href="/arborCollections/tutorials/what-is-arbor/"/>
     <updated>2015-05-21T00:00:00-07:00</updated>
-    <id>/arborCollections/what-is-arbor</id>
+    <id>/arborCollections/tutorials/what-is-arbor</id>
     <author>
       <name>Michael Rose</name>
       <uri>/arborCollections/</uri>
@@ -423,9 +423,9 @@ basic analysis of a correlation between two continuous characters using independ
   
   <entry>
     <title>Easy mode</title>
-    <link href="/arborCollections/easy-mode/"/>
+    <link href="/arborCollections/tutorials/easy-mode/"/>
     <updated>2015-05-21T00:00:00-07:00</updated>
-    <id>/arborCollections/easy-mode</id>
+    <id>/arborCollections/tutorials/easy-mode</id>
     <author>
       <name>Michael Rose</name>
       <uri>/arborCollections/</uri>

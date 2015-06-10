@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/reconstructing-ancestral-characters-discrete/</loc>
+    <loc>/tutorials/reconstructing-ancestral-characters-discrete/</loc>
     <lastmod>2015-06-10T00:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/creating-a-new-collection/</loc>
+    <loc>/tutorials/creating-a-new-collection/</loc>
     <lastmod>2015-06-09T00:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/using-the-arbor-webapp/</loc>
+    <loc>/tutorials/using-the-arbor-webapp/</loc>
     <lastmod>2015-06-02T00:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/what-is-arbor/</loc>
+    <loc>/tutorials/what-is-arbor/</loc>
     <lastmod>2015-05-21T00:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/easy-mode/</loc>
+    <loc>/tutorials/easy-mode/</loc>
     <lastmod>2015-05-21T00:00:00-07:00</lastmod>
     <priority>0.8</priority>
   </url>
@@ -82,103 +82,109 @@
   </url>
   <url>
     <loc>/404.html</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>/about/</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>/blog.html</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>/contact/</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>/docs.html</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>/docs_base.html</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>/docs_datasets.html</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>/docs_phylogeny.html</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>/easy.html</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>/articles/</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>/</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>/about/</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>/getting-started/</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>/media/</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>/team/</loc>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>/tutorials/</loc>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>/articles/</loc>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>/terms/</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>/getting-started/</loc>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>/old</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>/quick.html</loc>
-    <lastmod>2015-06-10T14:48:04-07:00</lastmod>
+    <lastmod>2015-06-10T15:28:14-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

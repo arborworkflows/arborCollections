@@ -2,14 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Video Post Test • Arbor</title>
-    <meta name="description" content="A post with a YouTube video.">
-    <meta name="keywords" content="video">
+    <title>Easy mode • Arbor</title>
+    <meta name="description" content="What is Easy Mode?
+
+">
+    <meta name="keywords" content="">
     
     
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="Video Post Test">
-	<meta name="twitter:description" content="A post with a YouTube video.">
+	<meta name="twitter:title" content="Easy mode">
+	<meta name="twitter:description" content="What is Easy Mode?
+
+">
 	<meta name="twitter:site" content="@mmistakes">
 	<meta name="twitter:creator" content="@mmistakes">
 	
@@ -19,12 +23,14 @@
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Video Post Test">
-	<meta property="og:description" content="A post with a YouTube video.">
-	<meta property="og:url" content="/arborCollections/articles/video-post-test/">
+	<meta property="og:title" content="Easy mode">
+	<meta property="og:description" content="What is Easy Mode?
+
+">
+	<meta property="og:url" content="/arborCollections/tutorials/easy-mode/">
 	<meta property="og:site_name" content="Arbor">
 
-    <link rel="canonical" href="/arborCollections/articles/video-post-test/">
+    <link rel="canonical" href="/arborCollections/tutorials/easy-mode/">
 
     <link href="/arborCollections/atom.xml" type="application/atom+xml" rel="alternate" title="Arbor Atom Feed">
     <link href="/arborCollections/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
@@ -127,23 +133,64 @@
         <span itemprop="title">Home</span>
       </a> ›
     <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-      <a href="/arborCollections/articles/" itemprop="url">
-        <span itemprop="title">Articles</span>
+      <a href="/arborCollections/tutorials/" itemprop="url">
+        <span itemprop="title">Tutorials</span>
       </a>
     </span>
   </nav><!-- /.breadcrumbs -->
 
 
 		<div class="page-title">
-			<h1>Video Post Test</h1>
+			<h1>Easy mode</h1>
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
-				<p>Here’s a sample video to test FitVid.js</p>
+				<h2 id="what-is-easy-mode">What is Easy Mode?</h2>
 
-<p>If this is working correctly the video should fill the main content container.</p>
+<p>As a part of the Arbor project, we are developing a few simple-to-use web apps that allow users to quickly and easily carry out a few of the most common comparative methods. These pages present a drag-and-drop interface to test for phylogenetic signal, reconstruct ancestral character states, test for character correlations, and other common analyses.</p>
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/9e1nPyHXCFQ" frameborder="0"> </iframe>
+<h2 id="what-can-i-do-in-arbor-easy-mode">What can I do in Arbor Easy Mode?</h2>
+
+<p>To use easy mode, you can navigate to one of our <a href="/arborCollections/easy/index.html">easy mode pages</a>.</p>
+
+<h2 id="walkthrough---phylogenetic-signal-in-easy-mode">Walkthrough - Phylogenetic Signal in Easy Mode</h2>
+
+<p>Let’s walk through one example analysis in easy mode. We will work on testing for phylogenetic signal. I will use two data files for <em>Anolis</em> lizards, linked below.</p>
+
+<ul>
+  <li><a href="/arborCollections/assets/anolis.phy">anolis.phy</a>: a phylogenetic tree of anoles</li>
+  <li><a href="/arborCollections/assets/anolis.csv">anolis.csv</a>: character data for anoles (comma-separated format)</li>
+</ul>
+
+<p>Download these two files, and locate them on your computer’s file browser.</p>
+
+<p>Now, navigate to the Arbor easy mode page for phylogenetic signal. You should see something like this:</p>
+
+<p><img src="/arborCollections/assets/easymode_1.png" alt="Screenshot" /></p>
+
+<p>Next, you need to input your datafiles into the website. You can do that by dragging and dropping the files onto the blue box that says “browse or drop files here.”</p>
+
+<p>When you hover over the correct place, the box will turn green. Arbor can automatically detect whether you have uploaded a tree or a data file.</p>
+
+<p>After you upload both files, you should see them listed in the appropriate place, like this:</p>
+
+<p><img src="/arborCollections/assets/easymode_2.png" alt="Screenshot" /></p>
+
+<p><img src="/arborCollections/assets/easymode_3.png" alt="Screenshot" /></p>
+
+<p>You might also notice that you can see a preview of your input table at the bottom of the page:</p>
+
+<p><img src="/arborCollections/assets/easymode_4.png" alt="Screenshot" /></p>
+
+<p>Now you need to specify a column that will define the trait that you want to use for the phylogenetic signal test. Right now, this test can only handle one trait at a time! Let’s choose “SVL.” Grab that column name from the left hand side and drag and drop it onto the box that says “Drag column of interest here.” You should end up with this:</p>
+
+<p><img src="/arborCollections/assets/easymode_5.png" alt="Screenshot" /></p>
+
+<p>No just press “Go!” and your analysis will run. You should get back a table of results, like this:</p>
+
+<p><img src="/arborCollections/assets/easymode_6.png" alt="Screenshot" /></p>
+
+<p>The last table shows the results of the analysis. The first two columns are the likelihoods of a Brownian motion model and Brownian motion + lambda. The third and fourth represent a chi-squared test comparing a “full” phylogenetic signal model (Brownian motion) with a model where signal is less than Brownian motion (lambda). P &lt; 0.05 means that you can reject BM in favor of the lambda model. The last two columns show AICC scores for these two models. This output is formatted in a very confusing way, we are going to fix it!</p>
 
 				<hr />
 				<footer class="page-footer">
@@ -158,12 +205,12 @@
 	<p class="author-bio">Just another boring, tattooed, time traveling designer.</p>
 </div><!-- ./author-content -->
 					<div class="inline-btn">
-	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Video%20Post%20Test&amp;url=/arborCollections/articles/video-post-test/&amp;via=mmistakes" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
-	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/arborCollections/articles/video-post-test/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
-	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/arborCollections/articles/video-post-test/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Easy%20mode&amp;url=/arborCollections/tutorials/easy-mode/&amp;via=mmistakes" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/arborCollections/tutorials/easy-mode/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/arborCollections/tutorials/easy-mode/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
 </div><!-- /.share-this -->
 					<div class="page-meta">
-	<p>Updated <time datetime="2014-05-31T20:14:02Z" itemprop="datePublished">May 31, 2014</time></p>
+	<p>Updated <time datetime="2015-05-21T00:00:00Z" itemprop="datePublished">May 21, 2015</time></p>
 </div><!-- /.page-meta -->
 				</footer><!-- /.footer -->
 				<aside>
@@ -171,20 +218,7 @@
 				</aside>
 			</div><!-- /.content -->
 		</div><!-- /.inner-wrap -->
-		<div class="ads"><style>
-.responsive-ads { width: 300px; height: 200px; }
-@media(min-width: 520px) { .responsive-ads { width: 468px; height: 60px; } }
-@media(min-width: 768px) { .responsive-ads { width: 160px; height: 600px; } }
-</style>
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle responsive-ads"
-	style="display:inline-block"
-	data-ad-client="ca-pub-7328585512091257"
-	data-ad-slot="3049671934"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script></div><!-- /.ads -->
+		
 	</article><!-- ./wrap -->
 </div><!-- /#main -->
 

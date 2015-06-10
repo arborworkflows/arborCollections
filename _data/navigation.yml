@@ -5,9 +5,9 @@
   excerpt: "Everything you need to know to get started with Skinny Bones and Jekyll."
   image: 400x250.gif
 
-- title: Sample Articles
-  url: /articles/
-  excerpt: "Examples of long form posts."
+- title: Tutorials
+  url: /tutorials/
+  excerpt: "How to use Arbor."
   image: 400x250.gif
 
 - title: Media

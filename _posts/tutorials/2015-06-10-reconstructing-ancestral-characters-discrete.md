@@ -1,5 +1,6 @@
 ---
-layout: post
+layout: article
+categories: tutorials
 title: Discrete ancestral character states
 summary: How to reconstruct discrete ancestral character states on nodes in your tree using Arbor
 ---

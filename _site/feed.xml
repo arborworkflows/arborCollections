@@ -75,8 +75,8 @@
 &lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen8.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/reconstructing-ancestral-characters-discrete/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/reconstructing-ancestral-characters-discrete/</guid>
+        <link>/arborCollections/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/</guid>
       </item>
     
       <item>
@@ -130,8 +130,8 @@
 &lt;p&gt;You can even edit this workflow using the “Edit” button (keep in mind that you have to hit “Save” for the changes to go into effect).&lt;/p&gt;
 </description>
         <pubDate>Tue, 09 Jun 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/creating-a-new-collection/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/creating-a-new-collection/</guid>
+        <link>/arborCollections/arborCollections/tutorials/creating-a-new-collection/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/creating-a-new-collection/</guid>
       </item>
     
       <item>
@@ -316,8 +316,8 @@ basic analysis of a correlation between two continuous characters using independ
 &lt;p&gt;If you made it this far, nice work - you built and ran an Arbor workflow!&lt;/p&gt;
 </description>
         <pubDate>Tue, 02 Jun 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/using-the-arbor-webapp/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/using-the-arbor-webapp/</guid>
+        <link>/arborCollections/arborCollections/tutorials/using-the-arbor-webapp/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/using-the-arbor-webapp/</guid>
       </item>
     
       <item>
@@ -373,8 +373,8 @@ basic analysis of a correlation between two continuous characters using independ
 &lt;p&gt;You can follow our blog, visit our main site, and find our code on github. We will also be hosting a series of hackathons to be announced at a later date.&lt;/p&gt;
 </description>
         <pubDate>Thu, 21 May 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/what-is-arbor/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/what-is-arbor/</guid>
+        <link>/arborCollections/arborCollections/tutorials/what-is-arbor/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/what-is-arbor/</guid>
       </item>
     
       <item>
@@ -427,8 +427,8 @@ basic analysis of a correlation between two continuous characters using independ
 &lt;p&gt;The last table shows the results of the analysis. The first two columns are the likelihoods of a Brownian motion model and Brownian motion + lambda. The third and fourth represent a chi-squared test comparing a “full” phylogenetic signal model (Brownian motion) with a model where signal is less than Brownian motion (lambda). P &amp;lt; 0.05 means that you can reject BM in favor of the lambda model. The last two columns show AICC scores for these two models. This output is formatted in a very confusing way, we are going to fix it!&lt;/p&gt;
 </description>
         <pubDate>Thu, 21 May 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/easy-mode/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/easy-mode/</guid>
+        <link>/arborCollections/arborCollections/tutorials/easy-mode/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/easy-mode/</guid>
       </item>
     
       <item>
