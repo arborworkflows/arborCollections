@@ -1,17 +1,8 @@
-<header class="site-header px2 px-responsive">
-  <div class="mt2 wrap">
-    <div class="measure">
-      <a href="{{ site.url }}" class="site-title">{{ site.title }}</a>
-      <nav class="site-nav right">
+<header id="masthead">
+  <div class="inner-wrap">
+    <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
+    <nav role="navigation" class="menu top-menu">
         {% include navigation.html %}
-      </nav>
-      <div class="clearfix"></div>
-      {% if site.show_social_icons %}
-        {% include social_links.html %}
-      {% endif %}
-      <br><br>
-      <img src="{{ site.baseurl}}/images/arbor_in_real_life.jpg" width="100%">
-
-    </div>
-  </div>
-</header>
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->

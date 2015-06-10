@@ -1,0 +1,21 @@
+# Site navigation links
+
+- title: Getting Started
+  url: /getting-started/
+  excerpt: "Everything you need to know to get started with Skinny Bones and Jekyll."
+  image: 400x250.gif
+
+- title: Tutorials
+  url: /tutorials/
+  excerpt: "How to use Arbor."
+  image: 400x250.gif
+
+- title: Easy mode
+  url: /easymode/
+  excerpt: "Easy mode apps."
+  image: 400x250.gif
+
+- title: Documentation
+  url: /documentation/
+  excerpt: "Full documentation for functions and workflows"
+  image: 400x250.gif

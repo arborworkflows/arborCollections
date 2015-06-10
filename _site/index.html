@@ -1,131 +1,206 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Arbor Workflows &#8211; Arbor</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Arbor workflows">
-    <meta name="author" content="Luke Harmon">
+    <title>Arbor</title>
     
+    
+    
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="Arbor">
+	
+	<meta name="twitter:site" content="@mmistakes">
+	<meta name="twitter:creator" content="@mmistakes">
+	
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="/arborCollections/images/branch-1600x800.jpg">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Arbor">
+	
+	<meta property="og:url" content="/arborCollections/">
+	<meta property="og:site_name" content="Arbor">
+    <link rel="author" href="https://plus.google.com/+MichaelRoseDesign"/>
+
     <link rel="canonical" href="/arborCollections/">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/arborCollections/css/pixyll.css" type="text/css">
+    <link href="/arborCollections/atom.xml" type="application/atom+xml" rel="alternate" title="Arbor Atom Feed">
 
-    <!-- Fonts -->
-    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="/arborCollections/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="/arborCollections/js/vendor/html5shiv.min.js"></script>
+      <script src="/arborCollections/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="/arborCollections/" class="site-title">Arbor</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Arbor</a></li>
+	
+    
+        
+    
+    <li><a href="/arborCollections/getting-started/" >Getting Started</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/tutorials/" >Tutorials</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/easymode/" >Easy mode</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/documentation/" >Documentation</a></li>
+  
+</ul>
+
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Arbor <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="/arborCollections/getting-started/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Getting Started</div>
+        <p class="excerpt">Everything you need to know to get started with Skinny Bones and Jekyll.</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/tutorials/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Tutorials</div>
+        <p class="excerpt">How to use Arbor.</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/easymode/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Easy mode</div>
+        <p class="excerpt">Easy mode apps.</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/documentation/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Documentation</div>
+        <p class="excerpt">Full documentation for functions and workflows</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    
+    <div class="page-lead" style="background-image:url(/arborCollections/images/branch-1600x800.jpg)">
+      <div class="wrap page-lead-content">
+        <h1>Arbor workflows</h1>
+        <h2>Visual workflows for phylogenetic comparative methods.</h2>
+        <a href="http://arbor.kitware.com" class="btn-inverse">Start Using Arbor</a> &nbsp; or &nbsp;
+        <a href="" class="btn-inverse">Arbor basics</a>
+      </div><!-- /.page-lead-content -->
+    </div><!-- /.page-lead -->
     
 
-
-    <!-- Open Graph -->
-    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
-    <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Arbor Workflows">
-    <meta property="og:description" content="Arbor workflows">
-    <meta property="og:url" content="/index.html">
-    <meta property="og:site_name" content="Arbor">
-
-    <!-- Icons -->
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <div id="page-wrapper">
+      <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
 
 
-    
-</head>
+      <div id="main" role="main">
+        <div class="wrap">
+          <div class="page-title">
+            <h1></h1>
+            
+          </div>
+          <div class="archive-wrap">
+            <div class="page-content">
+              <div class="tiles">
 
-<body class="">
-  <div class="site-wrap">
-    <header class="site-header px2 px-responsive">
-  <div class="mt2 wrap">
-    <div class="measure">
-      <a href="" class="site-title">Arbor</a>
-      <nav class="site-nav right">
-        <a href="/arborCollections/about/">About</a>
-<a href="/arborCollections/contact/">Contact</a>
+<div class="tile">
+  <h2 class="post-title">Visual workflows</h2>
+  <p class="post-excerpt">Build your analyses.</p>
+</div><!-- /.tile -->
 
-      </nav>
-      <div class="clearfix"></div>
+<div class="tile">
+  <h2 class="post-title">Web services</h2>
+  <p class="post-excerpt">Real-time data over the web.</p>
+</div><!-- /.tile -->
+
+<div class="tile">
+  <h2 class="post-title">Megaphylogenies</h2>
+  <p class="post-excerpt">Analyze trees with thousands of tips.</p>
+</div><!-- /.tile -->
+
+<div class="tile">
+  <h2 class="post-title">Open-source</h2>
+  <p class="post-excerpt">Code can be downloaded, modified, and shared.</p>
+</div><!-- /.tile -->
+
+</div>
+<!-- /.tiles -->
+
+            </div><!-- /.page-content -->
+          </div class="archive-wrap"><!-- /.archive-wrap -->
+        </div><!-- /.wrap -->
+      </div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
       
-      <br><br>
-      <img src="/arborCollections/images/arbor_in_real_life.jpg" width="100%">
-
-    </div>
-  </div>
-</header>
-
-
-    <div class="post p2 p-responsive wrap" role="main">
-      <div class="measure">
-            <div class="post p2 p-responsive wrap" role="main">
-      <div class="measure">
-        <h2 id="use-arbor">Use Arbor</h2>
-
-<p><a href="https://arbor.kitware.com/#"><img src="/arborCollections/assets/arbor_square.jpeg" alt="arbor"> Build workflows</a> | <a href="/arborCollections/easy"><img src="/arborCollections/assets/easy_mode.jpeg" alt="easy"> Easy mode</a></p>
-
-<hr>
-
-<h2 id="get-help">Get help</h2>
-
-<p><a href="/arborCollections/quick"><i class="fa fa-coffee fa-2x"></i> Quick start</a> | <a href="/arborCollections/docs"><i class="fa fa-book fa-2x"></i> Documentation</a></p>
-
-<hr>
-
-<h2 id="interact-with-us">Interact with us</h2>
-
-<p><a href="/arborCollections/blog"><i class="fa fa-quote-left fa-2x"></i> Arbor blog</a></p>
-
-<hr>
-
-<div class="posts">
-    
-  </div>
-
-  <div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    
-      <span class="pagination-item disabled">Newer</span>
-    
-  </div>
-  <div class="right">
-    
-      <span class="pagination-item disabled">Older</span>
-    
-  </div>
-</div>
-
-</div>
-
-      </div>
-    </div>
-  </div>
-
-  <footer class="footer">
-  <div class="p2 wrap">
-    <div class="measure mt1 center">
-      <small>
-        By the Arbor team.<br>
-        Jekyll pixyll theme by <a href="http://johnotander.com">John Otander</a>.
-      </small>
-    </div>
-  </div>
+        
+      
+			<li><a href="/arborCollections/" >Home</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/getting-started/" >Getting Started</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/about/" >About</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/team/" >Team</a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2015 <a href="/arborCollections">Arbor</a> powered by <a href="http://jekyllrb.com">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/">Skinny Bones</a>.</p>
 </footer>
 
-</body>
+    </div>
+
+    <script src="/arborCollections/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/arborCollections/js/main.js"></script>
+
+  </body>
+
 </html>

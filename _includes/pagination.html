@@ -1,20 +1,15 @@
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    {% if paginator.previous_page %}
-      {% if paginator.page == 2 %}
-        <a class="pagination-item" href="{{ site.baseurl }}/">Newer</a>
-      {% else %}
-        <a class="pagination-item" href="{{ site.baseurl }}/page{{paginator.previous_page}}/">Newer</a>
-      {% endif %}
-    {% else %}
-      <span class="pagination-item disabled">Newer</span>
+<nav class="pagination">
+  {% capture category_name %}{{ page.categories | first }}{% endcapture %}
+  {% for post in site.categories.[category_name] %}
+    {% if post.url == page.url %}
+      {% assign post_index0 = forloop.index0 %}
+      {% assign post_index1 = forloop.index %}
     {% endif %}
-  </div>
-  <div class="right">
-    {% if paginator.next_page %}
-      <a class="pagination-item" href="{{ site.baseurl }}/page{{paginator.next_page}}/">Older</a>
-    {% else %}
-      <span class="pagination-item disabled">Older</span>
-    {% endif %}
-  </div>
-</div>
+  {% endfor %}
+  {% for post in site.categories.[category_name] %}
+    {% if post_index0 == forloop.index %}{% assign next_post = post %}{% endif %}
+    {% if post_index1 == forloop.index0 %}{% assign prev_post = post %}{% endif %}
+  {% endfor %}
+  {% if prev_post %}<a class="prev" href="{{ site.baseurl }}{{ prev_post.url }}">{{ prev_post.title }}</a>{% endif %}
+  {% if next_post %}<a class="next" href="{{ site.baseurl }}{{ next_post.url }}">{{ next_post.title }}</a>{% endif %}
+</nav>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Discrete ancestral character states • Arbor</title>
+    <meta name="description" content="Overview
+
+">
+    <meta name="keywords" content="">
+    
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="Discrete ancestral character states">
+	<meta name="twitter:description" content="Overview
+
+">
+	<meta name="twitter:site" content="@mmistakes">
+	<meta name="twitter:creator" content="@mmistakes">
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="/arborCollections/images/120x120.gif">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Discrete ancestral character states">
+	<meta property="og:description" content="Overview
+
+">
+	<meta property="og:url" content="/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/">
+	<meta property="og:site_name" content="Arbor">
+
+    <link rel="canonical" href="/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/">
+
+    <link href="/arborCollections/atom.xml" type="application/atom+xml" rel="alternate" title="Arbor Atom Feed">
+    <link href="/arborCollections/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="/arborCollections/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="/arborCollections/js/vendor/html5shiv.min.js"></script>
+      <script src="/arborCollections/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="/arborCollections/" class="site-title">Arbor</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Arbor</a></li>
+	
+    
+        
+    
+    <li><a href="/arborCollections/getting-started/" >Getting Started</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/tutorials/" >Tutorials</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/easymode/" >Easy mode</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/documentation/" >Documentation</a></li>
+  
+</ul>
+
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Arbor <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="/arborCollections/getting-started/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Getting Started</div>
+        <p class="excerpt">Everything you need to know to get started with Skinny Bones and Jekyll.</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/tutorials/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Tutorials</div>
+        <p class="excerpt">How to use Arbor.</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/easymode/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Easy mode</div>
+        <p class="excerpt">Easy mode apps.</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/documentation/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Documentation</div>
+        <p class="excerpt">Full documentation for functions and workflows</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		
+		
+  <nav class="breadcrumbs">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="/arborCollections" itemprop="url">
+        <span itemprop="title">Home</span>
+      </a> ›
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="/arborCollections/tutorials/" itemprop="url">
+        <span itemprop="title">Tutorials</span>
+      </a>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+
+		<div class="page-title">
+			<h1>Discrete ancestral character states</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				<h2 id="overview">Overview</h2>
+
+<p>In this exercise, we will learn how to reconstruct ancestral character states in Arbor for a discrete character - that is, a character that can take on one of a number of discrete values. Examples might be lizards, “legs” versus “no legs” - this would be a two-state discrete character. Another example would be animal locomotion - “walks,” “swims,” or “flies.” This is an example of a three-state discrete character.</p>
+
+<p>Imagine that you have a phylogenetic tree with information on some discrete character for some or all of the tips. You want to use mathematical methods to reconstruct the ancestral character states on the internal nodes of the tree. Then, this is the exercise for you!</p>
+
+<h2 id="loading-example-data">Loading example data</h2>
+
+<p>You will need the anolis example data files, anolis.phy and anolis.csv, from [Arbor datasets] (/arborCollections/docs_datasets/). Save those files somewhere on your computer.</p>
+
+<p>Now open the <a href="https://arbor.kitware.com">Arbor web app</a>. Drag and drop the two anolis data files on the blue “Browse or drop files” box to load them into your browser.</p>
+
+<p>Finally, <a href="/arborCollections/2015/06/09/creating-a-new-collection/">log in and create a personal collection</a>.</p>
+
+<h2 id="selecting-the-collections-that-you-need">Selecting the collections that you need</h2>
+
+<p>For this example, everything required is in the “phylogeny” collection - so click on that eyeball and you will be able to access the functions that you need.</p>
+
+<p>At this point, you should have the two anolis datafiles stored in Arbor and the “phylogeny” collection available. You should be logged in and have write access to your own private collection.</p>
+
+<h2 id="set-up-your-workflow">Set up your workflow</h2>
+
+<p>The main function in Arbor for ancestral state reconstruction is aceAcbor in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).</p>
+
+<p><img src="/arborCollections/assets/discreteACE/screen1.png" alt="Screenshot" /></p>
+
+<p>You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called “DiscreteAncestralStatesWorkflow”. Make sure to choose “New workflow” and not “New analysis”!</p>
+
+<p><img src="/arborCollections/assets/discreteACE/screen2.png" alt="Screenshot" /></p>
+
+<p>Now create the connections you need to make the workflow run. First, click the “edit” button to start working on the workflow.</p>
+
+<p>Now add the aceArbor function by selecting it under “Select analysis.” When you click “Add to workflow” then the function shoud appear in your workspace.</p>
+
+<p><img src="/arborCollections/assets/discreteACE/screen3.png" alt="Screenshot" /></p>
+
+<p>Now create the inputs and outputs of the function by clicking on the “spokes” coming out of aceArbor. You should also move the blocks around to make your workflow look nice.</p>
+
+<p><img src="/arborCollections/assets/discreteACE/functionPopup.gif" alt="Screenshot" /></p>
+
+<p>Final result:</p>
+
+<p><img src="/arborCollections/assets/discreteACE/screen4.png" alt="Screenshot" /></p>
+
+<p><strong>Once you have a workflow that looks the way you want, click save!</strong> If you do not do this you will be running the workflow at the last point it was saved and not what is shown on the screen.</p>
+
+<h2 id="run-your-workflow">Run your workflow</h2>
+
+<p>Click “Setup and run” to run your workflow. Select these options:</p>
+
+<p><img src="/arborCollections/assets/discreteACE/screen5.png" alt="Screenshot" /></p>
+
+<p>If your analysis worked, you should see the following message:</p>
+
+<p><img src="/arborCollections/assets/discreteACE/screen6.png" alt="Screenshot" /></p>
+
+<h2 id="see-your-results">See your results</h2>
+
+<p>Now move over to the “visualization” tab to see your results. First, select “image” under “Select visualization”, and choose your tree plot under “data” (it should be called DiscreteAncestralStatesWorkflow treePlot). Click “update” to see this result:</p>
+
+<p><img src="/arborCollections/assets/discreteACE/screen7.png" alt="Screenshot" /></p>
+
+<p>To see the results in table format, choose “table” and “DiscreteAncestralStatesWorkflow res”. Update gives you this table, which is presently useless. Sorry!</p>
+
+<p><img src="/arborCollections/assets/discreteACE/screen8.png" alt="Screenshot" /></p>
+
+				<hr />
+				<footer class="page-footer">
+					
+
+
+<div class="author-image">
+	<img src="/arborCollections/images/bio-photo.jpg" alt="Michael Rose">
+</div><!-- ./author-image -->
+<div class="author-content">
+	<h3 class="author-name" >Written by <a href="http://mademistakes.com" itemprop="author">Michael Rose</a></h3>
+	<p class="author-bio">Just another boring, tattooed, time traveling designer.</p>
+</div><!-- ./author-content -->
+					<div class="inline-btn">
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Discrete%20ancestral%20character%20states&amp;url=/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/&amp;via=mmistakes" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+</div><!-- /.share-this -->
+					<div class="page-meta">
+	<p>Updated <time datetime="2015-06-10T00:00:00Z" itemprop="datePublished">June 10, 2015</time></p>
+</div><!-- /.page-meta -->
+				</footer><!-- /.footer -->
+				<aside>
+					
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		
+	</article><!-- ./wrap -->
+</div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+        
+      
+			<li><a href="/arborCollections/" >Home</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/getting-started/" >Getting Started</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/about/" >About</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/team/" >Team</a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2015 <a href="/arborCollections">Arbor</a> powered by <a href="http://jekyllrb.com">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/">Skinny Bones</a>.</p>
+</footer>
+
+    </div>
+
+    <script src="/arborCollections/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/arborCollections/js/main.js"></script>
+
+  </body>
+</html>
