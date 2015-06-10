@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arbor</title>
+    <description></description>
+    <link>http://lukejharmon.github.io/arborCollections/arborCollections/</link>
+    <atom:link href="http://lukejharmon.github.io/arborCollections/arborCollections/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Discrete ancestral character states</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;In this exercise, we will learn how to reconstruct ancestral character states in Arbor for a discrete character - that is, a character that can take on one of a number of discrete values. Examples might be lizards, &amp;ldquo;legs&amp;rdquo; versus &amp;ldquo;no legs&amp;rdquo; - this would be a two-state discrete character. Another example would be animal locomotion - &amp;ldquo;walks,&amp;rdquo; &amp;ldquo;swims,&amp;rdquo; or &amp;ldquo;flies.&amp;rdquo; This is an example of a three-state discrete character.&lt;/p&gt;
+
+&lt;p&gt;Imagine that you have a phylogenetic tree with information on some discrete character for some or all of the tips. You want to use mathematical methods to reconstruct the ancestral character states on the internal nodes of the tree. Then, this is the exercise for you!&lt;/p&gt;
+
+&lt;h2 id=&quot;loading-example-data&quot;&gt;Loading example data&lt;/h2&gt;
+
+&lt;p&gt;You will need the anolis example data files, anolis.phy and anolis.csv, from &lt;a href=&quot;/arborCollections/docs_datasets/&quot;&gt;Arbor datasets&lt;/a&gt;. Save those files somewhere on your computer.&lt;/p&gt;
+
+&lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Drag and drop the two anolis data files on the blue &amp;ldquo;Browse or drop files&amp;rdquo; box to load them into your browser.&lt;/p&gt;
+
+&lt;p&gt;Finally, &lt;a href=&quot;/arborCollections/2015/06/09/creating-a-new-collection/&quot;&gt;log in and create a personal collection&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;selecting-the-collections-that-you-need&quot;&gt;Selecting the collections that you need&lt;/h2&gt;
+
+&lt;p&gt;For this example, everything required is in the &amp;ldquo;phylogeny&amp;rdquo; collection - so click on that eyeball and you will be able to access the functions that you need.&lt;/p&gt;
+
+&lt;p&gt;At this point, you should have the two anolis datafiles stored in Arbor and the &amp;ldquo;phylogeny&amp;rdquo; collection available. You should be logged in and have write access to your own private collection.&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-your-workflow&quot;&gt;Set up your workflow&lt;/h2&gt;
+
+&lt;p&gt;The main function in Arbor for ancestral state reconstruction is aceAcbor in the &amp;ldquo;phylogeny&amp;rdquo; collection. Select that function now. You can view the source code for it by choosing &amp;ldquo;show script&amp;rdquo; (it is in R).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen1.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called &amp;ldquo;DiscreteAncestralStatesWorkflow&amp;rdquo;. Make sure to choose &amp;ldquo;New workflow&amp;rdquo; and not &amp;ldquo;New analysis&amp;rdquo;!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen2.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Now create the connections you need to make the workflow run. First, click the &amp;ldquo;edit&amp;rdquo; button to start working on the workflow.&lt;/p&gt;
+
+&lt;p&gt;Now add the aceArbor function by selecting it under &amp;ldquo;Select analysis.&amp;rdquo; When you click &amp;ldquo;Add to workflow&amp;rdquo; then the function shoud appear in your workspace.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen3.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Now create the inputs and outputs of the function by clicking on the &amp;ldquo;spokes&amp;rdquo; coming out of aceArbor. You should also move the blocks around to make your workflow look nice.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/functionPopup.gif&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Final result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen4.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Once you have a workflow that looks the way you want, click save!&lt;/strong&gt; If you do not do this you will be running the workflow at the last point it was saved and not what is shown on the screen.&lt;/p&gt;
+
+&lt;h2 id=&quot;run-your-workflow&quot;&gt;Run your workflow&lt;/h2&gt;
+
+&lt;p&gt;Click &amp;ldquo;Setup and run&amp;rdquo; to run your workflow. Select these options:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen5.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;If your analysis worked, you should see the following message:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen6.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;see-your-results&quot;&gt;See your results&lt;/h2&gt;
+
+&lt;p&gt;Now move over to the &amp;ldquo;visualization&amp;rdquo; tab to see your results. First, select &amp;ldquo;image&amp;rdquo; under &amp;ldquo;Select visualization&amp;rdquo;, and choose your tree plot under &amp;ldquo;data&amp;rdquo; (it should be called DiscreteAncestralStatesWorkflow treePlot). Click &amp;ldquo;update&amp;rdquo; to see this result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen7.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;To see the results in table format, choose &amp;ldquo;table&amp;rdquo; and &amp;ldquo;DiscreteAncestralStatesWorkflow res&amp;rdquo;. Update gives you this table, which is presently useless. Sorry!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen8.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
+        <link>http://lukejharmon.github.io/arborCollections/arborCollections/2015/06/10/reconstructing-ancestral-characters-discrete/</link>
+        <guid isPermaLink="true">http://lukejharmon.github.io/arborCollections/arborCollections/2015/06/10/reconstructing-ancestral-characters-discrete/</guid>
+      </item>
+    
+      <item>
+        <title>Creating a new collection</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;When working in Arbor, you will be uploading your own data, and may want to create your own functions and workflows. Everything in Arbor is organized into collections (for example, the phylogeny and base collections). You can create your own collection to store data and workflows. Later I will discuss how you can share any items in your collection with colleagues.&lt;/p&gt;
+
+&lt;h2 id=&quot;get-started&quot;&gt;Get started&lt;/h2&gt;
+
+&lt;p&gt;You will need to open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. For this exercise, you will need to log in; we will post more information about Arbor user accounts later.&lt;/p&gt;
+
+&lt;p&gt;Once you are logged in, your screen should look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen1.png&quot; alt=&quot;Screenshot 1&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;You will eventually need the anolis example data files, anolis.phy and anolis.csv, from &lt;a href=&quot;/arborCollections/docs_datasets/&quot;&gt;Arbor datasets&lt;/a&gt;. Save those files somewhere on your computer.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-a-new-collection&quot;&gt;Create a new collection&lt;/h2&gt;
+
+&lt;p&gt;On the left side of the screen, just below the &amp;ldquo;Browse or drop files&amp;rdquo; box, is the place you will need to focus to create your new collection. In the box there you can type the name of a new collection - let&amp;rsquo;s use &lt;em&gt;testCollection&lt;/em&gt; here, so type that in the box. If you want the collection to be public, you can tick the &lt;em&gt;public&lt;/em&gt; box. Otherwise, the collection will be private and only visible to you. Keep this test collection private for this example. Now click the &amp;ldquo;New collection&amp;rdquo; button, and your collection will be created.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen2.png&quot; alt=&quot;Screenshot 2&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Immediately after creating my new collection. Did it work?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Scroll down to see more collections, the one you just created will be at the bottom. Click on both the &amp;ldquo;eye&amp;rdquo; and the &amp;ldquo;pencil&amp;rdquo; next to your collection. The &amp;ldquo;eye&amp;rdquo; lets you see the things in your collection, and the pencil gives write access so that you can add things to the collection (and delete!).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen3.png&quot; alt=&quot;Screenshot 3&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;saving-data-to-your-new-collection&quot;&gt;Saving data to your new collection&lt;/h2&gt;
+
+&lt;p&gt;Once you have created your collection, you can add data to it. Drag the &amp;ldquo;anolis.csv&amp;rdquo; file to the &amp;ldquo;Browse or drop files&amp;rdquo; box to load it into your browser. You can now save this file to your new collection. To do that, scroll down to the very bottom of the bottom browser frame, where you should see &amp;ldquo;Save or download data.&amp;rdquo; &amp;ldquo;anolis.csv&amp;rdquo; should show up there.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen4.png&quot; alt=&quot;Screenshot 4&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;As long as the pencil next to your new collection is highlighted, you can now click &amp;ldquo;Save to checked collection&amp;rdquo; to save this data file to the new collection. Try that now. The name of the collection should show up next to the datafile:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen5.png&quot; alt=&quot;Screenshot 5&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-new-analyses-and-workflows-in-your-new-collection&quot;&gt;Creating new analyses and workflows in your new collection&lt;/h2&gt;
+
+&lt;p&gt;Now, move over to the &amp;ldquo;Analysis&amp;rdquo; tab. You can create new analyses and workflows in your new collection by clicking on &amp;ldquo;+ New analysis&amp;rdquo; or &amp;ldquo;+ New workflow.&amp;rdquo; Since those will both be covered in other tutorial pages, I will show you how to load in a workflow file that has been downloaded in JSON format. Imagine, for example, that a colleague emailed you an arbor workflow called mywork.json. You can download such a file &lt;a href=&quot;/arborCollections/assets/creatingaCollection/mywork.json&quot;&gt;here&lt;/a&gt;. Now, to load that workflow into your new collection, click on &amp;ldquo;Upload&amp;hellip; &amp;rdquo; and find the mywork.json file. The new workflow is now in your collection!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen6.png&quot; alt=&quot;Screenshot 6&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;You can see the new workflow by clicking &amp;ldquo;Show script.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen7.png&quot; alt=&quot;Screenshot 7&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;You can even edit this workflow using the &amp;ldquo;Edit&amp;rdquo; button (keep in mind that you have to hit &amp;ldquo;Save&amp;rdquo; for the changes to go into effect).&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Jun 2015 00:00:00 -0700</pubDate>
+        <link>http://lukejharmon.github.io/arborCollections/arborCollections/2015/06/09/creating-a-new-collection/</link>
+        <guid isPermaLink="true">http://lukejharmon.github.io/arborCollections/arborCollections/2015/06/09/creating-a-new-collection/</guid>
+      </item>
+    
+      <item>
+        <title>Using the Arbor webapp</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;So, you want to use the Arbor web app to do some comparative analyses?&lt;/p&gt;
+
+&lt;p&gt;The Arbor web app is a flexible workflow engine that will let you carry out a wide range of visualizations
+and analyses. You can upload data files from your computer, or use data from a range of web services.&lt;/p&gt;
+
+&lt;p&gt;For this example, I will walk you through the steps you need to use the Arbor web app. I will set up a
+basic analysis of a correlation between two continuous characters using independent contrasts.&lt;/p&gt;
+
+&lt;h2 id=&quot;get-started&quot;&gt;Get started&lt;/h2&gt;
+
+&lt;p&gt;You will need the anolis example data files, anolis.phy and anolis.csv, from &lt;a href=&quot;/arborCollections/docs_datasets/&quot;&gt;Arbor datasets&lt;/a&gt;. Save those files somewhere on your computer.&lt;/p&gt;
+
+&lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Your screen should look something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_1.png&quot; alt=&quot;Screenshot 1&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want, you can log in here; we will post more information about Arbor user accounts later. For now, you don&amp;rsquo;t need to log in, you can do the analyses for this example without an account.&lt;/p&gt;
+
+&lt;h2 id=&quot;upload-your-data&quot;&gt;Upload your data&lt;/h2&gt;
+
+&lt;p&gt;Near the bottom of the Arbor web app screen you will see a blue box that says &amp;ldquo;Browse or drop files.&amp;rdquo; This is how you can get your data into Arbor. There are two options: either you can click the box and browse to the file you want, or you can drag the file onto the box and let go. Arbor should recognize what type of file you have added (in this case, tree or datafile) and store them in the correct way.&lt;/p&gt;
+
+&lt;p&gt;Using this method, load in both anolis.phy and anolis.csv. If you want to make sure that your upload worked, you can use the dropdown menu that says &amp;ldquo;Save or download data.&amp;rdquo; If you have properly loaded the files you will see them appear in that list.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_2.png&quot; alt=&quot;Screenshot 2&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This is what my screen looks like after uploading anolis.csv - note that anolis.phy is also in the &amp;ldquo;Save or download data&amp;rdquo; dropdown, as I uploaded it just before.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Note: Since you have not added your files to any collections, they will appear like this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;anolis.csv&lt;/li&gt;
+&lt;li&gt;anolis.phy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You may also see the same files stored in a collection, depending on how your web app is set up. If you see versions of those stored files from the &amp;ldquo;datasets&amp;rdquo; collection, for example, they will look like this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;anolis.csv (datasets)&lt;/li&gt;
+&lt;li&gt;anolis.phy (datasets)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Those stored files will work fine for the exercise, but try to use the ones you uploaded so that you can get the hang of using your own data in Arbor. Also, since these datasets are uploaded but not saved, if you &lt;strong&gt;refresh your browser&lt;/strong&gt; or even &lt;strong&gt;accidentally go to a different page&lt;/strong&gt;, the datasets will be gone when you come back. If you want to save your uploaded data then you should login and make a personal collection.&lt;/p&gt;
+
+&lt;h2 id=&quot;select-the-collections-you-want&quot;&gt;Select the collections you want&lt;/h2&gt;
+
+&lt;p&gt;For this exercise, you will use functions from two arbor collections, &amp;ldquo;base&amp;rdquo; and &amp;ldquo;phylogeny.&amp;rdquo; All available collections are listed to the right side of the Data Management tab.&lt;/p&gt;
+
+&lt;p&gt;To gain access to functions in those collections, click the little eyeball next to &amp;ldquo;base&amp;rdquo; and &amp;ldquo;phylogeny.&amp;rdquo; Your screen should now look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_3.png&quot; alt=&quot;Screenshot 3&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;navigate-to-the-&amp;quot;analysis&amp;quot;-tab&quot;&gt;Navigate to the &amp;ldquo;analysis&amp;rdquo; tab&lt;/h2&gt;
+
+&lt;p&gt;You are done with the Data Management tab, and will need to move to the &amp;ldquo;Analysis&amp;rdquo; tab to carry out your analysis. Click on the Analysis tab to switch. Your screen should now look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_4.png&quot; alt=&quot;Screenshot 4&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;try-out-the-piccorrelation-function&quot;&gt;Try out the picCorrelation &lt;strong&gt;function&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;We can now do some comparative analyses! Arbor has two types of analyses: functions and workflows. Later, we will build a workflow - but actually, for this problem, there is a single function that we can use to get output immediately.&lt;/p&gt;
+
+&lt;p&gt;The function we need is called &lt;strong&gt;picCorrelation&lt;/strong&gt;, and it is part of the &lt;em&gt;phylogeny&lt;/em&gt; package.&lt;/p&gt;
+
+&lt;p&gt;First, select this function (in the &lt;em&gt;Select analysis&lt;/em&gt; dropdown menu). You can inspect the function by clicking &amp;ldquo;Show script&amp;rdquo; (this example is in R). You should see this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_5.png&quot; alt=&quot;Screenshot 5&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;You can now run the function by clicking the small blue button that says &amp;ldquo;&amp;gt; Setup and run.&amp;rdquo; This brings up a dialog box. Fill in the missing details in this box to analyze hostility (dep&lt;em&gt;variable) as a function of awesomeness (ind&lt;/em&gt;variable). Choose the table and tree that you entered earlier, and set &amp;ldquo;plotPICs&amp;rdquo; to &amp;ldquo;yes.&amp;rdquo; Your form should look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_6.png&quot; alt=&quot;Screenshot 6&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Now press &amp;ldquo;&amp;gt; Run&amp;rdquo; and see what happens. If your run works, you should see a &lt;em&gt;success&lt;/em&gt; message:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_7.png&quot; alt=&quot;Screenshot 7&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, Arbor is telling us that the function had two outputs:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;picCorrelation picPlot, which is an &lt;em&gt;image&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;picCorrelation tableResults, which is a &lt;em&gt;table&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let&amp;rsquo;s have a look at the outputs.&lt;/p&gt;
+
+&lt;h2 id=&quot;visualize-the-outputs-of-the-piccorrelation-function&quot;&gt;Visualize the outputs of the picCorrelation function&lt;/h2&gt;
+
+&lt;p&gt;To see the outputs of an Arbor function (or workflow) we can go to the &lt;strong&gt;Visualization&lt;/strong&gt; tab. Click on it now. Your screen should look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_8.png&quot; alt=&quot;Screenshot 8&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note that the top part of the screen did not change, but the bottom tabs and buttons did. That&amp;rsquo;s ok! Keep going.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We can look at the plot first. Set the &amp;ldquo;Select visualization&amp;rdquo; dropdown to &amp;ldquo;image&amp;rdquo;, and you should see your output, called &amp;ldquo;picCorrelation picPlot&amp;rdquo;, appear under &amp;ldquo;data.&amp;rdquo; To activate this visualization click on the blue &lt;strong&gt;Update&lt;/strong&gt; button. The result should be a plot.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_9.png&quot; alt=&quot;Screenshot 9&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;(You can see more of the plot by clicking on the small downward-facing arrow above the &amp;ldquo;Log In or Register&amp;rdquo; section of the screen).&lt;/p&gt;
+
+&lt;p&gt;Next, let&amp;rsquo;s see some numbers. Change &amp;ldquo;Select visualization&amp;rdquo; to &amp;ldquo;table&amp;rdquo;, and &amp;ldquo;data&amp;rdquo; to &amp;ldquo;picCorrelation tableResults.&amp;rdquo; Hit update again to see an ANOVA table summarizing the results of the phylogenetic regression.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_10.png&quot; alt=&quot;Screenshot 10&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The p-value is the top number in the column denoted &amp;ldquo;Pr(&amp;gt;F).&amp;rdquo;&lt;/p&gt;
+
+&lt;h2 id=&quot;build-a-pic-workflow&quot;&gt;Build a pic &lt;strong&gt;workflow&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Now let&amp;rsquo;s try to harness the real power of Arbor by building a simple visual workflow for our analysis. For this part to work you need to be logged in! If you are not logged in you can run existing functions and workflows but you cannot create new ones. You can create an account in Arbor quite easily.&lt;/p&gt;
+
+&lt;p&gt;Follow the instructions on &lt;a href=&quot;/arborCollections/2015/06/09/creating-a-new-collection/&quot;&gt;this page&lt;/a&gt; to create an account and start a private collection. Make sure to click on the &amp;ldquo;write&amp;rdquo; tab in your new collection, then come back here and finish the tutorial!&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;OK I will assume you did that. Now, go back to the &amp;ldquo;Analysis&amp;rdquo; tab. To start your workflow, type a name into the box under &amp;ldquo;Create new analysis,&amp;rdquo; then click the &amp;ldquo;+ New workflow&amp;rdquo; button. I am going to call my analysis &amp;ldquo;myPICWorkflow.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_11.png&quot; alt=&quot;Screenshot 11&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have done that, your new (empty) workflow will be available under the &amp;ldquo;Select analysis&amp;rdquo; tab. To confirm that it is there (and empty!), select it, and click &amp;ldquo;Show script.&amp;rdquo; As we&amp;rsquo;ll be building this workflow, you can also click &amp;ldquo;Edit.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_12.png&quot; alt=&quot;Screenshot 12&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Now all of that empty white space is a blank canvass for your new workflow.&lt;/p&gt;
+
+&lt;p&gt;We will build our workflow in three steps:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Select the function that we need, picCorrelation&lt;/li&gt;
+&lt;li&gt;Link the function inputs that we need&lt;/li&gt;
+&lt;li&gt;Link the function outputs that we need&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For step one, use the drop-down menu labeled &amp;ldquo;Select analysis.&amp;rdquo; Find the picCorrelation function - it should be labeled &amp;ldquo;picCorrelation (phylogeny)&amp;rdquo; to let you know which collection it belongs with. Then click &amp;ldquo;+ Add to workflow&amp;rdquo; and you should see this function appear in the workflow as a block.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_13.png&quot; alt=&quot;Screenshot 13&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The function itself is a large rectangular block. The things sticking out on the left are inputs - you can see their type by hovering the mouse over each one. Squares are data matrices, triangles are phylogenies, and circles represent text values - typically, these circles control how the function works.&lt;/p&gt;
+
+&lt;p&gt;Now let&amp;rsquo;s make some inputs. Click on each of the input tabs for your function to automatically generate function input boxes.&lt;/p&gt;
+
+&lt;p&gt;These input boxes are blue to differentiate them from grey functions. They also only have output tabs, no inputs. All of the input boxes that you create will have to be specified by the user when you run the function, as you will see in a second.&lt;/p&gt;
+
+&lt;p&gt;In more complicated workflows later, you will use outputs from previous steps as inputs for the next - but don&amp;rsquo;t worry about that for now.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Beware! Sometimes new input blocks pop up right on top of function blocks - so it might look like nothing has happened. Don&amp;rsquo;t panic - just click on their center and drag them out of the way.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;You can also rearrange the inputs to look nice.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_14.png&quot; alt=&quot;Screenshot 14&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note: every tab for function input needs to be connected to something! Either a block that is specified by the user, or another part of the workflow.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Almost done - we only need to connect some outputs to see our results. We can do that in the same way that we created inputs - by clicking on function tabs, in this case on the output side, and creating output boxes.&lt;/p&gt;
+
+&lt;p&gt;Output boxes are the same color as input boxes but they only have connectors on the left side. Your workflow will create a different output object for each of the output boxes that you create.&lt;/p&gt;
+
+&lt;p&gt;You can arrange these to look nice too.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_15.png&quot; alt=&quot;Screenshot 15&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;run-mypicworkflow-workflow&quot;&gt;Run myPICWorkflow &lt;strong&gt;workflow&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Once you have built your workflow, you need to save it before running.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;If you just click run then Arbor will run the workflow as it was the last time you saved - which might not match the workflow you see on the screen!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have saved, then click &amp;ldquo;Setup and run&amp;rdquo; to start the workflow. You will again have to specify inputs and options. Let&amp;rsquo;s do the same analysis we did before.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_16.png&quot; alt=&quot;Screenshot 16&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Now click &amp;ldquo;&amp;gt; Run.&amp;rdquo; If your workflow works you will see a green &lt;em&gt;success&lt;/em&gt; message.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/usingArborwebapp/usingArborwebapp_17.png&quot; alt=&quot;Screenshot 17&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;You will see that we have two new output objects, one is an image and one is a table. You can visualize both of them in the same way as above, using the &amp;ldquo;Visualization&amp;rdquo; tab.&lt;/p&gt;
+
+&lt;p&gt;If you made it this far, nice work - you built and ran an Arbor workflow!&lt;/p&gt;
+</description>
+        <pubDate>Tue, 02 Jun 2015 00:00:00 -0700</pubDate>
+        <link>http://lukejharmon.github.io/arborCollections/arborCollections/2015/06/02/using-the-arbor-webapp/</link>
+        <guid isPermaLink="true">http://lukejharmon.github.io/arborCollections/arborCollections/2015/06/02/using-the-arbor-webapp/</guid>
+      </item>
+    
+      <item>
+        <title>What is Arbor?</title>
+        <description>&lt;h2&gt;What is Arbor?&lt;/h2&gt;
+
+&lt;p&gt;Arbor is a software package for phylogenetic comparative analyses. Our main website is:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;www.arborworkflows.com&quot;&gt;www.arborworkflows.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;When will Arbor be available?&lt;/h2&gt;
+
+&lt;p&gt;Right now! And Arbor&amp;rsquo;s functionality will continue to grow through the end of 2015.&lt;/p&gt;
+
+&lt;h2&gt;What will Arbor be able to do for me?&lt;/h2&gt;
+
+&lt;p&gt;To start out with, Arbor will be able to do the most common comparative analyses, including:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Phylogenetic signal&lt;/li&gt;
+&lt;li&gt;Ancestral state reconstruction&lt;/li&gt;
+&lt;li&gt;Independent contrasts&lt;/li&gt;
+&lt;li&gt;Comparative model fitting (e.g. Mk, threshold, and continuous character models)&lt;/li&gt;
+&lt;li&gt;PGLS&lt;/li&gt;
+&lt;li&gt;Fitting Birth-death models&lt;/li&gt;
+&lt;li&gt;Community phylogenetics&lt;/li&gt;
+&lt;li&gt;BiSSE / MuSSE / QuaSSE / GeoSSE&lt;/li&gt;
+&lt;li&gt;Analyses of cospeciation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We are building up towards more complicated analyses.&lt;/p&gt;
+
+&lt;h2&gt;What is an Arbor workflow?&lt;/h2&gt;
+
+&lt;p&gt;Phylogenetic trees are increasingly &lt;a href=&quot;http://blog.opentreeoflife.org&quot;&gt;available&lt;/a&gt;, and can be used for a wide range of analyses, including studies of speciation, trait evolution, range size evolution, and many other things. Phylogenetic comparative methods have been developing rapidly in recent years. Most analyses are currently done in R, and a number of useful packages are available (e.g. ape, diversitree, geiger, caper, phytools, &lt;a href=&quot;http://cran.r-project.org/web/views/Phylogenetics.html&quot;&gt;and others&lt;/a&gt;). Arbor seeks to enable end-users to carry out these analyses by building workflows.&lt;/p&gt;
+
+&lt;p&gt;Building an Arbor workflow will have more in common with making something out of legos than with computer programming. For example, the figure below shows a mockup of an Arbor workflow to calculate phylogenetic independent contrasts (PICs). End users will import a phylogenetic tree and some traits data - perhaps from their local computer, or maybe from a remote source like &lt;a href=&quot;https://tree.opentreeoflife.org/opentree/argus/opentree3.0@1&quot;&gt;Open Tree of Life&lt;/a&gt; or &lt;a href=&quot;http://eol.org&quot;&gt;Encyclopedia of Life&lt;/a&gt;. The workflow below then allows the user to connect a few steps together to calculate PICs and use them to test for a correlation between two traits.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/simple_pic_workflow.jpg&quot; alt=&quot;PIC workflow&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A sample workflow for calculating phylogenetic independent contrasts (PICs) to test for an evolutionary correlation between two traits.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The PIC workflow above is simple, but Arbor will enable more complex analyses as well. For example, imagine you are interested in analyzing geographic range evolution in your group of species.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/cartoon_workflow.png&quot; alt=&quot;Web workflow&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A more complex workflow that uses data from web services to combine ecological niche models, Lagrange, and phylogenetic comparative analyses.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The workflow above shows how you might use Arbor to link phylogenetic, trait, and geographic data together in a comprehensive set of comparative analyses. If you want to get an idea of other examples of workflow software in biology, you can check out other examples like &lt;a href=&quot;https://usegalaxy.org/&quot;&gt;Galaxy&lt;/a&gt; and the &lt;a href=&quot;http://www.iplantcollaborative.org/ci/discovery-environment&quot;&gt;iPlant Discovery Environment&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;How can I participate in the project?&lt;/h2&gt;
+
+&lt;p&gt;You can follow our blog, visit our main site, and find our code on github. We will also be hosting a series of hackathons to be announced at a later date.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 21 May 2015 00:00:00 -0700</pubDate>
+        <link>http://lukejharmon.github.io/arborCollections/arborCollections/2015/05/21/what-is-arbor/</link>
+        <guid isPermaLink="true">http://lukejharmon.github.io/arborCollections/arborCollections/2015/05/21/what-is-arbor/</guid>
+      </item>
+    
+      <item>
+        <title>Easy mode</title>
+        <description>&lt;h2 id=&quot;what-is-easy-mode?&quot;&gt;What is Easy Mode?&lt;/h2&gt;
+
+&lt;p&gt;As a part of the Arbor project, we are developing a few simple-to-use web apps that allow users to quickly and easily carry out a few of the most common comparative methods. These pages present a drag-and-drop interface to test for phylogenetic signal, reconstruct ancestral character states, test for character correlations, and other common analyses.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-can-i-do-in-arbor-easy-mode?&quot;&gt;What can I do in Arbor Easy Mode?&lt;/h2&gt;
+
+&lt;p&gt;To use easy mode, you can navigate to one of our &lt;a href=&quot;/arborCollections/easy/index.html&quot;&gt;easy mode pages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;walkthrough---phylogenetic-signal-in-easy-mode&quot;&gt;Walkthrough - Phylogenetic Signal in Easy Mode&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s walk through one example analysis in easy mode. We will work on testing for phylogenetic signal. I will use two data files for &lt;em&gt;Anolis&lt;/em&gt; lizards, linked below.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/arborCollections/assets/anolis.phy&quot;&gt;anolis.phy&lt;/a&gt;: a phylogenetic tree of anoles&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/arborCollections/assets/anolis.csv&quot;&gt;anolis.csv&lt;/a&gt;: character data for anoles (comma-separated format)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Download these two files, and locate them on your computer&amp;rsquo;s file browser.&lt;/p&gt;
+
+&lt;p&gt;Now, navigate to the Arbor easy mode page for phylogenetic signal. You should see something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_1.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, you need to input your datafiles into the website. You can do that by dragging and dropping the files onto the blue box that says &amp;ldquo;browse or drop files here.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;When you hover over the correct place, the box will turn green. Arbor can automatically detect whether you have uploaded a tree or a data file.&lt;/p&gt;
+
+&lt;p&gt;After you upload both files, you should see them listed in the appropriate place, like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_2.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_3.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;You might also notice that you can see a preview of your input table at the bottom of the page:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_4.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you need to specify a column that will define the trait that you want to use for the phylogenetic signal test. Right now, this test can only handle one trait at a time! Let&amp;rsquo;s choose &amp;ldquo;SVL.&amp;rdquo; Grab that column name from the left hand side and drag and drop it onto the box that says &amp;ldquo;Drag column of interest here.&amp;rdquo; You should end up with this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_5.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;No just press &amp;ldquo;Go!&amp;rdquo; and your analysis will run. You should get back a table of results, like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_6.png&quot; alt=&quot;Screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The last table shows the results of the analysis. The first two columns are the likelihoods of a Brownian motion model and Brownian motion + lambda. The third and fourth represent a chi-squared test comparing a &amp;ldquo;full&amp;rdquo; phylogenetic signal model (Brownian motion) with a model where signal is less than Brownian motion (lambda). P &amp;lt; 0.05 means that you can reject BM in favor of the lambda model. The last two columns show AICC scores for these two models. This output is formatted in a very confusing way, we are going to fix it!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 21 May 2015 00:00:00 -0700</pubDate>
+        <link>http://lukejharmon.github.io/arborCollections/arborCollections/2015/05/21/easy-mode/</link>
+        <guid isPermaLink="true">http://lukejharmon.github.io/arborCollections/arborCollections/2015/05/21/easy-mode/</guid>
+      </item>
+    
+  </channel>
+</rss>
