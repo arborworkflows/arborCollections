@@ -102,17 +102,6 @@
       </item>
     
       <item>
-        <title>Ancestral State</title>
-        <description>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/ancestral-state/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/ancestral-state/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/ancestral-state/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/ancestral-state/</guid>
-      </item>
-    
-      <item>
         <title>Creating a new collection</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -632,6 +621,19 @@ end
         <pubDate>Mon, 23 Jun 2014 13:19:16 -0700</pubDate>
         <link>/arborCollections/arborCollections/articles/author-override/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/articles/author-override/</guid>
+      </item>
+    
+      <item>
+        <title>Video Post Test</title>
+        <description>&lt;p&gt;Here’s a sample video to test FitVid.js&lt;/p&gt;
+
+&lt;p&gt;If this is working correctly the video should fill the main content container.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/9e1nPyHXCFQ&quot; frameborder=&quot;0&quot;&gt; &lt;/iframe&gt;
+</description>
+        <pubDate>Sat, 31 May 2014 20:14:02 -0700</pubDate>
+        <link>/arborCollections/arborCollections/articles/video-post-test/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/articles/video-post-test/</guid>
       </item>
     
   </channel>
