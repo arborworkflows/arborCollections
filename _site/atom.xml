@@ -9,7 +9,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2015-06-10T16:05:13-07:00</updated>
+  <updated>2015-06-10T16:40:45-07:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Michael Rose</name>
@@ -114,6 +114,164 @@
       &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
 
 &lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>phylogeneticSignal</title>
+    <link href="/arborCollections/phylogeny/phylogenetic-signal/"/>
+    <updated>2015-06-10T00:00:00-07:00</updated>
+    <id>/arborCollections/phylogeny/phylogenetic-signal</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;phylogeneticsignal-function&quot;&gt;phylogeneticSignal: function&lt;/h2&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;aceArbor is a function for estimating and testing for phylogenetic signal. It works for
+both discrete and continuous variables, and can use a variety of methods for calculating
+phylogenetic signal.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the phylogeneticSignal function. Choose
+the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;table: A data table including species names&lt;/li&gt;
+  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
+  &lt;li&gt;method: either “K” for Blomberg’s K or “lambda” for Pagel’s lambda&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+&lt;p&gt;Function outputs a table with results from the test of phylogenetic signal.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>aceArbor</title>
+    <link href="/arborCollections/phylogeny/ancestral-states-2/"/>
+    <updated>2015-06-10T00:00:00-07:00</updated>
+    <id>/arborCollections/phylogeny/ancestral-states-2</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;acearbor-function&quot;&gt;aceArbor: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;aceArbor is a function for carrying out ancestral state reconstruction. It works for
+both discrete and continuous variables, and can reconstruct ancestral character states
+under both a maximum-likelihood and a Bayesian framework. The function returns results
+in two formats: a table of ancestral state estimates for each node in the tree, and a plot
+of the results.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
+the “ecomorph” column for analysis, and select type: discrete and method: marginal.&lt;/p&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;table: A data table including species names&lt;/li&gt;
+  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
+  &lt;li&gt;type: The character type
+    &lt;ul&gt;
+      &lt;li&gt;discrete: a character with a discrete number of states&lt;/li&gt;
+      &lt;li&gt;continuous: a continuously varying character&lt;/li&gt;
+      &lt;li&gt;fromData: will attempt to determine the data type from the data itself&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;method: specifies the method used to reconstruct ancestral character states
+    &lt;ul&gt;
+      &lt;li&gt;marginal: marginal ancestral state reconstructions, which reconstruct each node integrating over all possibilities at all other nodes in the tree; this is typically the method used in the literature to reconstruce ACEs&lt;/li&gt;
+      &lt;li&gt;joint: joint ancestral reconstructions, which give the configuration of ancestral states that together maximize the likelihood of the data given model parameters&lt;/li&gt;
+      &lt;li&gt;mcmc: reconstruct ancestral states using Bayesian MCMC. Note that the discrete version of this doesn’t seem to work, and even if it did work it is not a full MCMC ancestral state method&lt;/li&gt;
+      &lt;li&gt;stochastic: create stochastic character map&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+&lt;p&gt;Function outputs a table and a plot with results of the ancestral state reconstruction.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>aceArbor</title>
+    <link href="/arborCollections/phylogeny/ancestral-states/"/>
+    <updated>2015-06-10T00:00:00-07:00</updated>
+    <id>/arborCollections/phylogeny/ancestral-states</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;acearbor-function&quot;&gt;aceArbor: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;aceArbor is a function for carrying out ancestral state reconstruction. It works for
+both discrete and continuous variables, and can reconstruct ancestral character states
+under both a maximum-likelihood and a Bayesian framework. The function returns results
+in two formats: a table of ancestral state estimates for each node in the tree, and a plot
+of the results.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
+the “ecomorph” column for analysis, and select type: discrete and method: marginal.&lt;/p&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;table: A data table including species names&lt;/li&gt;
+  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
+  &lt;li&gt;type: The character type
+    &lt;ul&gt;
+      &lt;li&gt;discrete: a character with a discrete number of states&lt;/li&gt;
+      &lt;li&gt;continuous: a continuously varying character&lt;/li&gt;
+      &lt;li&gt;fromData: will attempt to determine the data type from the data itself&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;method: specifies the method used to reconstruct ancestral character states
+    &lt;ul&gt;
+      &lt;li&gt;marginal: marginal ancestral state reconstructions, which reconstruct each node integrating over all possibilities at all other nodes in the tree; this is typically the method used in the literature to reconstruce ACEs&lt;/li&gt;
+      &lt;li&gt;joint: joint ancestral reconstructions, which give the configuration of ancestral states that together maximize the likelihood of the data given model parameters&lt;/li&gt;
+      &lt;li&gt;mcmc: reconstruct ancestral states using Bayesian MCMC. Note that the discrete version of this doesn’t seem to work, and even if it did work it is not a full MCMC ancestral state method&lt;/li&gt;
+      &lt;li&gt;stochastic: create stochastic character map&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+&lt;p&gt;Function outputs a table and a plot with results of the ancestral state reconstruction.&lt;/p&gt;
 
     </content>
   </entry>
@@ -797,6 +955,56 @@ end
   </entry>
   
   <entry>
+    <title>Phylogenies collection</title>
+    <link href="/arborCollections/documentation/phylogenies/"/>
+    <updated>2014-05-30T08:39:03-07:00</updated>
+    <id>/arborCollections/documentation/phylogenies</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;div class=&quot;tiles&quot;&gt;
+
+  &lt;article class=&quot;tile&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/Article&quot;&gt;
+  &lt;a href=&quot;/arborCollections/phylogeny/phylogenetic-signal/&quot; title=&quot;phylogeneticSignal&quot; class=&quot;post-teaser&quot;&gt;&lt;img src=&quot;/arborCollections/images/400x250.gif&quot; alt=&quot;teaser&quot; itemprop=&quot;image&quot; /&gt;&lt;/a&gt;
+  &lt;p class=&quot;entry-date date published&quot;&gt;&lt;time datetime=&quot;2015-06-10&quot; itemprop=&quot;datePublished&quot;&gt;June 10, 2015&lt;/time&gt;&lt;/p&gt;
+  &lt;h2 class=&quot;post-title&quot; itemprop=&quot;name&quot;&gt;&lt;a href=&quot;/arborCollections/phylogeny/phylogenetic-signal/&quot;&gt;phylogeneticSignal&lt;/a&gt;&lt;/h2&gt;
+  &lt;p class=&quot;post-excerpt&quot; itemprop=&quot;description&quot;&gt;## phylogeneticSignal: function
+
+&lt;/p&gt;
+&lt;/article&gt;&lt;!-- /.tile --&gt;
+
+
+  &lt;article class=&quot;tile&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/Article&quot;&gt;
+  &lt;a href=&quot;/arborCollections/phylogeny/ancestral-states-2/&quot; title=&quot;aceArbor&quot; class=&quot;post-teaser&quot;&gt;&lt;img src=&quot;/arborCollections/images/400x250.gif&quot; alt=&quot;teaser&quot; itemprop=&quot;image&quot; /&gt;&lt;/a&gt;
+  &lt;p class=&quot;entry-date date published&quot;&gt;&lt;time datetime=&quot;2015-06-10&quot; itemprop=&quot;datePublished&quot;&gt;June 10, 2015&lt;/time&gt;&lt;/p&gt;
+  &lt;h2 class=&quot;post-title&quot; itemprop=&quot;name&quot;&gt;&lt;a href=&quot;/arborCollections/phylogeny/ancestral-states-2/&quot;&gt;aceArbor&lt;/a&gt;&lt;/h2&gt;
+  &lt;p class=&quot;post-excerpt&quot; itemprop=&quot;description&quot;&gt;# aceArbor: function
+
+&lt;/p&gt;
+&lt;/article&gt;&lt;!-- /.tile --&gt;
+
+
+  &lt;article class=&quot;tile&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/Article&quot;&gt;
+  &lt;a href=&quot;/arborCollections/phylogeny/ancestral-states/&quot; title=&quot;aceArbor&quot; class=&quot;post-teaser&quot;&gt;&lt;img src=&quot;/arborCollections/images/400x250.gif&quot; alt=&quot;teaser&quot; itemprop=&quot;image&quot; /&gt;&lt;/a&gt;
+  &lt;p class=&quot;entry-date date published&quot;&gt;&lt;time datetime=&quot;2015-06-10&quot; itemprop=&quot;datePublished&quot;&gt;June 10, 2015&lt;/time&gt;&lt;/p&gt;
+  &lt;h2 class=&quot;post-title&quot; itemprop=&quot;name&quot;&gt;&lt;a href=&quot;/arborCollections/phylogeny/ancestral-states/&quot;&gt;aceArbor&lt;/a&gt;&lt;/h2&gt;
+  &lt;p class=&quot;post-excerpt&quot; itemprop=&quot;description&quot;&gt;# aceArbor: function
+
+&lt;/p&gt;
+&lt;/article&gt;&lt;!-- /.tile --&gt;
+
+
+&lt;/div&gt;
+&lt;!-- /.tiles --&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
     <title>Another Media Post with Large Feature Image</title>
     <link href="/arborCollections/media/another-sample-media-page/"/>
     <updated>2014-05-10T00:00:00-07:00</updated>
@@ -1118,262 +1326,6 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>Sample Post Style Guide</title>
-    <link href="/arborCollections/articles/sample-post/"/>
-    <updated>2011-03-10T00:00:00-08:00</updated>
-    <id>/arborCollections/articles/sample-post</id>
-    <author>
-      <name>Michael Rose</name>
-      <uri>/arborCollections/</uri>
-      <email>michael@mademistakes.com</email>
-    </author>
-    <content type="html">
-      
-      &lt;p&gt;Below is just about everything you’ll need to style in the theme. Check the source code to see the many embedded elements within paragraphs.&lt;/p&gt;
-
-&lt;nav class=&quot;toc&quot;&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#heading-2-lorem-ipsum-dolor-sit-amet-test-link-adipiscing-elit-this-is-strong-nullam-dignissim-convallis-est-quisque-aliquam&quot;&gt;Heading 2: Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#list-types&quot;&gt;List Types&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#tables&quot;&gt;Tables&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#code-snippets&quot;&gt;Code Snippets&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#buttons&quot;&gt;Buttons&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#badges&quot;&gt;Badges&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#notices&quot;&gt;Notices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#fieldsets-and-form-elements&quot;&gt;Fieldsets and Form Elements&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;/nav&gt;
-
-&lt;h2 id=&quot;heading-2-lorem-ipsum-dolor-sit-amet-test-link-adipiscing-elit-this-is-strong-nullam-dignissim-convallis-est-quisque-aliquam&quot;&gt;Heading 2: Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/h2&gt;
-
-&lt;h3 id=&quot;heading-3-lorem-ipsum-dolor-sit-amet-test-link-adipiscing-elit-this-is-strong-nullam-dignissim-convallis-est-quisque-aliquam&quot;&gt;Heading 3: Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/h3&gt;
-
-&lt;h4 id=&quot;heading-4-lorem-ipsum-dolor-sit-amet-test-link-adipiscing-elit-this-is-strong-nullam-dignissim-convallis-est-quisque-aliquam&quot;&gt;Heading 4: Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/h4&gt;
-
-&lt;h5 id=&quot;heading-5-lorem-ipsum-dolor-sit-amet-test-link-adipiscing-elit-this-is-strong-nullam-dignissim-convallis-est-quisque-aliquam&quot;&gt;Heading 5: Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/h5&gt;
-
-&lt;h6 id=&quot;heading-6-lorem-ipsum-dolor-sit-amet-test-link-adipiscing-elit-this-is-strong-nullam-dignissim-convallis-est-quisque-aliquam&quot;&gt;Heading 6: Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/h6&gt;
-
-&lt;h3 id=&quot;body-text&quot;&gt;Body text&lt;/h3&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;This is emphasized&lt;/em&gt;. Donec faucibus. Nunc iaculis suscipit dui. 53 = 125. Water is H&lt;sub&gt;2&lt;/sub&gt;O. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. The New York Times &lt;cite&gt;(That’s a citation)&lt;/cite&gt;. &lt;u&gt;Underline&lt;/u&gt;. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.&lt;/p&gt;
-
-&lt;p&gt;HTML and &lt;abbr title=&quot;cascading stylesheets&quot;&gt;CSS&lt;abbr&gt; are our tools. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus.&lt;/abbr&gt;&lt;/abbr&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est. Quisque aliquam.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;cite&gt;First Lastname, &lt;em&gt;The Greatest Article&lt;/em&gt;&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;list-types&quot;&gt;List Types&lt;/h2&gt;
-
-&lt;h3 id=&quot;ordered-lists&quot;&gt;Ordered Lists&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Item one
-    &lt;ol&gt;
-      &lt;li&gt;sub item one&lt;/li&gt;
-      &lt;li&gt;sub item two&lt;/li&gt;
-      &lt;li&gt;sub item three&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Item two&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;unordered-lists&quot;&gt;Unordered Lists&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Item one&lt;/li&gt;
-  &lt;li&gt;Item two&lt;/li&gt;
-  &lt;li&gt;Item three&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Header1&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Header2&lt;/th&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;Header3&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;cell1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;cell2&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;cell3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;cell4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;cell5&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;cell6&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;cell1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;cell2&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;cell3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;cell4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;cell5&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;cell6&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;code-snippets&quot;&gt;Code Snippets&lt;/h2&gt;
-
-&lt;p&gt;Syntax highlighting via Pygments&lt;/p&gt;
-
-&lt;table class=&quot;highlighttable&quot;&gt;&lt;tr&gt;&lt;td class=&quot;linenos&quot;&gt;&lt;div class=&quot;linenodiv&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;1
-2
-3
-4
-5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
-	&lt;span class=&quot;k&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-240px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
-	&lt;span class=&quot;k&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;Non Pygments code example&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&quot;awesome&quot;&amp;gt;
-		&amp;lt;p&amp;gt;This is great isn't it?&amp;lt;/p&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;buttons&quot;&gt;Buttons&lt;/h2&gt;
-
-&lt;p&gt;Make any link standout more when applying the &lt;code&gt;.btn&lt;/code&gt; class.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;btn&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Default Button&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;.btn&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-inverse&quot;&gt;.btn-inverse&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-info&quot;&gt;.btn-info&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-warning&quot;&gt;.btn-warning&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-danger&quot;&gt;.btn-danger&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-success&quot;&gt;.btn-success&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;social-media-buttons&quot;&gt;Social Media Buttons&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;#&quot; class=&quot;btn-social facebook&quot;&gt;&lt;i class=&quot;fa fa-facebook&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Facebook&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-social flickr&quot;&gt;&lt;i class=&quot;fa fa-flickr&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Flickr&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-social foursquare&quot;&gt;&lt;i class=&quot;fa fa-foursquare&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Foursquare&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-social google-plus&quot;&gt;&lt;i class=&quot;fa fa-google-plus&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Google+&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-social instagram&quot;&gt;&lt;i class=&quot;fa fa-instagram&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Instagram&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-social linkedin&quot;&gt;&lt;i class=&quot;fa fa-linkedin&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; LinkedIn&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-social pinterest&quot;&gt;&lt;i class=&quot;fa fa-pinterest&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Pinterest&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-social rss&quot;&gt;&lt;i class=&quot;fa fa-rss&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; RSS&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-social tumblr&quot;&gt;&lt;i class=&quot;fa fa-tumblr&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Tumblr&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-social twitter&quot;&gt;&lt;i class=&quot;fa fa-twitter&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Twitter&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-social vimeo&quot;&gt;&lt;i class=&quot;fa fa-vimeo-square&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Vimeo&lt;/a&gt;
-&lt;a href=&quot;#&quot; class=&quot;btn-social youtube&quot;&gt;&lt;i class=&quot;fa fa-youtube&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; YouTube&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;badges&quot;&gt;Badges&lt;/h2&gt;
-
-&lt;div class=&quot;badges&quot;&gt;
-	&lt;span class=&quot;badge&quot;&gt;1&lt;/span&gt;
-	&lt;span class=&quot;badge inverse&quot;&gt;2&lt;/span&gt;
-	&lt;span class=&quot;badge info&quot;&gt;3&lt;/span&gt;
-	&lt;span class=&quot;badge warning&quot;&gt;4&lt;/span&gt;
-	&lt;span class=&quot;badge danger&quot;&gt;5&lt;/span&gt;
-	&lt;span class=&quot;badge success&quot;&gt;6&lt;/span&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;notices&quot;&gt;Notices&lt;/h2&gt;
-
-&lt;p&gt;Set a block of text off from the rest.&lt;/p&gt;
-
-&lt;p class=&quot;notice&quot;&gt;&lt;strong&gt;Default Notice:&lt;/strong&gt; &lt;code&gt;.notice&lt;/code&gt; Maecenas ornare tortor. &lt;a href=&quot;&quot;&gt;Donec sed tellus&lt;/a&gt; eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at.&lt;/p&gt;
-
-&lt;div class=&quot;notice&quot;&gt;
-	&lt;h3&gt;Headline&lt;/h3&gt;
-	&lt;div class=&quot;inline-btn&quot;&gt;
-		&lt;a href=&quot;#&quot; class=&quot;btn-social instagram&quot;&gt;&lt;i class=&quot;fa fa-instagram&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Instagram&lt;/a&gt;
-		&lt;a href=&quot;#&quot; class=&quot;btn-social linkedin&quot;&gt;&lt;i class=&quot;fa fa-linkedin&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; LinkedIn&lt;/a&gt;
-	&lt;/div&gt;&lt;!-- /.inline-btn --&gt;
-&lt;/div&gt;
-&lt;!-- /.notice --&gt;
-
-&lt;p class=&quot;notice-inverse&quot;&gt;&lt;strong&gt;Inverse Notice:&lt;/strong&gt; &lt;code&gt;.notice-inverse&lt;/code&gt; Maecenas ornare tortor. Donec sed tellus &lt;a href=&quot;&quot;&gt;eget sapien fringilla&lt;/a&gt; nonummy. Mauris a ante. Suspendisse quam sem, consequat at.&lt;/p&gt;
-
-&lt;p class=&quot;notice-info&quot;&gt;&lt;strong&gt;Info Notice:&lt;/strong&gt; &lt;code&gt;.notice-info&lt;/code&gt; &lt;a href=&quot;&quot;&gt;Maecenas ornare tortor&lt;/a&gt;. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at.&lt;/p&gt;
-
-&lt;p class=&quot;notice-warning&quot;&gt;&lt;strong&gt;Warning Notice:&lt;/strong&gt; &lt;code&gt;.notice-warning&lt;/code&gt; Maecenas ornare tortor. Donec sed &lt;a href=&quot;&quot;&gt;tellus eget&lt;/a&gt; sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at.&lt;/p&gt;
-
-&lt;p class=&quot;notice-danger&quot;&gt;&lt;strong&gt;Danger Notice:&lt;/strong&gt; &lt;code&gt;.notice-danger&lt;/code&gt; Maecenas ornare tortor.&lt;a href=&quot;&quot;&gt; Donec sed tellus&lt;/a&gt; eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at.&lt;/p&gt;
-
-&lt;p class=&quot;notice-success&quot;&gt;&lt;strong&gt;Success Notice:&lt;/strong&gt; &lt;code&gt;.notice-success&lt;/code&gt; Maecenas ornare tortor. Donec sed tellus eget &lt;a href=&quot;&quot;&gt;sapien fringilla&lt;/a&gt; nonummy. Mauris a ante. Suspendisse quam sem, consequat at.&lt;/p&gt;
-
-&lt;h2 id=&quot;fieldsets-and-form-elements&quot;&gt;Fieldsets and Form Elements&lt;/h2&gt;
-
-&lt;fieldset&gt;
-	&lt;form&gt;
-		&lt;h2&gt;Form Element&lt;/h2&gt;
-		&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.&lt;/p&gt;
-		&lt;label for=&quot;text_field&quot;&gt;Text Field:&lt;/label&gt;
-		&lt;input type=&quot;text&quot; id=&quot;text_field&quot; /&gt;
-		&lt;label for=&quot;text_area&quot;&gt;Text Area:&lt;/label&gt;
-		&lt;textarea id=&quot;text_area&quot;&gt;&lt;/textarea&gt;
-		&lt;p&gt;
-			&lt;label for=&quot;select_element&quot;&gt;Select Element:&lt;/label&gt;
-			&lt;select name=&quot;select_element&quot;&gt;
-				&lt;optgroup label=&quot;Option Group 1&quot;&gt;
-					&lt;option value=&quot;1&quot;&gt;Option 1&lt;/option&gt;
-					&lt;option value=&quot;2&quot;&gt;Option 2&lt;/option&gt;
-					&lt;option value=&quot;3&quot;&gt;Option 3&lt;/option&gt;
-				&lt;/optgroup&gt;
-				&lt;optgroup label=&quot;Option Group 2&quot;&gt;
-					&lt;option value=&quot;1&quot;&gt;Option 1&lt;/option&gt;
-					&lt;option value=&quot;2&quot;&gt;Option 2&lt;/option&gt;
-					&lt;option value=&quot;3&quot;&gt;Option 3&lt;/option&gt;
-				&lt;/optgroup&gt;
-			&lt;/select&gt;
-		&lt;/p&gt;
-		&lt;p&gt;
-			&lt;label for=&quot;radio_buttons&quot;&gt;Radio Buttons:&lt;/label&gt;
-			&lt;label&gt;&lt;input type=&quot;radio&quot; class=&quot;radio&quot; name=&quot;radio_button&quot; value=&quot;radio_1&quot; /&gt;Radio 1&lt;/label&gt;
-			&lt;label&gt;&lt;input type=&quot;radio&quot; class=&quot;radio&quot; name=&quot;radio_button&quot; value=&quot;radio_2&quot; /&gt;Radio 2&lt;/label&gt;
-			&lt;label&gt;&lt;input type=&quot;radio&quot; class=&quot;radio&quot; name=&quot;radio_button&quot; value=&quot;radio_3&quot; /&gt;Radio 3&lt;/label&gt;
-		&lt;/p&gt;
-		&lt;p&gt;
-			&lt;label for=&quot;checkboxes&quot;&gt;Checkboxes:&lt;/label&gt;
-			&lt;label&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; name=&quot;checkboxes&quot; value=&quot;check_1&quot; /&gt;Checkbox 1&lt;/label&gt;
-			&lt;label&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; name=&quot;checkboxes&quot; value=&quot;check_2&quot; /&gt;Checkbox 2&lt;/label&gt;
-			&lt;label&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; name=&quot;checkboxes&quot; value=&quot;check_3&quot; /&gt;Checkbox 3&lt;/label&gt;
-		&lt;/p&gt;
-		&lt;p&gt;
-			&lt;label for=&quot;password&quot;&gt;Password:&lt;/label&gt;
-			&lt;input type=&quot;password&quot; class=&quot;password&quot; name=&quot;password&quot; /&gt;
-		&lt;/p&gt;
-		&lt;p&gt;
-			&lt;label for=&quot;file&quot;&gt;File Input:&lt;/label&gt;
-			&lt;input type=&quot;file&quot; class=&quot;file&quot; name=&quot;file&quot; /&gt;
-		&lt;/p&gt;
-		&lt;p&gt;
-			&lt;input class=&quot;btn&quot; type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
-		&lt;/p&gt;
-	&lt;/form&gt;
-&lt;/fieldset&gt;
 
     </content>
   </entry>

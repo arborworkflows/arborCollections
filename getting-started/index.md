@@ -29,7 +29,7 @@ Alternatively, you can [download and install your own Arbor instance using Vagra
 ## Video help
 
 - [User interface overview](http://youtu.be/wnHMem4F9i4)
-- [Create a new analysis]  (http://youtu.be/n2M5F0EjISg)
+- [Create a new analysis](http://youtu.be/n2M5F0EjISg)
 - [Build a workflow](http://youtu.be/HImUo94BLn8)
 - [Connect to Open Tree of Life](http://youtu.be/Kba7TQgs7oY)
 

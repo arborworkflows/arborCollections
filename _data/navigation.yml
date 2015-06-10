@@ -15,7 +15,7 @@
   excerpt: "Easy mode apps."
   image: 400x250.gif
 
-- title: About
-  url: /about/
-  excerpt: "All about Skinny Bones for Jekyll."
+- title: Documentation
+  url: /documentation/
+  excerpt: "Full documentation for functions and workflows"
   image: 400x250.gif

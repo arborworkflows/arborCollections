@@ -1,6 +1,8 @@
 ---
 title: phylogeneticSignal
 author: Arbor core team
+categories: phylogeny
+
 ---
 
 ## phylogeneticSignal: function

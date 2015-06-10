@@ -1,6 +1,8 @@
 ---
 title: aceArbor
 author: Arbor core team
+categories: phylogeny
+
 ---
 
 # aceArbor: function
