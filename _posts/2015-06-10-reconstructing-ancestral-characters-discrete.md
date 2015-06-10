@@ -43,6 +43,10 @@ Now add the aceArbor function by selecting it under "Select analysis." When you 
 
 Now create the inputs and outputs of the function by clicking on the "spokes" coming out of aceArbor. You should also move the blocks around to make your workflow look nice.
 
+![Screenshot]({{ site.baseurl }}/assets/discreteACE/functionPopup.gif)
+
+Final result:
+
 ![Screenshot]({{ site.baseurl }}/assets/discreteACE/screen4.png)
 
 **Once you have a workflow that looks the way you want, click save!** If you do not do this you will be running the workflow at the last point it was saved and not what is shown on the screen.
