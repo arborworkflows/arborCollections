@@ -10,9 +10,7 @@ When working in Arbor, you will be uploading your own data, and may want to crea
 
 ## Get started
 
-You will need to open the [Arbor web app](https://arbor.kitware.com). Your screen should look something like this:
-
-For this exercise, you will need to log in; we will post more information about Arbor user accounts later.
+You will need to open the [Arbor web app](https://arbor.kitware.com). For this exercise, you will need to log in; we will post more information about Arbor user accounts later.
 
 Once you are logged in, your screen should look like this:
 
