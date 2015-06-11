@@ -1,6 +1,8 @@
 ---
 title: addColumns
 author: Arbor core team
+categories: collections base
+
 ---
 
 # addColumns: function

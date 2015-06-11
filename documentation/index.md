@@ -11,7 +11,33 @@ image:
 ---
 
 <div class="tiles">
-{% for post in site.categories.documentation %}
-  {% include post-grid.html %}
-{% endfor %}
+
+<div class="tile">
+  <a href="{{ site.baseurl }}/documentation/base.html">
+    <h2 class="post-title">Base</h2>
+    <p class="post-excerpt">Core data manipulation</p>
+  </a>
+</div><!-- /.tile -->
+
+<div class="tile">
+  <a href="{{ site.baseurl }}/documentation/phylogeny.html">
+    <h2 class="post-title">Phylogeny</h2>
+    <p class="post-excerpt">Working with trees</p>
+  </a>
+</div><!-- /.tile -->
+
+<div class="tile">
+  <a href="{{ site.baseurl }}/documentation/datasets.html">
+    <h2 class="post-title">Datasets</h2>
+    <p class="post-excerpt">Example data</p>
+  </a>
+</div><!-- /.tile -->
+
+<div class="tile">
+  <a href="{{ site.baseurl }}/documentation/all.html">
+    <h2 class="post-title">All documentation</h2>
+    <p class="post-excerpt">All collections on one page</p>
+  </a>
+</div><!-- /.tile -->
+
 </div><!-- /.tiles -->

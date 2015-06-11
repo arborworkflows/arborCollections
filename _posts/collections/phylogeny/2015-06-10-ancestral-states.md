@@ -1,7 +1,7 @@
 ---
 title: aceArbor
 author: Arbor core team
-categories: phylogeny
+categories: collections phylogeny
 
 ---
 

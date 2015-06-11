@@ -9,7 +9,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2015-06-10T16:46:39-07:00</updated>
+  <updated>2015-06-10T21:22:54-07:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Michael Rose</name>
@@ -100,29 +100,10 @@
   </entry>
   
   <entry>
-    <title>Phylogenetic signal</title>
-    <link href="/arborCollections/easymode/phylogenetic-signal/"/>
-    <updated>2015-06-10T00:00:00-07:00</updated>
-    <id>/arborCollections/easymode/phylogenetic-signal</id>
-    <author>
-      <name>Michael Rose</name>
-      <uri>/arborCollections/</uri>
-      <email>michael@mademistakes.com</email>
-    </author>
-    <content type="html">
-      
-      &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
     <title>phylogeneticSignal</title>
-    <link href="/arborCollections/phylogeny/phylogenetic-signal/"/>
+    <link href="/arborCollections/collections/phylogeny/phylogenetic-signal/"/>
     <updated>2015-06-10T00:00:00-07:00</updated>
-    <id>/arborCollections/phylogeny/phylogenetic-signal</id>
+    <id>/arborCollections/collections/phylogeny/phylogenetic-signal</id>
     <author>
       <name>Michael Rose</name>
       <uri>/arborCollections/</uri>
@@ -161,10 +142,29 @@ the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>aceArbor</title>
-    <link href="/arborCollections/phylogeny/ancestral-states-2/"/>
+    <title>Phylogenetic signal</title>
+    <link href="/arborCollections/easymode/phylogenetic-signal/"/>
     <updated>2015-06-10T00:00:00-07:00</updated>
-    <id>/arborCollections/phylogeny/ancestral-states-2</id>
+    <id>/arborCollections/easymode/phylogenetic-signal</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
+
+&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>aceArbor</title>
+    <link href="/arborCollections/collections/phylogeny/ancestral-states-2/"/>
+    <updated>2015-06-10T00:00:00-07:00</updated>
+    <id>/arborCollections/collections/phylogeny/ancestral-states-2</id>
     <author>
       <name>Michael Rose</name>
       <uri>/arborCollections/</uri>
@@ -220,9 +220,9 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
   
   <entry>
     <title>aceArbor</title>
-    <link href="/arborCollections/phylogeny/ancestral-states/"/>
+    <link href="/arborCollections/collections/phylogeny/ancestral-states/"/>
     <updated>2015-06-10T00:00:00-07:00</updated>
-    <id>/arborCollections/phylogeny/ancestral-states</id>
+    <id>/arborCollections/collections/phylogeny/ancestral-states</id>
     <author>
       <name>Michael Rose</name>
       <uri>/arborCollections/</uri>
@@ -291,6 +291,46 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
       &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/ancestral-state/&quot; /&gt;
 
 &lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/ancestral-state/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>addColumns</title>
+    <link href="/arborCollections/collections/base/addColumns/"/>
+    <updated>2015-06-10T00:00:00-07:00</updated>
+    <id>/arborCollections/collections/base/addColumns</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;addcolumns-function&quot;&gt;addColumns: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-base&quot;&gt;collection: base&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;addColumns can be used to find the sum of two columns in a data matrix.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.csv.
+Load this files into Arbor, and use it as input to the addColumns function.
+Choose “SVL” and “awesomeness” as columnOne and columnTwo, respectively.
+Name the outputColumn whatever you want.
+The output is a table with all the data from anolis.csv along with a new column that shows the sum of SVL and awesomeness.&lt;/p&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;table: A data table&lt;/li&gt;
+  &lt;li&gt;columnOne and columnTwo: The name of the columns to add&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+&lt;p&gt;Function outputs a table with a new column appended to the end.&lt;/p&gt;
 
     </content>
   </entry>
@@ -797,14 +837,14 @@ basic analysis of a correlation between two continuous characters using independ
       @site = site
       @base = base
       @dir = dir
-      @name = 'index.html'
+      @name = &#39;index.html&#39;
       self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
-      self.data['tag'] = tag
-      tag_title_prefix = site.config['tag_title_prefix'] || 'Tagged: '
-      tag_title_suffix = site.config['tag_title_suffix'] || '&amp;amp;#8211;'
-      self.data['title'] = &quot;#{tag_title_prefix}#{tag}&quot;
-      self.data['description'] = &quot;An archive of posts tagged #{tag}.&quot;
+      self.read_yaml(File.join(base, &#39;_layouts&#39;), &#39;tag_index.html&#39;)
+      self.data[&#39;tag&#39;] = tag
+      tag_title_prefix = site.config[&#39;tag_title_prefix&#39;] || &#39;Tagged: &#39;
+      tag_title_suffix = site.config[&#39;tag_title_suffix&#39;] || &#39;&amp;amp;#8211;&#39;
+      self.data[&#39;title&#39;] = &quot;#{tag_title_prefix}#{tag}&quot;
+      self.data[&#39;description&#39;] = &quot;An archive of posts tagged #{tag}.&quot;
     end
   end
 end
@@ -950,56 +990,6 @@ end
     &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://placehold.it/150x150.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>Phylogenies collection</title>
-    <link href="/arborCollections/documentation/phylogenies/"/>
-    <updated>2014-05-30T08:39:03-07:00</updated>
-    <id>/arborCollections/documentation/phylogenies</id>
-    <author>
-      <name>Michael Rose</name>
-      <uri>/arborCollections/</uri>
-      <email>michael@mademistakes.com</email>
-    </author>
-    <content type="html">
-      
-      &lt;div class=&quot;tiles&quot;&gt;
-
-  &lt;article class=&quot;tile&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/Article&quot;&gt;
-  &lt;a href=&quot;/arborCollections/phylogeny/phylogenetic-signal/&quot; title=&quot;phylogeneticSignal&quot; class=&quot;post-teaser&quot;&gt;&lt;img src=&quot;/arborCollections/images/400x250.gif&quot; alt=&quot;teaser&quot; itemprop=&quot;image&quot; /&gt;&lt;/a&gt;
-  &lt;p class=&quot;entry-date date published&quot;&gt;&lt;time datetime=&quot;2015-06-10&quot; itemprop=&quot;datePublished&quot;&gt;June 10, 2015&lt;/time&gt;&lt;/p&gt;
-  &lt;h2 class=&quot;post-title&quot; itemprop=&quot;name&quot;&gt;&lt;a href=&quot;/arborCollections/phylogeny/phylogenetic-signal/&quot;&gt;phylogeneticSignal&lt;/a&gt;&lt;/h2&gt;
-  &lt;p class=&quot;post-excerpt&quot; itemprop=&quot;description&quot;&gt;## phylogeneticSignal: function
-
-&lt;/p&gt;
-&lt;/article&gt;&lt;!-- /.tile --&gt;
-
-
-  &lt;article class=&quot;tile&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/Article&quot;&gt;
-  &lt;a href=&quot;/arborCollections/phylogeny/ancestral-states-2/&quot; title=&quot;aceArbor&quot; class=&quot;post-teaser&quot;&gt;&lt;img src=&quot;/arborCollections/images/400x250.gif&quot; alt=&quot;teaser&quot; itemprop=&quot;image&quot; /&gt;&lt;/a&gt;
-  &lt;p class=&quot;entry-date date published&quot;&gt;&lt;time datetime=&quot;2015-06-10&quot; itemprop=&quot;datePublished&quot;&gt;June 10, 2015&lt;/time&gt;&lt;/p&gt;
-  &lt;h2 class=&quot;post-title&quot; itemprop=&quot;name&quot;&gt;&lt;a href=&quot;/arborCollections/phylogeny/ancestral-states-2/&quot;&gt;aceArbor&lt;/a&gt;&lt;/h2&gt;
-  &lt;p class=&quot;post-excerpt&quot; itemprop=&quot;description&quot;&gt;# aceArbor: function
-
-&lt;/p&gt;
-&lt;/article&gt;&lt;!-- /.tile --&gt;
-
-
-  &lt;article class=&quot;tile&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/Article&quot;&gt;
-  &lt;a href=&quot;/arborCollections/phylogeny/ancestral-states/&quot; title=&quot;aceArbor&quot; class=&quot;post-teaser&quot;&gt;&lt;img src=&quot;/arborCollections/images/400x250.gif&quot; alt=&quot;teaser&quot; itemprop=&quot;image&quot; /&gt;&lt;/a&gt;
-  &lt;p class=&quot;entry-date date published&quot;&gt;&lt;time datetime=&quot;2015-06-10&quot; itemprop=&quot;datePublished&quot;&gt;June 10, 2015&lt;/time&gt;&lt;/p&gt;
-  &lt;h2 class=&quot;post-title&quot; itemprop=&quot;name&quot;&gt;&lt;a href=&quot;/arborCollections/phylogeny/ancestral-states/&quot;&gt;aceArbor&lt;/a&gt;&lt;/h2&gt;
-  &lt;p class=&quot;post-excerpt&quot; itemprop=&quot;description&quot;&gt;# aceArbor: function
-
-&lt;/p&gt;
-&lt;/article&gt;&lt;!-- /.tile --&gt;
-
-
-&lt;/div&gt;
-&lt;!-- /.tiles --&gt;
 
     </content>
   </entry>

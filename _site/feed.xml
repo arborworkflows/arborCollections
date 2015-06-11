@@ -80,17 +80,6 @@
       </item>
     
       <item>
-        <title>Phylogenetic signal</title>
-        <description>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/easymode/phylogenetic-signal/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/easymode/phylogenetic-signal/</guid>
-      </item>
-    
-      <item>
         <title>phylogeneticSignal</title>
         <description>&lt;h2 id=&quot;phylogeneticsignal-function&quot;&gt;phylogeneticSignal: function&lt;/h2&gt;
 
@@ -120,8 +109,19 @@ the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
 &lt;p&gt;Function outputs a table with results from the test of phylogenetic signal.&lt;/p&gt;
 </description>
         <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/phylogeny/phylogenetic-signal/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/phylogeny/phylogenetic-signal/</guid>
+        <link>/arborCollections/arborCollections/collections/phylogeny/phylogenetic-signal/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/phylogenetic-signal/</guid>
+      </item>
+    
+      <item>
+        <title>Phylogenetic signal</title>
+        <description>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
+
+&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
+        <link>/arborCollections/arborCollections/easymode/phylogenetic-signal/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/easymode/phylogenetic-signal/</guid>
       </item>
     
       <item>
@@ -170,8 +170,8 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
 &lt;p&gt;Function outputs a table and a plot with results of the ancestral state reconstruction.&lt;/p&gt;
 </description>
         <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/phylogeny/ancestral-states-2/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/phylogeny/ancestral-states-2/</guid>
+        <link>/arborCollections/arborCollections/collections/phylogeny/ancestral-states-2/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/ancestral-states-2/</guid>
       </item>
     
       <item>
@@ -220,8 +220,8 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
 &lt;p&gt;Function outputs a table and a plot with results of the ancestral state reconstruction.&lt;/p&gt;
 </description>
         <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/phylogeny/ancestral-states/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/phylogeny/ancestral-states/</guid>
+        <link>/arborCollections/arborCollections/collections/phylogeny/ancestral-states/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/ancestral-states/</guid>
       </item>
     
       <item>
@@ -233,6 +233,38 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
         <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/easymode/ancestral-state/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/easymode/ancestral-state/</guid>
+      </item>
+    
+      <item>
+        <title>addColumns</title>
+        <description>&lt;h1 id=&quot;addcolumns-function&quot;&gt;addColumns: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-base&quot;&gt;collection: base&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;addColumns can be used to find the sum of two columns in a data matrix.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.csv.
+Load this files into Arbor, and use it as input to the addColumns function.
+Choose “SVL” and “awesomeness” as columnOne and columnTwo, respectively.
+Name the outputColumn whatever you want.
+The output is a table with all the data from anolis.csv along with a new column that shows the sum of SVL and awesomeness.&lt;/p&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;table: A data table&lt;/li&gt;
+  &lt;li&gt;columnOne and columnTwo: The name of the columns to add&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+&lt;p&gt;Function outputs a table with a new column appended to the end.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
+        <link>/arborCollections/arborCollections/collections/base/addColumns/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/addColumns/</guid>
       </item>
     
       <item>
@@ -531,60 +563,6 @@ basic analysis of a correlation between two continuous characters using independ
         <pubDate>Thu, 21 May 2015 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/tutorials/what-is-arbor/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/what-is-arbor/</guid>
-      </item>
-    
-      <item>
-        <title>Easy mode</title>
-        <description>&lt;h2 id=&quot;what-is-easy-mode&quot;&gt;What is Easy Mode?&lt;/h2&gt;
-
-&lt;p&gt;As a part of the Arbor project, we are developing a few simple-to-use web apps that allow users to quickly and easily carry out a few of the most common comparative methods. These pages present a drag-and-drop interface to test for phylogenetic signal, reconstruct ancestral character states, test for character correlations, and other common analyses.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-can-i-do-in-arbor-easy-mode&quot;&gt;What can I do in Arbor Easy Mode?&lt;/h2&gt;
-
-&lt;p&gt;To use easy mode, you can navigate to one of our &lt;a href=&quot;/arborCollections/easy/index.html&quot;&gt;easy mode pages&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;walkthrough---phylogenetic-signal-in-easy-mode&quot;&gt;Walkthrough - Phylogenetic Signal in Easy Mode&lt;/h2&gt;
-
-&lt;p&gt;Let’s walk through one example analysis in easy mode. We will work on testing for phylogenetic signal. I will use two data files for &lt;em&gt;Anolis&lt;/em&gt; lizards, linked below.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/arborCollections/assets/anolis.phy&quot;&gt;anolis.phy&lt;/a&gt;: a phylogenetic tree of anoles&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/arborCollections/assets/anolis.csv&quot;&gt;anolis.csv&lt;/a&gt;: character data for anoles (comma-separated format)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Download these two files, and locate them on your computer’s file browser.&lt;/p&gt;
-
-&lt;p&gt;Now, navigate to the Arbor easy mode page for phylogenetic signal. You should see something like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Next, you need to input your datafiles into the website. You can do that by dragging and dropping the files onto the blue box that says “browse or drop files here.”&lt;/p&gt;
-
-&lt;p&gt;When you hover over the correct place, the box will turn green. Arbor can automatically detect whether you have uploaded a tree or a data file.&lt;/p&gt;
-
-&lt;p&gt;After you upload both files, you should see them listed in the appropriate place, like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_3.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You might also notice that you can see a preview of your input table at the bottom of the page:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_4.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now you need to specify a column that will define the trait that you want to use for the phylogenetic signal test. Right now, this test can only handle one trait at a time! Let’s choose “SVL.” Grab that column name from the left hand side and drag and drop it onto the box that says “Drag column of interest here.” You should end up with this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_5.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;No just press “Go!” and your analysis will run. You should get back a table of results, like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_6.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The last table shows the results of the analysis. The first two columns are the likelihoods of a Brownian motion model and Brownian motion + lambda. The third and fourth represent a chi-squared test comparing a “full” phylogenetic signal model (Brownian motion) with a model where signal is less than Brownian motion (lambda). P &amp;lt; 0.05 means that you can reject BM in favor of the lambda model. The last two columns show AICC scores for these two models. This output is formatted in a very confusing way, we are going to fix it!&lt;/p&gt;
-</description>
-        <pubDate>Thu, 21 May 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/tutorials/easy-mode/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/easy-mode/</guid>
       </item>
     
   </channel>
