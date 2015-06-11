@@ -3,6 +3,8 @@ layout: article
 categories: tutorials
 title: What is Arbor?
 summary: An introduction to our workflow software
+comments: true
+
 ---
 
 <h2>What is Arbor?</h2>

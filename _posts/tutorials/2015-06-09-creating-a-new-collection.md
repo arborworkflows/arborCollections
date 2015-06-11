@@ -3,6 +3,8 @@ layout: article
 categories: tutorials
 title: Creating a new collection
 summary: How to make your own collection of Arbor functions and workflows
+comments: true
+
 ---
 
 ## Overview

@@ -36,7 +36,7 @@ owner:
     plus: +lukejharmon
     ad-client:
     ad-slot:
-  disqus-shortname:
+  disqus-shortname: arborworkflows
 
 
 exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
@@ -44,3 +44,9 @@ exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefi
 # heroku stuff
 gems: ['kramdown']
 exclude: ['config.ru', 'Gemfile', 'Gemfile.lock', 'vendor', 'Procfile', 'Rakefile']
+
+# Google analytics
+google_analytics:   UA-63774905-2
+
+# disqus
+disqus-shortname: arborworkflows
