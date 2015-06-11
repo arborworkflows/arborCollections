@@ -26,16 +26,16 @@ gems:
 
 # Site owner
 owner:
-  name: Michael Rose
-  web: http://mademistakes.com
-  email: michael@mademistakes.com
-  twitter: mmistakes
-  bio: "Just another boring, tattooed, time traveling designer."
+  name: Luke Harmon
+  web: http://lukejharmon.github.io
+  email: lukeh@uidaho.edu
+  twitter: lukejharmon
+  bio: "Associate professor, UIdaho."
   avatar: bio-photo.jpg # 160x160 px image for author byline
   google:
-    plus: +MichaelRoseDesign
-    ad-client: ca-pub-7328585512091257
-    ad-slot: 3049671934
+    plus: +lukejharmon
+    ad-client:
+    ad-slot:
   disqus-shortname:
 
 
