@@ -9,7 +9,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2015-06-10T21:22:54-07:00</updated>
+  <updated>2015-06-10T21:25:13-07:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Michael Rose</name>
@@ -161,6 +161,106 @@ the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
   </entry>
   
   <entry>
+    <title>phylogeneticSignal</title>
+    <link href="/arborCollections/phylogeny/phylogenetic-signal/"/>
+    <updated>2015-06-10T00:00:00-07:00</updated>
+    <id>/arborCollections/phylogeny/phylogenetic-signal</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;phylogeneticsignal-function&quot;&gt;phylogeneticSignal: function&lt;/h2&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;aceArbor is a function for estimating and testing for phylogenetic signal. It works for
+both discrete and continuous variables, and can use a variety of methods for calculating
+phylogenetic signal.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the phylogeneticSignal function. Choose
+the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;table: A data table including species names&lt;/li&gt;
+  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
+  &lt;li&gt;method: either “K” for Blomberg’s K or “lambda” for Pagel’s lambda&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+&lt;p&gt;Function outputs a table with results from the test of phylogenetic signal.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>aceArbor</title>
+    <link href="/arborCollections/phylogeny/ancestral-states-2/"/>
+    <updated>2015-06-10T00:00:00-07:00</updated>
+    <id>/arborCollections/phylogeny/ancestral-states-2</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;acearbor-function&quot;&gt;aceArbor: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;aceArbor is a function for carrying out ancestral state reconstruction. It works for
+both discrete and continuous variables, and can reconstruct ancestral character states
+under both a maximum-likelihood and a Bayesian framework. The function returns results
+in two formats: a table of ancestral state estimates for each node in the tree, and a plot
+of the results.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
+the “ecomorph” column for analysis, and select type: discrete and method: marginal.&lt;/p&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;table: A data table including species names&lt;/li&gt;
+  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
+  &lt;li&gt;type: The character type
+    &lt;ul&gt;
+      &lt;li&gt;discrete: a character with a discrete number of states&lt;/li&gt;
+      &lt;li&gt;continuous: a continuously varying character&lt;/li&gt;
+      &lt;li&gt;fromData: will attempt to determine the data type from the data itself&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;method: specifies the method used to reconstruct ancestral character states
+    &lt;ul&gt;
+      &lt;li&gt;marginal: marginal ancestral state reconstructions, which reconstruct each node integrating over all possibilities at all other nodes in the tree; this is typically the method used in the literature to reconstruce ACEs&lt;/li&gt;
+      &lt;li&gt;joint: joint ancestral reconstructions, which give the configuration of ancestral states that together maximize the likelihood of the data given model parameters&lt;/li&gt;
+      &lt;li&gt;mcmc: reconstruct ancestral states using Bayesian MCMC. Note that the discrete version of this doesn’t seem to work, and even if it did work it is not a full MCMC ancestral state method&lt;/li&gt;
+      &lt;li&gt;stochastic: create stochastic character map&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+&lt;p&gt;Function outputs a table and a plot with results of the ancestral state reconstruction.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
     <title>aceArbor</title>
     <link href="/arborCollections/collections/phylogeny/ancestral-states-2/"/>
     <updated>2015-06-10T00:00:00-07:00</updated>
@@ -223,6 +323,64 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
     <link href="/arborCollections/collections/phylogeny/ancestral-states/"/>
     <updated>2015-06-10T00:00:00-07:00</updated>
     <id>/arborCollections/collections/phylogeny/ancestral-states</id>
+    <author>
+      <name>Michael Rose</name>
+      <uri>/arborCollections/</uri>
+      <email>michael@mademistakes.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;acearbor-function&quot;&gt;aceArbor: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;aceArbor is a function for carrying out ancestral state reconstruction. It works for
+both discrete and continuous variables, and can reconstruct ancestral character states
+under both a maximum-likelihood and a Bayesian framework. The function returns results
+in two formats: a table of ancestral state estimates for each node in the tree, and a plot
+of the results.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
+the “ecomorph” column for analysis, and select type: discrete and method: marginal.&lt;/p&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;table: A data table including species names&lt;/li&gt;
+  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
+  &lt;li&gt;type: The character type
+    &lt;ul&gt;
+      &lt;li&gt;discrete: a character with a discrete number of states&lt;/li&gt;
+      &lt;li&gt;continuous: a continuously varying character&lt;/li&gt;
+      &lt;li&gt;fromData: will attempt to determine the data type from the data itself&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;method: specifies the method used to reconstruct ancestral character states
+    &lt;ul&gt;
+      &lt;li&gt;marginal: marginal ancestral state reconstructions, which reconstruct each node integrating over all possibilities at all other nodes in the tree; this is typically the method used in the literature to reconstruce ACEs&lt;/li&gt;
+      &lt;li&gt;joint: joint ancestral reconstructions, which give the configuration of ancestral states that together maximize the likelihood of the data given model parameters&lt;/li&gt;
+      &lt;li&gt;mcmc: reconstruct ancestral states using Bayesian MCMC. Note that the discrete version of this doesn’t seem to work, and even if it did work it is not a full MCMC ancestral state method&lt;/li&gt;
+      &lt;li&gt;stochastic: create stochastic character map&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+&lt;p&gt;Function outputs a table and a plot with results of the ancestral state reconstruction.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>aceArbor</title>
+    <link href="/arborCollections/phylogeny/ancestral-states/"/>
+    <updated>2015-06-10T00:00:00-07:00</updated>
+    <id>/arborCollections/phylogeny/ancestral-states</id>
     <author>
       <name>Michael Rose</name>
       <uri>/arborCollections/</uri>
