@@ -9,22 +9,27 @@ image:
 
 <div class="tile">
   <h2 class="post-title">Visual workflows</h2>
-  <p class="post-excerpt">Build your analyses.</p>
+  <p class="post-excerpt">Build your analysis</p>
+  <a href="{{ site.baseurl }}/tutorials/what-is-arbor/" class="btn">More</a>
+
 </div><!-- /.tile -->
 
 <div class="tile">
   <h2 class="post-title">Web services</h2>
-  <p class="post-excerpt">Real-time data over the web.</p>
+  <p class="post-excerpt">Real-time data</p>
+  <a href="{{ site.baseurl }}/tutorials/web-services/" class="btn">More</a>
 </div><!-- /.tile -->
 
 <div class="tile">
   <h2 class="post-title">Megaphylogenies</h2>
-  <p class="post-excerpt">Analyze trees with thousands of tips.</p>
+  <p class="post-excerpt">Thousands of species</p>
+  <a href="{{ site.baseurl }}/tutorials/megatrees/" class="btn">More</a>
 </div><!-- /.tile -->
 
 <div class="tile">
   <h2 class="post-title">Open-source</h2>
-  <p class="post-excerpt">Code can be downloaded, modified, and shared.</p>
+  <p class="post-excerpt">Download, modify, share</p>
+  <a href="http://github.com/arborworkflows" class="btn">More</a>
 </div><!-- /.tile -->
 
 </div><!-- /.tiles -->

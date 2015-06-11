@@ -3,6 +3,11 @@ layout: page
 categories: easymode
 title: Phylogenetic signal
 author: Luke J. Harmon
+image:
+  feature: easyButtons-1600x800.jpg
+  teaser: easyButtons-400x250.jpg
+  credit: Michael Rose
+  creditlink: http://mademistakes.com
 ---
 
 <meta http-equiv="refresh" content="0;url=https://arbor.kitware.com/phylogenetic-signal/">
