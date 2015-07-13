@@ -1,23 +1,27 @@
 ---
 layout: article
 categories: tutorials
-title: Discrete ancestral character states
-summary: How to reconstruct discrete ancestral character states on nodes in your tree using Arbor
+title: Continuous ancestral character states
+summary: How to build a workflow that can reconstruct continuous ancestral character states on nodes in your tree using Arbor
 comments: true
 
 ---
 
 ## Overview
 
-In this exercise, we will learn how to reconstruct ancestral character states in Arbor for a discrete character - that is, a character that can take on one of a number of discrete values. Examples might be lizards, "legs" versus "no legs" - this would be a two-state discrete character. Another example would be animal locomotion - "walks," "swims," or "flies." This is an example of a three-state discrete character.
+In this exercise, we will learn how to build a workflow that can reconstruct ancestral character states in Arbor for a continuous character - that is, a character that can take on any continuous value, like body weight or limb length.
 
-Imagine that you have a phylogenetic tree with information on some discrete character for some or all of the tips. You want to use mathematical methods to reconstruct the ancestral character states on the internal nodes of the tree. Then, this is the exercise for you!
+This exercise is quite similar to a tutorial for [ancestral state estimation of discrete characters]({{ site.baseurl }}/tutorials/reconstructing-ancestral-characters-discrete/).
+
+Imagine that you have a phylogenetic tree with information on some continuous character for some or all of the tips. You want to use mathematical methods to reconstruct the ancestral character states on the internal nodes of the tree under a Brownian motion model. Then, this is the exercise for you!
 
 ## Loading example data
 
-You will need the anolis example data files, anolis.phy and anolis.csv, from [Arbor datasets]({{ site.baseurl}}/docs_datasets.html). Save those files somewhere on your computer.
+For this example, we will use a dataset where the species included in the tree and character data do not match perfectly. Obtain the day gecko example data files, phelsuma.phy and phelsuma.csv, from [Arbor datasets]({{ site.baseurl}}/docs_datasets.html). Save those files somewhere on your computer.
 
-Now open the [Arbor web app](https://arbor.kitware.com). Drag and drop the two anolis data files on the blue "Browse or drop files" box to load them into your browser.
+If you look at these files, you will see that the tree includes a few unique species for which there is no character data. Arbor will recognize this and drop those species from the analysis.
+
+Now open the [Arbor web app](https://arbor.kitware.com). Drag and drop the two phelsuma data files on the blue "Browse or drop files" box to load them into your browser.
 
 Finally, [log in and create a personal collection]({{ site.baseurl }}/2015/06/09/creating-a-new-collection/).
 
