@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Discrete ancestral character states • Arbor</title>
+    <title>Continuous ancestral character states • Arbor</title>
     <meta name="description" content="Overview
 
 ">
@@ -10,7 +10,7 @@
     
     
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="Discrete ancestral character states">
+	<meta name="twitter:title" content="Continuous ancestral character states">
 	<meta name="twitter:description" content="Overview
 
 ">
@@ -23,14 +23,14 @@
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Discrete ancestral character states">
+	<meta property="og:title" content="Continuous ancestral character states">
 	<meta property="og:description" content="Overview
 
 ">
-	<meta property="og:url" content="/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/">
+	<meta property="og:url" content="/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/">
 	<meta property="og:site_name" content="Arbor">
 
-    <link rel="canonical" href="/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/">
+    <link rel="canonical" href="/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/">
 
     <link href="/arborCollections/atom.xml" type="application/atom+xml" rel="alternate" title="Arbor Atom Feed">
     <link href="/arborCollections/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
@@ -141,21 +141,25 @@
 
 
 		<div class="page-title">
-			<h1>Discrete ancestral character states</h1>
+			<h1>Continuous ancestral character states</h1>
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
 				<h2 id="overview">Overview</h2>
 
-<p>In this exercise, we will learn how to reconstruct ancestral character states in Arbor for a discrete character - that is, a character that can take on one of a number of discrete values. Examples might be lizards, “legs” versus “no legs” - this would be a two-state discrete character. Another example would be animal locomotion - “walks,” “swims,” or “flies.” This is an example of a three-state discrete character.</p>
+<p>In this exercise, we will learn how to build a workflow that can reconstruct ancestral character states in Arbor for a continuous character - that is, a character that can take on any continuous value, like body weight or limb length.</p>
 
-<p>Imagine that you have a phylogenetic tree with information on some discrete character for some or all of the tips. You want to use mathematical methods to reconstruct the ancestral character states on the internal nodes of the tree. Then, this is the exercise for you!</p>
+<p>This exercise is quite similar to a tutorial for <a href="/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/">ancestral state estimation of discrete characters</a>.</p>
+
+<p>Imagine that you have a phylogenetic tree with information on some continuous character for some or all of the tips. You want to use mathematical methods to reconstruct the ancestral character states on the internal nodes of the tree under a Brownian motion model. Then, this is the exercise for you!</p>
 
 <h2 id="loading-example-data">Loading example data</h2>
 
-<p>You will need the anolis example data files, anolis.phy and anolis.csv, from <a href="/arborCollections/docs_datasets.html">Arbor datasets</a>. Save those files somewhere on your computer.</p>
+<p>For this example, we will use a dataset where the species included in the tree and character data do not match perfectly. Obtain the day gecko example data files, phelsuma.phy and phelsuma.csv, from <a href="/arborCollections/docs_datasets.html">Arbor datasets</a>. Save those files somewhere on your computer.</p>
 
-<p>Now open the <a href="https://arbor.kitware.com">Arbor web app</a>. Drag and drop the two anolis data files on the blue “Browse or drop files” box to load them into your browser.</p>
+<p>If you look at these files, you will see that the tree includes a few unique species for which there is no character data. Arbor will recognize this and drop those species from the analysis.</p>
+
+<p>Now open the <a href="https://arbor.kitware.com">Arbor web app</a>. Drag and drop the two phelsuma data files on the blue “Browse or drop files” box to load them into your browser.</p>
 
 <p>Finally, <a href="/arborCollections/2015/06/09/creating-a-new-collection/">log in and create a personal collection</a>.</p>
 
@@ -224,12 +228,12 @@
 	<p class="author-bio">Associate professor, UIdaho.</p>
 </div><!-- ./author-content -->
 					<div class="inline-btn">
-	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Discrete%20ancestral%20character%20states&amp;url=/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/&amp;via=lukejharmon" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
-	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
-	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Continuous%20ancestral%20character%20states&amp;url=/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/&amp;via=lukejharmon" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
 </div><!-- /.share-this -->
 					<div class="page-meta">
-	<p>Updated <time datetime="2015-06-10T00:00:00Z" itemprop="datePublished">June 10, 2015</time></p>
+	<p>Updated <time datetime="2015-07-13T00:00:00Z" itemprop="datePublished">July 13, 2015</time></p>
 </div><!-- /.page-meta -->
 				</footer><!-- /.footer -->
 				<aside>

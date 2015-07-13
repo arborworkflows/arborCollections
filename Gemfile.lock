@@ -103,6 +103,3 @@ DEPENDENCIES
   rack-jekyll
   rake
   sass
-
-BUNDLED WITH
-   1.10.3

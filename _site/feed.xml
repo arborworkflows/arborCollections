@@ -7,6 +7,83 @@
     <atom:link href="/arborCollections/arborCollections/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Continuous ancestral character states</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;In this exercise, we will learn how to build a workflow that can reconstruct ancestral character states in Arbor for a continuous character - that is, a character that can take on any continuous value, like body weight or limb length.&lt;/p&gt;
+
+&lt;p&gt;This exercise is quite similar to a tutorial for &lt;a href=&quot;/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/&quot;&gt;ancestral state estimation of discrete characters&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Imagine that you have a phylogenetic tree with information on some continuous character for some or all of the tips. You want to use mathematical methods to reconstruct the ancestral character states on the internal nodes of the tree under a Brownian motion model. Then, this is the exercise for you!&lt;/p&gt;
+
+&lt;h2 id=&quot;loading-example-data&quot;&gt;Loading example data&lt;/h2&gt;
+
+&lt;p&gt;For this example, we will use a dataset where the species included in the tree and character data do not match perfectly. Obtain the day gecko example data files, phelsuma.phy and phelsuma.csv, from &lt;a href=&quot;/arborCollections/docs_datasets.html&quot;&gt;Arbor datasets&lt;/a&gt;. Save those files somewhere on your computer.&lt;/p&gt;
+
+&lt;p&gt;If you look at these files, you will see that the tree includes a few unique species for which there is no character data. Arbor will recognize this and drop those species from the analysis.&lt;/p&gt;
+
+&lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Drag and drop the two phelsuma data files on the blue “Browse or drop files” box to load them into your browser.&lt;/p&gt;
+
+&lt;p&gt;Finally, &lt;a href=&quot;/arborCollections/2015/06/09/creating-a-new-collection/&quot;&gt;log in and create a personal collection&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;selecting-the-collections-that-you-need&quot;&gt;Selecting the collections that you need&lt;/h2&gt;
+
+&lt;p&gt;For this example, everything required is in the “phylogeny” collection - so click on that eyeball and you will be able to access the functions that you need.&lt;/p&gt;
+
+&lt;p&gt;At this point, you should have the two anolis datafiles stored in Arbor and the “phylogeny” collection available. You should be logged in and have write access to your own private collection.&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-your-workflow&quot;&gt;Set up your workflow&lt;/h2&gt;
+
+&lt;p&gt;The main function in Arbor for ancestral state reconstruction is aceAcbor in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called “DiscreteAncestralStatesWorkflow”. Make sure to choose “New workflow” and not “New analysis”!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now create the connections you need to make the workflow run. First, click the “edit” button to start working on the workflow.&lt;/p&gt;
+
+&lt;p&gt;Now add the aceArbor function by selecting it under “Select analysis.” When you click “Add to workflow” then the function shoud appear in your workspace.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen3.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now create the inputs and outputs of the function by clicking on the “spokes” coming out of aceArbor. You should also move the blocks around to make your workflow look nice.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/functionPopup.gif&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Final result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen4.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Once you have a workflow that looks the way you want, click save!&lt;/strong&gt; If you do not do this you will be running the workflow at the last point it was saved and not what is shown on the screen.&lt;/p&gt;
+
+&lt;h2 id=&quot;run-your-workflow&quot;&gt;Run your workflow&lt;/h2&gt;
+
+&lt;p&gt;Click “Setup and run” to run your workflow. Select these options:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen5.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If your analysis worked, you should see the following message:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen6.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;see-your-results&quot;&gt;See your results&lt;/h2&gt;
+
+&lt;p&gt;Now move over to the “visualization” tab to see your results. First, select “image” under “Select visualization”, and choose your tree plot under “data” (it should be called DiscreteAncestralStatesWorkflow treePlot). Click “update” to see this result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen7.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To see the results in table format, choose “table” and “DiscreteAncestralStatesWorkflow res”. Update gives you this table, which is presently useless. Sorry!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen8.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 13 Jul 2015 00:00:00 -0700</pubDate>
+        <link>/arborCollections/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/</guid>
+      </item>
+    
+      <item>
         <title>Discrete ancestral character states</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -16,7 +93,7 @@
 
 &lt;h2 id=&quot;loading-example-data&quot;&gt;Loading example data&lt;/h2&gt;
 
-&lt;p&gt;You will need the anolis example data files, anolis.phy and anolis.csv, from [Arbor datasets] (/arborCollections/docs_datasets/). Save those files somewhere on your computer.&lt;/p&gt;
+&lt;p&gt;You will need the anolis example data files, anolis.phy and anolis.csv, from &lt;a href=&quot;/arborCollections/docs_datasets.html&quot;&gt;Arbor datasets&lt;/a&gt;. Save those files somewhere on your computer.&lt;/p&gt;
 
 &lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Drag and drop the two anolis data files on the blue “Browse or drop files” box to load them into your browser.&lt;/p&gt;
 
@@ -80,6 +157,17 @@
       </item>
     
       <item>
+        <title>Phylogenetic signal</title>
+        <description>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
+
+&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
+        <link>/arborCollections/arborCollections/easymode/phylogenetic-signal/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/easymode/phylogenetic-signal/</guid>
+      </item>
+    
+      <item>
         <title>phylogeneticSignal</title>
         <description>&lt;h2 id=&quot;phylogeneticsignal-function&quot;&gt;phylogeneticSignal: function&lt;/h2&gt;
 
@@ -111,17 +199,6 @@ the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
         <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/phylogenetic-signal/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/phylogenetic-signal/</guid>
-      </item>
-    
-      <item>
-        <title>Phylogenetic signal</title>
-        <description>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/easymode/phylogenetic-signal/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/easymode/phylogenetic-signal/</guid>
       </item>
     
       <item>
@@ -506,63 +583,6 @@ basic analysis of a correlation between two continuous characters using independ
         <pubDate>Tue, 02 Jun 2015 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/tutorials/using-the-arbor-webapp/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/using-the-arbor-webapp/</guid>
-      </item>
-    
-      <item>
-        <title>What is Arbor?</title>
-        <description>&lt;h2&gt;What is Arbor?&lt;/h2&gt;
-
-&lt;p&gt;Arbor is a software package for phylogenetic comparative analyses. Our main website is:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;www.arborworkflows.com&quot;&gt;www.arborworkflows.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2&gt;When will Arbor be available?&lt;/h2&gt;
-
-&lt;p&gt;Right now! And Arbor’s functionality will continue to grow through the end of 2015.&lt;/p&gt;
-
-&lt;h2&gt;What will Arbor be able to do for me?&lt;/h2&gt;
-
-&lt;p&gt;To start out with, Arbor will be able to do the most common comparative analyses, including:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Phylogenetic signal&lt;/li&gt;
-  &lt;li&gt;Ancestral state reconstruction&lt;/li&gt;
-  &lt;li&gt;Independent contrasts&lt;/li&gt;
-  &lt;li&gt;Comparative model fitting (e.g. Mk, threshold, and continuous character models)&lt;/li&gt;
-  &lt;li&gt;PGLS&lt;/li&gt;
-  &lt;li&gt;Fitting Birth-death models&lt;/li&gt;
-  &lt;li&gt;Community phylogenetics&lt;/li&gt;
-  &lt;li&gt;BiSSE / MuSSE / QuaSSE / GeoSSE&lt;/li&gt;
-  &lt;li&gt;Analyses of cospeciation&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We are building up towards more complicated analyses.&lt;/p&gt;
-
-&lt;h2&gt;What is an Arbor workflow?&lt;/h2&gt;
-
-&lt;p&gt;Phylogenetic trees are increasingly &lt;a href=&quot;http://blog.opentreeoflife.org&quot;&gt;available&lt;/a&gt;, and can be used for a wide range of analyses, including studies of speciation, trait evolution, range size evolution, and many other things. Phylogenetic comparative methods have been developing rapidly in recent years. Most analyses are currently done in R, and a number of useful packages are available (e.g. ape, diversitree, geiger, caper, phytools, &lt;a href=&quot;http://cran.r-project.org/web/views/Phylogenetics.html&quot;&gt;and others&lt;/a&gt;). Arbor seeks to enable end-users to carry out these analyses by building workflows.&lt;/p&gt;
-
-&lt;p&gt;Building an Arbor workflow will have more in common with making something out of legos than with computer programming. For example, the figure below shows a mockup of an Arbor workflow to calculate phylogenetic independent contrasts (PICs). End users will import a phylogenetic tree and some traits data - perhaps from their local computer, or maybe from a remote source like &lt;a href=&quot;https://tree.opentreeoflife.org/opentree/argus/opentree3.0@1&quot;&gt;Open Tree of Life&lt;/a&gt; or &lt;a href=&quot;http://eol.org&quot;&gt;Encyclopedia of Life&lt;/a&gt;. The workflow below then allows the user to connect a few steps together to calculate PICs and use them to test for a correlation between two traits.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/simple_pic_workflow.jpg&quot; alt=&quot;PIC workflow&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;A sample workflow for calculating phylogenetic independent contrasts (PICs) to test for an evolutionary correlation between two traits.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;The PIC workflow above is simple, but Arbor will enable more complex analyses as well. For example, imagine you are interested in analyzing geographic range evolution in your group of species.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/cartoon_workflow.png&quot; alt=&quot;Web workflow&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;A more complex workflow that uses data from web services to combine ecological niche models, Lagrange, and phylogenetic comparative analyses.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;The workflow above shows how you might use Arbor to link phylogenetic, trait, and geographic data together in a comprehensive set of comparative analyses. If you want to get an idea of other examples of workflow software in biology, you can check out other examples like &lt;a href=&quot;https://usegalaxy.org/&quot;&gt;Galaxy&lt;/a&gt; and the &lt;a href=&quot;http://www.iplantcollaborative.org/ci/discovery-environment&quot;&gt;iPlant Discovery Environment&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2&gt;How can I participate in the project?&lt;/h2&gt;
-
-&lt;p&gt;You can follow our blog, visit our main site, and find our code on github. We will also be hosting a series of hackathons to be announced at a later date.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 21 May 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/tutorials/what-is-arbor/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/what-is-arbor/</guid>
       </item>
     
   </channel>
