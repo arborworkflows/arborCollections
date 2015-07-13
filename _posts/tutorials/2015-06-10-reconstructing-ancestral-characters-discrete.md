@@ -4,10 +4,12 @@ categories: tutorials
 title: Discrete ancestral character states
 summary: How to reconstruct discrete ancestral character states on nodes in your tree using Arbor
 comments: true
-
+image:
+  feature: arbordace-400x250.jpg
+  teaser: arbordace-400x250.jpg
 ---
 
-## Overview
+## How to reconstruct discrete ancestral character states on nodes in your tree using Arbor
 
 In this exercise, we will learn how to reconstruct ancestral character states in Arbor for a discrete character - that is, a character that can take on one of a number of discrete values. Examples might be lizards, "legs" versus "no legs" - this would be a two-state discrete character. Another example would be animal locomotion - "walks," "swims," or "flies." This is an example of a three-state discrete character.
 

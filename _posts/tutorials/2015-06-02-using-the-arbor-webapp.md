@@ -4,10 +4,12 @@ categories: tutorials
 title: Using the Arbor webapp
 summary: Basics on using the webapp to build workflows
 comments: true
-
+image:
+  feature: arborweb-400x250.jpg
+  teaser: arborweb-400x250.jpg
 ---
 
-## Overview
+## How to use the Arbor webapp for comparative analyses
 
 So, you want to use the Arbor web app to do some comparative analyses?
 

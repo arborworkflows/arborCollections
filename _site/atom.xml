@@ -9,7 +9,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2015-07-13T12:44:22-07:00</updated>
+  <updated>2015-07-13T14:16:01-07:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -29,8 +29,8 @@
       <email>lukeh@uidaho.edu</email>
     </author>
     <content type="html">
-      
-      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;img src=&quot;/arborCollections/images/arbordace-400x250.jpg&quot;&gt;&lt;br/&gt;
+      &lt;h2 id=&quot;how-to-build-a-workflow-that-can-reconstruct-continuous-ancestral-character-states-on-nodes-in-your-tree-using-arbor&quot;&gt;How to build a workflow that can reconstruct continuous ancestral character states on nodes in your tree using Arbor&lt;/h2&gt;
 
 &lt;p&gt;In this exercise, we will learn how to build a workflow that can reconstruct ancestral character states in Arbor for a continuous character - that is, a character that can take on any continuous value, like body weight or limb length.&lt;/p&gt;
 
@@ -58,25 +58,21 @@
 
 &lt;p&gt;The main function in Arbor for ancestral state reconstruction is aceAcbor in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/continuousACE/screen1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called “DiscreteAncestralStatesWorkflow”. Make sure to choose “New workflow” and not “New analysis”!&lt;/p&gt;
+&lt;p&gt;You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called ContinuousAncestralStatesWorkflow”. Make sure to choose “New workflow” and not “New analysis”!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/continuousACE/screen2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now create the connections you need to make the workflow run. First, click the “edit” button to start working on the workflow.&lt;/p&gt;
 
 &lt;p&gt;Now add the aceArbor function by selecting it under “Select analysis.” When you click “Add to workflow” then the function shoud appear in your workspace.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen3.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
 &lt;p&gt;Now create the inputs and outputs of the function by clicking on the “spokes” coming out of aceArbor. You should also move the blocks around to make your workflow look nice.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/functionPopup.gif&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/continuousACE/screen3.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Final result:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen4.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;To see a more detailed walkthrough of making connections in your workflow, see the tutorial &lt;a href=&quot;/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/&quot;&gt;ancestral state estimation of discrete characters&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Once you have a workflow that looks the way you want, click save!&lt;/strong&gt; If you do not do this you will be running the workflow at the last point it was saved and not what is shown on the screen.&lt;/p&gt;
 
@@ -84,7 +80,7 @@
 
 &lt;p&gt;Click “Setup and run” to run your workflow. Select these options:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen5.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen4.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;If your analysis worked, you should see the following message:&lt;/p&gt;
 
@@ -114,8 +110,8 @@
       <email>lukeh@uidaho.edu</email>
     </author>
     <content type="html">
-      
-      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;img src=&quot;/arborCollections/images/arbordace-400x250.jpg&quot;&gt;&lt;br/&gt;
+      &lt;h2 id=&quot;how-to-reconstruct-discrete-ancestral-character-states-on-nodes-in-your-tree-using-arbor&quot;&gt;How to reconstruct discrete ancestral character states on nodes in your tree using Arbor&lt;/h2&gt;
 
 &lt;p&gt;In this exercise, we will learn how to reconstruct ancestral character states in Arbor for a discrete character - that is, a character that can take on one of a number of discrete values. Examples might be lizards, “legs” versus “no legs” - this would be a two-state discrete character. Another example would be animal locomotion - “walks,” “swims,” or “flies.” This is an example of a three-state discrete character.&lt;/p&gt;
 
@@ -431,8 +427,8 @@ The output is a table with all the data from anolis.csv along with a new column 
       <email>lukeh@uidaho.edu</email>
     </author>
     <content type="html">
-      
-      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;img src=&quot;/arborCollections/images/arborcollections-400x250.jpg&quot;&gt;&lt;br/&gt;
+      &lt;h2 id=&quot;how-to-make-your-own-collection-of-arbor-functions-and-workflows&quot;&gt;How to make your own collection of Arbor functions and workflows&lt;/h2&gt;
 
 &lt;p&gt;When working in Arbor, you will be uploading your own data, and may want to create your own functions and workflows. Everything in Arbor is organized into collections (for example, the phylogeny and base collections). You can create your own collection to store data and workflows. Later I will discuss how you can share any items in your collection with colleagues.&lt;/p&gt;
 
@@ -494,8 +490,8 @@ The output is a table with all the data from anolis.csv along with a new column 
       <email>lukeh@uidaho.edu</email>
     </author>
     <content type="html">
-      
-      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;img src=&quot;/arborCollections/images/arborweb-400x250.jpg&quot;&gt;&lt;br/&gt;
+      &lt;h2 id=&quot;how-to-use-the-arbor-webapp-for-comparative-analyses&quot;&gt;How to use the Arbor webapp for comparative analyses&lt;/h2&gt;
 
 &lt;p&gt;So, you want to use the Arbor web app to do some comparative analyses?&lt;/p&gt;
 
@@ -688,7 +684,7 @@ basic analysis of a correlation between two continuous characters using independ
       <email>lukeh@uidaho.edu</email>
     </author>
     <content type="html">
-      
+      &lt;img src=&quot;/arborCollections/images/arbor-400x250.jpg&quot;&gt;&lt;br/&gt;
       &lt;h2&gt;What is Arbor?&lt;/h2&gt;
 
 &lt;p&gt;Arbor is a software package for phylogenetic comparative analyses. Our main website is:&lt;/p&gt;
@@ -753,7 +749,7 @@ basic analysis of a correlation between two continuous characters using independ
       <email>lukeh@uidaho.edu</email>
     </author>
     <content type="html">
-      
+      &lt;img src=&quot;/arborCollections/images/easyButtons-1600x800.jpg&quot;&gt;&lt;br/&gt;
       &lt;h2 id=&quot;what-is-easy-mode&quot;&gt;What is Easy Mode?&lt;/h2&gt;
 
 &lt;p&gt;As a part of the Arbor project, we are developing a few simple-to-use web apps that allow users to quickly and easily carry out a few of the most common comparative methods. These pages present a drag-and-drop interface to test for phylogenetic signal, reconstruct ancestral character states, test for character correlations, and other common analyses.&lt;/p&gt;

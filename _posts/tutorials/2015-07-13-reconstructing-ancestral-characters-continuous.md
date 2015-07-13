@@ -4,10 +4,12 @@ categories: tutorials
 title: Continuous ancestral character states
 summary: How to build a workflow that can reconstruct continuous ancestral character states on nodes in your tree using Arbor
 comments: true
-
+image:
+  feature: arbordace-400x250.jpg
+  teaser: arbordace-400x250.jpg
 ---
 
-## Overview
+## How to build a workflow that can reconstruct continuous ancestral character states on nodes in your tree using Arbor
 
 In this exercise, we will learn how to build a workflow that can reconstruct ancestral character states in Arbor for a continuous character - that is, a character that can take on any continuous value, like body weight or limb length.
 

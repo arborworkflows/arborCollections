@@ -4,10 +4,12 @@ categories: tutorials
 title: Creating a new collection
 summary: How to make your own collection of Arbor functions and workflows
 comments: true
-
+image:
+  feature: arborcollections-400x250.jpg
+  teaser: arborcollections-400x250.jpg
 ---
 
-## Overview
+## How to make your own collection of Arbor functions and workflows
 
 When working in Arbor, you will be uploading your own data, and may want to create your own functions and workflows. Everything in Arbor is organized into collections (for example, the phylogeny and base collections). You can create your own collection to store data and workflows. Later I will discuss how you can share any items in your collection with colleagues.
 

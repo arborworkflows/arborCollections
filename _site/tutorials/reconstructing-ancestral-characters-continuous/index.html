@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Continuous ancestral character states • Arbor</title>
-    <meta name="description" content="Overview
+    <meta name="description" content="How to build a workflow that can reconstruct continuous ancestral character states on nodes in your tree using Arbor
 
 ">
     <meta name="keywords" content="">
@@ -11,20 +11,20 @@
     
     	<!-- Twitter Cards -->
 	<meta name="twitter:title" content="Continuous ancestral character states">
-	<meta name="twitter:description" content="Overview
+	<meta name="twitter:description" content="How to build a workflow that can reconstruct continuous ancestral character states on nodes in your tree using Arbor
 
 ">
 	<meta name="twitter:site" content="@lukejharmon">
 	<meta name="twitter:creator" content="@lukejharmon">
 	
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:image" content="/arborCollections/images/120x120.gif">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="/arborCollections/images/arbordace-400x250.jpg">
 	
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US">
 	<meta property="og:type" content="article">
 	<meta property="og:title" content="Continuous ancestral character states">
-	<meta property="og:description" content="Overview
+	<meta property="og:description" content="How to build a workflow that can reconstruct continuous ancestral character states on nodes in your tree using Arbor
 
 ">
 	<meta property="og:url" content="/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/">
@@ -126,6 +126,13 @@
       <div id="main" role="main">
 	<article class="wrap" itemscope itemtype="http://schema.org/Article">
 		
+		<div class="page-feature">
+			<div class="page-image">
+				<img src="/arborCollections/images/arbordace-400x250.jpg" class="page-feature-image" alt="Continuous ancestral character states" itemprop="image">
+				
+			</div><!-- /.page-image -->
+		</div><!-- /.page-feature -->
+		
 		
   <nav class="breadcrumbs">
     <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
@@ -145,7 +152,7 @@
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
-				<h2 id="overview">Overview</h2>
+				<h2 id="how-to-build-a-workflow-that-can-reconstruct-continuous-ancestral-character-states-on-nodes-in-your-tree-using-arbor">How to build a workflow that can reconstruct continuous ancestral character states on nodes in your tree using Arbor</h2>
 
 <p>In this exercise, we will learn how to build a workflow that can reconstruct ancestral character states in Arbor for a continuous character - that is, a character that can take on any continuous value, like body weight or limb length.</p>
 
@@ -173,25 +180,21 @@
 
 <p>The main function in Arbor for ancestral state reconstruction is aceAcbor in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).</p>
 
-<p><img src="/arborCollections/assets/discreteACE/screen1.png" alt="Screenshot" /></p>
+<p><img src="/arborCollections/assets/continuousACE/screen1.png" alt="Screenshot" /></p>
 
-<p>You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called “DiscreteAncestralStatesWorkflow”. Make sure to choose “New workflow” and not “New analysis”!</p>
+<p>You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called ContinuousAncestralStatesWorkflow”. Make sure to choose “New workflow” and not “New analysis”!</p>
 
-<p><img src="/arborCollections/assets/discreteACE/screen2.png" alt="Screenshot" /></p>
+<p><img src="/arborCollections/assets/continuousACE/screen2.png" alt="Screenshot" /></p>
 
 <p>Now create the connections you need to make the workflow run. First, click the “edit” button to start working on the workflow.</p>
 
 <p>Now add the aceArbor function by selecting it under “Select analysis.” When you click “Add to workflow” then the function shoud appear in your workspace.</p>
 
-<p><img src="/arborCollections/assets/discreteACE/screen3.png" alt="Screenshot" /></p>
-
 <p>Now create the inputs and outputs of the function by clicking on the “spokes” coming out of aceArbor. You should also move the blocks around to make your workflow look nice.</p>
 
-<p><img src="/arborCollections/assets/discreteACE/functionPopup.gif" alt="Screenshot" /></p>
+<p><img src="/arborCollections/assets/continuousACE/screen3.png" alt="Screenshot" /></p>
 
-<p>Final result:</p>
-
-<p><img src="/arborCollections/assets/discreteACE/screen4.png" alt="Screenshot" /></p>
+<p><strong>To see a more detailed walkthrough of making connections in your workflow, see the tutorial <a href="/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/">ancestral state estimation of discrete characters</a>.</strong></p>
 
 <p><strong>Once you have a workflow that looks the way you want, click save!</strong> If you do not do this you will be running the workflow at the last point it was saved and not what is shown on the screen.</p>
 
@@ -199,7 +202,7 @@
 
 <p>Click “Setup and run” to run your workflow. Select these options:</p>
 
-<p><img src="/arborCollections/assets/discreteACE/screen5.png" alt="Screenshot" /></p>
+<p><img src="/arborCollections/assets/discreteACE/screen4.png" alt="Screenshot" /></p>
 
 <p>If your analysis worked, you should see the following message:</p>
 
