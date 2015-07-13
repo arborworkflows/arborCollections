@@ -35,26 +35,21 @@ At this point, you should have the two anolis datafiles stored in Arbor and the 
 
 The main function in Arbor for ancestral state reconstruction is aceAcbor in the "phylogeny" collection. Select that function now. You can view the source code for it by choosing "show script" (it is in R).
 
-![Screenshot]({{ site.baseurl }}/assets/discreteACE/screen1.png)
+![Screenshot]({{ site.baseurl }}/assets/continuousACE/screen1.png)
 
-You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called "DiscreteAncestralStatesWorkflow". Make sure to choose "New workflow" and not "New analysis"!
+You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called ContinuousAncestralStatesWorkflow". Make sure to choose "New workflow" and not "New analysis"!
 
-![Screenshot]({{ site.baseurl }}/assets/discreteACE/screen2.png)
+![Screenshot]({{ site.baseurl }}/assets/continuousACE/screen2.png)
 
 Now create the connections you need to make the workflow run. First, click the "edit" button to start working on the workflow.
 
 Now add the aceArbor function by selecting it under "Select analysis." When you click "Add to workflow" then the function shoud appear in your workspace.
 
-![Screenshot]({{ site.baseurl }}/assets/discreteACE/screen3.png)
-
-
 Now create the inputs and outputs of the function by clicking on the "spokes" coming out of aceArbor. You should also move the blocks around to make your workflow look nice.
 
-![Screenshot]({{ site.baseurl }}/assets/discreteACE/functionPopup.gif)
+![Screenshot]({{ site.baseurl }}/assets/continuousACE/screen3.png)
 
-Final result:
-
-![Screenshot]({{ site.baseurl }}/assets/discreteACE/screen4.png)
+**To see a more detailed walkthrough of making connections in your workflow, see the tutorial [ancestral state estimation of discrete characters]({{ site.baseurl }}/tutorials/reconstructing-ancestral-characters-discrete/).**
 
 **Once you have a workflow that looks the way you want, click save!** If you do not do this you will be running the workflow at the last point it was saved and not what is shown on the screen.
 
@@ -62,7 +57,7 @@ Final result:
 
 Click "Setup and run" to run your workflow. Select these options:
 
-![Screenshot]({{ site.baseurl }}/assets/discreteACE/screen5.png)
+![Screenshot]({{ site.baseurl }}/assets/discreteACE/screen4.png)
 
 If your analysis worked, you should see the following message:
 
