@@ -74,4 +74,4 @@ Now move over to the "visualization" tab to see your results. First, select "ima
 
 To see the results in table format, choose "table" and "ContinuousAncestralStatesWorkflow res". Update gives you this table, which shows the ancestral state estimates and CIs for each node in the tree:
 
-![Screenshot]({{ site.baseurl }}/assets/discreteACE/screen8.png)
+![Screenshot]({{ site.baseurl }}/assets/continuousACE/screen8.png)
