@@ -59,19 +59,19 @@ Now create the inputs and outputs of the function by clicking on the "spokes" co
 
 Click "Setup and run" to run your workflow. Select these options:
 
-![Screenshot]({{ site.baseurl }}/assets/discreteACE/screen4.png)
+![Screenshot]({{ site.baseurl }}/assets/continuousACE/screen4.png)
 
 If your analysis worked, you should see the following message:
 
-![Screenshot]({{ site.baseurl }}/assets/discreteACE/screen6.png)
+![Screenshot]({{ site.baseurl }}/assets/continuousACE/screen6.png)
 
 
 ## See your results
 
-Now move over to the "visualization" tab to see your results. First, select "image" under "Select visualization", and choose your tree plot under "data" (it should be called DiscreteAncestralStatesWorkflow treePlot). Click "update" to see this result:
+Now move over to the "visualization" tab to see your results. First, select "image" under "Select visualization", and choose your tree plot under "data" (it should be called ContinuousAncestralStatesWorkflow treePlot). Click "update" to see this result:
 
-![Screenshot]({{ site.baseurl }}/assets/discreteACE/screen7.png)
+![Screenshot]({{ site.baseurl }}/assets/continuousACE/screen7.png)
 
-To see the results in table format, choose "table" and "DiscreteAncestralStatesWorkflow res". Update gives you this table, which is presently useless. Sorry!
+To see the results in table format, choose "table" and "ContinuousAncestralStatesWorkflow res". Update gives you this table, which shows the ancestral state estimates and CIs for each node in the tree:
 
 ![Screenshot]({{ site.baseurl }}/assets/discreteACE/screen8.png)
