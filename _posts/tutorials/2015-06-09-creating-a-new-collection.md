@@ -5,7 +5,6 @@ title: Creating a new collection
 summary: How to make your own collection of Arbor functions and workflows
 comments: true
 image:
-  feature: arborcollections-400x250.jpg
   teaser: arborcollections-400x250.jpg
 ---
 

@@ -5,7 +5,6 @@ title: What is Arbor?
 summary: An introduction to our workflow software
 comments: true
 image:
-  feature: arbor-400x250.jpg
   teaser: arbor-400x250.jpg
 ---
 

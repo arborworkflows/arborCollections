@@ -5,7 +5,6 @@ title: Continuous ancestral character states
 summary: How to build a workflow that can reconstruct continuous ancestral character states on nodes in your tree using Arbor
 comments: true
 image:
-  feature: arborcace-400x250.jpg
   teaser: arborcace-400x250.jpg
 ---
 

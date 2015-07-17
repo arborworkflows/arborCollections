@@ -5,7 +5,6 @@ title: Discrete ancestral character states
 summary: How to reconstruct discrete ancestral character states on nodes in your tree using Arbor
 comments: true
 image:
-  feature: arbordace-400x250.jpg
   teaser: arbordace-400x250.jpg
 ---
 

@@ -5,7 +5,6 @@ title: Using the Arbor webapp
 summary: Basics on using the webapp to build workflows
 comments: true
 image:
-  feature: arborweb-400x250.jpg
   teaser: arborweb-400x250.jpg
 ---
 
