@@ -2,35 +2,35 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Easy mode • Arbor</title>
-    <meta name="description" content="What is Easy Mode?
+    <title>PGLS • Arbor</title>
+    <meta name="description" content="Use PGLS to test for a correlation between two continuous variables
 
 ">
     <meta name="keywords" content="">
     
     
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="Easy mode">
-	<meta name="twitter:description" content="What is Easy Mode?
+	<meta name="twitter:title" content="PGLS">
+	<meta name="twitter:description" content="Use PGLS to test for a correlation between two continuous variables
 
 ">
 	<meta name="twitter:site" content="@lukejharmon">
 	<meta name="twitter:creator" content="@lukejharmon">
 	
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content="/arborCollections/images/easyButtons-1600x800.png">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="/arborCollections/images/120x120.gif">
 	
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Easy mode">
-	<meta property="og:description" content="What is Easy Mode?
+	<meta property="og:title" content="PGLS">
+	<meta property="og:description" content="Use PGLS to test for a correlation between two continuous variables
 
 ">
-	<meta property="og:url" content="/arborCollections/tutorials/easy-mode/">
+	<meta property="og:url" content="/arborCollections/tutorials/Continuous-models/">
 	<meta property="og:site_name" content="Arbor">
 
-    <link rel="canonical" href="/arborCollections/tutorials/easy-mode/">
+    <link rel="canonical" href="/arborCollections/tutorials/Continuous-models/">
 
     <link href="/arborCollections/atom.xml" type="application/atom+xml" rel="alternate" title="Arbor Atom Feed">
     <link href="/arborCollections/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
@@ -126,13 +126,6 @@
       <div id="main" role="main">
 	<article class="wrap" itemscope itemtype="http://schema.org/Article">
 		
-		<div class="page-feature">
-			<div class="page-image">
-				<img src="/arborCollections/images/easyButtons-1600x800.png" class="page-feature-image" alt="Easy mode" itemprop="image">
-				
-			</div><!-- /.page-image -->
-		</div><!-- /.page-feature -->
-		
 		
   <nav class="breadcrumbs">
     <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
@@ -148,56 +141,71 @@
 
 
 		<div class="page-title">
-			<h1>Easy mode</h1>
+			<h1>PGLS</h1>
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
-				<h2 id="what-is-easy-mode">What is Easy Mode?</h2>
+				<h2 id="use-pgls-to-test-for-a-correlation-between-two-continuous-variables">Use PGLS to test for a correlation between two continuous variables</h2>
 
-<p>As a part of the Arbor project, we are developing a few simple-to-use web apps that allow users to quickly and easily carry out a few of the most common comparative methods. These pages present a drag-and-drop interface to test for phylogenetic signal, reconstruct ancestral character states, test for character correlations, and other common analyses.</p>
+<p>In this exercise, we will learn how to use PGLS to test for a correlation between two continuous variables. We will use the Arbor function “PGLS,” found in the phylogeny package.</p>
 
-<h2 id="what-can-i-do-in-arbor-easy-mode">What can I do in Arbor Easy Mode?</h2>
+<p>Imagine that you have a phylogenetic tree with information on two continuous character for some or all of the tips. You want to test whether or not there is an evolutionary correlation between the two traits. PGLS is the way to do this.</p>
 
-<p>To use easy mode, you can navigate to one of our <a href="/arborCollections/easymode/index.html">easy mode pages</a>.</p>
+<h2 id="loading-example-data">Loading example data</h2>
 
-<h2 id="walkthrough---phylogenetic-signal-in-easy-mode">Walkthrough - Phylogenetic Signal in Easy Mode</h2>
+<p>For this example, we will use anolis again. Obtain the anolis example data files, phelsuma.phy and phelsuma.csv, from <a href="/arborCollections/docs_datasets.html">Arbor datasets</a>. Save those files somewhere on your computer.</p>
 
-<p>Let’s walk through one example analysis in easy mode. We will work on testing for phylogenetic signal. I will use two data files for <em>Anolis</em> lizards, linked below.</p>
+<p>Now open the <a href="https://arbor.kitware.com">Arbor web app</a>. Drag and drop the two anolis data files on the blue “Browse or drop files” box to load them into your browser.</p>
 
-<ul>
-  <li><a href="/arborCollections/assets/anolis.phy">anolis.phy</a>: a phylogenetic tree of anoles</li>
-  <li><a href="/arborCollections/assets/anolis.csv">anolis.csv</a>: character data for anoles (comma-separated format)</li>
-</ul>
+<h2 id="selecting-the-collections-that-you-need">Selecting the collections that you need</h2>
 
-<p>Download these two files, and locate them on your computer’s file browser.</p>
+<p>For this example, everything required is in the “phylogeny” collection - so click on that eyeball and you will be able to access the functions that you need.</p>
 
-<p>Now, navigate to the Arbor easy mode page for phylogenetic signal. You should see something like this:</p>
+<p>At this point, you should have the two anolis datafiles stored in Arbor and the “phylogeny” collection available.</p>
 
-<p><img src="/arborCollections/assets/easymode_1.png" alt="Screenshot" /></p>
+<p><img src="/arborCollections/assets/PGLS/screen1.jpg" alt="Screenshot" /></p>
 
-<p>Next, you need to input your datafiles into the website. You can do that by dragging and dropping the files onto the blue box that says “browse or drop files here.”</p>
+<p><em>In this screenshot I am logged in but that is not necessary for this analysis.</em></p>
 
-<p>When you hover over the correct place, the box will turn green. Arbor can automatically detect whether you have uploaded a tree or a data file.</p>
+<h2 id="run-the-pgls-function">Run the PGLS function</h2>
 
-<p>After you upload both files, you should see them listed in the appropriate place, like this:</p>
+<p>Find the PGLS function in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).</p>
 
-<p><img src="/arborCollections/assets/easymode_2.png" alt="Screenshot" /></p>
+<p><img src="/arborCollections/assets/PGLS/screen2.jpg" alt="Screenshot" /></p>
 
-<p><img src="/arborCollections/assets/easymode_3.png" alt="Screenshot" /></p>
+<p>We could use this function in a workflow, as we did in other Arbor tutorials. But for this tutorial let’s just run the function. To do that, click on the button that says “Setup and run.” In the resulting pop-up menu select the following options:</p>
 
-<p>You might also notice that you can see a preview of your input table at the bottom of the page:</p>
+<p><img src="/arborCollections/assets/PGLS/screen3.jpg" alt="Screenshot" /></p>
 
-<p><img src="/arborCollections/assets/easymode_4.png" alt="Screenshot" /></p>
+<p><em>We will be fitting the model SVL ~ awesomeness, so that SVL is the dependent and awesomeness the independent variable. “BM” means that we will fit a model that assumes that the residuals are distributed as expected under a Brownian motion model of evolution along the branches of the tree.</em></p>
 
-<p>Now you need to specify a column that will define the trait that you want to use for the phylogenetic signal test. Right now, this test can only handle one trait at a time! Let’s choose “SVL.” Grab that column name from the left hand side and drag and drop it onto the box that says “Drag column of interest here.” You should end up with this:</p>
+<h2 id="run-your-analysis">Run your analysis</h2>
 
-<p><img src="/arborCollections/assets/easymode_5.png" alt="Screenshot" /></p>
+<p>Click “&gt; Run” to run the function. Select these options. If your analysis worked, you should see the following message:</p>
 
-<p>No just press “Go!” and your analysis will run. You should get back a table of results, like this:</p>
+<p><img src="/arborCollections/assets/PGLS/screen4.jpg" alt="Screenshot" />.</p>
 
-<p><img src="/arborCollections/assets/easymode_6.png" alt="Screenshot" /></p>
+<h2 id="see-your-results">See your results</h2>
 
-<p>The last table shows the results of the analysis. The first two columns are the likelihoods of a Brownian motion model and Brownian motion + lambda. The third and fourth represent a chi-squared test comparing a “full” phylogenetic signal model (Brownian motion) with a model where signal is less than Brownian motion (lambda). P &lt; 0.05 means that you can reject BM in favor of the lambda model. The last two columns show AICC scores for these two models. This output is formatted in a very confusing way, we are going to fix it!</p>
+<p>Now move over to the “visualization” tab to see your results. The PGLS function creates three outputs: one table showing model coefficients like slopes and intercepts; one table showing a summary of model fit and parameter significance; and a plot.</p>
+
+<p>To see the table results, choose “table” and choose one of the outputs, either “PGLS coefficients” or “PGLS modelfit_summary”. Update shows you the table. For example, the coefficients look like this:</p>
+
+<p><img src="/arborCollections/assets/PGLS/screen5.jpg" alt="Screenshot" />.</p>
+
+<p>To see the plot, select “image” under “Select visualization”, and choose your  plot under “data” (it should be called PGLS pglsPlot). Click “update” to see this result:</p>
+
+<p><img src="/arborCollections/assets/PGLS/screen6.jpg" alt="Screenshot" /></p>
+
+<h2 id="try-another-model">Try another model</h2>
+
+<p>If you want to use a different option for PGLS, you can choose that in the setup and run window. For example, we can try OU like this:</p>
+
+<p><img src="/arborCollections/assets/PGLS/screen7.jpg" alt="Screenshot" /></p>
+
+<p>You will notice that the coefficients are slightly different, though the main conclusion is unchanged.</p>
+
+<p><img src="/arborCollections/assets/PGLS/screen8.jpg" alt="Screenshot" /></p>
 
 				<hr />
 				<footer class="page-footer">
@@ -212,12 +220,12 @@
 	<p class="author-bio">Associate professor, UIdaho.</p>
 </div><!-- ./author-content -->
 					<div class="inline-btn">
-	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Easy%20mode&amp;url=/arborCollections/tutorials/easy-mode/&amp;via=lukejharmon" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
-	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/arborCollections/tutorials/easy-mode/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
-	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/arborCollections/tutorials/easy-mode/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=PGLS&amp;url=/arborCollections/tutorials/Continuous-models/&amp;via=lukejharmon" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/arborCollections/tutorials/Continuous-models/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/arborCollections/tutorials/Continuous-models/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
 </div><!-- /.share-this -->
 					<div class="page-meta">
-	<p>Updated <time datetime="2015-05-21T00:00:00Z" itemprop="datePublished">May 21, 2015</time></p>
+	<p>Updated <time datetime="2015-07-20T00:00:00Z" itemprop="datePublished">July 20, 2015</time></p>
 </div><!-- /.page-meta -->
 				</footer><!-- /.footer -->
 				<aside>

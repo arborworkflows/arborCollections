@@ -7,6 +7,86 @@
     <atom:link href="/arborCollections/arborCollections/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Web services</title>
+        <description>&lt;h2 id=&quot;web-services&quot;&gt;Web services&lt;/h2&gt;
+
+&lt;p&gt;TBA&lt;/p&gt;
+</description>
+        <pubDate>Wed, 02 Sep 2015 00:00:00 -0700</pubDate>
+        <link>/arborCollections/arborCollections/tutorials/web-services/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/web-services/</guid>
+      </item>
+    
+      <item>
+        <title>PGLS</title>
+        <description>&lt;h2 id=&quot;use-pgls-to-test-for-a-correlation-between-two-continuous-variables&quot;&gt;Use PGLS to test for a correlation between two continuous variables&lt;/h2&gt;
+
+&lt;p&gt;In this exercise, we will learn how to use PGLS to test for a correlation between two continuous variables. We will use the Arbor function “PGLS,” found in the phylogeny package.&lt;/p&gt;
+
+&lt;p&gt;Imagine that you have a phylogenetic tree with information on two continuous character for some or all of the tips. You want to test whether or not there is an evolutionary correlation between the two traits. PGLS is the way to do this.&lt;/p&gt;
+
+&lt;h2 id=&quot;loading-example-data&quot;&gt;Loading example data&lt;/h2&gt;
+
+&lt;p&gt;For this example, we will use anolis again. Obtain the anolis example data files, phelsuma.phy and phelsuma.csv, from &lt;a href=&quot;/arborCollections/docs_datasets.html&quot;&gt;Arbor datasets&lt;/a&gt;. Save those files somewhere on your computer.&lt;/p&gt;
+
+&lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Drag and drop the two anolis data files on the blue “Browse or drop files” box to load them into your browser.&lt;/p&gt;
+
+&lt;h2 id=&quot;selecting-the-collections-that-you-need&quot;&gt;Selecting the collections that you need&lt;/h2&gt;
+
+&lt;p&gt;For this example, everything required is in the “phylogeny” collection - so click on that eyeball and you will be able to access the functions that you need.&lt;/p&gt;
+
+&lt;p&gt;At this point, you should have the two anolis datafiles stored in Arbor and the “phylogeny” collection available.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen1.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;In this screenshot I am logged in but that is not necessary for this analysis.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;run-the-pgls-function&quot;&gt;Run the PGLS function&lt;/h2&gt;
+
+&lt;p&gt;Find the PGLS function in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen2.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We could use this function in a workflow, as we did in other Arbor tutorials. But for this tutorial let’s just run the function. To do that, click on the button that says “Setup and run.” In the resulting pop-up menu select the following options:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen3.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;We will be fitting the model SVL ~ awesomeness, so that SVL is the dependent and awesomeness the independent variable. “BM” means that we will fit a model that assumes that the residuals are distributed as expected under a Brownian motion model of evolution along the branches of the tree.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;run-your-analysis&quot;&gt;Run your analysis&lt;/h2&gt;
+
+&lt;p&gt;Click “&amp;gt; Run” to run the function. Select these options. If your analysis worked, you should see the following message:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen4.jpg&quot; alt=&quot;Screenshot&quot; /&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;see-your-results&quot;&gt;See your results&lt;/h2&gt;
+
+&lt;p&gt;Now move over to the “visualization” tab to see your results. The PGLS function creates three outputs: one table showing model coefficients like slopes and intercepts; one table showing a summary of model fit and parameter significance; and a plot.&lt;/p&gt;
+
+&lt;p&gt;To see the table results, choose “table” and choose one of the outputs, either “PGLS coefficients” or “PGLS modelfit_summary”. Update shows you the table. For example, the coefficients look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen5.jpg&quot; alt=&quot;Screenshot&quot; /&gt;.&lt;/p&gt;
+
+&lt;p&gt;To see the plot, select “image” under “Select visualization”, and choose your  plot under “data” (it should be called PGLS pglsPlot). Click “update” to see this result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen6.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;try-another-model&quot;&gt;Try another model&lt;/h2&gt;
+
+&lt;p&gt;If you want to use a different option for PGLS, you can choose that in the setup and run window. For example, we can try OU like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen7.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You will notice that the coefficients are slightly different, though the main conclusion is unchanged.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen8.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 20 Jul 2015 00:00:00 -0700</pubDate>
+        <link>/arborCollections/arborCollections/tutorials/Continuous-models/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/Continuous-models/</guid>
+      </item>
+    
+      <item>
         <title>PGLS</title>
         <description>&lt;h2 id=&quot;use-pgls-to-test-for-a-correlation-between-two-continuous-variables&quot;&gt;Use PGLS to test for a correlation between two continuous variables&lt;/h2&gt;
 
@@ -375,93 +455,6 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
         <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/easymode/ancestral-state/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/easymode/ancestral-state/</guid>
-      </item>
-    
-      <item>
-        <title>addColumns</title>
-        <description>&lt;h1 id=&quot;addcolumns-function&quot;&gt;addColumns: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-base&quot;&gt;collection: base&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;addColumns can be used to find the sum of two columns in a data matrix.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.csv.
-Load this files into Arbor, and use it as input to the addColumns function.
-Choose “SVL” and “awesomeness” as columnOne and columnTwo, respectively.
-Name the outputColumn whatever you want.
-The output is a table with all the data from anolis.csv along with a new column that shows the sum of SVL and awesomeness.&lt;/p&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;table: A data table&lt;/li&gt;
-  &lt;li&gt;columnOne and columnTwo: The name of the columns to add&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-&lt;p&gt;Function outputs a table with a new column appended to the end.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/collections/base/addColumns/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/addColumns/</guid>
-      </item>
-    
-      <item>
-        <title>Creating a new collection</title>
-        <description>&lt;h2 id=&quot;how-to-make-your-own-collection-of-arbor-functions-and-workflows&quot;&gt;How to make your own collection of Arbor functions and workflows&lt;/h2&gt;
-
-&lt;p&gt;When working in Arbor, you will be uploading your own data, and may want to create your own functions and workflows. Everything in Arbor is organized into collections (for example, the phylogeny and base collections). You can create your own collection to store data and workflows. Later I will discuss how you can share any items in your collection with colleagues.&lt;/p&gt;
-
-&lt;h2 id=&quot;get-started&quot;&gt;Get started&lt;/h2&gt;
-
-&lt;p&gt;You will need to open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. For this exercise, you will need to log in; we will post more information about Arbor user accounts later.&lt;/p&gt;
-
-&lt;p&gt;Once you are logged in, your screen should look like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen1.png&quot; alt=&quot;Screenshot 1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You will eventually need the anolis example data files, anolis.phy and anolis.csv, from [Arbor datasets] (/arborCollections/docs_datasets/). Save those files somewhere on your computer.&lt;/p&gt;
-
-&lt;h2 id=&quot;create-a-new-collection&quot;&gt;Create a new collection&lt;/h2&gt;
-
-&lt;p&gt;On the left side of the screen, just below the “Browse or drop files” box, is the place you will need to focus to create your new collection. In the box there you can type the name of a new collection - let’s use &lt;em&gt;testCollection&lt;/em&gt; here, so type that in the box. If you want the collection to be public, you can tick the &lt;em&gt;public&lt;/em&gt; box. Otherwise, the collection will be private and only visible to you. Keep this test collection private for this example. Now click the “New collection” button, and your collection will be created.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen2.png&quot; alt=&quot;Screenshot 2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Immediately after creating my new collection. Did it work?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Scroll down to see more collections, the one you just created will be at the bottom. Click on both the “eye” and the “pencil” next to your collection. The “eye” lets you see the things in your collection, and the pencil gives write access so that you can add things to the collection (and delete!).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen3.png&quot; alt=&quot;Screenshot 3&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;saving-data-to-your-new-collection&quot;&gt;Saving data to your new collection&lt;/h2&gt;
-
-&lt;p&gt;Once you have created your collection, you can add data to it. Drag the “anolis.csv” file to the “Browse or drop files” box to load it into your browser. You can now save this file to your new collection. To do that, scroll down to the very bottom of the bottom browser frame, where you should see “Save or download data.” “anolis.csv” should show up there.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen4.png&quot; alt=&quot;Screenshot 4&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As long as the pencil next to your new collection is highlighted, you can now click “Save to checked collection” to save this data file to the new collection. Try that now. The name of the collection should show up next to the datafile:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen5.png&quot; alt=&quot;Screenshot 5&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;creating-new-analyses-and-workflows-in-your-new-collection&quot;&gt;Creating new analyses and workflows in your new collection&lt;/h2&gt;
-
-&lt;p&gt;Now, move over to the “Analysis” tab. You can create new analyses and workflows in your new collection by clicking on “+ New analysis” or “+ New workflow.” Since those will both be covered in other tutorial pages, I will show you how to load in a workflow file that has been downloaded in JSON format. Imagine, for example, that a colleague emailed you an arbor workflow called mywork.json. You can download such a file &lt;a href=&quot;/arborCollections/assets/creatingaCollection/mywork.json&quot;&gt;here&lt;/a&gt;. Now, to load that workflow into your new collection, click on “Upload… “ and find the mywork.json file. The new workflow is now in your collection!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen6.png&quot; alt=&quot;Screenshot 6&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You can see the new workflow by clicking “Show script.”&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/creatingaCollection/screen7.png&quot; alt=&quot;Screenshot 7&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You can even edit this workflow using the “Edit” button (keep in mind that you have to hit “Save” for the changes to go into effect).&lt;/p&gt;
-</description>
-        <pubDate>Tue, 09 Jun 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/tutorials/creating-a-new-collection/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/creating-a-new-collection/</guid>
       </item>
     
   </channel>
