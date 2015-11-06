@@ -1,0 +1,21 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "number",
+            "name": "lambda",
+            "type": "number"
+        }
+    ],
+    "mode": "r",
+    "name": "makePriorExponential",
+    "outputs": [
+        {
+            "description": "A string specifying the model type and parameters",
+            "format": "text",
+            "name": "fnHeader",
+            "type": "string"
+        }
+    ],
+    "script": "fnHeader <- paste(\"dexp,rate=\",lambda, sep=\"\")"
+}

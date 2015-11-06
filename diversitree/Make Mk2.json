@@ -1,0 +1,197 @@
+{
+    "connections": [
+        {
+            "input": "lik",
+            "input_step": "find.mle",
+            "output": "lik",
+            "output_step": "makeMk"
+        },
+        {
+            "input": "phy",
+            "input_step": "find.mle",
+            "output": "phy",
+            "output_step": "makeMk"
+        },
+        {
+            "input": "tree",
+            "input_step": "makeMk",
+            "name": "tree"
+        },
+        {
+            "input": "table",
+            "input_step": "makeMk",
+            "name": "table"
+        },
+        {
+            "input": "column",
+            "input_step": "makeMk",
+            "name": "column"
+        },
+        {
+            "input": "check.data",
+            "input_step": "makeMk",
+            "name": "check.data"
+        }
+    ],
+    "description": "",
+    "inputs": [
+        {
+            "description": "A phylogeny",
+            "format": "r.apetree",
+            "id": "tree",
+            "name": "tree",
+            "type": "tree",
+            "x": 75,
+            "y": 5
+        },
+        {
+            "description": "A data frame with trait data",
+            "format": "r.dataframe",
+            "id": "table",
+            "name": "table",
+            "type": "table",
+            "x": 71,
+            "y": 113
+        },
+        {
+            "description": "The trait to analyze",
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "id": "column",
+            "name": "column",
+            "type": "string",
+            "x": 69,
+            "y": 222
+        },
+        {
+            "default": {
+                "data": "TRUE",
+                "format": "text",
+                "type": "string"
+            },
+            "domain": [
+                "TRUE",
+                "FALSE"
+            ],
+            "format": "text",
+            "id": "check.data",
+            "name": "check.data",
+            "type": "string",
+            "x": 71,
+            "y": 330
+        }
+    ],
+    "mode": "workflow",
+    "name": "Make Mk2",
+    "outputs": [],
+    "steps": [
+        {
+            "girderId": "563ba14956c02c05ce2df6f3",
+            "modified": "2015-11-05 23:58:46.098000",
+            "name": "makeMk",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "description": "A phylogeny",
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "description": "A data frame with trait data",
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    },
+                    {
+                        "description": "The trait to analyze",
+                        "domain": {
+                            "format": "column.names",
+                            "input": "table"
+                        },
+                        "format": "text",
+                        "name": "column",
+                        "type": "string"
+                    },
+                    {
+                        "default": {
+                            "data": "TRUE",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "domain": [
+                            "TRUE",
+                            "FALSE"
+                        ],
+                        "format": "text",
+                        "name": "check.data",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "makeMk",
+                "outputs": [
+                    {
+                        "description": "Likelihood function for the Mk model",
+                        "format": "object",
+                        "id": "lik",
+                        "name": "lik",
+                        "type": "r"
+                    },
+                    {
+                        "description": "A phylogeny matched to the data",
+                        "format": "r.apetree",
+                        "name": "phy",
+                        "type": "tree"
+                    }
+                ],
+                "script": "require(diversitree)\nrequire(geiger)\nrequire(aRbor)\ntd <- make.treedata(tree, table)\ntd <- select_(td, column)\ntd <- filter(td, !is.na(td$dat[[1]]))\n\nphy <- td$phy\ndat <- setNames(td$dat[[1]], phy$tip.label)\nk <- length(unique(dat))\n\nif(check.data == TRUE){\n  if(!is.ultrametric(phy)){\n    phy <- rescale(phy, model=\"depth\", 1)\n  }\n}\n\nif(k < 2){\n  stop(\"2 or more character states needed to make likelihood function\")\n}\n\nif(k==2){\n  if(length(setdiff(k, c(0,1)))>0){\n    dat <- setNames(as.numeric(factor(dat))-1, phy$tip.label)\n  }\n  lik.fn <- make.mk2(phy, dat)\n} else {\n  dat <- setNames(as.numeric(factor(dat)), phy$tip.label)\n  lik.fn <- make.mkn(phy, dat, k)\n}\n\nlik <- lik.fn"
+            },
+            "visualization": false,
+            "x": 362,
+            "y": 97
+        },
+        {
+            "girderId": "563bb4df56c02c05ce2df782",
+            "modified": "2015-11-05 23:58:54.806000",
+            "name": "find.mle",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "description": "Likelihood function.",
+                        "format": "object",
+                        "id": "lik",
+                        "name": "lik",
+                        "type": "r"
+                    },
+                    {
+                        "description": "Phylogeny: ape format",
+                        "format": "r.apetree",
+                        "id": "phy",
+                        "name": "phy",
+                        "type": "tree"
+                    }
+                ],
+                "mode": "r",
+                "name": "find.mle",
+                "outputs": [
+                    {
+                        "format": "object",
+                        "id": "mle",
+                        "name": "mle",
+                        "type": "r"
+                    }
+                ],
+                "script": "## This is a general block to make MLE of the BiSSE models.\n## Collapse of lik argnames is used to identify the model.\n\nrequire(diversitree)\n\n## Identify the lik model. Generate starting point. Estimate MLE.\nname <- diversitree:::get.info(lik)$name\n\n## BD model\nif(name == \"bd\"){\n    start <- starting.point.bd(phy)\n}\n## Mk2 model\nif(name == \"mk2\"){\n    start <- starting.point.bisse(phy)[5:6]\n}\n## Mkn model\nif(name == \"mkn\"){\n    k.par <- diversitree:::get.info(lik)$k\n    start <- starting.point.musse(phy, k=k.par)[ -c(1:(2*k.par) )]\n}\n## BiSSE model\nif(name == \"bisse\"){\n    start <- starting.point.bisse(phy)\n}\n## MuSSE model\nif(name == \"musse\"){\n    k.par <- diversitree:::get.info(lik)$k\n    start <- starting.point.musse(phy, k=k.par)\n}\n## ClaSSE model\nif(name == \"classe\"){\n    k.par <- diversitree:::get.info(lik)$k\n    start <- starting.point.classe(phy, k=k.par)\n}\n## QuaSSE model\nif(name == \"classe\"){\n    k.par <- diversitree:::get.info(lik)$k\n    start <- starting.point.quasse(phy, k=k.par)\n}\n## GeoSSE model\nif(name == \"classe\"){\n    start <- starting.point.geosse(phy)\n}\n\nmle <- find.mle(lik, x.init = start)"
+            },
+            "visualization": false,
+            "x": 672,
+            "y": 94
+        }
+    ]
+}

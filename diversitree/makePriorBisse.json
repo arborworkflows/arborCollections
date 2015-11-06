@@ -1,0 +1,82 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "default": {
+                "data": "dexp,rate=0.1",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "Prior specification for speciation rate in state 0",
+            "format": "text",
+            "name": "lambda0",
+            "type": "string"
+        },
+        {
+            "default": {
+                "data": "dexp,rate=0.1",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "Prior specification for speciation rate in state 1",
+            "format": "text",
+            "name": "lambda1",
+            "type": "string"
+        },
+        {
+            "default": {
+                "data": "dexp,rate=0.1",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "Prior specification for the transition rate from state 0 to 1",
+            "format": "text",
+            "name": "q01",
+            "type": "string"
+        },
+        {
+            "default": {
+                "data": "dexp,rate=0.1",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "Prior specification for the transition rate from state 1 to 0",
+            "format": "text",
+            "name": "q10",
+            "type": "string"
+        },
+        {
+            "default": {
+                "data": "dexp,rate=0.1",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "Prior specification for the extinction rate in state 0",
+            "format": "text",
+            "name": "mu0",
+            "type": "string"
+        },
+        {
+            "default": {
+                "data": "dexp,rate=0.1",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "Prior specification for the extinction rate in state 1",
+            "format": "text",
+            "name": "mu1",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "makePriorBisse",
+    "outputs": [
+        {
+            "description": "A R list of prior functions for a bisse model",
+            "format": "object",
+            "name": "prior",
+            "type": "r"
+        }
+    ],
+    "script": "priorList <- list(lambda0=lambda0, lambda1=lambda1, mu0=mu0, mu1=mu1, q01=q01, q10=q10)\npriorList <- lapply(priorList, function(x) gsub(\" \", \"\", x))\npriorList <- lapply(priorList, function(x) ifelse(is.null(x), \"dexp,lambda=0.1\", x))\nparsed <- lapply(priorList, function(x) strsplit(x, split=\",\")[[1]])\ndistributions <- lapply(parsed, function(x) x[1])\nrdistributions <- lapply(parsed, function(x) gsub(\"^[a-zA-Z]\", \"r\", x))\nparameters <- lapply(parsed, function(x) lapply(x[-1], function(x){tmp <- strsplit(x, \"=\")[[1]]; y <- as.numeric(tmp[2]); names(y)=tmp[1]; y}))\nnames.parameters <- lapply(parameters, function(x) sapply(x, names))\nparameters <- lapply(1:length(parameters), function(x){names(parameters[[x]]) <- names.parameters[[x]]; parameters[[x]]})\nprior <- lapply(1:length(distributions), function(x) get(distributions[[x]]))\nprior <- lapply(1:length(distributions), function(x) diversitree:::set.defaults(prior[[x]], defaults=c(parameters[[x]], log=TRUE)))\nsimulator <- lapply(1:length(distributions), function(x) get(rdistributions[[x]]))\nsimulator <- lapply(1:length(distributions), function(x) diversitree:::set.defaults(simulator[[x]], defaults=c(parameters[[x]])))\nnames(prior) <- names(priorList)\nnames(simulator) <- names(priorList)\nprior <- list(prior=prior, simulator=simulator)"
+}

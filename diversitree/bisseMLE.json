@@ -1,0 +1,8 @@
+{
+    "description": "",
+    "inputs": [],
+    "mode": "r",
+    "name": "bisseMLE",
+    "outputs": [],
+    "script": "# inputs: like = likelihood function, con = constraints\n# outputs: fit = ml fit\n\nif(!is.null(con))\n\tlik<-constrain(lik, con)\n\t\t\t\t\npnames<-argnames(lik)\nfit<-find.mle(lik, setNames(rep(1,length(pnames)), argnames(lik)))\nreturn(fit)"
+}

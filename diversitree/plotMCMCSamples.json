@@ -1,0 +1,44 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "A table of MCMC results",
+            "format": "r.dataframe",
+            "name": "mcmcTable",
+            "type": "table"
+        },
+        {
+            "default": {
+                "data": "1",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "The column number or name that represents the generations in the MCMC sample",
+            "format": "number",
+            "name": "generationColumn",
+            "type": "number"
+        },
+        {
+            "default": {
+                "data": "0",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "The proportion of initial burnin samples to discard",
+            "format": "number",
+            "name": "burnin",
+            "type": "number"
+        }
+    ],
+    "mode": "r",
+    "name": "plotMCMCSamples",
+    "outputs": [
+        {
+            "description": "A figure showing the traces and density of parameters from an MCMC",
+            "format": "png.base64",
+            "name": "mcmcPlot",
+            "type": "image"
+        }
+    ],
+    "script": "require(coda)\nrequire(cardoonTools)\n\n## Convert table to mcmc object with generation column removed\nif(!is.null(generationColumn)){\n    plotTable <- mcmcTable[,-generationColumn]\n    } else {\n    plotTable <- mcmcTable\n    }\n\n## Exclude burnin sample\nstart <- ifelse(burnin==0, 1, floor(burnin*nrow(plotTable)))\nplotTable <- plotTable[start:nrow(plotTable),]\n## Scale the output graphics to the number of parameters\nhgt <- 200*ncol(plotTable)\n\ntracePlots <- function(table){\n  par(mfrow=c(ncol(table), 2))\n  for(i in 1:ncol(table)){\n    traceplot(coda::mcmc(table[,i]), main=paste(colnames(table)[i], \"trace\"))\n    densplot(coda::mcmc(table[,i]), main=paste(colnames(table)[i], \"density\"))\n  }\n}\n\n## Generate the figure.\nmcmcPlot <- cardoonPlot(expression(tracePlots(plotTable)), width=1000, height=hgt, res=100)\nmcmcPlot <- mcmcPlot$png"
+}
