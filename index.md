@@ -29,7 +29,7 @@ image:
 <div class="tile">
   <h2 class="post-title">Open-source</h2>
   <p class="post-excerpt">Download, modify, share</p>
-  <a href="http://github.com/arborworkflows" class="btn">More</a>
+  <a href="{{ site.baseurl }}/sourcecode/" class="btn">More</a>
 </div><!-- /.tile -->
 
 </div><!-- /.tiles -->
