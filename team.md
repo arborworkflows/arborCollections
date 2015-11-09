@@ -44,7 +44,7 @@ permalink: /team/
     <a href="http://thackerlab.weebly.com/">
       <img src="{{ site.baseurl}}/images/bob.jpeg" width = "150px" border="1px"></a></p>
   <p>
-    <i>PI<br>Professor and Chair, Department of Ecology and Evolution<br>Stony Brook University</i></p>
+    <i>PI<br>Professor and Chair, Department of Ecology and Evolution<br>Stony Brook University</i><br><a href="mailto:robert.thacker@stonybrook.edu">robert.thacker@stonybrook.edu</a></p>
 </div>
 
 <div style="clear: left;">
