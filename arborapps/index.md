@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Easy mode apps"
+title: "Arbor Apps"
 date: 2014-05-30T11:40:45-04:00
 modified:
 excerpt: "Comparative methods using a drag-and-drop interface."

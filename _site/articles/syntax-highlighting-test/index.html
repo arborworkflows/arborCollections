@@ -262,39 +262,8 @@ end
 
 <p>An example of a Gist embed below.</p>
 
-<noscript><pre>---
-layout: page
-title: Tag Index
-description: &quot;An archive of posts sorted by tag.&quot;
----
-
-{% capture tags %}
-  {% for tag in site.tags %}
-    {{ tag[0] | replace: &#39; &#39;, &#39;&amp;nbsp;&#39; }}
-  {% endfor %}
-{% endcapture %}
-{% assign sortedtags = tags | split: &#39; &#39; | sort %}
-
-&lt;ul class=&quot;tag-box inline&quot;&gt;
-{% for tag in sortedtags %}
-  {% for post in site.tags[tag] %}
-		&lt;li&gt;&lt;a href=&quot;#{{ tag }}&quot;&gt;{{ tag }}&lt;/a&gt;&lt;/li&gt;
-	{% endfor %}
-{% endfor %}
-&lt;/ul&gt;
-
-{% for tag in sortedtags %}
-	&lt;h2 id=&quot;{{ tag }}&quot;&gt;{{ tag }}&lt;/h2&gt;
-	&lt;ul class=&quot;post-list&quot;&gt;
-	{% for post in site.tags[tag] %}
-		&lt;li&gt;&lt;a href=&quot;{{ site.url }}{{ post.url }}&quot;&gt;{{ post.title }}&lt;span class=&quot;entry-date&quot;&gt;&lt;time datetime=&quot;{{ post.date | date_to_xmlschema }}&quot; itemprop=&quot;datePublished&quot;&gt;{{ post.date | date: &quot;%B %d, %Y&quot; }}&lt;/time&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-	{% endfor %}
-	&lt;/ul&gt;
-{% endfor %}</pre></noscript>
 <script src="https://gist.github.com/mmistakes/6589546.js"> </script>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
 <script src="https://gist.github.com/8531391.js"> </script>
 
 

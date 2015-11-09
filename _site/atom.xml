@@ -4,12 +4,12 @@
   
 
   <title>Arbor</title>
-  <generator uri="https://github.com/jekyll/jekyll">Jekyll v2.5.3</generator>
+  <generator uri="https://github.com/jekyll/jekyll">Jekyll v2.4.0</generator>
     <icon>/arborCollections/apple-touch-icon-precomposed.png</icon>
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2015-09-02T09:04:40-07:00</updated>
+  <updated>2015-11-09T11:43:10-08:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -17,6 +17,25 @@
     <email>lukeh@uidaho.edu</email>
   </author>
 
+  
+  <entry>
+    <title>Megatrees</title>
+    <link href="/arborCollections/tutorials/megatrees/"/>
+    <updated>2015-10-07T00:00:00-07:00</updated>
+    <id>/arborCollections/tutorials/megatrees</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;megatrees&quot;&gt;Megatrees&lt;/h2&gt;
+
+&lt;p&gt;TBA&lt;/p&gt;
+
+    </content>
+  </entry>
   
   <entry>
     <title>Web services</title>
@@ -1091,14 +1110,14 @@ basic analysis of a correlation between two continuous characters using independ
       @site = site
       @base = base
       @dir = dir
-      @name = &#39;index.html&#39;
+      @name = 'index.html'
       self.process(@name)
-      self.read_yaml(File.join(base, &#39;_layouts&#39;), &#39;tag_index.html&#39;)
-      self.data[&#39;tag&#39;] = tag
-      tag_title_prefix = site.config[&#39;tag_title_prefix&#39;] || &#39;Tagged: &#39;
-      tag_title_suffix = site.config[&#39;tag_title_suffix&#39;] || &#39;&amp;amp;#8211;&#39;
-      self.data[&#39;title&#39;] = &quot;#{tag_title_prefix}#{tag}&quot;
-      self.data[&#39;description&#39;] = &quot;An archive of posts tagged #{tag}.&quot;
+      self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
+      self.data['tag'] = tag
+      tag_title_prefix = site.config['tag_title_prefix'] || 'Tagged: '
+      tag_title_suffix = site.config['tag_title_suffix'] || '&amp;amp;#8211;'
+      self.data['title'] = &quot;#{tag_title_prefix}#{tag}&quot;
+      self.data['description'] = &quot;An archive of posts tagged #{tag}.&quot;
     end
   end
 end
@@ -1108,39 +1127,8 @@ end
 
 &lt;p&gt;An example of a Gist embed below.&lt;/p&gt;
 
-&lt;noscript&gt;&lt;pre&gt;---
-layout: page
-title: Tag Index
-description: &amp;quot;An archive of posts sorted by tag.&amp;quot;
----
-
-{% capture tags %}
-  {% for tag in site.tags %}
-    {{ tag[0] | replace: &amp;#39; &amp;#39;, &amp;#39;&amp;amp;nbsp;&amp;#39; }}
-  {% endfor %}
-{% endcapture %}
-{% assign sortedtags = tags | split: &amp;#39; &amp;#39; | sort %}
-
-&amp;lt;ul class=&amp;quot;tag-box inline&amp;quot;&amp;gt;
-{% for tag in sortedtags %}
-  {% for post in site.tags[tag] %}
-		&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#{{ tag }}&amp;quot;&amp;gt;{{ tag }}&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-	{% endfor %}
-{% endfor %}
-&amp;lt;/ul&amp;gt;
-
-{% for tag in sortedtags %}
-	&amp;lt;h2 id=&amp;quot;{{ tag }}&amp;quot;&amp;gt;{{ tag }}&amp;lt;/h2&amp;gt;
-	&amp;lt;ul class=&amp;quot;post-list&amp;quot;&amp;gt;
-	{% for post in site.tags[tag] %}
-		&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;{{ site.url }}{{ post.url }}&amp;quot;&amp;gt;{{ post.title }}&amp;lt;span class=&amp;quot;entry-date&amp;quot;&amp;gt;&amp;lt;time datetime=&amp;quot;{{ post.date | date_to_xmlschema }}&amp;quot; itemprop=&amp;quot;datePublished&amp;quot;&amp;gt;{{ post.date | date: &amp;quot;%B %d, %Y&amp;quot; }}&amp;lt;/time&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-	{% endfor %}
-	&amp;lt;/ul&amp;gt;
-{% endfor %}&lt;/pre&gt;&lt;/noscript&gt;
 &lt;script src=&quot;https://gist.github.com/mmistakes/6589546.js&quot;&gt; &lt;/script&gt;
 
-&lt;noscript&gt;&lt;pre&gt;400: Invalid request
-&lt;/pre&gt;&lt;/noscript&gt;
 &lt;script src=&quot;https://gist.github.com/8531391.js&quot;&gt; &lt;/script&gt;
 
 
@@ -1323,7 +1311,7 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 &lt;nav class=&quot;toc&quot;&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#sample-heading&quot; id=&quot;markdown-toc-sample-heading&quot;&gt;Sample Heading&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#sample-heading&quot;&gt;Sample Heading&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/nav&gt;
@@ -1387,9 +1375,9 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 &lt;nav class=&quot;toc&quot;&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#cupidatat-90s-lo-fi-authentic-try-hard&quot; id=&quot;markdown-toc-cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#forage-occaecat-cardigan-qui&quot; id=&quot;markdown-toc-forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#hoodie-duis&quot; id=&quot;markdown-toc-hoodie-duis&quot;&gt;Hoodie Duis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hoodie-duis&quot;&gt;Hoodie Duis&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/nav&gt;
@@ -1452,8 +1440,8 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 &lt;nav class=&quot;toc&quot;&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#markdown-images&quot; id=&quot;markdown-toc-markdown-images&quot;&gt;Markdown images&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#figures-for-images-or-video&quot; id=&quot;markdown-toc-figures-for-images-or-video&quot;&gt;Figures (for images or video)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#markdown-images&quot;&gt;Markdown images&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#figures-for-images-or-video&quot;&gt;Figures (for images or video)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/nav&gt;
@@ -1519,88 +1507,6 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 	&lt;a href=&quot;http://placehold.it/1200x600.gif&quot;&gt;&lt;img src=&quot;http://placehold.it/900x450.gif&quot; /&gt;&lt;/a&gt;
 	&lt;figcaption&gt;Three linked images.&lt;/figcaption&gt;
 &lt;/figure&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>Testing Readability with a Bunch of Text</title>
-    <link href="/arborCollections/articles/readability-post/"/>
-    <updated>2012-05-22T00:00:00-07:00</updated>
-    <id>/arborCollections/articles/readability-post</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;p&gt;Portland in shoreditch Vice, labore typewriter pariatur hoodie fap sartorial Austin. Pinterest literally occupy Schlitz forage. Odio ad blue bottle vinyl, 90’s narwhal&lt;sup id=&quot;fnref:footnote&quot;&gt;&lt;a href=&quot;#fn:footnote&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; commodo bitters pour-over nostrud. Ugh est hashtag in, fingerstache adipisicing laboris esse &lt;a href=&quot;http://pinterest.com&quot;&gt;Pinterest&lt;/a&gt; shabby chic Portland. Shoreditch bicycle rights anim, flexitarian laboris put a bird on it vinyl cupidatat narwhal. Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney’s. Cliche pour-over chambray nulla four loko skateboard sapiente hashtag.&lt;/p&gt;
-
-&lt;nav class=&quot;toc&quot;&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#cupidatat-90s-lo-fi-authentic-try-hard&quot; id=&quot;markdown-toc-cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#forage-occaecat-cardigan-qui&quot; id=&quot;markdown-toc-forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#hoodie-duis&quot; id=&quot;markdown-toc-hoodie-duis&quot;&gt;Hoodie Duis&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;/nav&gt;
-
-&lt;p&gt;Vero laborum commodo occupy. &lt;a href=&quot;http://hipsum.co/&quot;&gt;&lt;em&gt;Semiotics voluptate mumblecore&lt;/em&gt;&lt;/a&gt; pug. Cosby sweater ullamco quinoa ennui assumenda, sapiente occupy delectus lo-fi. Ea fashion axe Marfa cillum aliquip. Retro Bushwick keytar cliche. Before they sold out sustainable gastropub Marfa readymade, ethical Williamsburg skateboard brunch qui consectetur gentrify semiotics. Mustache cillum irony, fingerstache magna pour-over keffiyeh tousled selfies.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/h2&gt;
-
-&lt;p&gt;In pug Portland incididunt mlkshk put a bird on it vinyl quinoa. Terry Richardson shabby chic +1, scenester Tonx excepteur tempor fugiat voluptate fingerstache aliquip nisi next level. Farm-to-table hashtag Truffaut, Odd Future ex meggings gentrify single-origin coffee&lt;sup id=&quot;fnref:coffee&quot;&gt;&lt;a href=&quot;#fn:coffee&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; try-hard 90’s.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Sartorial hoodie&lt;/li&gt;
-  &lt;li&gt;Labore viral forage&lt;/li&gt;
-  &lt;li&gt;Tote bag selvage&lt;/li&gt;
-  &lt;li&gt;DIY exercitation et id ugh tumblr church-key&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Incididunt umami sriracha, ethical fugiat VHS ex assumenda yr irure direct trade. Marfa Truffaut bicycle rights, kitsch placeat Etsy kogi asymmetrical. Beard locavore flexitarian, kitsch photo booth hoodie plaid ethical readymade leggings yr.&lt;/p&gt;
-
-&lt;figure&gt;
-	&lt;img src=&quot;http://placehold.it/600x250.gif&quot; alt=&quot;&quot; /&gt;
-	&lt;figcaption&gt;Image caption goes here. Aesthetic odio dolore, meggings disrupt.&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;Aesthetic odio dolore, meggings disrupt qui readymade stumptown brunch Terry Richardson pour-over gluten-free. Banksy american apparel in selfies, biodiesel flexitarian organic meh wolf quinoa gentrify banjo kogi. Readymade tofu ex, scenester dolor umami fingerstache occaecat fashion axe Carles jean shorts minim. Keffiyeh fashion axe nisi Godard mlkshk dolore. Lomo you probably haven’t heard of them eu non, Odd Future Truffaut pug keytar meggings McSweeney’s Pinterest cred. Etsy literally aute esse, eu bicycle rights qui meggings fanny pack. Gentrify leggings pug flannel duis.&lt;/p&gt;
-
-&lt;h2 id=&quot;forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/h2&gt;
-
-&lt;p&gt;Fashion axe hella gastropub lo-fi kogi 90’s aliquip +1 veniam delectus tousled. Cred sriracha locavore gastropub kale chips, iPhone mollit sartorial. Anim dolore 8-bit, pork belly dolor photo booth aute flannel small batch. Dolor disrupt ennui, tattooed whatever salvia Banksy sartorial roof party selfies raw denim sint meh pour-over. Ennui eu cardigan sint, gentrify iPhone cornhole.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Whatever velit occaecat quis deserunt gastropub, leggings elit tousled roof party 3 wolf moon kogi pug blue bottle ea. Fashion axe shabby chic Austin quinoa pickled laborum bitters next level, disrupt deep v accusamus non fingerstache.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Tote bag asymmetrical elit sunt. Occaecat authentic Marfa, hella McSweeney’s next level irure veniam master cleanse. Sed hoodie letterpress artisan wolf leggings, 3 wolf moon commodo ullamco. Anim occupy ea labore Terry Richardson. Tofu ex master cleanse in whatever pitchfork banh mi, occupy fugiat fanny pack Austin authentic. Magna fugiat 3 wolf moon, labore McSweeney’s sustainable vero consectetur. Gluten-free disrupt enim, aesthetic fugiat jean shorts trust fund keffiyeh magna try-hard.&lt;/p&gt;
-
-&lt;h2 id=&quot;hoodie-duis&quot;&gt;Hoodie Duis&lt;/h2&gt;
-
-&lt;p&gt;Actually salvia consectetur, hoodie duis lomo YOLO sunt sriracha. Aute pop-up brunch farm-to-table odio, salvia irure occaecat. Sriracha small batch literally skateboard. Echo Park nihil hoodie, aliquip forage artisan laboris. Trust fund reprehenderit nulla locavore. Stumptown raw denim kitsch, keffiyeh nulla twee dreamcatcher fanny pack ullamco 90’s pop-up est culpa farm-to-table. Selfies 8-bit do pug odio.&lt;/p&gt;
-
-&lt;h3 id=&quot;thundercats-ho&quot;&gt;Thundercats Ho!&lt;/h3&gt;
-
-&lt;p&gt;Fingerstache thundercats Williamsburg, deep v scenester Banksy ennui vinyl selfies mollit biodiesel duis odio pop-up. Banksy 3 wolf moon try-hard, sapiente enim stumptown deep v ad letterpress. Squid beard brunch, exercitation raw denim yr sint direct trade. Raw denim narwhal id, flannel DIY McSweeney’s seitan. Letterpress artisan bespoke accusamus, meggings laboris consequat Truffaut qui in seitan. Sustainable cornhole Schlitz, twee Cosby sweater banh mi deep v forage letterpress flannel whatever keffiyeh. Sartorial cred irure, semiotics ethical sed blue bottle nihil letterpress.&lt;/p&gt;
-
-&lt;p&gt;Occupy et selvage squid, pug brunch blog nesciunt hashtag mumblecore skateboard yr kogi. Ugh small batch swag four loko. Fap post-ironic qui tote bag farm-to-table american apparel scenester keffiyeh vero, swag non pour-over gentrify authentic pitchfork. Schlitz scenester lo-fi voluptate, tote bag irony bicycle rights pariatur vero Vice freegan wayfarers exercitation nisi shoreditch. Chambray tofu vero sed. Street art swag literally leggings, Cosby sweater mixtape PBR lomo Banksy non in pitchfork ennui McSweeney’s selfies. Odd Future Banksy non authentic.&lt;/p&gt;
-
-&lt;p&gt;Aliquip enim artisan dolor post-ironic. Pug tote bag Marfa, deserunt pour-over Portland wolf eu odio intelligentsia american apparel ugh ea. Sunt viral et, 3 wolf moon gastropub pug id. Id fashion axe est typewriter, mlkshk Portland art party aute brunch. Sint pork belly Cosby sweater, deep v mumblecore kitsch american apparel. Try-hard direct trade tumblr sint skateboard. Adipisicing bitters excepteur biodiesel, pickled gastropub aute veniam.&lt;/p&gt;
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:footnote&quot;&gt;
-      &lt;p&gt;Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney’s. &lt;a href=&quot;#fnref:footnote&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:coffee&quot;&gt;
-      &lt;p&gt;I like coffee, coffee is good. &lt;a href=&quot;#fnref:coffee&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
 
     </content>
   </entry>
