@@ -2,32 +2,32 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Arbor</title>
+    <title>Arbor source code • Arbor</title>
     
     
     
     
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="Arbor">
+	<meta name="twitter:title" content="Arbor source code">
 	
 	<meta name="twitter:site" content="@lukejharmon">
 	<meta name="twitter:creator" content="@lukejharmon">
 	
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content="/arborCollections/images/branch-1600x800.jpg">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="/arborCollections/images/120x120.gif">
 	
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Arbor">
+	<meta property="og:title" content="Arbor source code">
 	
-	<meta property="og:url" content="/arborCollections/">
+	<meta property="og:url" content="/arborCollections/sourcecode/">
 	<meta property="og:site_name" content="Arbor">
-    <link rel="author" href="https://plus.google.com/+LukeHarmon1"/>
 
-    <link rel="canonical" href="/arborCollections/">
+    <link rel="canonical" href="/arborCollections/sourcecode/">
 
     <link href="/arborCollections/atom.xml" type="application/atom+xml" rel="alternate" title="Arbor Atom Feed">
+    <link href="/arborCollections/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
 
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -43,7 +43,9 @@
 
   </head>
 
-  <body>
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
     <header id="masthead">
   <div class="inner-wrap">
     <a href="/arborCollections/" class="site-title">Arbor</a>
@@ -114,77 +116,24 @@
 <div id="js-menu-screen" class="menu-screen"></div>
 
 
-    
-    <div class="page-lead" style="background-image:url(/arborCollections/images/branch-1600x800.jpg)">
-      <div class="wrap page-lead-content">
-        <h1>Arbor workflows</h1>
-        <h2>Visual workflows for phylogenetic comparative methods.</h2>
-        <span title="Use premade apps to analyze your data">
-          <a href="/arborCollections/arborapps" class="btn-inverse">Arbor Apps</a></span> &nbsp; &nbsp;
-        <span title="Build custom workflows for comparative analyses">
-          <a href="http://arbor.kitware.com" class="btn-inverse">Arbor Workflows</a></span> &nbsp; &nbsp;
-        <span title="Outreach for education">
-          <a href="/arborCollections/arbor-ed" class="btn-inverse">Arbor-Ed</a></span> &nbsp; &nbsp;
-        <span title="Frequently asked questions and help">
-          <a href="/arborCollections/getting-started" class="btn-inverse">FAQ</a></span> &nbsp; &nbsp;
-
-      </div><!-- /.page-lead-content -->
-    </div><!-- /.page-lead -->
-    
-
     <div id="page-wrapper">
-      <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+      <div class="post">
+  <header class="post-header">
+    <h1 class="h2">Arbor source code</h1>
+  </header>
+  <article class="post-content">
+  <p>Arbor workflows uses an open development paradigm. To get our source code, or to contribute to the project, please visit our github repository at <a href="https://github.com/arborworkflows">github.com/arborworkflows</a>.</p>
 
+<p>In particular, you can access the <a href="https://github.com/arborworkflows">Arbor workflow main web application</a>, and <a href="https://github.com/arborworkflows/ArborWebApps">all current Arbor apps</a>.</p>
 
-      <div id="main" role="main">
-        <div class="wrap">
-          <div class="page-title">
-            <h1></h1>
-            
-          </div>
-          <div class="archive-wrap">
-            <div class="page-content">
-              <div>
-  <p style="float: left;margin:0 10px 10px 0">
-      <img src="/arborCollections/images/arbor_logo/arbor_128px.png" width="150px" border="1px" /></p>
-  <p>
-    <br /><br />Arbor is web-based software for carrying out phylogenetic comparative analyses of the tree of life. You can read more in our <a href="http://currents.plos.org/treeoflife/article/arbor-comparative-analysis-workflows-for-the-tree-of-life/">paper</a>, try the software using the links above, or get information about our core features:
+<p>Under the hood, Arbor uses open-source Kitware products: the workflow engine <a href="https://github.com/kitware/romanesco">romanesco</a>; the data management platform <a href="https://github.com/kitware/girder">girder</a>; and the web framework <a href="https://github.com/kitware/tangelo">tangelo</a>. We also draw liberally from a large number of R packages, and maintain our own, <a href="https://github.com/arborworkflows/aRbor">aRbor</a>.</p>
 
+<p>For detailed instructions on installing Arbor on your own machine, go to <a href="http://arborworkflows.readthedocs.org/en/latest/installation.html">http://arborworkflows.readthedocs.org/en/latest/installation.html</a>.</p>
 
-<div class="tiles">
+<p>For more information about the source code repository, <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#108;&#117;&#107;&#101;&#104;&#064;&#117;&#105;&#100;&#097;&#104;&#111;&#046;&#101;&#100;&#117;">contact us</a>.</p>
 
-<div class="tile">
-  <h2 class="post-title">Visual workflows</h2>
-  <p class="post-excerpt">Build your analysis</p>
-  <a href="/arborCollections/tutorials/what-is-arbor/" class="btn">More</a>
-
-</div><!-- /.tile -->
-
-<div class="tile">
-  <h2 class="post-title">Web services</h2>
-  <p class="post-excerpt">Real-time data</p>
-  <a href="/arborCollections/tutorials/web-services/" class="btn">More</a>
-</div><!-- /.tile -->
-
-<div class="tile">
-  <h2 class="post-title">Megaphylogenies</h2>
-  <p class="post-excerpt">Thousands of species</p>
-  <a href="/arborCollections/tutorials/megatrees/" class="btn">More</a>
-</div><!-- /.tile -->
-
-<div class="tile">
-  <h2 class="post-title">Open-source</h2>
-  <p class="post-excerpt">Download, modify, share</p>
-  <a href="/arborCollections/sourcecode/" class="btn">More</a>
-</div><!-- /.tile -->
-
-</div><!-- /.tiles -->
-</p></div>
-
-            </div><!-- /.page-content -->
-          </div class="archive-wrap"><!-- /.archive-wrap -->
-        </div><!-- /.wrap -->
-      </div><!-- /#main -->
+  </article>
+</div>
 
       <footer role="contentinfo" id="site-footer">
 	<nav role="navigation" class="menu bottom-menu">
@@ -221,5 +170,4 @@
     <script src="/arborCollections/js/main.js"></script>
 
   </body>
-
 </html>

@@ -4,12 +4,12 @@
   
 
   <title>Arbor</title>
-  <generator uri="https://github.com/jekyll/jekyll">Jekyll v2.4.0</generator>
+  <generator uri="https://github.com/jekyll/jekyll">Jekyll v2.5.3</generator>
     <icon>/arborCollections/apple-touch-icon-precomposed.png</icon>
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2015-11-09T12:51:59-08:00</updated>
+  <updated>2015-11-09T16:19:28-08:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -373,25 +373,6 @@
   </entry>
   
   <entry>
-    <title>Phylogenetic signal</title>
-    <link href="/arborCollections/easymode/phylogenetic-signal/"/>
-    <updated>2015-06-10T00:00:00-07:00</updated>
-    <id>/arborCollections/easymode/phylogenetic-signal</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      &lt;img src=&quot;/arborCollections/images/easyButtons-1600x800.jpg&quot;&gt;&lt;br/&gt;
-      &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
     <title>phylogeneticSignal</title>
     <link href="/arborCollections/collections/phylogeny/phylogenetic-signal/"/>
     <updated>2015-06-10T00:00:00-07:00</updated>
@@ -429,6 +410,25 @@ the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
 
 &lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
 &lt;p&gt;Function outputs a table with results from the test of phylogenetic signal.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Phylogenetic signal</title>
+    <link href="/arborCollections/easymode/phylogenetic-signal/"/>
+    <updated>2015-06-10T00:00:00-07:00</updated>
+    <id>/arborCollections/easymode/phylogenetic-signal</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      &lt;img src=&quot;/arborCollections/images/easyButtons-1600x800.jpg&quot;&gt;&lt;br/&gt;
+      &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
+
+&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
     </content>
   </entry>
@@ -1110,14 +1110,14 @@ basic analysis of a correlation between two continuous characters using independ
       @site = site
       @base = base
       @dir = dir
-      @name = 'index.html'
+      @name = &#39;index.html&#39;
       self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
-      self.data['tag'] = tag
-      tag_title_prefix = site.config['tag_title_prefix'] || 'Tagged: '
-      tag_title_suffix = site.config['tag_title_suffix'] || '&amp;amp;#8211;'
-      self.data['title'] = &quot;#{tag_title_prefix}#{tag}&quot;
-      self.data['description'] = &quot;An archive of posts tagged #{tag}.&quot;
+      self.read_yaml(File.join(base, &#39;_layouts&#39;), &#39;tag_index.html&#39;)
+      self.data[&#39;tag&#39;] = tag
+      tag_title_prefix = site.config[&#39;tag_title_prefix&#39;] || &#39;Tagged: &#39;
+      tag_title_suffix = site.config[&#39;tag_title_suffix&#39;] || &#39;&amp;amp;#8211;&#39;
+      self.data[&#39;title&#39;] = &quot;#{tag_title_prefix}#{tag}&quot;
+      self.data[&#39;description&#39;] = &quot;An archive of posts tagged #{tag}.&quot;
     end
   end
 end
@@ -1127,8 +1127,39 @@ end
 
 &lt;p&gt;An example of a Gist embed below.&lt;/p&gt;
 
+&lt;noscript&gt;&lt;pre&gt;---
+layout: page
+title: Tag Index
+description: &amp;quot;An archive of posts sorted by tag.&amp;quot;
+---
+
+{% capture tags %}
+  {% for tag in site.tags %}
+    {{ tag[0] | replace: &amp;#39; &amp;#39;, &amp;#39;&amp;amp;nbsp;&amp;#39; }}
+  {% endfor %}
+{% endcapture %}
+{% assign sortedtags = tags | split: &amp;#39; &amp;#39; | sort %}
+
+&amp;lt;ul class=&amp;quot;tag-box inline&amp;quot;&amp;gt;
+{% for tag in sortedtags %}
+  {% for post in site.tags[tag] %}
+		&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#{{ tag }}&amp;quot;&amp;gt;{{ tag }}&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+	{% endfor %}
+{% endfor %}
+&amp;lt;/ul&amp;gt;
+
+{% for tag in sortedtags %}
+	&amp;lt;h2 id=&amp;quot;{{ tag }}&amp;quot;&amp;gt;{{ tag }}&amp;lt;/h2&amp;gt;
+	&amp;lt;ul class=&amp;quot;post-list&amp;quot;&amp;gt;
+	{% for post in site.tags[tag] %}
+		&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;{{ site.url }}{{ post.url }}&amp;quot;&amp;gt;{{ post.title }}&amp;lt;span class=&amp;quot;entry-date&amp;quot;&amp;gt;&amp;lt;time datetime=&amp;quot;{{ post.date | date_to_xmlschema }}&amp;quot; itemprop=&amp;quot;datePublished&amp;quot;&amp;gt;{{ post.date | date: &amp;quot;%B %d, %Y&amp;quot; }}&amp;lt;/time&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+	{% endfor %}
+	&amp;lt;/ul&amp;gt;
+{% endfor %}&lt;/pre&gt;&lt;/noscript&gt;
 &lt;script src=&quot;https://gist.github.com/mmistakes/6589546.js&quot;&gt; &lt;/script&gt;
 
+&lt;noscript&gt;&lt;pre&gt;400: Invalid request
+&lt;/pre&gt;&lt;/noscript&gt;
 &lt;script src=&quot;https://gist.github.com/8531391.js&quot;&gt; &lt;/script&gt;
 
 
@@ -1311,7 +1342,7 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 &lt;nav class=&quot;toc&quot;&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#sample-heading&quot;&gt;Sample Heading&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#sample-heading&quot; id=&quot;markdown-toc-sample-heading&quot;&gt;Sample Heading&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/nav&gt;
@@ -1375,9 +1406,9 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 &lt;nav class=&quot;toc&quot;&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#hoodie-duis&quot;&gt;Hoodie Duis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cupidatat-90s-lo-fi-authentic-try-hard&quot; id=&quot;markdown-toc-cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#forage-occaecat-cardigan-qui&quot; id=&quot;markdown-toc-forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hoodie-duis&quot; id=&quot;markdown-toc-hoodie-duis&quot;&gt;Hoodie Duis&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/nav&gt;
@@ -1440,8 +1471,8 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 &lt;nav class=&quot;toc&quot;&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#markdown-images&quot;&gt;Markdown images&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#figures-for-images-or-video&quot;&gt;Figures (for images or video)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#markdown-images&quot; id=&quot;markdown-toc-markdown-images&quot;&gt;Markdown images&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#figures-for-images-or-video&quot; id=&quot;markdown-toc-figures-for-images-or-video&quot;&gt;Figures (for images or video)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/nav&gt;
