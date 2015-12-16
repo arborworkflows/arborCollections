@@ -2,7 +2,7 @@
 layout: media
 title: "Ancestral state reconstruction"
 categories: easymode
-excerpt: "Reconstruc character evolution on a tree."
+excerpt: "Reconstruct character evolution on a tree."
 ads: true
 share: false
 image:
