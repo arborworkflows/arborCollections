@@ -4,7 +4,7 @@ title: Arbor team
 permalink: /team/
 ---
 
-###Luke J. Harmon
+### Luke J. Harmon
 
 <div>
   <p style="float: left;margin:0 10px 10px 0">
@@ -20,7 +20,7 @@ permalink: /team/
   </p>
 </div>
 
-###Curt Lisle
+### Curt Lisle
 
 <div>
   <p style="float: left;margin:0 10px 10px 0">
@@ -37,7 +37,7 @@ permalink: /team/
 </div>
 
 
-###Bob Thacker
+### Bob Thacker
 
 <div>
   <p style="float: left;margin:0 10px 10px 0">

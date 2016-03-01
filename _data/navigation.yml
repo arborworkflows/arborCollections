@@ -2,7 +2,7 @@
 
 - title: Use Arbor
   url: /usearbor/
-  excerpt: "Run Arbor over the web"
+  excerpt: "Run Arbor over the web or install it yourself"
   image: 400x250.gif
 
 - title: Tutorials
@@ -15,12 +15,12 @@
   excerpt: "Full documentation for functions and workflows"
   image: 400x250.gif
 
-- title: Installation
-  url: /install/
-  excerpt: "How to install your own Arbor instance either locally or on the cloud"
-  image: 400x250.gif
-
 - title: FAQ
   url: /faq/
   excerpt: "Frequently asked questions"
+  image: 400x250.gif
+
+- title: Contact
+  url: /team/
+  excerpt: "Contact us"
   image: 400x250.gif
