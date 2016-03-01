@@ -1,0 +1,23 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "rows",
+            "id": "matrix",
+            "name": "matrix",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "List Matrix Columns",
+    "outputs": [
+        {
+            "description": "single column matrix listing the column names from the input matrix",
+            "format": "rows",
+            "id": "columns",
+            "name": "columns",
+            "type": "table"
+        }
+    ],
+    "script": "#\n# List the columns in a matrix \n# \n# The columns of the input matrix will be output as successive rows of a single output matrix.\n# This will facilitate creating and editing files of column subsets for other Arbor operations. \n# \n# inputs:\n# matrix - input table of many columns\n#\n# outputs:\n# columns - a single column table listing the names of the columns from the input matrix\n\ncolumns = {}\ncolumns['fields'] = ['columns']\ncolumns['rows'] = []\n\nfor field in matrix['fields']:\n    record = {'columns':field}\n    columns['rows'].append(record)"
+}

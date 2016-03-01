@@ -1,0 +1,31 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "pathname for NeXML file to parse",
+            "format": "text",
+            "id": "nexml_filename",
+            "name": "nexml_filename",
+            "type": "string"
+        },
+        {
+            "description": "two column table output from Phenoscape Ontotrace; user character IDs",
+            "format": "rows",
+            "id": "category_table_with_character_ids",
+            "name": "category_table_with_character_ids",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "NeXML Category Match Character ID with Label",
+    "outputs": [
+        {
+            "description": "table with new column (character label)",
+            "format": "rows",
+            "id": "augmented_category_table",
+            "name": "augmented_category_table",
+            "type": "table"
+        }
+    ],
+    "script": "# \n# This method searches a NeXML file for the character matrix and uses the character format rows to become\n# a lookup table between character ID and character label.  The category table output by ontotrace uses character\n# IDs where as the labels are the human readable form.  This method appends the character label \n# inputs:\n#   nexml_filename - absolute path to file on server (/vagrant/data suggested)\n#   category_table_char_ids - two column category table that provides structure for the matrix rows\n\nimport xmltodict\n\n# setup the output table to have two additional columns and start with empty rows\naugmented_category_table = {}\naugmented_category_table['fields'] = category_table_with_character_ids['fields']\naugmented_category_table['fields'].extend(['category_trim','character_trim','charcter_name'])\naugmented_category_table['rows'] = []\n\nwith open(nexml_filename) as fd:\n    doc = xmltodict.parse(fd.read())\n    \n# find the containing element.  This has been observed to be both 'nexml' and 'nex:nxml', so we will read\n# it and use the value to avoid breaking at this level due to mis-alignment of the element values\nmainelement = doc.keys()[0]\n\n# build a dictionaru of the characters.  This iterates through the columns and looks up the ID and the label\n# of the character.  This way, when a particular ID is found, the matching label can be looked up when\n# needed\n\nchars_lookup = {}\ncount = 0\nfor row in doc[mainelement]['characters']['format']['char']:\n    # create a dictionary indexed by UBERON_4440009, etc.  The value (@label) is the human readable character description\n    #use str() to mask unicode away\n    chars_lookup[row['@id']] = row['@label']\n    \nfor key in chars_lookup:\n    print key, chars_lookup[key]\n    count +=1\n    if count>5:\n        break\n    \n# isolate the category and character from their pathnames\n\nfor row in category_table_with_character_ids['rows']:\n    category_trim = row['Category'][-14:]\n    character_trim = row['Character'][-14:]\n    record = {'Category': row['Category'], 'Character': row['Character'],'category_trim': category_trim, 'character_trim': character_trim,'character_name':'' }\n    # if a match is made with the character array, output the full character name\n    searchvalue = character_trim\n    if searchvalue in chars_lookup.keys():\n        row['character_name'] = chars_lookup[searchvalue]\n    # add this record to the output table \n    augmented_category_table['rows'].append(record)\n    \n\n\n    \n\n\n    "
+}

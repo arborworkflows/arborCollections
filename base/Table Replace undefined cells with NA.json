@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "rows",
+            "id": "intable",
+            "name": "Table with possible undefined cells",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "Table Replace undefined cells with NA",
+    "outputs": [
+        {
+            "format": "rows",
+            "id": "cleanTable",
+            "name": "cleanTable",
+            "type": "table"
+        }
+    ],
+    "script": "#\n# loop through a table, which could have undefined cells.  If a cell is \n# undefined, assign the cell a value \"NA\", so the column isn't sparse anymore\n#\n\n# inputs:\n#   intable - a table that might have empty cells in it\n#\n# outputs:\n#    cleanTable \n\ncleanTable = {}\ncleanTable['fields'] = intable['fields']\ncleanTable['rows'] = []\n\nfor row in intable['rows']:\n    outrecord = {}\n    #print 'row:',row\n    # loop through all columns, even if they aren't filled in this row\n    for field in intable['fields']:\n        # test if the variable is defined or not\n        if row[field] =='':\n            outrecord[field] = \"NA\"\n        else:\n            outrecord[field] = row[field]\n    cleanTable['rows'].append(outrecord)\n            \n    "
+}

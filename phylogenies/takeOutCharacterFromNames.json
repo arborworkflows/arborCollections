@@ -1,0 +1,28 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "id": "phy",
+            "name": "Input tree",
+            "type": "tree"
+        },
+        {
+            "format": "text",
+            "id": "badChar",
+            "name": "Character to delete from tip labels",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "takeOutCharacterFromNames",
+    "outputs": [
+        {
+            "format": "r.apetree",
+            "id": "result",
+            "name": "Output tree",
+            "type": "tree"
+        }
+    ],
+    "script": "result<-phy\nresult$tip.label<-gsub(badChar, \"\", result$tip.label)"
+}

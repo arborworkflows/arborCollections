@@ -1,0 +1,23 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "data table with long column names",
+            "format": "rows",
+            "id": "datatable",
+            "name": "matrix input with ontology prefix",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "Table Remove Ontology Name Prefixes",
+    "outputs": [
+        {
+            "format": "rows",
+            "id": "outtable",
+            "name": "matrix with shorter column names",
+            "type": "table"
+        }
+    ],
+    "script": "# replace the names of all columns with simpler names.  This method assumes that each column name has a prefix with \n# 5 prefixes separated by dots \n\n# input: datatable - data table with long column names\n# output: outtable  \n\ninfields = datatable['fields']\n\noutfields = []\n\nnameMapping = {}\n\n# first build up a dictionary indexed by the previous string\nfor field in infields:\n    currentField = field\n    for count in range(5):\n        # see if there is a prefix left to delete\n        if \".\" in currentField:\n            currentField  = currentField[currentField.index(\".\")+1:]\n        else:\n            pass\n    nameMapping[field] = currentField\n    outfields.append(currentField)\n        \n# now loop through the source table and change the fieldnames when writing\n# the output\n\noutrows = []\nfor row in datatable['rows']:\n    outrow = {}\n    for field in infields:\n        # write out the fields using the new name for each attribute\n        outrow[nameMapping[field]] = row[field]\n    outrows.append(outrow)\n        \nouttable = {}\nouttable['fields'] = outfields\nouttable['rows'] = outrows\n"
+}

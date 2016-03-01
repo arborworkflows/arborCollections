@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "text",
+            "id": "nexusTree",
+            "name": "nexusTree",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "plot from Nexus",
+    "outputs": [
+        {
+            "format": "png.base64",
+            "id": "treePlot",
+            "name": "treePlot",
+            "type": "image"
+        }
+    ],
+    "script": "\nlibrary(cardoonTools)\nrequire(geiger)\n\nTfile <- file()\ncat(nexusTree, file=Tfile)\nphy<-read.nexus(file=Tfile)\n\n# plot and wrap the result in a PNG for output on the webpage\ntreePlot <- cardoonPlot(expression(plot(phy)), width=1000, height=1000, res=100)\ntreePlot <- treePlot$png\n"
+}

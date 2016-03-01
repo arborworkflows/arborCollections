@@ -1,0 +1,33 @@
+{
+    "inputs": [
+        {
+            "description": "wide table, to have columns selected from it",
+            "format": "rows",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "description": "single column table of column names to preserve in the output in addition to random columns",
+            "format": "rows",
+            "name": "keepColumnsTable",
+            "type": "table"
+        },
+        {
+            "description": "how many random columns to select from the input table",
+            "format": "number",
+            "name": "outColumnCount",
+            "type": "number"
+        }
+    ],
+    "mode": "python",
+    "name": "Select Random Columns",
+    "outputs": [
+        {
+            "description": "table with only some of the columns of the input table",
+            "format": "rows",
+            "name": "outTable",
+            "type": "table"
+        }
+    ],
+    "script": "from random import randint\n#\n# pick random columns out of a table, according to the rowcount passed as an argument.  Always pick the column passed in a control table\n\n# inputs: \n#   table\n#   outRowCount - how many rows to pick from the input table\n#   keepColumns - table with names of columns to keep for sure\n# output: outTable\n\ntableColumnCount = len(table['fields'])\noutColumns = []\n\n# put the columns to keep in the output table.  Assume the first column of the keep table is the column names\nfor row in keepColumnsTable['rows']:\n    pickedColumnName = row[table['fields'][0]]\n    print 'keeping: ',pickedColumnName\n    outColumns.append(pickedColumnName)\n\n# loop the number of times in the output colun count; selecting a random column each time\nfor i in range(outColumnCount):\n    pickedColumnNumber = randint(0,tableColumnCount-1)\n    pickedColumnName = table['fields'][pickedColumnNumber]\n    if  (pickedColumnName not in outColumns) and (pickedColumnName not in keepColumnsTable['fields']):\n        print 'chose:',pickedColumnName\n        outColumns.append(pickedColumnName)\n\n# now copy the selected columns to the output\noutTable = {}\noutTable['fields'] = outColumns\noutTable['rows'] = []\n\nfor row in table['rows']:\n    record = {}\n    for column in outColumns:\n        record[column] = row[column]\n    outTable['rows'].append(record)    \n    \n    \n"
+}

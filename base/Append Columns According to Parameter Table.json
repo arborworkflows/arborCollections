@@ -1,0 +1,38 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "first input table to be joined",
+            "format": "rows",
+            "id": "inTable1",
+            "name": "inTable1",
+            "type": "table"
+        },
+        {
+            "description": "second table to be joined",
+            "format": "rows",
+            "id": "inTable2",
+            "name": "inTable2",
+            "type": "table"
+        },
+        {
+            "description": "single row, single column table containing the field name to use for a join",
+            "format": "rows",
+            "id": "parameterTable",
+            "name": "parameterTable",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "Append Columns According to Parameter Table",
+    "outputs": [
+        {
+            "description": "table containing columns from both input tables",
+            "format": "rows",
+            "id": "outTable",
+            "name": "outTable",
+            "type": "table"
+        }
+    ],
+    "script": "\n# input: inTable1 - a list of rows (2D table)\n# input: inTable2 = a second list of rows\n# input: parameterTable - an single column, single row table containing the field name to use for the table join\n# output: outTable\n\n# merge the columns together.  This analysis assumes that each table has a \n\noutTable = {}\n\n# look up the column name by returning the first column of the first row of the table\nindexColumn = parameterTable['rows'][0][parameterTable['fields'][0]]\n        \n# prepare for the output table format of table:rows        \ncolumnHeaders1 = inTable1['fields']\ncolumnHeaders2 = inTable2['fields']\n\noutRows = []\noutColumns = []\n\n# use the first table as the master.  Iterate through all of its rows and use the value of the index \n# column to select the proper row in the second table, so the additional attributes can be merged into the output\nfor i in range(len(inTable1['rows'])):\n    foundMatch = False\n    row = inTable1['rows'][i]\n    for j in range(len(inTable2['rows'])):\n        if inTable2['rows'][j][indexColumn] == row[indexColumn]:\n            foundMatch = True\n            # this row from table2 matches, so loop through its entries and add them to the output row\n            for k in inTable2['rows'][j]:\n                row[k] = inTable2['rows'][j][k]\n            break;\n    # drop out columns where there was no match in table2\n    if foundMatch:\n        outRows.append(row)\n    \n# now fix the column headers to be the union of both sets of input column headers\n\nfor i in columnHeaders1:\n    if i not in outColumns:\n        outColumns.append(i)\n\nfor i in columnHeaders2:\n    if i not in outColumns:\n        outColumns.append(i)\n        \noutTable = {'fields': outColumns,'rows':outRows}"
+}

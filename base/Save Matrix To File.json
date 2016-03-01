@@ -1,0 +1,23 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "matrix to be saved as a CSV file",
+            "format": "rows",
+            "id": "matrix",
+            "name": "matrix",
+            "type": "table"
+        },
+        {
+            "description": "full pathname of where to save output file",
+            "format": "text",
+            "id": "filename",
+            "name": "filename",
+            "type": "string"
+        }
+    ],
+    "mode": "python",
+    "name": "Save Matrix To File",
+    "outputs": [],
+    "script": "# \n# save a matrix to a named file.  This is used in the short-term due to \n# some size limitations of dataset serialization needed when a dataset is stored in Girder.\n#\n# KnowlegeVis, LLC\n\n# inputs:\n#   matrix - a table.rows object\n#   filename - the full pathname to write the matrix to in CSV format\n\nimport csv\n\n# check that a .csv is added at the end. If not, add it automatically\nif filename[-4:] != '.csv':\n    filename = filename+'.csv'\n\nwith open(filename, 'wb') as myfile:\n    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)\n    wr.writerows(matrix['rows'])"
+}

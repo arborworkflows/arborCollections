@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "id": "phy",
+            "name": "Input Tree",
+            "type": "tree"
+        }
+    ],
+    "mode": "r",
+    "name": "removeDuplicateTipsFromTree",
+    "outputs": [
+        {
+            "format": "r.apetree",
+            "id": "result",
+            "name": "Output tree",
+            "type": "tree"
+        }
+    ],
+    "script": "library(ape)\n\nremoveDuplicateTips<-function(phy) {\n  ug<-unique(phy$tip.label)\n  foo<-function(x) min(which(phy$tip.label==x))\n  firstMatch<-sapply(ug,foo)\n  tipFilter<-1:length(phy$tip.label) %in% firstMatch\n  dropTheseTips<-which(!tipFilter)\n  result<-drop.tip(phy, dropTheseTips)\n  result\n}\nresult<-removeDuplicateTips(phy)"
+}

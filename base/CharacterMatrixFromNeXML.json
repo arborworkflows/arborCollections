@@ -1,0 +1,28 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "text",
+            "id": "nexmlfilename",
+            "name": "nexmlfilename",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "CharacterMatrixFromNeXML",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "id": "matrix",
+            "name": "matrix",
+            "type": "table"
+        },
+        {
+            "format": "r.dataframe",
+            "id": "matrix_id_names",
+            "name": "matrix_id_names",
+            "type": "table"
+        }
+    ],
+    "script": "library(RNeXML)\nlibrary(plyr)\n\n# We are assuming the nexmlfilename corresponds to a local file.  This is cheating, but since vagrant has shared\n# directories, a file could be copied into the vagrant/data directory of the host machine and have it visible. \n# this is needed only until Flow allows upload of xml files. \nnexml_project <- nexml_read(nexmlfilename)\n\n# extract the character matrix.  If we used get_characters(), it would have placeholder column names, but\n# get_characters_lilst() resolves the column names to have the complete original character name :-)\n\nmatrix <- get_characters_list(nexml_project,rownames_as_col=TRUE)\nmatrix_id_names <- get_characters(nexml_project,rownames_as_col=TRUE,otu_id=TRUE)\n\n# the extra column operations below don't work becasue the returned object isn't really a data frame but a list with specific methods. For\n# now, we will have to rename the column outside of this method.\n\n# create a 'name' column that corresponds to the taxa names that come out of get_characters() by renaming the original column\n#rename(matrix,c(\"taxa\" = \"name\"))\n\n# create a duplicate column in case a later method is looking 'species' instead of 'name\n#matrix$species <- matrix$name\n\n\n\n"
+}

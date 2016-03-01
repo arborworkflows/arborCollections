@@ -1,0 +1,34 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "id": "phy",
+            "name": "Input tree",
+            "type": "tree"
+        },
+        {
+            "default": {
+                "data": "_",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "Character that separates genus and species names",
+            "format": "text",
+            "id": "splitChar",
+            "name": "Split character",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "extractGenus",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "id": "result",
+            "name": "Genus Names",
+            "type": "table"
+        }
+    ],
+    "script": "extractGenus<-function(speciesNames, splitCharacter=\" \") {\n  genus<-character(length=length(speciesNames))\n  tt<-strsplit(speciesNames, split=splitCharacter)\n  for(i in 1:length(speciesNames)) {\n    genus[i]<-tt[[i]][1]\n  }\n  return(genus)\n}\n\nresult<-extractGenus(phy$tip.label, splitCharacter=splitChar)\nresult<-as.matrix(result)"
+}

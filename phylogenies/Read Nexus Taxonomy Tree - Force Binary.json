@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "text",
+            "id": "tree_filename",
+            "name": "Filename for Nexus Tree File",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "Read Nexus Taxonomy Tree - Force Binary",
+    "outputs": [
+        {
+            "format": "r.apetree",
+            "id": "ultrametric_tree_with_branch_lengths",
+            "name": "ultrametric tree with branch lengths",
+            "type": "tree"
+        }
+    ],
+    "script": "require(aRbor)\nlibrary(rncl)\n\nouttree <- rncl::read_nexus_phylo(file=tree_filename)\nparsedtree <- outtree\n\n# first force the tree to be a binary tree\ntree_without_polytomies <- multi2di(parsedtree,random=TRUE)\n\n# add branch lengths from math model if the tree doesn't have any\nultrametric_tree_with_branch_lengths <- compute.brlen(tree_without_polytomies,method='Grafen')"
+}

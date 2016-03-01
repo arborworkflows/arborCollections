@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "id": "phy",
+            "name": "phy",
+            "type": "tree"
+        }
+    ],
+    "mode": "r",
+    "name": "pathd8",
+    "outputs": [
+        {
+            "format": "r.apetree",
+            "id": "res",
+            "name": "res",
+            "type": "tree"
+        }
+    ],
+    "script": "library(geiger)\n\nres<-PATHd8.phylo(phy)"
+}

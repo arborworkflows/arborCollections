@@ -1,0 +1,38 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "tree for matching with table",
+            "format": "r.apetree",
+            "id": "tree",
+            "name": "tree",
+            "type": "tree"
+        },
+        {
+            "description": "table for matching with tree",
+            "format": "r.dataframe",
+            "id": "table",
+            "name": "table",
+            "type": "table"
+        }
+    ],
+    "mode": "r",
+    "name": "aRbor tree table match",
+    "outputs": [
+        {
+            "description": "tree containing only taxa found in the table",
+            "format": "r.apetree",
+            "id": "tree_matched",
+            "name": "tree_matched",
+            "type": "tree"
+        },
+        {
+            "description": "table containing only rows matching tree taxa",
+            "format": "r.dataframe",
+            "id": "table_matched",
+            "name": "table_matched",
+            "type": "table"
+        }
+    ],
+    "script": "require(aRbor)\ntree_and_data <- make.treedata(tree,table)\ntree_matched <- tree_and_data$phy\ntable_matched <- tree_and_data$dat"
+}

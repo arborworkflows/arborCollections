@@ -1,0 +1,36 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "tree to receive a graft of another tree onto a named node",
+            "format": "nested",
+            "id": "receivingTree",
+            "name": "receivingTree",
+            "type": "tree"
+        },
+        {
+            "description": "tree to graft onto the receiving tree.  This tree's root node will be attached to a node of the receiving tree",
+            "format": "nested",
+            "id": "subTree",
+            "name": "subTree",
+            "type": "tree"
+        },
+        {
+            "format": "text",
+            "id": "nodename",
+            "name": "nodename",
+            "type": "string"
+        }
+    ],
+    "mode": "python",
+    "name": "GraftTreeOntoNamedNode-v2",
+    "outputs": [
+        {
+            "format": "nested",
+            "id": "combinedTree",
+            "name": "combinedTree",
+            "type": "tree"
+        }
+    ],
+    "script": "#  Graft a subtree onto a receiving tree, at a given node\n#  Curtis Lisle\n#  KnowledgeVis, LLC\n\n# Copyright by KnowledgeVis,LLC and Kitware, Inc.\n\n# This analysis receives two trees.  The receiving tree is considered the \"more abstract\".  The subtree is attached \n# (grafted onto) the receiving tree as a child of a specified node in the receiving tree.  The root node of the subTree is\n# assumed to represent the same taxonomy concept as the node it will be attached to in the receiving tree.  Because of this,\n# the children of the subTree's root node are directly added to the selected node in the receiving tree.  \n\n# Update History:\n# 1/29/16 - initial version\n#\n\n# inputs\n# ------\n# receivingTree - tree with abstract concepts at its taxa\n# subTree - tree to be connected to a node in the receivingTree \n# nodename - string value that will be used to search the receiving tree for a node to graft onto\n#\n# outputs\n# -------\n# combinedTree - nested format tree with the subtree attached to the receivingTree\n\n\n\n\n# -------- top level methods below --------------------\n\n# this routine traverses a phylo tree in nested format and add lat,long from\n# the occurrence records to the node.  This is the top level of the recursive traversal of the tree. Traversal\n# starts from the top and continues past the intermediate nodes,  for each taxon reached, addLocationsToTaxon is called\n# a single time to possibly add any matching occurrences to the taxon's attributes\n\ndef addLocationsToTreeNodes(treenode):\n    # look at the current tree node and see if there are children or not\n    if 'children' in treenode.keys():\n        #case for a hierarchy node, traverse to all the children\n        for node in treenode['children']:\n            addLocationsToTreeNodes(node)\n    else:\n        #case for a taxa. Look through the occurrence and add records to \n        # this node\n        addLocationsToTaxon(treenode)\n        \n        \n# this routine traverses a phylo tree in nested format and adds attributes from\n# the morphology matrix to the taxa nodes.  This should be run AFTER the \n# locations traversal because it relies on the matchColumn value (the ascension or \n# collection index number) to be present in the taxon node.  This traversal\n# could be combined with the location/match traversal for improved speed, but \n# this separate traversal is simpler in design.\n\ndef addMorphologyToTreeNodes(treenode):\n    # look at the current tree node and see if there are children or not\n    if 'children' in treenode.keys():\n        #case for a hierarchy node, traverse to all the children\n        for node in treenode['children']:\n            addMorphologyToTreeNodes(node)\n    else:\n        #case for a taxa. Look through the occurrence and add records to \n        # this node\n        addMorphologyToTaxon(treenode)        \n\n\n# this routine traverses a phylo tree in nested format. Add a nodeid and then\n# increment the count every time we encounter a node during a depth first search\n\ndef addUniqueIDsToTreeNodes(treenode):\n    global nodecount\n    treenode['node_data']['nodeid'] = nodecount\n    nodecount += 1\n    # look at the current tree node and see if there are children or not\n    if 'children' in treenode.keys():\n        #case for a hierarchy node, traverse to all the children\n        for node in treenode['children']:\n            addUniqueIDsToTreeNodes(node)\n    \n\ndef findNamedNodeInTree(treenode,nodename):\n    # look at the current tree node and see if there are children or not\n    if 'node name' in treenode['node_data']:\n        if treenode['node_data']['node name'] == nodename:\n            return treenode\n        elif 'children' in treenode.keys():\n            for node in treenode['children']:\n                return findNamedNodeInTree(node,nodename)\n    elif 'children' in treenode.keys():\n        #case for a hierarchy node, traverse to all the children\n        for node in treenode['children']:\n            return findNamedNodeInTree(node,nodename)\n                \n                \ndef findAndInsertNodeInTree(treenode,nodename,subTree):\n    # look at the current tree node and see if there are children or not\n    if 'node name' in treenode['node_data']:\n        print 'looking at node ',treenode['node_data']['node name'],' node: ',treenode\n        if treenode['node_data']['node name'] == nodename:\n            print 'found match at node ',treenode['node_data']['node name']\n            if 'children' in treenode:\n                # instead of adding the root of the subtree, directly add all its children to the selected\n                # parent node.  This assumes that the leaf of the receiving tree is the same node as the \n                # parent of the subTree to be attached. \n                for subnode in subTree['children']:\n                    treenode['children'].append(subnode)\n            else:\n                treenode['children'] = []\n                # instead of adding the root of the subtree, directly add all its children to the selected\n                # parent node.  This assumes that the leaf of the receiving tree is the same node as the \n                # parent of the subTree to be attached. \n                for subnode in subTree['children']:\n                    treenode['children'].append(subnode)\n            \n        elif 'children' in treenode.keys():\n            for node in treenode['children']:\n                findAndInsertNodeInTree(node,nodename,subTree)\n    elif 'children' in treenode.keys():\n        #case for a hierarchy node, traverse to all the children\n        for node in treenode['children']:\n            findAndInsertNodeInTree(node,nodename,subTree)             \n                \n\n    \n    \n# ------- here are the top level actions\n\n# copy the input tree to the output\ncombinedTree = receivingTree\nfindAndInsertNodeInTree(combinedTree,nodename,subTree)\nprint 'found node and added subtree'\nprint 'added node'\n\n\n\n\n"
+}
