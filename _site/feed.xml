@@ -12,7 +12,7 @@
 
 &lt;p&gt;TBA&lt;/p&gt;
 </description>
-        <pubDate>Wed, 07 Oct 2015 00:00:00 -0700</pubDate>
+        <pubDate>Wed, 07 Oct 2015 00:00:00 +0200</pubDate>
         <link>/arborCollections/arborCollections/tutorials/megatrees/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/megatrees/</guid>
       </item>
@@ -23,7 +23,7 @@
 
 &lt;p&gt;TBA&lt;/p&gt;
 </description>
-        <pubDate>Wed, 02 Sep 2015 00:00:00 -0700</pubDate>
+        <pubDate>Wed, 02 Sep 2015 00:00:00 +0200</pubDate>
         <link>/arborCollections/arborCollections/tutorials/web-services/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/web-services/</guid>
       </item>
@@ -92,76 +92,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen8.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Mon, 20 Jul 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/tutorials/Continuous-models/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/Continuous-models/</guid>
-      </item>
-    
-      <item>
-        <title>PGLS</title>
-        <description>&lt;h2 id=&quot;use-pgls-to-test-for-a-correlation-between-two-continuous-variables&quot;&gt;Use PGLS to test for a correlation between two continuous variables&lt;/h2&gt;
-
-&lt;p&gt;In this exercise, we will learn how to use PGLS to test for a correlation between two continuous variables. We will use the Arbor function “PGLS,” found in the phylogeny package.&lt;/p&gt;
-
-&lt;p&gt;Imagine that you have a phylogenetic tree with information on two continuous character for some or all of the tips. You want to test whether or not there is an evolutionary correlation between the two traits. PGLS is the way to do this.&lt;/p&gt;
-
-&lt;h2 id=&quot;loading-example-data&quot;&gt;Loading example data&lt;/h2&gt;
-
-&lt;p&gt;For this example, we will use anolis again. Obtain the anolis example data files, phelsuma.phy and phelsuma.csv, from &lt;a href=&quot;/arborCollections/docs_datasets.html&quot;&gt;Arbor datasets&lt;/a&gt;. Save those files somewhere on your computer.&lt;/p&gt;
-
-&lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Drag and drop the two anolis data files on the blue “Browse or drop files” box to load them into your browser.&lt;/p&gt;
-
-&lt;h2 id=&quot;selecting-the-collections-that-you-need&quot;&gt;Selecting the collections that you need&lt;/h2&gt;
-
-&lt;p&gt;For this example, everything required is in the “phylogeny” collection - so click on that eyeball and you will be able to access the functions that you need.&lt;/p&gt;
-
-&lt;p&gt;At this point, you should have the two anolis datafiles stored in Arbor and the “phylogeny” collection available.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen1.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;In this screenshot I am logged in but that is not necessary for this analysis.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;run-the-pgls-function&quot;&gt;Run the PGLS function&lt;/h2&gt;
-
-&lt;p&gt;Find the PGLS function in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen2.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We could use this function in a workflow, as we did in other Arbor tutorials. But for this tutorial let’s just run the function. To do that, click on the button that says “Setup and run.” In the resulting pop-up menu select the following options:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen3.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;We will be fitting the model SVL ~ awesomeness, so that SVL is the dependent and awesomeness the independent variable. “BM” means that we will fit a model that assumes that the residuals are distributed as expected under a Brownian motion model of evolution along the branches of the tree.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;run-your-analysis&quot;&gt;Run your analysis&lt;/h2&gt;
-
-&lt;p&gt;Click “&amp;gt; Run” to run the function. Select these options. If your analysis worked, you should see the following message:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen4.jpg&quot; alt=&quot;Screenshot&quot; /&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;see-your-results&quot;&gt;See your results&lt;/h2&gt;
-
-&lt;p&gt;Now move over to the “visualization” tab to see your results. The PGLS function creates three outputs: one table showing model coefficients like slopes and intercepts; one table showing a summary of model fit and parameter significance; and a plot.&lt;/p&gt;
-
-&lt;p&gt;To see the table results, choose “table” and choose one of the outputs, either “PGLS coefficients” or “PGLS modelfit_summary”. Update shows you the table. For example, the coefficients look like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen5.jpg&quot; alt=&quot;Screenshot&quot; /&gt;.&lt;/p&gt;
-
-&lt;p&gt;To see the plot, select “image” under “Select visualization”, and choose your  plot under “data” (it should be called PGLS pglsPlot). Click “update” to see this result:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen6.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;try-another-model&quot;&gt;Try another model&lt;/h2&gt;
-
-&lt;p&gt;If you want to use a different option for PGLS, you can choose that in the setup and run window. For example, we can try OU like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen7.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You will notice that the coefficients are slightly different, though the main conclusion is unchanged.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen8.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 17 Jul 2015 00:00:00 -0700</pubDate>
+        <pubDate>Fri, 17 Jul 2015 00:00:00 +0200</pubDate>
         <link>/arborCollections/arborCollections/tutorials/PGLS-basic/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/PGLS-basic/</guid>
       </item>
@@ -234,7 +165,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/arborCollections/assets/continuousACE/screen8.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Mon, 13 Jul 2015 00:00:00 -0700</pubDate>
+        <pubDate>Mon, 13 Jul 2015 00:00:00 +0200</pubDate>
         <link>/arborCollections/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/</guid>
       </item>
@@ -307,9 +238,20 @@
 
 &lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen8.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
         <link>/arborCollections/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/</guid>
+      </item>
+    
+      <item>
+        <title>Phylogenetic signal</title>
+        <description>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
+
+&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
+        <link>/arborCollections/arborCollections/easymode/phylogenetic-signal/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/easymode/phylogenetic-signal/</guid>
       </item>
     
       <item>
@@ -341,20 +283,9 @@ the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
 &lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
 &lt;p&gt;Function outputs a table with results from the test of phylogenetic signal.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/phylogenetic-signal/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/phylogenetic-signal/</guid>
-      </item>
-    
-      <item>
-        <title>Phylogenetic signal</title>
-        <description>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/easymode/phylogenetic-signal/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/easymode/phylogenetic-signal/</guid>
       </item>
     
       <item>
@@ -402,7 +333,7 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
 &lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
 &lt;p&gt;Function outputs a table and a plot with results of the ancestral state reconstruction.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/ancestral-states-2/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/ancestral-states-2/</guid>
       </item>
@@ -452,9 +383,20 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
 &lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
 &lt;p&gt;Function outputs a table and a plot with results of the ancestral state reconstruction.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/ancestral-states/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/ancestral-states/</guid>
+      </item>
+    
+      <item>
+        <title>Ancestral state reconstruction</title>
+        <description>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/ancestral-state/&quot; /&gt;
+
+&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/ancestral-state/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
+        <link>/arborCollections/arborCollections/easymode/ancestral-state/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/easymode/ancestral-state/</guid>
       </item>
     
   </channel>

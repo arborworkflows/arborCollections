@@ -9,7 +9,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2015-11-09T16:19:28-08:00</updated>
+  <updated>2016-03-01T11:53:20+01:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -21,7 +21,7 @@
   <entry>
     <title>Megatrees</title>
     <link href="/arborCollections/tutorials/megatrees/"/>
-    <updated>2015-10-07T00:00:00-07:00</updated>
+    <updated>2015-10-07T00:00:00+02:00</updated>
     <id>/arborCollections/tutorials/megatrees</id>
     <author>
       <name>Luke Harmon</name>
@@ -40,7 +40,7 @@
   <entry>
     <title>Web services</title>
     <link href="/arborCollections/tutorials/web-services/"/>
-    <updated>2015-09-02T00:00:00-07:00</updated>
+    <updated>2015-09-02T00:00:00+02:00</updated>
     <id>/arborCollections/tutorials/web-services</id>
     <author>
       <name>Luke Harmon</name>
@@ -58,85 +58,8 @@
   
   <entry>
     <title>PGLS</title>
-    <link href="/arborCollections/tutorials/Continuous-models/"/>
-    <updated>2015-07-20T00:00:00-07:00</updated>
-    <id>/arborCollections/tutorials/Continuous-models</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;use-pgls-to-test-for-a-correlation-between-two-continuous-variables&quot;&gt;Use PGLS to test for a correlation between two continuous variables&lt;/h2&gt;
-
-&lt;p&gt;In this exercise, we will learn how to use PGLS to test for a correlation between two continuous variables. We will use the Arbor function “PGLS,” found in the phylogeny package.&lt;/p&gt;
-
-&lt;p&gt;Imagine that you have a phylogenetic tree with information on two continuous character for some or all of the tips. You want to test whether or not there is an evolutionary correlation between the two traits. PGLS is the way to do this.&lt;/p&gt;
-
-&lt;h2 id=&quot;loading-example-data&quot;&gt;Loading example data&lt;/h2&gt;
-
-&lt;p&gt;For this example, we will use anolis again. Obtain the anolis example data files, phelsuma.phy and phelsuma.csv, from &lt;a href=&quot;/arborCollections/docs_datasets.html&quot;&gt;Arbor datasets&lt;/a&gt;. Save those files somewhere on your computer.&lt;/p&gt;
-
-&lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Drag and drop the two anolis data files on the blue “Browse or drop files” box to load them into your browser.&lt;/p&gt;
-
-&lt;h2 id=&quot;selecting-the-collections-that-you-need&quot;&gt;Selecting the collections that you need&lt;/h2&gt;
-
-&lt;p&gt;For this example, everything required is in the “phylogeny” collection - so click on that eyeball and you will be able to access the functions that you need.&lt;/p&gt;
-
-&lt;p&gt;At this point, you should have the two anolis datafiles stored in Arbor and the “phylogeny” collection available.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen1.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;In this screenshot I am logged in but that is not necessary for this analysis.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;run-the-pgls-function&quot;&gt;Run the PGLS function&lt;/h2&gt;
-
-&lt;p&gt;Find the PGLS function in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen2.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We could use this function in a workflow, as we did in other Arbor tutorials. But for this tutorial let’s just run the function. To do that, click on the button that says “Setup and run.” In the resulting pop-up menu select the following options:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen3.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;We will be fitting the model SVL ~ awesomeness, so that SVL is the dependent and awesomeness the independent variable. “BM” means that we will fit a model that assumes that the residuals are distributed as expected under a Brownian motion model of evolution along the branches of the tree.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;run-your-analysis&quot;&gt;Run your analysis&lt;/h2&gt;
-
-&lt;p&gt;Click “&amp;gt; Run” to run the function. Select these options. If your analysis worked, you should see the following message:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen4.jpg&quot; alt=&quot;Screenshot&quot; /&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;see-your-results&quot;&gt;See your results&lt;/h2&gt;
-
-&lt;p&gt;Now move over to the “visualization” tab to see your results. The PGLS function creates three outputs: one table showing model coefficients like slopes and intercepts; one table showing a summary of model fit and parameter significance; and a plot.&lt;/p&gt;
-
-&lt;p&gt;To see the table results, choose “table” and choose one of the outputs, either “PGLS coefficients” or “PGLS modelfit_summary”. Update shows you the table. For example, the coefficients look like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen5.jpg&quot; alt=&quot;Screenshot&quot; /&gt;.&lt;/p&gt;
-
-&lt;p&gt;To see the plot, select “image” under “Select visualization”, and choose your  plot under “data” (it should be called PGLS pglsPlot). Click “update” to see this result:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen6.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;try-another-model&quot;&gt;Try another model&lt;/h2&gt;
-
-&lt;p&gt;If you want to use a different option for PGLS, you can choose that in the setup and run window. For example, we can try OU like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen7.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You will notice that the coefficients are slightly different, though the main conclusion is unchanged.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen8.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>PGLS</title>
     <link href="/arborCollections/tutorials/PGLS-basic/"/>
-    <updated>2015-07-17T00:00:00-07:00</updated>
+    <updated>2015-07-17T00:00:00+02:00</updated>
     <id>/arborCollections/tutorials/PGLS-basic</id>
     <author>
       <name>Luke Harmon</name>
@@ -213,7 +136,7 @@
   <entry>
     <title>Continuous ancestral character states</title>
     <link href="/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/"/>
-    <updated>2015-07-13T00:00:00-07:00</updated>
+    <updated>2015-07-13T00:00:00+02:00</updated>
     <id>/arborCollections/tutorials/reconstructing-ancestral-characters-continuous</id>
     <author>
       <name>Luke Harmon</name>
@@ -294,7 +217,7 @@
   <entry>
     <title>Discrete ancestral character states</title>
     <link href="/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/"/>
-    <updated>2015-06-10T00:00:00-07:00</updated>
+    <updated>2015-06-10T00:00:00+02:00</updated>
     <id>/arborCollections/tutorials/reconstructing-ancestral-characters-discrete</id>
     <author>
       <name>Luke Harmon</name>
@@ -373,9 +296,28 @@
   </entry>
   
   <entry>
+    <title>Phylogenetic signal</title>
+    <link href="/arborCollections/easymode/phylogenetic-signal/"/>
+    <updated>2015-06-10T00:00:00+02:00</updated>
+    <id>/arborCollections/easymode/phylogenetic-signal</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      &lt;img src=&quot;/arborCollections/images/easyButtons-1600x800.jpg&quot;&gt;&lt;br/&gt;
+      &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
+
+&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
     <title>phylogeneticSignal</title>
     <link href="/arborCollections/collections/phylogeny/phylogenetic-signal/"/>
-    <updated>2015-06-10T00:00:00-07:00</updated>
+    <updated>2015-06-10T00:00:00+02:00</updated>
     <id>/arborCollections/collections/phylogeny/phylogenetic-signal</id>
     <author>
       <name>Luke Harmon</name>
@@ -415,28 +357,9 @@ the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>Phylogenetic signal</title>
-    <link href="/arborCollections/easymode/phylogenetic-signal/"/>
-    <updated>2015-06-10T00:00:00-07:00</updated>
-    <id>/arborCollections/easymode/phylogenetic-signal</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      &lt;img src=&quot;/arborCollections/images/easyButtons-1600x800.jpg&quot;&gt;&lt;br/&gt;
-      &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
     <title>aceArbor</title>
     <link href="/arborCollections/collections/phylogeny/ancestral-states-2/"/>
-    <updated>2015-06-10T00:00:00-07:00</updated>
+    <updated>2015-06-10T00:00:00+02:00</updated>
     <id>/arborCollections/collections/phylogeny/ancestral-states-2</id>
     <author>
       <name>Luke Harmon</name>
@@ -494,7 +417,7 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
   <entry>
     <title>aceArbor</title>
     <link href="/arborCollections/collections/phylogeny/ancestral-states/"/>
-    <updated>2015-06-10T00:00:00-07:00</updated>
+    <updated>2015-06-10T00:00:00+02:00</updated>
     <id>/arborCollections/collections/phylogeny/ancestral-states</id>
     <author>
       <name>Luke Harmon</name>
@@ -552,7 +475,7 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
   <entry>
     <title>Ancestral state reconstruction</title>
     <link href="/arborCollections/easymode/ancestral-state/"/>
-    <updated>2015-06-10T00:00:00-07:00</updated>
+    <updated>2015-06-10T00:00:00+02:00</updated>
     <id>/arborCollections/easymode/ancestral-state</id>
     <author>
       <name>Luke Harmon</name>
@@ -571,7 +494,7 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
   <entry>
     <title>addColumns</title>
     <link href="/arborCollections/collections/base/addColumns/"/>
-    <updated>2015-06-10T00:00:00-07:00</updated>
+    <updated>2015-06-10T00:00:00+02:00</updated>
     <id>/arborCollections/collections/base/addColumns</id>
     <author>
       <name>Luke Harmon</name>
@@ -611,7 +534,7 @@ The output is a table with all the data from anolis.csv along with a new column 
   <entry>
     <title>Creating a new collection</title>
     <link href="/arborCollections/tutorials/creating-a-new-collection/"/>
-    <updated>2015-06-09T00:00:00-07:00</updated>
+    <updated>2015-06-09T00:00:00+02:00</updated>
     <id>/arborCollections/tutorials/creating-a-new-collection</id>
     <author>
       <name>Luke Harmon</name>
@@ -674,7 +597,7 @@ The output is a table with all the data from anolis.csv along with a new column 
   <entry>
     <title>Using the Arbor webapp</title>
     <link href="/arborCollections/tutorials/using-the-arbor-webapp/"/>
-    <updated>2015-06-02T00:00:00-07:00</updated>
+    <updated>2015-06-02T00:00:00+02:00</updated>
     <id>/arborCollections/tutorials/using-the-arbor-webapp</id>
     <author>
       <name>Luke Harmon</name>
@@ -868,7 +791,7 @@ basic analysis of a correlation between two continuous characters using independ
   <entry>
     <title>What is Arbor?</title>
     <link href="/arborCollections/tutorials/what-is-arbor/"/>
-    <updated>2015-05-21T00:00:00-07:00</updated>
+    <updated>2015-05-21T00:00:00+02:00</updated>
     <id>/arborCollections/tutorials/what-is-arbor</id>
     <author>
       <name>Luke Harmon</name>
@@ -933,7 +856,7 @@ basic analysis of a correlation between two continuous characters using independ
   <entry>
     <title>Easy mode</title>
     <link href="/arborCollections/tutorials/easy-mode/"/>
-    <updated>2015-05-21T00:00:00-07:00</updated>
+    <updated>2015-05-21T00:00:00+02:00</updated>
     <id>/arborCollections/tutorials/easy-mode</id>
     <author>
       <name>Luke Harmon</name>
@@ -995,7 +918,7 @@ basic analysis of a correlation between two continuous characters using independ
   <entry>
     <title>Syntax Highlighting Test</title>
     <link href="/arborCollections/articles/syntax-highlighting-test/"/>
-    <updated>2014-11-29T19:08:14-08:00</updated>
+    <updated>2014-11-30T04:08:14+01:00</updated>
     <id>/arborCollections/articles/syntax-highlighting-test</id>
     <author>
       <name>Luke Harmon</name>
@@ -1169,7 +1092,7 @@ description: &amp;quot;An archive of posts sorted by tag.&amp;quot;
   <entry>
     <title>Author Override</title>
     <link href="/arborCollections/articles/author-override/"/>
-    <updated>2014-06-23T13:19:16-07:00</updated>
+    <updated>2014-06-23T22:19:16+02:00</updated>
     <id>/arborCollections/articles/author-override</id>
     <author>
       <name>Luke Harmon</name>
@@ -1212,7 +1135,7 @@ description: &amp;quot;An archive of posts sorted by tag.&amp;quot;
   <entry>
     <title>Video Post Test</title>
     <link href="/arborCollections/articles/video-post-test/"/>
-    <updated>2014-05-31T20:14:02-07:00</updated>
+    <updated>2014-06-01T05:14:02+02:00</updated>
     <id>/arborCollections/articles/video-post-test</id>
     <author>
       <name>Luke Harmon</name>
@@ -1233,7 +1156,7 @@ description: &amp;quot;An archive of posts sorted by tag.&amp;quot;
   <entry>
     <title>Image Grids</title>
     <link href="/arborCollections/articles/image-grids/"/>
-    <updated>2014-05-30T08:51:25-07:00</updated>
+    <updated>2014-05-30T17:51:25+02:00</updated>
     <id>/arborCollections/articles/image-grids</id>
     <author>
       <name>Luke Harmon</name>
@@ -1301,7 +1224,7 @@ description: &amp;quot;An archive of posts sorted by tag.&amp;quot;
   <entry>
     <title>Another Media Post with Large Feature Image</title>
     <link href="/arborCollections/media/another-sample-media-page/"/>
-    <updated>2014-05-10T00:00:00-07:00</updated>
+    <updated>2014-05-10T00:00:00+02:00</updated>
     <id>/arborCollections/media/another-sample-media-page</id>
     <author>
       <name>Luke Harmon</name>
@@ -1328,7 +1251,7 @@ description: &amp;quot;An archive of posts sorted by tag.&amp;quot;
   <entry>
     <title>Welcome to Jekyll!</title>
     <link href="/arborCollections/articles/welcome-to-jekyll/"/>
-    <updated>2014-02-17T00:00:00-08:00</updated>
+    <updated>2014-02-17T00:00:00+01:00</updated>
     <id>/arborCollections/articles/welcome-to-jekyll</id>
     <author>
       <name>Luke Harmon</name>
@@ -1368,7 +1291,7 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
   <entry>
     <title>Media Post with Large Feature Image</title>
     <link href="/arborCollections/media/sample-media-page/"/>
-    <updated>2014-02-03T00:00:00-08:00</updated>
+    <updated>2014-02-03T00:00:00+01:00</updated>
     <id>/arborCollections/media/sample-media-page</id>
     <author>
       <name>Luke Harmon</name>
@@ -1393,7 +1316,7 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
   <entry>
     <title>Post with Large Feature Image and Text</title>
     <link href="/arborCollections/articles/readability-feature-post/"/>
-    <updated>2013-05-23T00:00:00-07:00</updated>
+    <updated>2013-05-23T00:00:00+02:00</updated>
     <id>/arborCollections/articles/readability-feature-post</id>
     <author>
       <name>Luke Harmon</name>
@@ -1458,7 +1381,7 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
   <entry>
     <title>A Post with Images</title>
     <link href="/arborCollections/articles/sample-post-images/"/>
-    <updated>2013-05-22T00:00:00-07:00</updated>
+    <updated>2013-05-22T00:00:00+02:00</updated>
     <id>/arborCollections/articles/sample-post-images</id>
     <author>
       <name>Luke Harmon</name>
@@ -1538,6 +1461,88 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 	&lt;a href=&quot;http://placehold.it/1200x600.gif&quot;&gt;&lt;img src=&quot;http://placehold.it/900x450.gif&quot; /&gt;&lt;/a&gt;
 	&lt;figcaption&gt;Three linked images.&lt;/figcaption&gt;
 &lt;/figure&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Testing Readability with a Bunch of Text</title>
+    <link href="/arborCollections/articles/readability-post/"/>
+    <updated>2012-05-22T00:00:00+02:00</updated>
+    <id>/arborCollections/articles/readability-post</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Portland in shoreditch Vice, labore typewriter pariatur hoodie fap sartorial Austin. Pinterest literally occupy Schlitz forage. Odio ad blue bottle vinyl, 90’s narwhal&lt;sup id=&quot;fnref:footnote&quot;&gt;&lt;a href=&quot;#fn:footnote&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; commodo bitters pour-over nostrud. Ugh est hashtag in, fingerstache adipisicing laboris esse &lt;a href=&quot;http://pinterest.com&quot;&gt;Pinterest&lt;/a&gt; shabby chic Portland. Shoreditch bicycle rights anim, flexitarian laboris put a bird on it vinyl cupidatat narwhal. Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney’s. Cliche pour-over chambray nulla four loko skateboard sapiente hashtag.&lt;/p&gt;
+
+&lt;nav class=&quot;toc&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#cupidatat-90s-lo-fi-authentic-try-hard&quot; id=&quot;markdown-toc-cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#forage-occaecat-cardigan-qui&quot; id=&quot;markdown-toc-forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hoodie-duis&quot; id=&quot;markdown-toc-hoodie-duis&quot;&gt;Hoodie Duis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/nav&gt;
+
+&lt;p&gt;Vero laborum commodo occupy. &lt;a href=&quot;http://hipsum.co/&quot;&gt;&lt;em&gt;Semiotics voluptate mumblecore&lt;/em&gt;&lt;/a&gt; pug. Cosby sweater ullamco quinoa ennui assumenda, sapiente occupy delectus lo-fi. Ea fashion axe Marfa cillum aliquip. Retro Bushwick keytar cliche. Before they sold out sustainable gastropub Marfa readymade, ethical Williamsburg skateboard brunch qui consectetur gentrify semiotics. Mustache cillum irony, fingerstache magna pour-over keffiyeh tousled selfies.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/h2&gt;
+
+&lt;p&gt;In pug Portland incididunt mlkshk put a bird on it vinyl quinoa. Terry Richardson shabby chic +1, scenester Tonx excepteur tempor fugiat voluptate fingerstache aliquip nisi next level. Farm-to-table hashtag Truffaut, Odd Future ex meggings gentrify single-origin coffee&lt;sup id=&quot;fnref:coffee&quot;&gt;&lt;a href=&quot;#fn:coffee&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; try-hard 90’s.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sartorial hoodie&lt;/li&gt;
+  &lt;li&gt;Labore viral forage&lt;/li&gt;
+  &lt;li&gt;Tote bag selvage&lt;/li&gt;
+  &lt;li&gt;DIY exercitation et id ugh tumblr church-key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Incididunt umami sriracha, ethical fugiat VHS ex assumenda yr irure direct trade. Marfa Truffaut bicycle rights, kitsch placeat Etsy kogi asymmetrical. Beard locavore flexitarian, kitsch photo booth hoodie plaid ethical readymade leggings yr.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;http://placehold.it/600x250.gif&quot; alt=&quot;&quot; /&gt;
+	&lt;figcaption&gt;Image caption goes here. Aesthetic odio dolore, meggings disrupt.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Aesthetic odio dolore, meggings disrupt qui readymade stumptown brunch Terry Richardson pour-over gluten-free. Banksy american apparel in selfies, biodiesel flexitarian organic meh wolf quinoa gentrify banjo kogi. Readymade tofu ex, scenester dolor umami fingerstache occaecat fashion axe Carles jean shorts minim. Keffiyeh fashion axe nisi Godard mlkshk dolore. Lomo you probably haven’t heard of them eu non, Odd Future Truffaut pug keytar meggings McSweeney’s Pinterest cred. Etsy literally aute esse, eu bicycle rights qui meggings fanny pack. Gentrify leggings pug flannel duis.&lt;/p&gt;
+
+&lt;h2 id=&quot;forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/h2&gt;
+
+&lt;p&gt;Fashion axe hella gastropub lo-fi kogi 90’s aliquip +1 veniam delectus tousled. Cred sriracha locavore gastropub kale chips, iPhone mollit sartorial. Anim dolore 8-bit, pork belly dolor photo booth aute flannel small batch. Dolor disrupt ennui, tattooed whatever salvia Banksy sartorial roof party selfies raw denim sint meh pour-over. Ennui eu cardigan sint, gentrify iPhone cornhole.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Whatever velit occaecat quis deserunt gastropub, leggings elit tousled roof party 3 wolf moon kogi pug blue bottle ea. Fashion axe shabby chic Austin quinoa pickled laborum bitters next level, disrupt deep v accusamus non fingerstache.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Tote bag asymmetrical elit sunt. Occaecat authentic Marfa, hella McSweeney’s next level irure veniam master cleanse. Sed hoodie letterpress artisan wolf leggings, 3 wolf moon commodo ullamco. Anim occupy ea labore Terry Richardson. Tofu ex master cleanse in whatever pitchfork banh mi, occupy fugiat fanny pack Austin authentic. Magna fugiat 3 wolf moon, labore McSweeney’s sustainable vero consectetur. Gluten-free disrupt enim, aesthetic fugiat jean shorts trust fund keffiyeh magna try-hard.&lt;/p&gt;
+
+&lt;h2 id=&quot;hoodie-duis&quot;&gt;Hoodie Duis&lt;/h2&gt;
+
+&lt;p&gt;Actually salvia consectetur, hoodie duis lomo YOLO sunt sriracha. Aute pop-up brunch farm-to-table odio, salvia irure occaecat. Sriracha small batch literally skateboard. Echo Park nihil hoodie, aliquip forage artisan laboris. Trust fund reprehenderit nulla locavore. Stumptown raw denim kitsch, keffiyeh nulla twee dreamcatcher fanny pack ullamco 90’s pop-up est culpa farm-to-table. Selfies 8-bit do pug odio.&lt;/p&gt;
+
+&lt;h3 id=&quot;thundercats-ho&quot;&gt;Thundercats Ho!&lt;/h3&gt;
+
+&lt;p&gt;Fingerstache thundercats Williamsburg, deep v scenester Banksy ennui vinyl selfies mollit biodiesel duis odio pop-up. Banksy 3 wolf moon try-hard, sapiente enim stumptown deep v ad letterpress. Squid beard brunch, exercitation raw denim yr sint direct trade. Raw denim narwhal id, flannel DIY McSweeney’s seitan. Letterpress artisan bespoke accusamus, meggings laboris consequat Truffaut qui in seitan. Sustainable cornhole Schlitz, twee Cosby sweater banh mi deep v forage letterpress flannel whatever keffiyeh. Sartorial cred irure, semiotics ethical sed blue bottle nihil letterpress.&lt;/p&gt;
+
+&lt;p&gt;Occupy et selvage squid, pug brunch blog nesciunt hashtag mumblecore skateboard yr kogi. Ugh small batch swag four loko. Fap post-ironic qui tote bag farm-to-table american apparel scenester keffiyeh vero, swag non pour-over gentrify authentic pitchfork. Schlitz scenester lo-fi voluptate, tote bag irony bicycle rights pariatur vero Vice freegan wayfarers exercitation nisi shoreditch. Chambray tofu vero sed. Street art swag literally leggings, Cosby sweater mixtape PBR lomo Banksy non in pitchfork ennui McSweeney’s selfies. Odd Future Banksy non authentic.&lt;/p&gt;
+
+&lt;p&gt;Aliquip enim artisan dolor post-ironic. Pug tote bag Marfa, deserunt pour-over Portland wolf eu odio intelligentsia american apparel ugh ea. Sunt viral et, 3 wolf moon gastropub pug id. Id fashion axe est typewriter, mlkshk Portland art party aute brunch. Sint pork belly Cosby sweater, deep v mumblecore kitsch american apparel. Try-hard direct trade tumblr sint skateboard. Adipisicing bitters excepteur biodiesel, pickled gastropub aute veniam.&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:footnote&quot;&gt;
+      &lt;p&gt;Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney’s. &lt;a href=&quot;#fnref:footnote&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:coffee&quot;&gt;
+      &lt;p&gt;I like coffee, coffee is good. &lt;a href=&quot;#fnref:coffee&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
 
     </content>
   </entry>
