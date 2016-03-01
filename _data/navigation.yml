@@ -1,21 +1,26 @@
 # Site navigation links
 
-- title: Getting Started
-  url: /getting-started/
-  excerpt: "Everything you need to know to get started with Skinny Bones and Jekyll."
+- title: Use Arbor
+  url: /usearbor/
+  excerpt: "Run Arbor over the web"
   image: 400x250.gif
 
 - title: Tutorials
   url: /tutorials/
-  excerpt: "How to use Arbor."
-  image: 400x250.gif
-
-- title: Easy mode
-  url: /easymode/
-  excerpt: "Easy mode apps."
+  excerpt: "How to use Arbor"
   image: 400x250.gif
 
 - title: Documentation
   url: /documentation/
   excerpt: "Full documentation for functions and workflows"
+  image: 400x250.gif
+
+- title: Installation
+  url: /install/
+  excerpt: "How to install your own Arbor instance either locally or on the cloud"
+  image: 400x250.gif
+
+- title: FAQ
+  url: /faq/
+  excerpt: "Frequently asked questions"
   image: 400x250.gif
