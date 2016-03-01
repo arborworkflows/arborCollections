@@ -1,7 +1,7 @@
 ---
 layout: archive
 title: "Phylogenies collection"
-categories: documentation 
+categories: documentation
 modified:
 tags: []
 image:
@@ -11,6 +11,6 @@ image:
 
 <div class="tiles">
 {% for post in site.categories.phylogeny %}
-  {% include post-grid.html %}
+  {% include docs-list.html %}
 {% endfor %}
 </div><!-- /.tiles -->
