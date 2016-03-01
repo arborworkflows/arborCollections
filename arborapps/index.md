@@ -11,7 +11,7 @@ image:
 ---
 
 <div class="tiles">
-{% for post in site.categories.easymode %}
+{% for post in site.categories.arborapps %}
   {% include post-grid.html %}
 {% endfor %}
 </div><!-- /.tiles -->

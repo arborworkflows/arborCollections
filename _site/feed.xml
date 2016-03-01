@@ -244,28 +244,6 @@
       </item>
     
       <item>
-        <title>Phylogenetic signal</title>
-        <description>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
-        <link>/arborCollections/arborCollections/easymode/phylogenetic-signal/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/easymode/phylogenetic-signal/</guid>
-      </item>
-    
-      <item>
-        <title>Ancestral state reconstruction</title>
-        <description>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/ancestral-state/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/ancestral-state/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
-        <link>/arborCollections/arborCollections/easymode/ancestral-state/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/easymode/ancestral-state/</guid>
-      </item>
-    
-      <item>
         <title>phylogeneticSignal</title>
         <description>&lt;h2 id=&quot;phylogeneticsignal-function&quot;&gt;phylogeneticSignal: function&lt;/h2&gt;
 
@@ -397,6 +375,49 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
         <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/ancestral-states-2/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/ancestral-states-2/</guid>
+      </item>
+    
+      <item>
+        <title>addColumns</title>
+        <description>&lt;h1 id=&quot;addcolumns-function&quot;&gt;addColumns: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-base&quot;&gt;collection: base&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;addColumns can be used to find the sum of two columns in a data matrix.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.csv.
+Load this files into Arbor, and use it as input to the addColumns function.
+Choose “SVL” and “awesomeness” as columnOne and columnTwo, respectively.
+Name the outputColumn whatever you want.
+The output is a table with all the data from anolis.csv along with a new column that shows the sum of SVL and awesomeness.&lt;/p&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;table: A data table&lt;/li&gt;
+  &lt;li&gt;columnOne and columnTwo: The name of the columns to add&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+&lt;p&gt;Function outputs a table with a new column appended to the end.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
+        <link>/arborCollections/arborCollections/collections/base/addColumns/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/addColumns/</guid>
+      </item>
+    
+      <item>
+        <title>Phylogenetic signal</title>
+        <description>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
+
+&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
+        <link>/arborCollections/arborCollections/arborapps/phylogenetic-signal/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/arborapps/phylogenetic-signal/</guid>
       </item>
     
   </channel>

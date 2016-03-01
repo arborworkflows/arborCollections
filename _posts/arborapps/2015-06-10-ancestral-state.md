@@ -1,7 +1,7 @@
 ---
 layout: media
 title: "Ancestral state reconstruction"
-categories: easymode
+categories: arborapps
 excerpt: "Reconstruct character evolution on a phylogenetic tree."
 ads: true
 share: false

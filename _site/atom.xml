@@ -7,7 +7,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-03-01T13:02:23+01:00</updated>
+  <updated>2016-03-01T13:17:17+01:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -294,44 +294,6 @@
   </entry>
   
   <entry>
-    <title>Phylogenetic signal</title>
-    <link href="/arborCollections/easymode/phylogenetic-signal/"/>
-    <updated>2015-06-10T00:00:00+02:00</updated>
-    <id>/arborCollections/easymode/phylogenetic-signal</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      &lt;img src=&quot;/arborCollections/images/easyButtons-1600x800.jpg&quot;&gt;&lt;br/&gt;
-      &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>Ancestral state reconstruction</title>
-    <link href="/arborCollections/easymode/ancestral-state/"/>
-    <updated>2015-06-10T00:00:00+02:00</updated>
-    <id>/arborCollections/easymode/ancestral-state</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      &lt;img src=&quot;/arborCollections/images/branch-1600x800.jpg&quot;&gt;&lt;br/&gt;
-      &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/ancestral-state/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/ancestral-state/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
     <title>phylogeneticSignal</title>
     <link href="/arborCollections/collections/phylogeny/phylogenetic-signal/"/>
     <updated>2015-06-10T00:00:00+02:00</updated>
@@ -525,6 +487,44 @@ The output is a table with all the data from anolis.csv along with a new column 
 
 &lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
 &lt;p&gt;Function outputs a table with a new column appended to the end.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Phylogenetic signal</title>
+    <link href="/arborCollections/arborapps/phylogenetic-signal/"/>
+    <updated>2015-06-10T00:00:00+02:00</updated>
+    <id>/arborCollections/arborapps/phylogenetic-signal</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      &lt;img src=&quot;/arborCollections/images/easyButtons-1600x800.jpg&quot;&gt;&lt;br/&gt;
+      &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
+
+&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Ancestral state reconstruction</title>
+    <link href="/arborCollections/arborapps/ancestral-state/"/>
+    <updated>2015-06-10T00:00:00+02:00</updated>
+    <id>/arborCollections/arborapps/ancestral-state</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      &lt;img src=&quot;/arborCollections/images/branch-1600x800.jpg&quot;&gt;&lt;br/&gt;
+      &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/ancestral-state/&quot; /&gt;
+
+&lt;p&gt;You should be automatically forwarded to the easy mode app. If not, click &lt;a href=&quot;https://arbor.kitware.com/ancestral-state/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
     </content>
   </entry>
