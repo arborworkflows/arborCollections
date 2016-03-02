@@ -28,3 +28,5 @@ the "SVL" column for analysis, and select type: lambda.
 
 ## Outputs
 Function outputs a table with results from the test of phylogenetic signal.
+
+## References
