@@ -39,3 +39,5 @@ the "ecomorph" column for analysis, and select type: discrete and method: margin
 
 ## Outputs
 Function outputs a table and a plot with results of the ancestral state reconstruction.
+
+## References

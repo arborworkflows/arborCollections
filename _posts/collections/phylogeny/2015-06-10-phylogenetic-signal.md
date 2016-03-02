@@ -11,9 +11,8 @@ categories: collections phylogeny
 
 ## Overview
 
-aceArbor is a function for estimating and testing for phylogenetic signal. It works for
-both discrete and continuous variables, and can use a variety of methods for calculating
-phylogenetic signal.
+phylogeneticSignal is a function for estimating and testing for phylogenetic signal. It works for
+both discrete and continuous variables, and can use a variety of methods. It calls the aRbor package function [physigArbor](https://github.com/arborworkflows/aRbor/blob/master/R/physigArbor.R)
 
 ## Example
 

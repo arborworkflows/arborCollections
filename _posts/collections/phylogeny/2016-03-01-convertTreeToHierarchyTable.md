@@ -11,8 +11,19 @@ categories: collections phylogeny
 
 ## Overview
 
+Converts a phylogenetic tree into a table of monophyletic clades.
+
 ## Example
+
+This function does not work.
 
 ## Arguments
 
+- intree: An input phylogenetic tree
+- mode: Either "Full" or "compressed"
+
 ## Outputs
+
+- hierarchyTable: A table of monophyletic clades in the tree.
+
+## References
