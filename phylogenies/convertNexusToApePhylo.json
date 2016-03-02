@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "text",
+            "id": "nexusTree",
+            "name": "nexusTree",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "convert nexus string to ape phylo",
+    "outputs": [
+        {
+            "format": "r.apetree",
+            "id": "phy",
+            "name": "phy",
+            "type": "tree"
+        }
+    ],
+    "script": "require(ape)\n\nTfile <- file()\ncat(nexusTree, file=Tfile)\nphy<-read.nexus(file=Tfile)\n"
+}
