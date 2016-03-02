@@ -7,6 +7,72 @@
     <atom:link href="/arborCollections/arborCollections/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>collapseSingles</title>
+        <description>&lt;h1 id=&quot;collapsesingles-function&quot;&gt;collapseSingles: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Collapses all singleton nodes in a phylogenetic tree (e.g. all nodes with only one descendent).&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Input tree: An input phylogenetic tree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Output tree: Tree with all singleton nodes removed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/makeTreeDataMatch/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/makeTreeDataMatch/</guid>
+      </item>
+    
+      <item>
+        <title>compareTrees</title>
+        <description>&lt;h1 id=&quot;comparetrees-function&quot;&gt;compareTrees: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Compares the topology of two phylogenetic trees using the function phylo.diff from the R package distory.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;t1: An input phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;t2: Another input phylogenetic tree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;treeComparePlot: A plot showing all non-matching branches between the two trees.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;Chakerian, J. and Holmes, S. P. Computational Tools for Evaluating Phylogenetic and Heirarchical
+Clustering Trees. arXiv:1006.1015v1.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/treecalculate/compareTrees/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treecalculate/compareTrees/</guid>
+      </item>
+    
+      <item>
         <title>convertTreeToHierarchyTable</title>
         <description>&lt;h1 id=&quot;converttreetohierarchytable-function&quot;&gt;convertTreeToHierarchyTable: function&lt;/h1&gt;
 
@@ -36,8 +102,8 @@
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 </description>
         <pubDate>Tue, 01 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/convertTreeToHierarchyTable/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/convertTreeToHierarchyTable/</guid>
+        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/convertTreeToHierarchyTable/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/convertTreeToHierarchyTable/</guid>
       </item>
     
       <item>
@@ -85,8 +151,8 @@ plot(ladderize(sal$fam,right=FALSE), cex=0.5, type=”fan”, label.offset=2.5, 
 &lt;p&gt;Eastman JM, LJ Harmon, and DC Tank. 2013. Congruification: support for time scaling large phylogenetic trees. Methods in Ecology and Evolution, in press.&lt;/p&gt;
 </description>
         <pubDate>Tue, 01 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/congruify/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/congruify/</guid>
+        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/congruify/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/congruify/</guid>
       </item>
     
       <item>
@@ -353,94 +419,12 @@ the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
 
 &lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
 &lt;p&gt;Function outputs a table with results from the test of phylogenetic signal.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/phylogenetic-signal/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/phylogenetic-signal/</guid>
-      </item>
-    
-      <item>
-        <title>aceArbor</title>
-        <description>&lt;h1 id=&quot;acearbor-function&quot;&gt;aceArbor: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;aceArbor is a function for carrying out ancestral state reconstruction. It works for
-both discrete and continuous variables, and can reconstruct ancestral character states
-under both a maximum-likelihood and a Bayesian framework. The function returns results
-in two formats: a table of ancestral state estimates for each node in the tree, and a plot
-of the results.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.phy and anolis.csv.
-Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
-the “ecomorph” column for analysis, and select type: discrete and method: marginal.&lt;/p&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;table: A data table including species names&lt;/li&gt;
-  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
-  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
-  &lt;li&gt;type: The character type
-    &lt;ul&gt;
-      &lt;li&gt;discrete: a character with a discrete number of states&lt;/li&gt;
-      &lt;li&gt;continuous: a continuously varying character&lt;/li&gt;
-      &lt;li&gt;fromData: will attempt to determine the data type from the data itself&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;method: specifies the method used to reconstruct ancestral character states
-    &lt;ul&gt;
-      &lt;li&gt;marginal: marginal ancestral state reconstructions, which reconstruct each node integrating over all possibilities at all other nodes in the tree; this is typically the method used in the literature to reconstruce ACEs&lt;/li&gt;
-      &lt;li&gt;joint: joint ancestral reconstructions, which give the configuration of ancestral states that together maximize the likelihood of the data given model parameters&lt;/li&gt;
-      &lt;li&gt;mcmc: reconstruct ancestral states using Bayesian MCMC. Note that the discrete version of this doesn’t seem to work, and even if it did work it is not a full MCMC ancestral state method&lt;/li&gt;
-      &lt;li&gt;stochastic: create stochastic character map&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-&lt;p&gt;Function outputs a table and a plot with results of the ancestral state reconstruction.&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 </description>
         <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/ancestral-states/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/ancestral-states/</guid>
-      </item>
-    
-      <item>
-        <title>addColumns</title>
-        <description>&lt;h1 id=&quot;addcolumns-function&quot;&gt;addColumns: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-base&quot;&gt;collection: base&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;addColumns can be used to find the sum of two columns in a data matrix.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.csv.
-Load this files into Arbor, and use it as input to the addColumns function.
-Choose “SVL” and “awesomeness” as columnOne and columnTwo, respectively.
-Name the outputColumn whatever you want.
-The output is a table with all the data from anolis.csv along with a new column that shows the sum of SVL and awesomeness.&lt;/p&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;table: A data table&lt;/li&gt;
-  &lt;li&gt;columnOne and columnTwo: The name of the columns to add&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-&lt;p&gt;Function outputs a table with a new column appended to the end.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
-        <link>/arborCollections/arborCollections/collections/base/addColumns/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/addColumns/</guid>
+        <link>/arborCollections/arborCollections/collections/phylogeny/charactercalculate/phylogenetic-signal/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/charactercalculate/phylogenetic-signal/</guid>
       </item>
     
   </channel>

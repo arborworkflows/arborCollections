@@ -1,32 +1,27 @@
 ---
-title: makeTreeDataMatch
+title: collapseSingles
 author: Arbor core team
-categories: collections phylogeny
+categories: collections phylogeny treemanipulate
 
 ---
 
-# makeTreeDataMatch: function
+# collapseSingles: function
 
 ### collection: phylogenies
 
 ## Overview
 
-Matches the rownames of a data matrix with the tip labels of a phylogenetic tree using the
-aRbor function make.treedata.
+Collapses all singleton nodes in a phylogenetic tree (e.g. all nodes with only one descendent).
 
 ## Example
 
-data(anolis)
-td <- make.treedata(anolis$phy, anolis$dat, name_column=1)
 
 ## Arguments
 
-- Tree for matching with data: An input phylogenetic tree
-- Table for matching with tree: A data matrix including species names
+- Input tree: An input phylogenetic tree
 
 ## Outputs
 
-- tree_matched: Tree with tip labels that match data names exactly.
-- table_matched: Table with row names that match tree tip labels exactly.
+- Output tree: Tree with all singleton nodes removed.
 
 ## References

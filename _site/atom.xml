@@ -7,7 +7,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-03-02T13:08:28+01:00</updated>
+  <updated>2016-03-02T13:53:25+01:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -17,10 +17,92 @@
 
   
   <entry>
+    <title>collapseSingles</title>
+    <link href="/arborCollections/collections/phylogeny/treemanipulate/makeTreeDataMatch/"/>
+    <updated>2016-03-02T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/treemanipulate/makeTreeDataMatch</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;collapsesingles-function&quot;&gt;collapseSingles: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Collapses all singleton nodes in a phylogenetic tree (e.g. all nodes with only one descendent).&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Input tree: An input phylogenetic tree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Output tree: Tree with all singleton nodes removed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>compareTrees</title>
+    <link href="/arborCollections/collections/phylogeny/treecalculate/compareTrees/"/>
+    <updated>2016-03-02T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/treecalculate/compareTrees</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;comparetrees-function&quot;&gt;compareTrees: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Compares the topology of two phylogenetic trees using the function phylo.diff from the R package distory.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;t1: An input phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;t2: Another input phylogenetic tree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;treeComparePlot: A plot showing all non-matching branches between the two trees.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;Chakerian, J. and Holmes, S. P. Computational Tools for Evaluating Phylogenetic and Heirarchical
+Clustering Trees. arXiv:1006.1015v1.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
     <title>convertTreeToHierarchyTable</title>
-    <link href="/arborCollections/collections/phylogeny/convertTreeToHierarchyTable/"/>
+    <link href="/arborCollections/collections/phylogeny/treemanipulate/convertTreeToHierarchyTable/"/>
     <updated>2016-03-01T00:00:00+01:00</updated>
-    <id>/arborCollections/collections/phylogeny/convertTreeToHierarchyTable</id>
+    <id>/arborCollections/collections/phylogeny/treemanipulate/convertTreeToHierarchyTable</id>
     <author>
       <name>Luke Harmon</name>
       <uri>/arborCollections/</uri>
@@ -60,9 +142,9 @@
   
   <entry>
     <title>congruify</title>
-    <link href="/arborCollections/collections/phylogeny/congruify/"/>
+    <link href="/arborCollections/collections/phylogeny/treemanipulate/congruify/"/>
     <updated>2016-03-01T00:00:00+01:00</updated>
-    <id>/arborCollections/collections/phylogeny/congruify</id>
+    <id>/arborCollections/collections/phylogeny/treemanipulate/congruify</id>
     <author>
       <name>Luke Harmon</name>
       <uri>/arborCollections/</uri>
@@ -394,9 +476,9 @@ plot(ladderize(sal$fam,right=FALSE), cex=0.5, type=”fan”, label.offset=2.5, 
   
   <entry>
     <title>phylogeneticSignal</title>
-    <link href="/arborCollections/collections/phylogeny/phylogenetic-signal/"/>
+    <link href="/arborCollections/collections/phylogeny/charactercalculate/phylogenetic-signal/"/>
     <updated>2015-06-10T00:00:00+02:00</updated>
-    <id>/arborCollections/collections/phylogeny/phylogenetic-signal</id>
+    <id>/arborCollections/collections/phylogeny/charactercalculate/phylogenetic-signal</id>
     <author>
       <name>Luke Harmon</name>
       <uri>/arborCollections/</uri>
@@ -430,14 +512,16 @@ the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
 &lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
 &lt;p&gt;Function outputs a table with results from the test of phylogenetic signal.&lt;/p&gt;
 
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
     </content>
   </entry>
   
   <entry>
     <title>aceArbor</title>
-    <link href="/arborCollections/collections/phylogeny/ancestral-states/"/>
+    <link href="/arborCollections/collections/phylogeny/charactercalculate/ancestral-states/"/>
     <updated>2015-06-10T00:00:00+02:00</updated>
-    <id>/arborCollections/collections/phylogeny/ancestral-states</id>
+    <id>/arborCollections/collections/phylogeny/charactercalculate/ancestral-states</id>
     <author>
       <name>Luke Harmon</name>
       <uri>/arborCollections/</uri>

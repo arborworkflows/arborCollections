@@ -1,7 +1,7 @@
 ---
 title: congruify
 author: Arbor core team
-categories: collections phylogeny
+categories: collections phylogeny treemanipulate
 
 ---
 
