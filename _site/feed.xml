@@ -38,6 +38,70 @@
       </item>
     
       <item>
+        <title>convertNexusToApePhylo</title>
+        <description>&lt;h1 id=&quot;convertnexustoapephylo-function&quot;&gt;convertNexusToApePhylo: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Convert a nexus string to an ape phylo object. NOTE: not needed for reading in trees, Arbor can do this automatically.
+This function is only needed for certain workflows where one step returns a Nexus string.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;nexusTree: An input phylogenetic tree in nexus format.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tree: A tree in ape phylo format.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/convertNexusToApePhylo/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/convertNexusToApePhylo/</guid>
+      </item>
+    
+      <item>
+        <title>consistencyIndexAllChars</title>
+        <description>&lt;h1 id=&quot;consistencyindexallchars-function&quot;&gt;consistencyIndexAllChars: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Calculate consistency index across all characters in a data matrix.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tree: An input phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;table: A data matrix&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;result: A table with the consistency index for each character (column) in the original data matrix.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/charactercalculate/consistencyIndexAllChars/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/charactercalculate/consistencyIndexAllChars/</guid>
+      </item>
+    
+      <item>
         <title>compareTrees</title>
         <description>&lt;h1 id=&quot;comparetrees-function&quot;&gt;compareTrees: function&lt;/h1&gt;
 
@@ -317,114 +381,6 @@ plot(ladderize(sal$fam,right=FALSE), cex=0.5, type=”fan”, label.offset=2.5, 
         <pubDate>Mon, 13 Jul 2015 00:00:00 +0200</pubDate>
         <link>/arborCollections/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/</guid>
-      </item>
-    
-      <item>
-        <title>Discrete ancestral character states</title>
-        <description>&lt;h2 id=&quot;how-to-reconstruct-discrete-ancestral-character-states-on-nodes-in-your-tree-using-arbor&quot;&gt;How to reconstruct discrete ancestral character states on nodes in your tree using Arbor&lt;/h2&gt;
-
-&lt;p&gt;In this exercise, we will learn how to reconstruct ancestral character states in Arbor for a discrete character - that is, a character that can take on one of a number of discrete values. Examples might be lizards, “legs” versus “no legs” - this would be a two-state discrete character. Another example would be animal locomotion - “walks,” “swims,” or “flies.” This is an example of a three-state discrete character.&lt;/p&gt;
-
-&lt;p&gt;Imagine that you have a phylogenetic tree with information on some discrete character for some or all of the tips. You want to use mathematical methods to reconstruct the ancestral character states on the internal nodes of the tree. Then, this is the exercise for you!&lt;/p&gt;
-
-&lt;h2 id=&quot;loading-example-data&quot;&gt;Loading example data&lt;/h2&gt;
-
-&lt;p&gt;You will need the anolis example data files, anolis.phy and anolis.csv, from &lt;a href=&quot;/arborCollections/docs_datasets.html&quot;&gt;Arbor datasets&lt;/a&gt;. Save those files somewhere on your computer.&lt;/p&gt;
-
-&lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Drag and drop the two anolis data files on the blue “Browse or drop files” box to load them into your browser.&lt;/p&gt;
-
-&lt;p&gt;Finally, &lt;a href=&quot;/arborCollections/2015/06/09/creating-a-new-collection/&quot;&gt;log in and create a personal collection&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;selecting-the-collections-that-you-need&quot;&gt;Selecting the collections that you need&lt;/h2&gt;
-
-&lt;p&gt;For this example, everything required is in the “phylogeny” collection - so click on that eyeball and you will be able to access the functions that you need.&lt;/p&gt;
-
-&lt;p&gt;At this point, you should have the two anolis datafiles stored in Arbor and the “phylogeny” collection available. You should be logged in and have write access to your own private collection.&lt;/p&gt;
-
-&lt;h2 id=&quot;set-up-your-workflow&quot;&gt;Set up your workflow&lt;/h2&gt;
-
-&lt;p&gt;The main function in Arbor for ancestral state reconstruction is aceAcbor in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called “DiscreteAncestralStatesWorkflow”. Make sure to choose “New workflow” and not “New analysis”!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now create the connections you need to make the workflow run. First, click the “edit” button to start working on the workflow.&lt;/p&gt;
-
-&lt;p&gt;Now add the aceArbor function by selecting it under “Select analysis.” When you click “Add to workflow” then the function shoud appear in your workspace.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen3.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now create the inputs and outputs of the function by clicking on the “spokes” coming out of aceArbor. You should also move the blocks around to make your workflow look nice.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/functionPopup.gif&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Final result:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen4.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Once you have a workflow that looks the way you want, click save!&lt;/strong&gt; If you do not do this you will be running the workflow at the last point it was saved and not what is shown on the screen.&lt;/p&gt;
-
-&lt;h2 id=&quot;run-your-workflow&quot;&gt;Run your workflow&lt;/h2&gt;
-
-&lt;p&gt;Click “Setup and run” to run your workflow. Select these options:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen5.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;If your analysis worked, you should see the following message:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen6.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;see-your-results&quot;&gt;See your results&lt;/h2&gt;
-
-&lt;p&gt;Now move over to the “visualization” tab to see your results. First, select “image” under “Select visualization”, and choose your tree plot under “data” (it should be called DiscreteAncestralStatesWorkflow treePlot). Click “update” to see this result:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen7.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;To see the results in table format, choose “table” and “DiscreteAncestralStatesWorkflow res”. Update gives you this table, which is presently useless. Sorry!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen8.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
-        <link>/arborCollections/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/</guid>
-      </item>
-    
-      <item>
-        <title>phylogeneticSignal</title>
-        <description>&lt;h2 id=&quot;phylogeneticsignal-function&quot;&gt;phylogeneticSignal: function&lt;/h2&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;phylogeneticSignal is a function for estimating and testing for phylogenetic signal. It works for
-both discrete and continuous variables, and can use a variety of methods. It calls the aRbor package function &lt;a href=&quot;https://github.com/arborworkflows/aRbor/blob/master/R/physigArbor.R&quot;&gt;physigArbor&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.phy and anolis.csv.
-Load these files into Arbor, and use them as inputs to the phylogeneticSignal function. Choose
-the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;table: A data table including species names&lt;/li&gt;
-  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
-  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
-  &lt;li&gt;method: either “K” for Blomberg’s K or “lambda” for Pagel’s lambda&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-&lt;p&gt;Function outputs a table with results from the test of phylogenetic signal.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 +0200</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/charactercalculate/phylogenetic-signal/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/charactercalculate/phylogenetic-signal/</guid>
       </item>
     
   </channel>

@@ -7,7 +7,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-03-02T13:53:25+01:00</updated>
+  <updated>2016-03-02T14:09:28+01:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -48,6 +48,86 @@
 
 &lt;ul&gt;
   &lt;li&gt;Output tree: Tree with all singleton nodes removed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>convertNexusToApePhylo</title>
+    <link href="/arborCollections/collections/phylogeny/treemanipulate/convertNexusToApePhylo/"/>
+    <updated>2016-03-02T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/treemanipulate/convertNexusToApePhylo</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;convertnexustoapephylo-function&quot;&gt;convertNexusToApePhylo: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Convert a nexus string to an ape phylo object. NOTE: not needed for reading in trees, Arbor can do this automatically.
+This function is only needed for certain workflows where one step returns a Nexus string.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;nexusTree: An input phylogenetic tree in nexus format.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tree: A tree in ape phylo format.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>consistencyIndexAllChars</title>
+    <link href="/arborCollections/collections/phylogeny/charactercalculate/consistencyIndexAllChars/"/>
+    <updated>2016-03-02T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/charactercalculate/consistencyIndexAllChars</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;consistencyindexallchars-function&quot;&gt;consistencyIndexAllChars: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Calculate consistency index across all characters in a data matrix.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tree: An input phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;table: A data matrix&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;result: A table with the consistency index for each character (column) in the original data matrix.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;

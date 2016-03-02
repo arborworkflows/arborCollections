@@ -1,0 +1,27 @@
+<h2 id="phylogeneticsignal-function">phylogeneticSignal: function</h2>
+
+<h3 id="collection-phylogenies">collection: phylogenies</h3>
+
+<h2 id="overview">Overview</h2>
+
+<p>phylogeneticSignal is a function for estimating and testing for phylogenetic signal. It works for
+both discrete and continuous variables, and can use a variety of methods. It calls the aRbor package function <a href="https://github.com/arborworkflows/aRbor/blob/master/R/physigArbor.R">physigArbor</a></p>
+
+<h2 id="example">Example</h2>
+
+<p>From the [docs] (/arborCollections/../docs/ ) page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the phylogeneticSignal function. Choose
+the “SVL” column for analysis, and select type: lambda.</p>
+
+<h2 id="arguments">Arguments</h2>
+<ul>
+  <li>table: A data table including species names</li>
+  <li>tree: A phylogenetic tree</li>
+  <li>column: The name of the column to analyze</li>
+  <li>method: either “K” for Blomberg’s K or “lambda” for Pagel’s lambda</li>
+</ul>
+
+<h2 id="outputs">Outputs</h2>
+<p>Function outputs a table with results from the test of phylogenetic signal.</p>
+
+<h2 id="references">References</h2>
