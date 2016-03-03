@@ -1,32 +1,32 @@
 ---
 layout: article
 categories: tutorials
-title: Easy mode
-summary: Easy mode lets you do comparative methods using drag-and-drop
+title: Arbor apps
+summary: Arbor apps let you do comparative methods using drag-and-drop
 comments: true
 image:
   feature: easyButtons-1600x800.png
   teaser: easyButtons-400x250.jpg
 ---
 
-## What is Easy Mode?
+## What are Arbor apps?
 
 As a part of the Arbor project, we are developing a few simple-to-use web apps that allow users to quickly and easily carry out a few of the most common comparative methods. These pages present a drag-and-drop interface to test for phylogenetic signal, reconstruct ancestral character states, test for character correlations, and other common analyses.
 
-## What can I do in Arbor Easy Mode?
+## What can I do in Arbor apps?
 
-To use easy mode, you can navigate to one of our [easy mode pages]({{ site.baseurl }}/easymode/index.html).
+To use an Arbor app, you can navigate to our [app index]({{ site.baseurl }}/arborapps/).
 
-## Walkthrough - Phylogenetic Signal in Easy Mode
+## Walkthrough - Phylogenetic Signal Arbor app
 
-Let's walk through one example analysis in easy mode. We will work on testing for phylogenetic signal. I will use two data files for *Anolis* lizards, linked below.
+Let's walk through one example analysis in an Arbor app. We will work on testing for phylogenetic signal. I will use two data files for *Anolis* lizards, linked below.
 
 - [anolis.phy]({{ site.baseurl }}/assets/anolis.phy): a phylogenetic tree of anoles
 - [anolis.csv]({{ site.baseurl }}/assets/anolis.csv): character data for anoles (comma-separated format)
 
 Download these two files, and locate them on your computer's file browser.
 
-Now, navigate to the Arbor easy mode page for phylogenetic signal. You should see something like this:
+Now, navigate to the Arbor app for phylogenetic signal. You should see something like this:
 
 ![Screenshot]({{ site.baseurl }}/assets/easymode_1.png)
 

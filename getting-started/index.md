@@ -22,7 +22,7 @@ You can run Arbor on our [server](https://arbor.kitware.com).
 
 If you want to try Arbor, start with our tutorial on [using the Arbor webapp]({{ site.baseurl }}/tutorials/using-the-arbor-webapp/). You can also get information on [creating your own collection]({{ site.baseurl }}/tutorials/creating-a-new-collection/) to save data and analyses. There are several [more advanced tutorials]({{ site.baseurl }}/tutorials/) that carry on from there.
 
-Finally, you can learn about [Arbor apps]( {{ site.baseurl }}/tutorials/easy-mode/).
+Finally, you can learn about [Arbor apps]( {{ site.baseurl }}/tutorials/arborapps/).
 
 Alternatively, you can [download and install your own Arbor instance using Vagrant](http://arborworkflows.readthedocs.org/en/latest/installation.html).
 
@@ -39,13 +39,13 @@ Alternatively, you can [download and install your own Arbor instance using Vagra
 
 ## Arbor apps
 
-Available Arbor apps are listed [here]({{ site.baseurl }}/tutorials/easymode/).
+Available Arbor apps are listed [here]({{ site.baseurl }}/arborapps/).
 
 ---
 
 ## Examples
 
-Here are <a href="https://github.com/lukejharmon/traitathon/wiki">some examples</a> for both easy mode and workflow analyses.
+Here are <a href="https://github.com/lukejharmon/traitathon/wiki">some examples</a> for both Arbor apps and workflow analyses.
 
 ---
 
