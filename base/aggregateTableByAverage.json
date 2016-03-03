@@ -17,7 +17,7 @@
         }
     ],
     "mode": "python",
-    "name": "Aggregate table by average",
+    "name": "Aggregate Table By Average",
     "outputs": [
         {
             "description": "aggregated table output",

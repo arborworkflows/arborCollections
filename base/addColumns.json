@@ -30,7 +30,7 @@
         }
     ],
     "mode": "r",
-    "name": "Add columns",
+    "name": "Add Columns",
     "outputs": [
         {
             "format": "r.dataframe",

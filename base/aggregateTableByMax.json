@@ -17,7 +17,7 @@
         }
     ],
     "mode": "python",
-    "name": "Aggregate table by max",
+    "name": "Aggregate Table By Max",
     "outputs": [
         {
             "description": "aggregated table output",

@@ -15,7 +15,7 @@
         }
     ],
     "mode": "python",
-    "name": "Aggregate Table By Column in Parameter Table",
+    "name": "Aggregate Table By Column In Parameter Table",
     "outputs": [
         {
             "description": "aggregated table output",
