@@ -2,7 +2,7 @@
 title: convertNexusToApePhylo
 author: Arbor core team
 categories: collections phylogeny treemanipulate
-
+description: "convert nexus string to ape phylo"
 ---
 
 # convertNexusToApePhylo: function

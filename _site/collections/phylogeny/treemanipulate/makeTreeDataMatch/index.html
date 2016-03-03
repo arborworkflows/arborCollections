@@ -1,23 +1,28 @@
-<h1 id="collapsesingles-function">collapseSingles: function</h1>
+<h1 id="maketreedatamatch-function">makeTreeDataMatch: function</h1>
 
 <h3 id="collection-phylogenies">collection: phylogenies</h3>
 
 <h2 id="overview">Overview</h2>
 
-<p>Collapses all singleton nodes in a phylogenetic tree (e.g. all nodes with only one descendent).</p>
+<p>Matches the rownames of a data matrix with the tip labels of a phylogenetic tree using the aRbor function make.treedata.</p>
 
 <h2 id="example">Example</h2>
+
+<p>data(anolis)
+td &lt;- make.treedata(anolis$phy, anolis$dat, name_column=1)</p>
 
 <h2 id="arguments">Arguments</h2>
 
 <ul>
-  <li>Input tree: An input phylogenetic tree</li>
+  <li>Tree for matching with data: An input phylogenetic tree</li>
+  <li>Table for matching with tree: A data matrix including species names</li>
 </ul>
 
 <h2 id="outputs">Outputs</h2>
 
 <ul>
-  <li>Output tree: Tree with all singleton nodes removed.</li>
+  <li>tree_matched: Tree with tip labels that match data names exactly.</li>
+  <li>table_matched: Table with row names that match tree tip labels exactly.</li>
 </ul>
 
 <h2 id="references">References</h2>

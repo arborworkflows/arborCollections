@@ -2,6 +2,7 @@
 title: convertTreeToHierarchyTable
 author: Arbor core team
 categories: collections phylogeny treemanipulate
+description: "convert a phylogenetic tree into a table of monophyletic clades"
 
 ---
 

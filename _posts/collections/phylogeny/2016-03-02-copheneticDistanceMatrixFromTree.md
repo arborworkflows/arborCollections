@@ -2,7 +2,7 @@
 title: copheneticDistanceMatrixFromTree
 author: Arbor core team
 categories: collections phylogeny treemanipulate
-
+description: "make a distance matrix from a tree"
 ---
 
 # copheneticDistanceMatrixFromTree: function

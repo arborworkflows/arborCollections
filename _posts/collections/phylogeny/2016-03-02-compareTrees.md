@@ -2,6 +2,7 @@
 title: compareTrees
 author: Arbor core team
 categories: collections phylogeny treecalculate
+description: "compare the topology of two phylogenetic trees"
 
 ---
 

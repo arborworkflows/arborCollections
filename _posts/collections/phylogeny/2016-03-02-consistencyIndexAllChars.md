@@ -2,6 +2,7 @@
 title: consistencyIndexAllChars
 author: Arbor core team
 categories: collections phylogeny charactercalculate
+description: "calculate consistence index across all characters in a matrix"
 
 ---
 

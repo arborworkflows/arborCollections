@@ -2,6 +2,7 @@
 title: collapseSingles
 author: Arbor core team
 categories: collections phylogeny treemanipulate
+description: "collapse all singleton nodes in a phylogenetic tree"
 
 ---
 

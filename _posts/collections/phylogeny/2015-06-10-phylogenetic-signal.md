@@ -2,6 +2,7 @@
 title: phylogeneticSignal
 author: Arbor core team
 categories: collections phylogeny charactercalculate
+description: "estimate and test for phylogenetic signal in discrete and continuous characters"
 
 ---
 

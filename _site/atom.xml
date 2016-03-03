@@ -7,7 +7,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-03-02T14:09:28+01:00</updated>
+  <updated>2016-03-03T09:26:19+01:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -17,7 +17,7 @@
 
   
   <entry>
-    <title>collapseSingles</title>
+    <title>makeTreeDataMatch</title>
     <link href="/arborCollections/collections/phylogeny/treemanipulate/makeTreeDataMatch/"/>
     <updated>2016-03-02T00:00:00+01:00</updated>
     <id>/arborCollections/collections/phylogeny/treemanipulate/makeTreeDataMatch</id>
@@ -28,26 +28,117 @@
     </author>
     <content type="html">
       
-      &lt;h1 id=&quot;collapsesingles-function&quot;&gt;collapseSingles: function&lt;/h1&gt;
+      &lt;h1 id=&quot;maketreedatamatch-function&quot;&gt;makeTreeDataMatch: function&lt;/h1&gt;
 
 &lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
 
 &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
-&lt;p&gt;Collapses all singleton nodes in a phylogenetic tree (e.g. all nodes with only one descendent).&lt;/p&gt;
+&lt;p&gt;Matches the rownames of a data matrix with the tip labels of a phylogenetic tree using the aRbor function make.treedata.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;data(anolis)
+td &amp;lt;- make.treedata(anolis$phy, anolis$dat, name_column=1)&lt;/p&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tree for matching with data: An input phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;Table for matching with tree: A data matrix including species names&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tree_matched: Tree with tip labels that match data names exactly.&lt;/li&gt;
+  &lt;li&gt;table_matched: Table with row names that match tree tip labels exactly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>cophylo</title>
+    <link href="/arborCollections/collections/phylogeny/treemanipulate/cophylo/"/>
+    <updated>2016-03-02T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/treemanipulate/cophylo</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;cophylo-function&quot;&gt;cophylo: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Makes a cophylo plot (sometimes called a tanglegram) connecting interacting tips on two trees.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;data(anolis)
+td &amp;lt;- make.treedata(anolis$phy, anolis$dat, name_column=1)&lt;/p&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;t1: tree 1&lt;/li&gt;
+  &lt;li&gt;t2: tree 2&lt;/li&gt;
+  &lt;li&gt;assoc: matrix containing the tip labels in tr1 to match to the tip labels in tr2. Note that not all labels in either tree need to be included; and, furthermore, one label in tr1 can be matched with more than one label in tr2, or vice versa.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;cophyloPlot: A plot with tips matched.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;Revell, L. 2011. phytools: an R package for phylogenetic comparative biology (and other things). Methods in Ecology and Evolution 3: 217.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>copheneticDistanceMatrixFromTree</title>
+    <link href="/arborCollections/collections/phylogeny/treemanipulate/copheneticDistanceMatrixFromTree/"/>
+    <updated>2016-03-02T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/treemanipulate/copheneticDistanceMatrixFromTree</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;copheneticdistancematrixfromtree-function&quot;&gt;copheneticDistanceMatrixFromTree: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Makes a distance matrix from a tree; entries in the matrix are the phylogenetic distance between each pair
+of species in the tree&lt;/p&gt;
 
 &lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
 
 &lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Input tree: An input phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;tree: An input phylogenetic tree&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Output tree: Tree with all singleton nodes removed.&lt;/li&gt;
+  &lt;li&gt;table: Tree with pairwise distances&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
@@ -174,6 +265,45 @@ This function is only needed for certain workflows where one step returns a Nexu
 
 &lt;p&gt;Chakerian, J. and Holmes, S. P. Computational Tools for Evaluating Phylogenetic and Heirarchical
 Clustering Trees. arXiv:1006.1015v1.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>collapseSingles</title>
+    <link href="/arborCollections/collections/phylogeny/treemanipulate/collapseSingles/"/>
+    <updated>2016-03-02T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/treemanipulate/collapseSingles</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;collapsesingles-function&quot;&gt;collapseSingles: function&lt;/h1&gt;
+
+&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Collapses all singleton nodes in a phylogenetic tree (e.g. all nodes with only one descendent).&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Input tree: An input phylogenetic tree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Output tree: Tree with all singleton nodes removed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
     </content>
   </entry>

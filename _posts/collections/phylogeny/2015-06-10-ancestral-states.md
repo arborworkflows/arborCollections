@@ -2,6 +2,7 @@
 title: aceArbor
 author: Arbor core team
 categories: collections phylogeny charactercalculate
+description: "ancestral state reconstruction for discrete and continuous characters"
 
 ---
 

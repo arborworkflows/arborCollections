@@ -1,0 +1,30 @@
+<h1 id="cophylo-function">cophylo: function</h1>
+
+<h3 id="collection-phylogenies">collection: phylogenies</h3>
+
+<h2 id="overview">Overview</h2>
+
+<p>Makes a cophylo plot (sometimes called a tanglegram) connecting interacting tips on two trees.</p>
+
+<h2 id="example">Example</h2>
+
+<p>data(anolis)
+td &lt;- make.treedata(anolis$phy, anolis$dat, name_column=1)</p>
+
+<h2 id="arguments">Arguments</h2>
+
+<ul>
+  <li>t1: tree 1</li>
+  <li>t2: tree 2</li>
+  <li>assoc: matrix containing the tip labels in tr1 to match to the tip labels in tr2. Note that not all labels in either tree need to be included; and, furthermore, one label in tr1 can be matched with more than one label in tr2, or vice versa.</li>
+</ul>
+
+<h2 id="outputs">Outputs</h2>
+
+<ul>
+  <li>cophyloPlot: A plot with tips matched.</li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<p>Revell, L. 2011. phytools: an R package for phylogenetic comparative biology (and other things). Methods in Ecology and Evolution 3: 217.</p>

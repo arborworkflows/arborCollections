@@ -2,6 +2,7 @@
 title: makeTreeDataMatch
 author: Arbor core team
 categories: collections phylogeny treemanipulate
+description: match data matrix and tree
 
 ---
 
