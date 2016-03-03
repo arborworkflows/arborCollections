@@ -7,7 +7,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-03-03T11:50:50+01:00</updated>
+  <updated>2016-03-03T12:10:14+01:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -15,6 +15,42 @@
     <email>lukeh@uidaho.edu</email>
   </author>
 
+  
+  <entry>
+    <title>aggregateTableByMax</title>
+    <link href="/arborCollections/collections/base/matrix/aggregateTableByMax/"/>
+    <updated>2016-03-03T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/base/matrix/aggregateTableByMax</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Roll up the values of a table’s rows according to discrete values in a selected “groupBy” column. The number of output rows in the table will be equal to the number of discrete values in the groupBy column.&lt;/p&gt;
+
+&lt;p&gt;This is the MAX version of aggregation, so the values in the other columns will be the max value encountered out of all rows which belonged to this group from the input table.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;table: input table of continuous values&lt;/li&gt;
+  &lt;li&gt;column: column name used as the “group by” control&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;output: output table&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
   
   <entry>
     <title>aggregateTableByColumnInParameterTable</title>
@@ -1159,11 +1195,11 @@ basic analysis of a correlation between two continuous characters using independ
 
 &lt;p&gt;Arbor is a software package for phylogenetic comparative analyses. Our main website is:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;www.arborworkflows.com&quot;&gt;www.arborworkflows.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.arborworkflows.com/&quot;&gt;www.arborworkflows.com&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2&gt;When will Arbor be available?&lt;/h2&gt;
 
-&lt;p&gt;Right now! And Arbor’s functionality will continue to grow through the end of 2015.&lt;/p&gt;
+&lt;p&gt;Right now! And Arbor’s functionality continues to grow.&lt;/p&gt;
 
 &lt;h2&gt;What will Arbor be able to do for me?&lt;/h2&gt;
 
@@ -1204,68 +1240,6 @@ basic analysis of a correlation between two continuous characters using independ
 &lt;h2&gt;How can I participate in the project?&lt;/h2&gt;
 
 &lt;p&gt;You can follow our blog, visit our main site, and find our code on github. We will also be hosting a series of hackathons to be announced at a later date.&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>Easy mode</title>
-    <link href="/arborCollections/tutorials/easy-mode/"/>
-    <updated>2015-05-21T00:00:00+02:00</updated>
-    <id>/arborCollections/tutorials/easy-mode</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      &lt;img src=&quot;/arborCollections/images/easyButtons-1600x800.png&quot;&gt;&lt;br/&gt;
-      &lt;h2 id=&quot;what-is-easy-mode&quot;&gt;What is Easy Mode?&lt;/h2&gt;
-
-&lt;p&gt;As a part of the Arbor project, we are developing a few simple-to-use web apps that allow users to quickly and easily carry out a few of the most common comparative methods. These pages present a drag-and-drop interface to test for phylogenetic signal, reconstruct ancestral character states, test for character correlations, and other common analyses.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-can-i-do-in-arbor-easy-mode&quot;&gt;What can I do in Arbor Easy Mode?&lt;/h2&gt;
-
-&lt;p&gt;To use easy mode, you can navigate to one of our &lt;a href=&quot;/arborCollections/easymode/index.html&quot;&gt;easy mode pages&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;walkthrough---phylogenetic-signal-in-easy-mode&quot;&gt;Walkthrough - Phylogenetic Signal in Easy Mode&lt;/h2&gt;
-
-&lt;p&gt;Let’s walk through one example analysis in easy mode. We will work on testing for phylogenetic signal. I will use two data files for &lt;em&gt;Anolis&lt;/em&gt; lizards, linked below.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/arborCollections/assets/anolis.phy&quot;&gt;anolis.phy&lt;/a&gt;: a phylogenetic tree of anoles&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/arborCollections/assets/anolis.csv&quot;&gt;anolis.csv&lt;/a&gt;: character data for anoles (comma-separated format)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Download these two files, and locate them on your computer’s file browser.&lt;/p&gt;
-
-&lt;p&gt;Now, navigate to the Arbor easy mode page for phylogenetic signal. You should see something like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Next, you need to input your datafiles into the website. You can do that by dragging and dropping the files onto the blue box that says “browse or drop files here.”&lt;/p&gt;
-
-&lt;p&gt;When you hover over the correct place, the box will turn green. Arbor can automatically detect whether you have uploaded a tree or a data file.&lt;/p&gt;
-
-&lt;p&gt;After you upload both files, you should see them listed in the appropriate place, like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_3.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You might also notice that you can see a preview of your input table at the bottom of the page:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_4.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now you need to specify a column that will define the trait that you want to use for the phylogenetic signal test. Right now, this test can only handle one trait at a time! Let’s choose “SVL.” Grab that column name from the left hand side and drag and drop it onto the box that says “Drag column of interest here.” You should end up with this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_5.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;No just press “Go!” and your analysis will run. You should get back a table of results, like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_6.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The last table shows the results of the analysis. The first two columns are the likelihoods of a Brownian motion model and Brownian motion + lambda. The third and fourth represent a chi-squared test comparing a “full” phylogenetic signal model (Brownian motion) with a model where signal is less than Brownian motion (lambda). P &amp;lt; 0.05 means that you can reject BM in favor of the lambda model. The last two columns show AICC scores for these two models. This output is formatted in a very confusing way, we are going to fix it!&lt;/p&gt;
 
     </content>
   </entry>

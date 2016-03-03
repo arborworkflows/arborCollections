@@ -7,6 +7,34 @@
     <atom:link href="/arborCollections/arborCollections/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>aggregateTableByMax</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Roll up the values of a table’s rows according to discrete values in a selected “groupBy” column. The number of output rows in the table will be equal to the number of discrete values in the groupBy column.&lt;/p&gt;
+
+&lt;p&gt;This is the MAX version of aggregation, so the values in the other columns will be the max value encountered out of all rows which belonged to this group from the input table.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;table: input table of continuous values&lt;/li&gt;
+  &lt;li&gt;column: column name used as the “group by” control&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;output: output table&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Thu, 03 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/base/matrix/aggregateTableByMax/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/matrix/aggregateTableByMax/</guid>
+      </item>
+    
+      <item>
         <title>aggregateTableByColumnInParameterTable</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -264,36 +292,6 @@ Clustering Trees. arXiv:1006.1015v1.&lt;/p&gt;
         <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/collapseSingles/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/collapseSingles/</guid>
-      </item>
-    
-      <item>
-        <title>convertTreeToHierarchyTable</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Converts a phylogenetic tree into a table of monophyletic clades.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;This function does not work.&lt;/p&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;intree: An input phylogenetic tree&lt;/li&gt;
-  &lt;li&gt;mode: Either “Full” or “compressed”&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;hierarchyTable: A table of monophyletic clades in the tree.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Tue, 01 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/convertTreeToHierarchyTable/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/convertTreeToHierarchyTable/</guid>
       </item>
     
   </channel>

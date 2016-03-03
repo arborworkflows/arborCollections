@@ -18,7 +18,7 @@ There are a few ways to use Arbor
 
 ## Run Arbor on our server
 
-You can run Arbor on our [server](arbor.kitware.com).
+You can run Arbor on our [server](https://arbor.kitware.com/).
 
 ---
 
@@ -26,9 +26,9 @@ You can run Arbor on our [server](arbor.kitware.com).
 
 We have a few continuously running cloud instances that you can use.
 
-- [arbor1](arbor1.arborworkflows.com)
-- [arbor2](arbor2.arborworkflows.com)
-- [arbor3](arbor3.arborworkflows.com)
+- [arbor1](https://arbor1.arborworkflows.com)
+- [arbor2](https://arbor2.arborworkflows.com)
+- [arbor3](https://arbor3.arborworkflows.com)
 
 ---
 

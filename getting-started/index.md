@@ -18,11 +18,11 @@ The basics for getting started with Arbor.
 
 ## Running Arbor
 
-You can run Arbor on our [server](arbor.kitware.com).
+You can run Arbor on our [server](https://arbor.kitware.com).
 
 If you want to try Arbor, start with our tutorial on [using the Arbor webapp]({{ site.baseurl }}/tutorials/using-the-arbor-webapp/). You can also get information on [creating your own collection]({{ site.baseurl }}/tutorials/creating-a-new-collection/) to save data and analyses. There are several [more advanced tutorials]({{ site.baseurl }}/tutorials/) that carry on from there.
 
-Finally, you can learn about [easy mode]( {{ site.baseurl }}/tutorials/easy-mode/).
+Finally, you can learn about [Arbor apps]( {{ site.baseurl }}/tutorials/easy-mode/).
 
 Alternatively, you can [download and install your own Arbor instance using Vagrant](http://arborworkflows.readthedocs.org/en/latest/installation.html).
 
@@ -37,9 +37,9 @@ Alternatively, you can [download and install your own Arbor instance using Vagra
 
 ---
 
-## Easy Mode
+## Arbor apps
 
-Available easy mode apps are listed [here]({{ site.baseurl }}/easymode/).
+Available Arbor apps are listed [here]({{ site.baseurl }}/tutorials/easymode/).
 
 ---
 

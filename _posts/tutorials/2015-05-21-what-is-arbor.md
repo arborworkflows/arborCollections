@@ -12,11 +12,11 @@ image:
 
 Arbor is a software package for phylogenetic comparative analyses. Our main website is:
 
-<a href="www.arborworkflows.com">www.arborworkflows.com</a>
+<a href="https://www.arborworkflows.com/">www.arborworkflows.com</a>
 
 <h2>When will Arbor be available?</h2>
 
-Right now! And Arbor's functionality will continue to grow through the end of 2015.
+Right now! And Arbor's functionality continues to grow.
 
 <h2>What will Arbor be able to do for me?</h2>
 
