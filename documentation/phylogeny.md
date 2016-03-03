@@ -1,5 +1,5 @@
 ---
-layout: archive
+layout: documentation_index
 title: "Phylogenies collection"
 categories: documentation
 modified:
@@ -8,7 +8,6 @@ image:
   feature:
   teaser:
 ---
-
 #### Sorted by category | [Sorted alphabetically]({{ site.baseurl }}/documentation/phylogeny_sorted/)
 ---
 

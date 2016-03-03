@@ -1,5 +1,5 @@
 ---
-layout: archive
+layout: documentation_index
 title: "All functions"
 categories: documentation
 modified:

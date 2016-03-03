@@ -1,5 +1,5 @@
 ---
-layout: archive
+layout: documentation_index
 title: "Base collection"
 categories: documentation
 modified:

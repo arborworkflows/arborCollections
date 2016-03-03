@@ -1,5 +1,5 @@
 ---
-layout: archive
+layout: documentation_index
 title: "Example datasets"
 categories: documentation
 modified:

@@ -35,12 +35,12 @@
     {% include navigation-sliding.html %}
 
     <div id="page-wrapper">
-      <img src="{{ site.baseurl }}/images/arbor-docs.png"><br>
+      <a href="{{ site.baseurl }}/documentation/"><img src="{{ site.baseurl }}/images/arbor-docs.png"></a><br>
       <h1>{{ page.title }}: {{ page:arbortype }}</h1><br>
       {% if page.image %}
         <img src="{{ site.baseurl }}/images/doc/{{ page.image }}"<br>
       {% endif %}
-      <h3>collection: {{ page.arborcollection }}</h3><br>
+      <h3>collection: <a href="{{ site.baseurl}}/documentation/{{ page.arborcollection }}/">{{ page.arborcollection }}</a></h3><br>
 
       {{ content }}
       {% include footer.html %}
