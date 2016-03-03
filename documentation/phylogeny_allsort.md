@@ -8,7 +8,7 @@ image:
   feature:
   teaser:
 ---
-#### [Sorted by category]({{ site.baseurl }}/documentation/phylogeny_catsort/) | Sorted alphabetically
+#### [Sorted by category]({{ site.baseurl }}/documentation/phylogeny/) | Sorted alphabetically
 ---
 
 <div class="tiles">

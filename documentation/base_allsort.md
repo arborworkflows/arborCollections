@@ -8,7 +8,7 @@ image:
   feature:
   teaser:
 ---
-#### [Sorted by category]({{ site.baseurl }}/documentation/base_catsort/) | Sorted alphabetically
+#### [Sorted by category]({{ site.baseurl }}/documentation/base/) | Sorted alphabetically
 ---
 
 <div class="tiles">

@@ -9,10 +9,6 @@ description: "find the sum of two columns in a data matrix"
 
 ---
 
-# addColumns: function
-
-### collection: base
-
 ## Overview
 
 addColumns can be used to find the sum of two columns in a data matrix.
