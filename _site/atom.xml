@@ -7,7 +7,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-03-03T09:27:38+01:00</updated>
+  <updated>2016-03-03T09:58:00+01:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -28,11 +28,7 @@
     </author>
     <content type="html">
       
-      &lt;h1 id=&quot;maketreedatamatch-function&quot;&gt;makeTreeDataMatch: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;Matches the rownames of a data matrix with the tip labels of a phylogenetic tree using the aRbor function make.treedata.&lt;/p&gt;
 
@@ -72,11 +68,7 @@ td &amp;lt;- make.treedata(anolis$phy, anolis$dat, name_column=1)&lt;/p&gt;
     </author>
     <content type="html">
       
-      &lt;h1 id=&quot;cophylo-function&quot;&gt;cophylo: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;Makes a cophylo plot (sometimes called a tanglegram) connecting interacting tips on two trees.&lt;/p&gt;
 
@@ -118,11 +110,7 @@ td &amp;lt;- make.treedata(anolis$phy, anolis$dat, name_column=1)&lt;/p&gt;
     </author>
     <content type="html">
       
-      &lt;h1 id=&quot;copheneticdistancematrixfromtree-function&quot;&gt;copheneticDistanceMatrixFromTree: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;Makes a distance matrix from a tree; entries in the matrix are the phylogenetic distance between each pair
 of species in the tree&lt;/p&gt;
@@ -158,11 +146,7 @@ of species in the tree&lt;/p&gt;
     </author>
     <content type="html">
       
-      &lt;h1 id=&quot;convertnexustoapephylo-function&quot;&gt;convertNexusToApePhylo: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;Convert a nexus string to an ape phylo object. NOTE: not needed for reading in trees, Arbor can do this automatically.
 This function is only needed for certain workflows where one step returns a Nexus string.&lt;/p&gt;
@@ -198,11 +182,7 @@ This function is only needed for certain workflows where one step returns a Nexu
     </author>
     <content type="html">
       
-      &lt;h1 id=&quot;consistencyindexallchars-function&quot;&gt;consistencyIndexAllChars: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;Calculate consistency index across all characters in a data matrix.&lt;/p&gt;
 
@@ -238,11 +218,7 @@ This function is only needed for certain workflows where one step returns a Nexu
     </author>
     <content type="html">
       
-      &lt;h1 id=&quot;comparetrees-function&quot;&gt;compareTrees: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;Compares the topology of two phylogenetic trees using the function phylo.diff from the R package distory.&lt;/p&gt;
 
@@ -281,11 +257,7 @@ Clustering Trees. arXiv:1006.1015v1.&lt;/p&gt;
     </author>
     <content type="html">
       
-      &lt;h1 id=&quot;collapsesingles-function&quot;&gt;collapseSingles: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;Collapses all singleton nodes in a phylogenetic tree (e.g. all nodes with only one descendent).&lt;/p&gt;
 
@@ -320,11 +292,7 @@ Clustering Trees. arXiv:1006.1015v1.&lt;/p&gt;
     </author>
     <content type="html">
       
-      &lt;h1 id=&quot;converttreetohierarchytable-function&quot;&gt;convertTreeToHierarchyTable: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;Converts a phylogenetic tree into a table of monophyletic clades.&lt;/p&gt;
 
@@ -362,11 +330,7 @@ Clustering Trees. arXiv:1006.1015v1.&lt;/p&gt;
     </author>
     <content type="html">
       
-      &lt;h1 id=&quot;congruify-function&quot;&gt;congruify: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;Congruify uses an ultrametric reference tree to rescale a non-ultrametric target tree. This function
 uses the reference (and, optionally, a taxonomic linkage table) to inform secondary calibrations in
@@ -696,11 +660,7 @@ plot(ladderize(sal$fam,right=FALSE), cex=0.5, type=”fan”, label.offset=2.5, 
     </author>
     <content type="html">
       
-      &lt;h2 id=&quot;phylogeneticsignal-function&quot;&gt;phylogeneticSignal: function&lt;/h2&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;phylogeneticSignal is a function for estimating and testing for phylogenetic signal. It works for
 both discrete and continuous variables, and can use a variety of methods. It calls the aRbor package function &lt;a href=&quot;https://github.com/arborworkflows/aRbor/blob/master/R/physigArbor.R&quot;&gt;physigArbor&lt;/a&gt;&lt;/p&gt;
@@ -739,11 +699,7 @@ the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
     </author>
     <content type="html">
       
-      &lt;h1 id=&quot;acearbor-function&quot;&gt;aceArbor: function&lt;/h1&gt;
-
-&lt;h3 id=&quot;collection-phylogenies&quot;&gt;collection: phylogenies&lt;/h3&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;aceArbor is a function for carrying out ancestral state reconstruction. It works for
 both discrete and continuous variables, and can reconstruct ancestral character states
@@ -753,7 +709,7 @@ of the results.&lt;/p&gt;
 
 &lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
 
-&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.phy and anolis.csv.
+&lt;p&gt;From the &lt;a href=&quot;/arborCollections/../docs/&quot;&gt;docs&lt;/a&gt; page, get anolis.phy and anolis.csv.
 Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
 the “ecomorph” column for analysis, and select type: discrete and method: marginal.&lt;/p&gt;
 

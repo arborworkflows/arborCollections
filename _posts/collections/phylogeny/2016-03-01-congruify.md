@@ -1,14 +1,13 @@
 ---
+layout: documentation
 title: congruify
 author: Arbor core team
 categories: collections phylogeny treemanipulate
+arbortype: function
+arborcollection: phylogeny
 description: "calibrate a target tree based on a reference"
 
 ---
-
-# congruify: function
-
-### collection: phylogenies
 
 ## Overview
 

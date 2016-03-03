@@ -1,14 +1,13 @@
 ---
+layout: documentation
 title: phylogeneticSignal
 author: Arbor core team
 categories: collections phylogeny charactercalculate
+arbortype: function
+arborcollection: phylogeny
 description: "estimate and test for phylogenetic signal in discrete and continuous characters"
 
 ---
-
-## phylogeneticSignal: function
-
-### collection: phylogenies
 
 ## Overview
 

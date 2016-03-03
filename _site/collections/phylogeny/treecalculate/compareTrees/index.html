@@ -1,8 +1,134 @@
-<h1 id="comparetrees-function">compareTrees: function</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>compareTrees • Arbor</title>
+    <meta name="description" content="Overview
 
-<h3 id="collection-phylogenies">collection: phylogenies</h3>
+">
+    <meta name="keywords" content="">
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="compareTrees">
+	<meta name="twitter:description" content="Overview
 
-<h2 id="overview">Overview</h2>
+">
+	<meta name="twitter:site" content="@lukejharmon">
+	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="/arborCollections/images/120x120.gif">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="compareTrees">
+	<meta property="og:description" content="Overview
+
+">
+	<meta property="og:url" content="/arborCollections/collections/phylogeny/treecalculate/compareTrees/">
+	<meta property="og:site_name" content="Arbor">
+
+    <link rel="canonical" href="/arborCollections/collections/phylogeny/treecalculate/compareTrees/">
+
+    <link href="/arborCollections/atom.xml" type="application/atom+xml" rel="alternate" title="Arbor Atom Feed">
+    <link href="/arborCollections/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="/arborCollections/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="/arborCollections/js/vendor/html5shiv.min.js"></script>
+      <script src="/arborCollections/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="/arborCollections/" class="site-title">Arbor</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Arbor</a></li>
+	
+    
+    <li><a href="/arborCollections/usearbor/" >Use Arbor</a></li>
+  
+    
+    <li><a href="/arborCollections/tutorials/" >Tutorials</a></li>
+  
+    
+    <li><a href="/arborCollections/documentation/" >Documentation</a></li>
+  
+    
+    <li><a href="/arborCollections/faq/" >FAQ</a></li>
+  
+    
+    <li><a href="/arborCollections/team/" >Contact</a></li>
+  
+</ul>
+
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Arbor <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="/arborCollections/usearbor/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Use Arbor</div>
+        <p class="excerpt">Run Arbor over the web or install it yourself</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/tutorials/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Tutorials</div>
+        <p class="excerpt">How to use Arbor</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/documentation/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Documentation</div>
+        <p class="excerpt">Full documentation for functions and workflows</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/faq/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">FAQ</div>
+        <p class="excerpt">Frequently asked questions</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/team/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Contact</div>
+        <p class="excerpt">Contact us</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <img src="/arborCollections/images/arbor-docs.png"><br>
+      <h1>compareTrees: function</h1><br>
+      
+      <h3>collection: phylogeny</h3><br>
+
+      <h2 id="overview">Overview</h2>
 
 <p>Compares the topology of two phylogenetic trees using the function phylo.diff from the R package distory.</p>
 
@@ -25,3 +151,32 @@
 
 <p>Chakerian, J. and Holmes, S. P. Computational Tools for Evaluating Phylogenetic and Heirarchical
 Clustering Trees. arXiv:1006.1015v1.</p>
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+			<li><a href="/arborCollections/" >Home</a></li>
+		
+      
+			<li><a href="/arborCollections/getting-started/" >Getting Started</a></li>
+		
+      
+			<li><a href="/arborCollections/about/" >About</a></li>
+		
+      
+			<li><a href="/arborCollections/team/" >Team</a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2016 <a href="/arborCollections">Arbor</a> powered by <a href="http://jekyllrb.com">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/">Skinny Bones</a>.</p>
+</footer>
+
+    </div>
+
+    <script src="/arborCollections/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/arborCollections/js/main.js"></script>
+
+  </body>
+</html>

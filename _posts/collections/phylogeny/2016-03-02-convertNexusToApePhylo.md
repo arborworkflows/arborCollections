@@ -1,13 +1,13 @@
 ---
+layout: documentation
 title: convertNexusToApePhylo
 author: Arbor core team
 categories: collections phylogeny treemanipulate
+arbortype: function
+arborcollection: phylogeny
 description: "convert nexus string to ape phylo"
+
 ---
-
-# convertNexusToApePhylo: function
-
-### collection: phylogenies
 
 ## Overview
 

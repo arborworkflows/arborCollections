@@ -1,14 +1,13 @@
 ---
+layout: documentation
 title: consistencyIndexAllChars
 author: Arbor core team
 categories: collections phylogeny charactercalculate
+arbortype: function
+arborcollection: phylogeny
 description: "calculate consistence index across all characters in a matrix"
 
 ---
-
-# consistencyIndexAllChars: function
-
-### collection: phylogenies
 
 ## Overview
 

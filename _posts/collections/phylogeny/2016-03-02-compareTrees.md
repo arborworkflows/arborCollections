@@ -1,14 +1,13 @@
 ---
+layout: documentation
 title: compareTrees
 author: Arbor core team
 categories: collections phylogeny treecalculate
+arbortype: function
+arborcollection: phylogeny
 description: "compare the topology of two phylogenetic trees"
 
 ---
-
-# compareTrees: function
-
-### collection: phylogenies
 
 ## Overview
 

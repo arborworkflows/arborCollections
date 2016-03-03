@@ -1,14 +1,13 @@
 ---
+layout: documentation
 title: collapseSingles
 author: Arbor core team
 categories: collections phylogeny treemanipulate
+arbortype: function
+arborcollection: phylogeny
 description: "collapse all singleton nodes in a phylogenetic tree"
 
 ---
-
-# collapseSingles: function
-
-### collection: phylogenies
 
 ## Overview
 

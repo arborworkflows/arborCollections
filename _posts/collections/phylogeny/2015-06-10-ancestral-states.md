@@ -1,14 +1,14 @@
 ---
+layout: documentation
 title: aceArbor
 author: Arbor core team
 categories: collections phylogeny charactercalculate
+arbortype: function
+arborcollection: phylogeny
 description: "ancestral state reconstruction for discrete and continuous characters"
+image: acearbor.png
 
 ---
-
-# aceArbor: function
-
-### collection: phylogenies
 
 ## Overview
 
@@ -20,7 +20,7 @@ of the results.
 
 ## Example
 
-From the [docs] ({{ site.baseurl}}/../docs/ ) page, get anolis.phy and anolis.csv.
+From the [docs]({{ site.baseurl}}/../docs/ ) page, get anolis.phy and anolis.csv.
 Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
 the "ecomorph" column for analysis, and select type: discrete and method: marginal.
 

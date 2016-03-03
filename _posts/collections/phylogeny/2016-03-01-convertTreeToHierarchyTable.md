@@ -1,14 +1,13 @@
 ---
+layout: documentation
 title: convertTreeToHierarchyTable
 author: Arbor core team
 categories: collections phylogeny treemanipulate
+arbortype: function
+arborcollection: phylogeny
 description: "convert a phylogenetic tree into a table of monophyletic clades"
 
 ---
-
-# convertTreeToHierarchyTable: function
-
-### collection: phylogenies
 
 ## Overview
 

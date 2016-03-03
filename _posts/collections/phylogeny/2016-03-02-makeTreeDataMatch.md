@@ -1,14 +1,13 @@
 ---
+layout: documentation
 title: makeTreeDataMatch
 author: Arbor core team
 categories: collections phylogeny treemanipulate
+arbortype: function
+arborcollection: phylogeny
 description: match data matrix and tree
 
 ---
-
-# makeTreeDataMatch: function
-
-### collection: phylogenies
 
 ## Overview
 

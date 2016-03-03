@@ -1,13 +1,12 @@
 ---
+layout: documentation
 title: copheneticDistanceMatrixFromTree
 author: Arbor core team
 categories: collections phylogeny treemanipulate
+arbortype: function
+arborcollection: phylogeny
 description: "make a distance matrix from a tree"
 ---
-
-# copheneticDistanceMatrixFromTree: function
-
-### collection: phylogenies
 
 ## Overview
 
