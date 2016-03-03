@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "Input tree",
+            "format": "r.apetree",
+            "name": "phy",
+            "type": "tree"
+        }
+    ],
+    "mode": "r",
+    "name": "Cophenetic Distance Matrix from Tree",
+    "outputs": [
+        {
+            "description": "Output cophenetic distance matrix",
+            "format": "r.dataframe",
+            "name": "distance.matrix",
+            "type": "table"
+        }
+    ],
+    "script": "library(picante)\ndistance_matrix<-cophenetic(phy)\n#rownames(distance_matrix) <- colnames(distance_matrix)\n#distance.matrix<-as.data.frame(distance.matrix)\n"
+}
