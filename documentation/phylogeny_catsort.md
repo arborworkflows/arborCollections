@@ -8,7 +8,7 @@ image:
   feature:
   teaser:
 ---
-#### Sorted by category | [Sorted alphabetically]({{ site.baseurl }}/documentation/phylogeny_sorted/)
+#### Sorted by category | [Sorted alphabetically]({{ site.baseurl }}/documentation/phylogeny_allsort/)
 ---
 
 ### Manipulate trees

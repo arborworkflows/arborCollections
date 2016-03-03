@@ -7,7 +7,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-03-03T10:43:14+01:00</updated>
+  <updated>2016-03-03T11:14:15+01:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -745,9 +745,9 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
   
   <entry>
     <title>addColumns</title>
-    <link href="/arborCollections/collections/base/addColumns/"/>
+    <link href="/arborCollections/collections/base/matrix/addColumns/"/>
     <updated>2015-06-10T00:00:00+02:00</updated>
-    <id>/arborCollections/collections/base/addColumns</id>
+    <id>/arborCollections/collections/base/matrix/addColumns</id>
     <author>
       <name>Luke Harmon</name>
       <uri>/arborCollections/</uri>

@@ -2,7 +2,7 @@
 layout: documentation
 title: addColumns
 author: Arbor core team
-categories: collections base
+categories: collections base matrix
 arbortype: function
 arborcollection: base
 description: "find the sum of two columns in a data matrix"

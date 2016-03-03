@@ -1,6 +1,6 @@
 ---
 layout: documentation_index
-title: "Phylogenies collection"
+title: "Base collection"
 categories: documentation
 modified:
 tags: []
@@ -8,12 +8,12 @@ image:
   feature:
   teaser:
 ---
-#### [Sorted by category]({{ site.baseurl }}/documentation/phylogeny/) | Sorted alphabetically
+#### [Sorted by category]({{ site.baseurl }}/documentation/base_catsort/) | Sorted alphabetically
 ---
 
 <div class="tiles">
 {% capture posts %}
-  {% for post in site.categories.phylogeny %}
+  {% for post in site.categories.base %}
     |{{ post.title }}#{{ post.url }}#{{ post.description }}
   {% endfor %}
 {% endcapture %}
