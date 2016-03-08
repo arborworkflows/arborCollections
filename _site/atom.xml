@@ -7,7 +7,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-03-08T10:05:54+01:00</updated>
+  <updated>2016-03-08T10:54:57+01:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -15,6 +15,157 @@
     <email>lukeh@uidaho.edu</email>
   </author>
 
+  
+  <entry>
+    <title>graftTreeOntoNamedNode</title>
+    <link href="/arborCollections/collections/phylogeny/treemanipulate/graftTreeOntoNamedNode/"/>
+    <updated>2016-03-08T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/treemanipulate/graftTreeOntoNamedNode</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Attach two trees by grafting a subtree onto a named node in a recipient tree&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;receivingTree: Phylogenetic tree that will get subtree attached to it&lt;/li&gt;
+  &lt;li&gt;subTree: Tree that will be attached&lt;/li&gt;
+  &lt;li&gt;nodename: Name of node in receivingTree to attach subTree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;combinedTree: tree with subtree attached to receivingTree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>getTipNames</title>
+    <link href="/arborCollections/collections/phylogeny/treemanipulate/getTipNames/"/>
+    <updated>2016-03-08T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/treemanipulate/getTipNames</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Extract column of tip names from phylogenetic tree&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tree: Phylogenetic tree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tiplabels: single column matrix with tip labels&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>fitDiscrete</title>
+    <link href="/arborCollections/collections/phylogeny/charactercalculate/fitDiscrete/"/>
+    <updated>2016-03-08T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/charactercalculate/fitDiscrete</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Fits a particular model of evolution to a discrete character on a phylogenetic tree.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;table: Table including species names and the column of interest&lt;/li&gt;
+  &lt;li&gt;tree: Phylogenetic tree with branch lengths&lt;/li&gt;
+  &lt;li&gt;column: Column name in table to analyze&lt;/li&gt;
+  &lt;li&gt;model: Model of evolution; must match one of the options in &lt;a href=&quot;https://cran.r-project.org/web/packages/geiger/geiger.pdf&quot;&gt;geiger&lt;/a&gt; fitDiscrete, currently one of: “ER”,”SYM”,”ARD”,”meristic”. Tree transforms not yet implemented.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Q: fitted Q matrix&lt;/li&gt;
+  &lt;li&gt;res: List showing model fit: lnL, aic, aicc, k&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>fitContinuous</title>
+    <link href="/arborCollections/collections/phylogeny/charactercalculate/fitContinuous/"/>
+    <updated>2016-03-08T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/charactercalculate/fitContinuous</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Fits a particular model of evolution to a continuous character on a phylogenetic tree.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;table: Table including species names and the column of interest&lt;/li&gt;
+  &lt;li&gt;tree: Phylogenetic tree with branch lengths&lt;/li&gt;
+  &lt;li&gt;column: Column name in table to analyze&lt;/li&gt;
+  &lt;li&gt;model: Model of evolution; must match one of the options in &lt;a href=&quot;https://cran.r-project.org/web/packages/geiger/geiger.pdf&quot;&gt;geiger&lt;/a&gt; fitContinuous, currently one of: “BM”,”OU”,”EB”,”trend”,”lambda”,”kappa”,”delta”,”drift”,”white”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;treeplot: plot of independent contrasts as a check for model adequacy. See &lt;a href=&quot;https://github.com/arborworkflows/aRbor/blob/master/R/plotting.R&quot;&gt;plotContrasts&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;result: Transformed tree&lt;/li&gt;
+  &lt;li&gt;fit: List of model fit results: model parameters, lnL, AIC, AICc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
   
   <entry>
     <title>extractSpeciesNamesFromMatrix</title>
@@ -914,157 +1065,6 @@ plot(ladderize(sal$fam,right=FALSE), cex=0.5, type=”fan”, label.offset=2.5, 
 &lt;p&gt;To see the results in table format, choose “table” and “DiscreteAncestralStatesWorkflow res”. Update gives you this table, which is presently useless. Sorry!&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen8.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>phylogeneticSignal</title>
-    <link href="/arborCollections/collections/phylogeny/charactercalculate/phylogenetic-signal/"/>
-    <updated>2015-06-10T00:00:00+02:00</updated>
-    <id>/arborCollections/collections/phylogeny/charactercalculate/phylogenetic-signal</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;phylogeneticSignal is a function for estimating and testing for phylogenetic signal. It works for
-both discrete and continuous variables, and can use a variety of methods. It calls the aRbor package function &lt;a href=&quot;https://github.com/arborworkflows/aRbor/blob/master/R/physigArbor.R&quot;&gt;physigArbor&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.phy and anolis.csv.
-Load these files into Arbor, and use them as inputs to the phylogeneticSignal function. Choose
-the “SVL” column for analysis, and select type: lambda.&lt;/p&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;table: A data table including species names&lt;/li&gt;
-  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
-  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
-  &lt;li&gt;method: either “K” for Blomberg’s K or “lambda” for Pagel’s lambda&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-&lt;p&gt;Function outputs a table with results from the test of phylogenetic signal.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>aceArbor</title>
-    <link href="/arborCollections/collections/phylogeny/charactercalculate/ancestral-states/"/>
-    <updated>2015-06-10T00:00:00+02:00</updated>
-    <id>/arborCollections/collections/phylogeny/charactercalculate/ancestral-states</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;aceArbor is a function for carrying out ancestral state reconstruction. It works for
-both discrete and continuous variables, and can reconstruct ancestral character states
-under both a maximum-likelihood and a Bayesian framework. The function returns results
-in two formats: a table of ancestral state estimates for each node in the tree, and a plot
-of the results.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;From the &lt;a href=&quot;/arborCollections/../docs/&quot;&gt;docs&lt;/a&gt; page, get anolis.phy and anolis.csv.
-Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
-the “ecomorph” column for analysis, and select type: discrete and method: marginal.&lt;/p&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;table: A data table including species names&lt;/li&gt;
-  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
-  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
-  &lt;li&gt;type: The character type
-    &lt;ul&gt;
-      &lt;li&gt;discrete: a character with a discrete number of states&lt;/li&gt;
-      &lt;li&gt;continuous: a continuously varying character&lt;/li&gt;
-      &lt;li&gt;fromData: will attempt to determine the data type from the data itself&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;method: specifies the method used to reconstruct ancestral character states
-    &lt;ul&gt;
-      &lt;li&gt;marginal: marginal ancestral state reconstructions, which reconstruct each node integrating over all possibilities at all other nodes in the tree; this is typically the method used in the literature to reconstruce ACEs&lt;/li&gt;
-      &lt;li&gt;joint: joint ancestral reconstructions, which give the configuration of ancestral states that together maximize the likelihood of the data given model parameters&lt;/li&gt;
-      &lt;li&gt;mcmc: reconstruct ancestral states using Bayesian MCMC. Note that the discrete version of this doesn’t seem to work, and even if it did work it is not a full MCMC ancestral state method&lt;/li&gt;
-      &lt;li&gt;stochastic: create stochastic character map&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-&lt;p&gt;Function outputs a table and a plot with results of the ancestral state reconstruction.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>addColumns</title>
-    <link href="/arborCollections/collections/base/matrix/addColumns/"/>
-    <updated>2015-06-10T00:00:00+02:00</updated>
-    <id>/arborCollections/collections/base/matrix/addColumns</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;addColumns can be used to find the sum of two columns in a data matrix.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;From the [docs] (/arborCollections/../docs/ ) page, get anolis.csv.
-Load this files into Arbor, and use it as input to the addColumns function.
-Choose “SVL” and “awesomeness” as columnOne and columnTwo, respectively.
-Name the outputColumn whatever you want.&lt;/p&gt;
-
-&lt;p&gt;The output is a table with all the data from anolis.csv along with a new column that shows the sum of SVL and awesomeness.&lt;/p&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;table: A data table&lt;/li&gt;
-  &lt;li&gt;columnOne and columnTwo: The name of the columns to add&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-&lt;p&gt;Function outputs a table with a new column appended to the end.&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>Phylogenetic signal</title>
-    <link href="/arborCollections/arborapps/phylogenetic-signal/"/>
-    <updated>2015-06-10T00:00:00+02:00</updated>
-    <id>/arborCollections/arborapps/phylogenetic-signal</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      &lt;img src=&quot;/arborCollections/images/easyButtons-1600x800.jpg&quot;&gt;&lt;br/&gt;
-      &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the Arbor app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
     </content>
   </entry>

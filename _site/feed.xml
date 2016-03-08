@@ -7,6 +7,125 @@
     <atom:link href="/arborCollections/arborCollections/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>graftTreeOntoNamedNode</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Attach two trees by grafting a subtree onto a named node in a recipient tree&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;receivingTree: Phylogenetic tree that will get subtree attached to it&lt;/li&gt;
+  &lt;li&gt;subTree: Tree that will be attached&lt;/li&gt;
+  &lt;li&gt;nodename: Name of node in receivingTree to attach subTree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;combinedTree: tree with subtree attached to receivingTree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/graftTreeOntoNamedNode/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/graftTreeOntoNamedNode/</guid>
+      </item>
+    
+      <item>
+        <title>getTipNames</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Extract column of tip names from phylogenetic tree&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tree: Phylogenetic tree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tiplabels: single column matrix with tip labels&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/getTipNames/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/getTipNames/</guid>
+      </item>
+    
+      <item>
+        <title>fitDiscrete</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Fits a particular model of evolution to a discrete character on a phylogenetic tree.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;table: Table including species names and the column of interest&lt;/li&gt;
+  &lt;li&gt;tree: Phylogenetic tree with branch lengths&lt;/li&gt;
+  &lt;li&gt;column: Column name in table to analyze&lt;/li&gt;
+  &lt;li&gt;model: Model of evolution; must match one of the options in &lt;a href=&quot;https://cran.r-project.org/web/packages/geiger/geiger.pdf&quot;&gt;geiger&lt;/a&gt; fitDiscrete, currently one of: “ER”,”SYM”,”ARD”,”meristic”. Tree transforms not yet implemented.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Q: fitted Q matrix&lt;/li&gt;
+  &lt;li&gt;res: List showing model fit: lnL, aic, aicc, k&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/charactercalculate/fitDiscrete/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/charactercalculate/fitDiscrete/</guid>
+      </item>
+    
+      <item>
+        <title>fitContinuous</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Fits a particular model of evolution to a continuous character on a phylogenetic tree.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;table: Table including species names and the column of interest&lt;/li&gt;
+  &lt;li&gt;tree: Phylogenetic tree with branch lengths&lt;/li&gt;
+  &lt;li&gt;column: Column name in table to analyze&lt;/li&gt;
+  &lt;li&gt;model: Model of evolution; must match one of the options in &lt;a href=&quot;https://cran.r-project.org/web/packages/geiger/geiger.pdf&quot;&gt;geiger&lt;/a&gt; fitContinuous, currently one of: “BM”,”OU”,”EB”,”trend”,”lambda”,”kappa”,”delta”,”drift”,”white”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;treeplot: plot of independent contrasts as a check for model adequacy. See &lt;a href=&quot;https://github.com/arborworkflows/aRbor/blob/master/R/plotting.R&quot;&gt;plotContrasts&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;result: Transformed tree&lt;/li&gt;
+  &lt;li&gt;fit: List of model fit results: model parameters, lnL, AIC, AICc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/charactercalculate/fitContinuous/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/charactercalculate/fitContinuous/</guid>
+      </item>
+    
+      <item>
         <title>extractSpeciesNamesFromMatrix</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -190,128 +309,6 @@
         <pubDate>Thu, 03 Mar 2016 00:00:00 +0100</pubDate>
         <link>/arborCollections/arborCollections/collections/base/matrix/aggregateTableByAverage/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/matrix/aggregateTableByAverage/</guid>
-      </item>
-    
-      <item>
-        <title>makeTreeDataMatch</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Matches the rownames of a data matrix with the tip labels of a phylogenetic tree using the aRbor function make.treedata.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;data(anolis)
-td &amp;lt;- make.treedata(anolis$phy, anolis$dat, name_column=1)&lt;/p&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Tree for matching with data: An input phylogenetic tree&lt;/li&gt;
-  &lt;li&gt;Table for matching with tree: A data matrix including species names&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;tree_matched: Tree with tip labels that match data names exactly.&lt;/li&gt;
-  &lt;li&gt;table_matched: Table with row names that match tree tip labels exactly.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/makeTreeDataMatch/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/makeTreeDataMatch/</guid>
-      </item>
-    
-      <item>
-        <title>extractGenusFromTreeTipNames</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Extracts and returns just the genus name from all of the tip names in the tree. Tree tips must be in the format of genus%species, where % is some special character like space or _ that is specified to the function.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Input tree: An input phylogenetic tree&lt;/li&gt;
-  &lt;li&gt;Split character: The special character that separates genus and species in the species names. For example, this would be _ for Anolis_sagrei.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Genus names: A table with a single column, the genus names.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/extractGenusFromTreeTipNames/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/extractGenusFromTreeTipNames/</guid>
-      </item>
-    
-      <item>
-        <title>cophylo</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Makes a cophylo plot (sometimes called a tanglegram) connecting interacting tips on two trees.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;data(anolis)
-td &amp;lt;- make.treedata(anolis$phy, anolis$dat, name_column=1)&lt;/p&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;t1: tree 1&lt;/li&gt;
-  &lt;li&gt;t2: tree 2&lt;/li&gt;
-  &lt;li&gt;assoc: matrix containing the tip labels in tr1 to match to the tip labels in tr2. Note that not all labels in either tree need to be included; and, furthermore, one label in tr1 can be matched with more than one label in tr2, or vice versa.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;cophyloPlot: A plot with tips matched.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;p&gt;Revell, L. 2011. phytools: an R package for phylogenetic comparative biology (and other things). Methods in Ecology and Evolution 3: 217.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/cophylo/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/cophylo/</guid>
-      </item>
-    
-      <item>
-        <title>copheneticDistanceMatrixFromTree</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Makes a distance matrix from a tree; entries in the matrix are the phylogenetic distance between each pair
-of species in the tree&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;tree: An input phylogenetic tree&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;table: Tree with pairwise distances&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/copheneticDistanceMatrixFromTree/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/copheneticDistanceMatrixFromTree/</guid>
       </item>
     
   </channel>
