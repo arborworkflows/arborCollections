@@ -11,6 +11,25 @@ image:
 #### Sorted by category | [Sorted alphabetically]({{ site.baseurl }}/documentation/phylogeny_allsort/)
 ---
 
+
+### Build trees
+
+<div class="tiles">
+
+{% capture posts %}
+  {% for post in site.categories.treebuild %}
+    |{{ post.title }}#{{ post.url }}#{{ post.description }}
+  {% endfor %}
+{% endcapture %}
+{% assign sortedposts = posts | split: '|' | sort %}
+
+{% for post in sortedposts offset:1 %}
+  {% assign postitems = post | split: '#' %}
+  <li><a href="{{ site.baseurl }}{{ postitems[1] }}">{{ postitems[0] }}</a> - {{ postitems[2] }}</li><br>
+{% endfor %}
+</div><!-- /.tiles -->
+
+
 ### Manipulate trees
 
 <div class="tiles">

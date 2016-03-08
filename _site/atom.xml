@@ -7,7 +7,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-03-08T10:54:57+01:00</updated>
+  <updated>2016-03-08T11:20:47+01:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -15,6 +15,148 @@
     <email>lukeh@uidaho.edu</email>
   </author>
 
+  
+  <entry>
+    <title>multi2di</title>
+    <link href="/arborCollections/collections/phylogeny/treemanipulate/multi2di/"/>
+    <updated>2016-03-08T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/treemanipulate/multi2di</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Changes multifurcations to bifurcations by randomly resolving polytomies and adding zero-length branch lengths&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;phy: Phylogenetic tree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;phy.di: Tree with no polytomies&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>makeFakeBranchLengths</title>
+    <link href="/arborCollections/collections/phylogeny/treemanipulate/makeFakeBranchLengths/"/>
+    <updated>2016-03-08T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/treemanipulate/makeFakeBranchLengths</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Makes fake branch lengths for phylogenetic tree using ape’s compute.brlen, method “Grafen”. These branch lengths are entirely made up and should only be used as a last resort!&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;phy: Phylogenetic tree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;blphy: Tree with Grafen branch lengths&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>calculateKForAllCharacters</title>
+    <link href="/arborCollections/collections/phylogeny/charactercalculate/kCalc/"/>
+    <updated>2016-03-08T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/charactercalculate/kCalc</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Calculate phylogenetic signal for all characters in a matrix&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;traits: Trait data with species names&lt;/li&gt;
+  &lt;li&gt;phy: Phylogenetic tree with branch lengths&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;KCalc_out: single column table with K for each character&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>hclustDendrogram</title>
+    <link href="/arborCollections/collections/phylogeny/treebuild/hclustDendrogram/"/>
+    <updated>2016-03-08T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/treebuild/hclustDendrogram</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Build tree from distance matrix using hierarchical clustering algorithm&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;dist: Pairwise distance matrix&lt;/li&gt;
+  &lt;li&gt;y_label: y label for plot&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;plotClust: plot of dendogram&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
   
   <entry>
     <title>graftTreeOntoNamedNode</title>
@@ -807,264 +949,6 @@ plot(ladderize(sal$fam,right=FALSE), cex=0.5, type=”fan”, label.offset=2.5, 
       &lt;h2 id=&quot;megatrees&quot;&gt;Megatrees&lt;/h2&gt;
 
 &lt;p&gt;TBA&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>Web services</title>
-    <link href="/arborCollections/tutorials/web-services/"/>
-    <updated>2015-09-02T00:00:00+02:00</updated>
-    <id>/arborCollections/tutorials/web-services</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;web-services&quot;&gt;Web services&lt;/h2&gt;
-
-&lt;p&gt;TBA&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>PGLS</title>
-    <link href="/arborCollections/tutorials/PGLS-basic/"/>
-    <updated>2015-07-17T00:00:00+02:00</updated>
-    <id>/arborCollections/tutorials/PGLS-basic</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;use-pgls-to-test-for-a-correlation-between-two-continuous-variables&quot;&gt;Use PGLS to test for a correlation between two continuous variables&lt;/h2&gt;
-
-&lt;p&gt;In this exercise, we will learn how to use PGLS to test for a correlation between two continuous variables. We will use the Arbor function “PGLS,” found in the phylogeny package.&lt;/p&gt;
-
-&lt;p&gt;Imagine that you have a phylogenetic tree with information on two continuous character for some or all of the tips. You want to test whether or not there is an evolutionary correlation between the two traits. PGLS is the way to do this.&lt;/p&gt;
-
-&lt;h2 id=&quot;loading-example-data&quot;&gt;Loading example data&lt;/h2&gt;
-
-&lt;p&gt;For this example, we will use anolis again. Obtain the anolis example data files, phelsuma.phy and phelsuma.csv, from &lt;a href=&quot;/arborCollections/docs_datasets.html&quot;&gt;Arbor datasets&lt;/a&gt;. Save those files somewhere on your computer.&lt;/p&gt;
-
-&lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Drag and drop the two anolis data files on the blue “Browse or drop files” box to load them into your browser.&lt;/p&gt;
-
-&lt;h2 id=&quot;selecting-the-collections-that-you-need&quot;&gt;Selecting the collections that you need&lt;/h2&gt;
-
-&lt;p&gt;For this example, everything required is in the “phylogeny” collection - so click on that eyeball and you will be able to access the functions that you need.&lt;/p&gt;
-
-&lt;p&gt;At this point, you should have the two anolis datafiles stored in Arbor and the “phylogeny” collection available.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen1.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;In this screenshot I am logged in but that is not necessary for this analysis.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;run-the-pgls-function&quot;&gt;Run the PGLS function&lt;/h2&gt;
-
-&lt;p&gt;Find the PGLS function in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen2.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We could use this function in a workflow, as we did in other Arbor tutorials. But for this tutorial let’s just run the function. To do that, click on the button that says “Setup and run.” In the resulting pop-up menu select the following options:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen3.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;We will be fitting the model SVL ~ awesomeness, so that SVL is the dependent and awesomeness the independent variable. “BM” means that we will fit a model that assumes that the residuals are distributed as expected under a Brownian motion model of evolution along the branches of the tree.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;run-your-analysis&quot;&gt;Run your analysis&lt;/h2&gt;
-
-&lt;p&gt;Click “&amp;gt; Run” to run the function. Select these options. If your analysis worked, you should see the following message:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen4.jpg&quot; alt=&quot;Screenshot&quot; /&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;see-your-results&quot;&gt;See your results&lt;/h2&gt;
-
-&lt;p&gt;Now move over to the “visualization” tab to see your results. The PGLS function creates three outputs: one table showing model coefficients like slopes and intercepts; one table showing a summary of model fit and parameter significance; and a plot.&lt;/p&gt;
-
-&lt;p&gt;To see the table results, choose “table” and choose one of the outputs, either “PGLS coefficients” or “PGLS modelfit_summary”. Update shows you the table. For example, the coefficients look like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen5.jpg&quot; alt=&quot;Screenshot&quot; /&gt;.&lt;/p&gt;
-
-&lt;p&gt;To see the plot, select “image” under “Select visualization”, and choose your  plot under “data” (it should be called PGLS pglsPlot). Click “update” to see this result:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen6.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;try-another-model&quot;&gt;Try another model&lt;/h2&gt;
-
-&lt;p&gt;If you want to use a different option for PGLS, you can choose that in the setup and run window. For example, we can try OU like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen7.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You will notice that the coefficients are slightly different, though the main conclusion is unchanged.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/PGLS/screen8.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>Continuous ancestral character states</title>
-    <link href="/arborCollections/tutorials/reconstructing-ancestral-characters-continuous/"/>
-    <updated>2015-07-13T00:00:00+02:00</updated>
-    <id>/arborCollections/tutorials/reconstructing-ancestral-characters-continuous</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;how-to-build-a-workflow-that-can-reconstruct-continuous-ancestral-character-states-on-nodes-in-your-tree-using-arbor&quot;&gt;How to build a workflow that can reconstruct continuous ancestral character states on nodes in your tree using Arbor&lt;/h2&gt;
-
-&lt;p&gt;In this exercise, we will learn how to build a workflow that can reconstruct ancestral character states in Arbor for a continuous character - that is, a character that can take on any continuous value, like body weight or limb length.&lt;/p&gt;
-
-&lt;p&gt;This exercise is quite similar to a tutorial for &lt;a href=&quot;/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/&quot;&gt;ancestral state estimation of discrete characters&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Imagine that you have a phylogenetic tree with information on some continuous character for some or all of the tips. You want to use mathematical methods to reconstruct the ancestral character states on the internal nodes of the tree under a Brownian motion model. Then, this is the exercise for you!&lt;/p&gt;
-
-&lt;h2 id=&quot;loading-example-data&quot;&gt;Loading example data&lt;/h2&gt;
-
-&lt;p&gt;For this example, we will use a dataset where the species included in the tree and character data do not match perfectly. Obtain the day gecko example data files, phelsuma.phy and phelsuma.csv, from &lt;a href=&quot;/arborCollections/docs_datasets.html&quot;&gt;Arbor datasets&lt;/a&gt;. Save those files somewhere on your computer.&lt;/p&gt;
-
-&lt;p&gt;If you look at these files, you will see that the tree includes a few unique species for which there is no character data. Arbor will recognize this and drop those species from the analysis.&lt;/p&gt;
-
-&lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Drag and drop the two phelsuma data files on the blue “Browse or drop files” box to load them into your browser.&lt;/p&gt;
-
-&lt;p&gt;Finally, &lt;a href=&quot;/arborCollections/2015/06/09/creating-a-new-collection/&quot;&gt;log in and create a personal collection&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;selecting-the-collections-that-you-need&quot;&gt;Selecting the collections that you need&lt;/h2&gt;
-
-&lt;p&gt;For this example, everything required is in the “phylogeny” collection - so click on that eyeball and you will be able to access the functions that you need.&lt;/p&gt;
-
-&lt;p&gt;At this point, you should have the two anolis datafiles stored in Arbor and the “phylogeny” collection available. You should be logged in and have write access to your own private collection.&lt;/p&gt;
-
-&lt;h2 id=&quot;set-up-your-workflow&quot;&gt;Set up your workflow&lt;/h2&gt;
-
-&lt;p&gt;The main function in Arbor for ancestral state reconstruction is aceAcbor in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/continuousACE/screen1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called ContinuousAncestralStatesWorkflow”. Make sure to choose “New workflow” and not “New analysis”!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/continuousACE/screen2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now create the connections you need to make the workflow run. First, click the “edit” button to start working on the workflow.&lt;/p&gt;
-
-&lt;p&gt;Now add the aceArbor function by selecting it under “Select analysis.” When you click “Add to workflow” then the function shoud appear in your workspace.&lt;/p&gt;
-
-&lt;p&gt;Now create the inputs and outputs of the function by clicking on the “spokes” coming out of aceArbor. You should also move the blocks around to make your workflow look nice.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/continuousACE/screen3.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;To see a more detailed walkthrough of making connections in your workflow, see the tutorial &lt;a href=&quot;/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/&quot;&gt;ancestral state estimation of discrete characters&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Once you have a workflow that looks the way you want, click save!&lt;/strong&gt; If you do not do this you will be running the workflow at the last point it was saved and not what is shown on the screen.&lt;/p&gt;
-
-&lt;h2 id=&quot;run-your-workflow&quot;&gt;Run your workflow&lt;/h2&gt;
-
-&lt;p&gt;Click “Setup and run” to run your workflow. Select these options:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/continuousACE/screen4.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;If your analysis worked, you should see the following message:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/continuousACE/screen6.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;see-your-results&quot;&gt;See your results&lt;/h2&gt;
-
-&lt;p&gt;Now move over to the “visualization” tab to see your results. First, select “image” under “Select visualization”, and choose your tree plot under “data” (it should be called ContinuousAncestralStatesWorkflow treePlot). Click “update” to see this result:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/continuousACE/screen7.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;To see the results in table format, choose “table” and “ContinuousAncestralStatesWorkflow res”. Update gives you this table, which shows the ancestral state estimates and CIs for each node in the tree:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/continuousACE/screen8.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>Discrete ancestral character states</title>
-    <link href="/arborCollections/tutorials/reconstructing-ancestral-characters-discrete/"/>
-    <updated>2015-06-10T00:00:00+02:00</updated>
-    <id>/arborCollections/tutorials/reconstructing-ancestral-characters-discrete</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;how-to-reconstruct-discrete-ancestral-character-states-on-nodes-in-your-tree-using-arbor&quot;&gt;How to reconstruct discrete ancestral character states on nodes in your tree using Arbor&lt;/h2&gt;
-
-&lt;p&gt;In this exercise, we will learn how to reconstruct ancestral character states in Arbor for a discrete character - that is, a character that can take on one of a number of discrete values. Examples might be lizards, “legs” versus “no legs” - this would be a two-state discrete character. Another example would be animal locomotion - “walks,” “swims,” or “flies.” This is an example of a three-state discrete character.&lt;/p&gt;
-
-&lt;p&gt;Imagine that you have a phylogenetic tree with information on some discrete character for some or all of the tips. You want to use mathematical methods to reconstruct the ancestral character states on the internal nodes of the tree. Then, this is the exercise for you!&lt;/p&gt;
-
-&lt;h2 id=&quot;loading-example-data&quot;&gt;Loading example data&lt;/h2&gt;
-
-&lt;p&gt;You will need the anolis example data files, anolis.phy and anolis.csv, from &lt;a href=&quot;/arborCollections/docs_datasets.html&quot;&gt;Arbor datasets&lt;/a&gt;. Save those files somewhere on your computer.&lt;/p&gt;
-
-&lt;p&gt;Now open the &lt;a href=&quot;https://arbor.kitware.com&quot;&gt;Arbor web app&lt;/a&gt;. Drag and drop the two anolis data files on the blue “Browse or drop files” box to load them into your browser.&lt;/p&gt;
-
-&lt;p&gt;Finally, &lt;a href=&quot;/arborCollections/2015/06/09/creating-a-new-collection/&quot;&gt;log in and create a personal collection&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;selecting-the-collections-that-you-need&quot;&gt;Selecting the collections that you need&lt;/h2&gt;
-
-&lt;p&gt;For this example, everything required is in the “phylogeny” collection - so click on that eyeball and you will be able to access the functions that you need.&lt;/p&gt;
-
-&lt;p&gt;At this point, you should have the two anolis datafiles stored in Arbor and the “phylogeny” collection available. You should be logged in and have write access to your own private collection.&lt;/p&gt;
-
-&lt;h2 id=&quot;set-up-your-workflow&quot;&gt;Set up your workflow&lt;/h2&gt;
-
-&lt;p&gt;The main function in Arbor for ancestral state reconstruction is aceAcbor in the “phylogeny” collection. Select that function now. You can view the source code for it by choosing “show script” (it is in R).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You will need to use this function in a workflow to calculate ancestral states and return the output. To start, create a new workflow called “DiscreteAncestralStatesWorkflow”. Make sure to choose “New workflow” and not “New analysis”!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now create the connections you need to make the workflow run. First, click the “edit” button to start working on the workflow.&lt;/p&gt;
-
-&lt;p&gt;Now add the aceArbor function by selecting it under “Select analysis.” When you click “Add to workflow” then the function shoud appear in your workspace.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen3.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now create the inputs and outputs of the function by clicking on the “spokes” coming out of aceArbor. You should also move the blocks around to make your workflow look nice.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/functionPopup.gif&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Final result:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen4.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Once you have a workflow that looks the way you want, click save!&lt;/strong&gt; If you do not do this you will be running the workflow at the last point it was saved and not what is shown on the screen.&lt;/p&gt;
-
-&lt;h2 id=&quot;run-your-workflow&quot;&gt;Run your workflow&lt;/h2&gt;
-
-&lt;p&gt;Click “Setup and run” to run your workflow. Select these options:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen5.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;If your analysis worked, you should see the following message:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen6.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;see-your-results&quot;&gt;See your results&lt;/h2&gt;
-
-&lt;p&gt;Now move over to the “visualization” tab to see your results. First, select “image” under “Select visualization”, and choose your tree plot under “data” (it should be called DiscreteAncestralStatesWorkflow treePlot). Click “update” to see this result:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen7.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;To see the results in table format, choose “table” and “DiscreteAncestralStatesWorkflow res”. Update gives you this table, which is presently useless. Sorry!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/discreteACE/screen8.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
     </content>
   </entry>

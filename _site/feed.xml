@@ -7,6 +7,116 @@
     <atom:link href="/arborCollections/arborCollections/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>multi2di</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Changes multifurcations to bifurcations by randomly resolving polytomies and adding zero-length branch lengths&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;phy: Phylogenetic tree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;phy.di: Tree with no polytomies&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/multi2di/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/multi2di/</guid>
+      </item>
+    
+      <item>
+        <title>makeFakeBranchLengths</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Makes fake branch lengths for phylogenetic tree using ape’s compute.brlen, method “Grafen”. These branch lengths are entirely made up and should only be used as a last resort!&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;phy: Phylogenetic tree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;blphy: Tree with Grafen branch lengths&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/makeFakeBranchLengths/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/makeFakeBranchLengths/</guid>
+      </item>
+    
+      <item>
+        <title>calculateKForAllCharacters</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Calculate phylogenetic signal for all characters in a matrix&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;traits: Trait data with species names&lt;/li&gt;
+  &lt;li&gt;phy: Phylogenetic tree with branch lengths&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;KCalc_out: single column table with K for each character&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/charactercalculate/kCalc/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/charactercalculate/kCalc/</guid>
+      </item>
+    
+      <item>
+        <title>hclustDendrogram</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Build tree from distance matrix using hierarchical clustering algorithm&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;dist: Pairwise distance matrix&lt;/li&gt;
+  &lt;li&gt;y_label: y label for plot&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;plotClust: plot of dendogram&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/treebuild/hclustDendrogram/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treebuild/hclustDendrogram/</guid>
+      </item>
+    
+      <item>
         <title>graftTreeOntoNamedNode</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -204,111 +314,6 @@
         <pubDate>Thu, 03 Mar 2016 00:00:00 +0100</pubDate>
         <link>/arborCollections/arborCollections/tutorials/arborapps/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/arborapps/</guid>
-      </item>
-    
-      <item>
-        <title>appendColumnsAccoringToParameterValue</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;inTable1: first input table to be joined&lt;/li&gt;
-  &lt;li&gt;inTable2: second table to be joined&lt;/li&gt;
-  &lt;li&gt;parameterTable: single row, single column table containing the field name to use for a join&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;outTable: table containing columns from both input tables&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Thu, 03 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/base/matrix/appendColumnsAccordingToParameterValue/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/matrix/appendColumnsAccordingToParameterValue/</guid>
-      </item>
-    
-      <item>
-        <title>aggregateTableByMax</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Roll up the values of a table’s rows according to discrete values in a selected “groupBy” column. The number of output rows in the table will be equal to the number of discrete values in the groupBy column.&lt;/p&gt;
-
-&lt;p&gt;This is the MAX version of aggregation, so the values in the other columns will be the max value encountered out of all rows which belonged to this group from the input table.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;table: input table of continuous values&lt;/li&gt;
-  &lt;li&gt;column: column name used as the “group by” control&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;output: output table&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Thu, 03 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/base/matrix/aggregateTableByMax/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/matrix/aggregateTableByMax/</guid>
-      </item>
-    
-      <item>
-        <title>aggregateTableByColumnInParameterTable</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Roll up the values of a table’s rows according to discrete values in a selected “groupBy” column that comes from a table. The number of output rows in the table will be equal to the number of discrete values in the groupBy column.  The values in the other columns will be the average of the values of all rows which belonged to this group from the input table.   Therefore, this is a simple aggregation by one column.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;table: input table of continuous values&lt;/li&gt;
-  &lt;li&gt;column: column name used as the “group by” control is in this single row, single column table&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;output: output table&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Thu, 03 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/base/matrix/aggregateTableByColumnInParameterTable/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/matrix/aggregateTableByColumnInParameterTable/</guid>
-      </item>
-    
-      <item>
-        <title>aggregateTableByAverage</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Roll up the values of a table’s rows according to discrete values in a selected “groupBy” column. The number of output rows in the table will be equal to the number of discrete values in the groupBy column.  The values in the other columns will be the average of the values of all rows which belonged to this group from the input table.   Therefore, this is a simple aggregation by one column.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;table: input table of continuous values&lt;/li&gt;
-  &lt;li&gt;column: column name used as the “group by” control&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;output: output table&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Thu, 03 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/base/matrix/aggregateTableByAverage/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/matrix/aggregateTableByAverage/</guid>
       </item>
     
   </channel>
