@@ -23,7 +23,7 @@
         }
     ],
     "mode": "python",
-    "name": "GraftTreeOntoNamedNode-v2",
+    "name": "Graft Tree Onto Named Node",
     "outputs": [
         {
             "format": "nested",
