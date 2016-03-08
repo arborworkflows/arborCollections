@@ -7,6 +7,33 @@
     <atom:link href="/arborCollections/arborCollections/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>extractSpeciesNamesFromMatrix</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Identify the column that contains species names and returns a table with only that column. Looks for the first of the following column names: ‘Scientific Name’,’species’,’Species’,’scientific name’,’name’&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;table: A data matrix including species names&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;outtable: Table with one column, the species names.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/base/matrix/extractSpeciesNamesFromATraitMatrix/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/matrix/extractSpeciesNamesFromATraitMatrix/</guid>
+      </item>
+    
+      <item>
         <title>Arbor apps</title>
         <description>&lt;h2 id=&quot;what-are-arbor-apps&quot;&gt;What are Arbor apps?&lt;/h2&gt;
 
@@ -58,6 +85,31 @@
         <pubDate>Thu, 03 Mar 2016 00:00:00 +0100</pubDate>
         <link>/arborCollections/arborCollections/tutorials/arborapps/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/arborapps/</guid>
+      </item>
+    
+      <item>
+        <title>appendColumnsAccoringToParameterValue</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;inTable1: first input table to be joined&lt;/li&gt;
+  &lt;li&gt;inTable2: second table to be joined&lt;/li&gt;
+  &lt;li&gt;parameterTable: single row, single column table containing the field name to use for a join&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;outTable: table containing columns from both input tables&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Thu, 03 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/base/matrix/appendColumnsAccordingToParameterValue/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/matrix/appendColumnsAccordingToParameterValue/</guid>
       </item>
     
       <item>
@@ -260,65 +312,6 @@ This function is only needed for certain workflows where one step returns a Nexu
         <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/convertNexusToApePhylo/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/convertNexusToApePhylo/</guid>
-      </item>
-    
-      <item>
-        <title>consistencyIndexAllChars</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Calculate consistency index across all characters in a data matrix.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;tree: An input phylogenetic tree&lt;/li&gt;
-  &lt;li&gt;table: A data matrix&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;result: A table with the consistency index for each character (column) in the original data matrix.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/charactercalculate/consistencyIndexAllChars/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/charactercalculate/consistencyIndexAllChars/</guid>
-      </item>
-    
-      <item>
-        <title>compareTrees</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Compares the topology of two phylogenetic trees using the function phylo.diff from the R package distory.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;t1: An input phylogenetic tree&lt;/li&gt;
-  &lt;li&gt;t2: Another input phylogenetic tree&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;treeComparePlot: A plot showing all non-matching branches between the two trees.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;p&gt;Chakerian, J. and Holmes, S. P. Computational Tools for Evaluating Phylogenetic and Heirarchical
-Clustering Trees. arXiv:1006.1015v1.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/treecalculate/compareTrees/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treecalculate/compareTrees/</guid>
       </item>
     
   </channel>
