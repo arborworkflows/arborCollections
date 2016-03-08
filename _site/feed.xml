@@ -225,6 +225,34 @@ td &amp;lt;- make.treedata(anolis$phy, anolis$dat, name_column=1)&lt;/p&gt;
       </item>
     
       <item>
+        <title>extractGenusFromTreeTipNames</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Extracts and returns just the genus name from all of the tip names in the tree. Tree tips must be in the format of genus%species, where % is some special character like space or _ that is specified to the function.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Input tree: An input phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;Split character: The special character that separates genus and species in the species names. For example, this would be _ for Anolis_sagrei.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Genus names: A table with a single column, the genus names.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/extractGenusFromTreeTipNames/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/extractGenusFromTreeTipNames/</guid>
+      </item>
+    
+      <item>
         <title>cophylo</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -284,34 +312,6 @@ of species in the tree&lt;/p&gt;
         <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/copheneticDistanceMatrixFromTree/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/copheneticDistanceMatrixFromTree/</guid>
-      </item>
-    
-      <item>
-        <title>convertNexusToApePhylo</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Convert a nexus string to an ape phylo object. NOTE: not needed for reading in trees, Arbor can do this automatically.
-This function is only needed for certain workflows where one step returns a Nexus string.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;nexusTree: An input phylogenetic tree in nexus format.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;tree: A tree in ape phylo format.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Wed, 02 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/convertNexusToApePhylo/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/convertNexusToApePhylo/</guid>
       </item>
     
   </channel>

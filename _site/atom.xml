@@ -7,7 +7,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-03-08T09:58:49+01:00</updated>
+  <updated>2016-03-08T10:05:54+01:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -283,6 +283,42 @@ td &amp;lt;- make.treedata(anolis$phy, anolis$dat, name_column=1)&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;tree_matched: Tree with tip labels that match data names exactly.&lt;/li&gt;
   &lt;li&gt;table_matched: Table with row names that match tree tip labels exactly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>extractGenusFromTreeTipNames</title>
+    <link href="/arborCollections/collections/phylogeny/treemanipulate/extractGenusFromTreeTipNames/"/>
+    <updated>2016-03-02T00:00:00+01:00</updated>
+    <id>/arborCollections/collections/phylogeny/treemanipulate/extractGenusFromTreeTipNames</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Extracts and returns just the genus name from all of the tip names in the tree. Tree tips must be in the format of genus%species, where % is some special character like space or _ that is specified to the function.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Input tree: An input phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;Split character: The special character that separates genus and species in the species names. For example, this would be _ for Anolis_sagrei.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Genus names: A table with a single column, the genus names.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
@@ -1029,25 +1065,6 @@ Name the outputColumn whatever you want.&lt;/p&gt;
       &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/phylogenetic-signal/&quot; /&gt;
 
 &lt;p&gt;You should be automatically forwarded to the Arbor app. If not, click &lt;a href=&quot;https://arbor.kitware.com/phylogenetic-signal/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>Ancestral state reconstruction</title>
-    <link href="/arborCollections/arborapps/ancestral-state/"/>
-    <updated>2015-06-10T00:00:00+02:00</updated>
-    <id>/arborCollections/arborapps/ancestral-state</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      &lt;img src=&quot;/arborCollections/images/branch-1600x800.jpg&quot;&gt;&lt;br/&gt;
-      &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://arbor.kitware.com/ancestral-state/&quot; /&gt;
-
-&lt;p&gt;You should be automatically forwarded to the Arbor app. If not, click &lt;a href=&quot;https://arbor.kitware.com/ancestral-state/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
     </content>
   </entry>
