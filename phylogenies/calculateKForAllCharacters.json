@@ -14,7 +14,7 @@
         }
     ],
     "mode": "r",
-    "name": "kembelKcalc",
+    "name": "calculateKForAllCharacters",
     "outputs": [
         {
             "description": "Table containing the K calculations for each trait",
