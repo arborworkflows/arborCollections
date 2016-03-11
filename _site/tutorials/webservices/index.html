@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web services • Arbor</title>
+    <meta name="description" content="What are web services?
+
+">
+    <meta name="keywords" content="">
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="Web services">
+	<meta name="twitter:description" content="What are web services?
+
+">
+	<meta name="twitter:site" content="@lukejharmon">
+	<meta name="twitter:creator" content="@lukejharmon">
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="/arborCollections/images/120x120.gif">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Web services">
+	<meta property="og:description" content="What are web services?
+
+">
+	<meta property="og:url" content="/arborCollections/tutorials/webservices/">
+	<meta property="og:site_name" content="Arbor">
+
+    <link rel="canonical" href="/arborCollections/tutorials/webservices/">
+
+    <link href="/arborCollections/atom.xml" type="application/atom+xml" rel="alternate" title="Arbor Atom Feed">
+    <link href="/arborCollections/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="/arborCollections/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="/arborCollections/js/vendor/html5shiv.min.js"></script>
+      <script src="/arborCollections/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="/arborCollections/" class="site-title">Arbor</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Arbor</a></li>
+	
+    
+    <li><a href="/arborCollections/usearbor/" >Use Arbor</a></li>
+  
+    
+    <li><a href="/arborCollections/tutorials/" >Tutorials</a></li>
+  
+    
+    <li><a href="/arborCollections/documentation/" >Documentation</a></li>
+  
+    
+    <li><a href="/arborCollections/faq/" >FAQ</a></li>
+  
+    
+    <li><a href="/arborCollections/team/" >Contact</a></li>
+  
+</ul>
+
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Arbor <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="/arborCollections/usearbor/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Use Arbor</div>
+        <p class="excerpt">Run Arbor over the web or install it yourself</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/tutorials/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Tutorials</div>
+        <p class="excerpt">How to use Arbor</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/documentation/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Documentation</div>
+        <p class="excerpt">Full documentation for functions and workflows</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/faq/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">FAQ</div>
+        <p class="excerpt">Frequently asked questions</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/team/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Contact</div>
+        <p class="excerpt">Contact us</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		
+		
+  <nav class="breadcrumbs">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="/arborCollections" itemprop="url">
+        <span itemprop="title">Home</span>
+      </a> ›
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="/arborCollections/tutorials/" itemprop="url">
+        <span itemprop="title">Tutorials</span>
+      </a>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+
+		<div class="page-title">
+			<h1>Web services</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				<h2 id="what-are-web-services">What are web services?</h2>
+
+<p>Web services are protocols for computers to exchange information over the web (see <a href="https://en.wikipedia.org/wiki/Web_service">wikipedia: web service</a>), typically via an <a href="https://en.wikipedia.org/wiki/Application_programming_interface">API</a>. In biology, web services are becoming more and more common. You can obtain, for example, phylogenetic trees from <a href="http://opentreeoflife.org/">Open Tree of Life</a>, geographic occurrences from <a href="http://www.gbif.org/">GBIF</a>, and trait data from <a href="http://eol.org/">Encyclopedia of Life</a>, all using web services.</p>
+
+<p>We have a number of pre-made functions in Arbor that can obtain data through web services. These functions can be included in workflows that make it easy to combine your data with data obtained over the web and carry out analyses. In this tutorial we will illustrate one of these applications, starting with a list of species and obtaining a phylogenetic tree from Open Tree of Life.</p>
+
+<h2 id="example-from-a-list-of-species-to-a-phylogenetic-tree">Example: from a list of species to a phylogenetic tree</h2>
+
+<p>We are going to start with a list of species. You can obtain this list as a csv file <a href="/arborCollections/assets/mammal_species_list.csv">here</a>; download and save this file somewhere to your computer.</p>
+
+<p>Now, open an Arbor instance (e.g. <a href="https://arbor.kitware.com/#">arbor.kitware.com</a>). You will now need to load in your species list. You can do this by dragging the file that you just downloaded onto the “Browse or drop files” box:</p>
+
+<p><img src="/arborCollections/assets/webServices/webserv-screen1.png" alt="screen1" /></p>
+
+<p>(you can also see our tutorial on <a href="/arborCollections/tutorials/using-the-arbor-webapp/">using the Arbor webapp</a>) for more information on loading data into Arbor)</p>
+
+<p>We will be building a workflow to do this analysis. Note that you need to be logged in and have write access to a collection to make the next parts work!</p>
+
+<p>Click over to the “Analysis” tab, and create a new workflow. To do that, type the name of the new workflow it the box under “Create new analysis.” Let’s call our workflow “getOTLTreeAndPlot.”</p>
+
+<p><img src="/arborCollections/assets/webServices/webserv-screen2.png" alt="screen2" /></p>
+
+<p>Once you have created the workflow, you should be able to view and edit (but right now it is just a blank white space!)</p>
+
+<p><img src="/arborCollections/assets/webServices/webserv-screen3.png" alt="screen3" /></p>
+
+<p>The first step in this workflow is to match the species names with the names in the Open Tree of Life Taxonomy (OTT). To do this, we will use a function in the “OpenTree” collection called “Lookup Names Using OpenTree Taxonomy.” Add this function to your workflow using the “+ add to workflow” button.</p>
+
+<p><img src="/arborCollections/assets/webServices/webserv-screen4.png" alt="screen4" /></p>
+
+<p>We can click the tab on the left side of that new workflow step to indicate that the user will send a data table directly to this function. So our workflow is now:</p>
+
+<p><img src="/arborCollections/assets/webServices/webserv-screen5.png" alt="screen5" /></p>
+
+<p>Now we need to pull out an “induced subtree” from open tree of life using the OTT ids that we obtained in the previous step. To do that, add a new function to your workflow, again from the OpenTree collection: “Return the Open Tree Subtree from a node list.” Add and connect that next step to your workflow:</p>
+
+<p><img src="/arborCollections/assets/webServices/webserv-screen6.png" alt="screen6" /></p>
+
+<p>Now we just need to plot our resulting tree. You can use a function from the “Phylogenies” collection called “PlotTreeWithApe.” Add that function, connect it to your workflow, and specify that the last output be sent to the user:</p>
+
+<p><img src="/arborCollections/assets/webServices/webserv-screen7.png" alt="screen7" /></p>
+
+<p>Now just click “Setup and run.” In the box that appears, choose your input file with the list of mammal species names.</p>
+
+<p><img src="/arborCollections/assets/webServices/webserv-screen8.png" alt="screen8" /></p>
+
+<p>The workflow will run for a while:</p>
+
+<p><img src="/arborCollections/assets/webServices/webserv-screen9.png" alt="screen9" /></p>
+
+<p>And then finish:</p>
+
+<p><img src="/arborCollections/assets/webServices/webserv-screen10.png" alt="screen10" /></p>
+
+<p>You can then change to the “visualization” tab, and select the output from your workflow.</p>
+
+<p><img src="/arborCollections/assets/webServices/webserv-screen11.png" alt="screen11" /></p>
+
+<p>We then see the final result:</p>
+
+<p><img src="/arborCollections/assets/webServices/webserv-screen12.png" alt="screen12" /></p>
+
+<p>This is a phylogenetic tree pulled from the Open Tree of Life synthesis that includes all of the species in the table that you supplied.</p>
+
+				<hr />
+				<footer class="page-footer">
+					
+
+<div class="author-image">
+	<img src="/arborCollections/images/bio-photo.jpg" alt="Luke Harmon">
+</div><!-- ./author-image -->
+<div class="author-content">
+	<h3 class="author-name" >Written by <a href="http://lukejharmon.github.io" itemprop="author">Luke Harmon</a></h3>
+	<p class="author-bio">Associate professor, UIdaho.</p>
+</div><!-- ./author-content -->
+					<div class="inline-btn">
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Web%20services&amp;url=/arborCollections/tutorials/webservices/&amp;via=lukejharmon" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=/arborCollections/tutorials/webservices/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=/arborCollections/tutorials/webservices/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+</div><!-- /.share-this -->
+					<div class="page-meta">
+	<p>Updated <time datetime="2016-03-11T00:00:00Z" itemprop="datePublished">March 11, 2016</time></p>
+</div><!-- /.page-meta -->
+				</footer><!-- /.footer -->
+				<aside>
+					<hr />
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	var disqus_shortname = 'arborworkflows';
+
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		
+	</article><!-- ./wrap -->
+</div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+			<li><a href="/arborCollections/" >Home</a></li>
+		
+      
+			<li><a href="/arborCollections/getting-started/" >Getting Started</a></li>
+		
+      
+			<li><a href="/arborCollections/about/" >About</a></li>
+		
+      
+			<li><a href="/arborCollections/team/" >Team</a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2016 <a href="/arborCollections/">Arbor</a> powered by <a href="http://jekyllrb.com">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/">Skinny Bones</a>.</p>
+</footer>
+
+    </div>
+
+    <script src="/arborCollections/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/arborCollections/js/main.js"></script>
+
+  </body>
+</html>

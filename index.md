@@ -24,7 +24,7 @@ image:
 <div class="tile">
   <h2 class="post-title">Web services</h2>
   <p class="post-excerpt">Real-time data</p>
-  <a href="{{ site.baseurl }}/tutorials/web-services/" class="btn">More</a>
+  <a href="{{ site.baseurl }}/tutorials/webservices/" class="btn">More</a>
 </div><!-- /.tile -->
 
 <div class="tile">

@@ -7,7 +7,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-03-08T11:20:47+01:00</updated>
+  <updated>2016-03-11T14:44:16+01:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -15,6 +15,85 @@
     <email>lukeh@uidaho.edu</email>
   </author>
 
+  
+  <entry>
+    <title>Web services</title>
+    <link href="/arborCollections/tutorials/webservices/"/>
+    <updated>2016-03-11T00:00:00+01:00</updated>
+    <id>/arborCollections/tutorials/webservices</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;what-are-web-services&quot;&gt;What are web services?&lt;/h2&gt;
+
+&lt;p&gt;Web services are protocols for computers to exchange information over the web (see &lt;a href=&quot;https://en.wikipedia.org/wiki/Web_service&quot;&gt;wikipedia: web service&lt;/a&gt;), typically via an &lt;a href=&quot;https://en.wikipedia.org/wiki/Application_programming_interface&quot;&gt;API&lt;/a&gt;. In biology, web services are becoming more and more common. You can obtain, for example, phylogenetic trees from &lt;a href=&quot;http://opentreeoflife.org/&quot;&gt;Open Tree of Life&lt;/a&gt;, geographic occurrences from &lt;a href=&quot;http://www.gbif.org/&quot;&gt;GBIF&lt;/a&gt;, and trait data from &lt;a href=&quot;http://eol.org/&quot;&gt;Encyclopedia of Life&lt;/a&gt;, all using web services.&lt;/p&gt;
+
+&lt;p&gt;We have a number of pre-made functions in Arbor that can obtain data through web services. These functions can be included in workflows that make it easy to combine your data with data obtained over the web and carry out analyses. In this tutorial we will illustrate one of these applications, starting with a list of species and obtaining a phylogenetic tree from Open Tree of Life.&lt;/p&gt;
+
+&lt;h2 id=&quot;example-from-a-list-of-species-to-a-phylogenetic-tree&quot;&gt;Example: from a list of species to a phylogenetic tree&lt;/h2&gt;
+
+&lt;p&gt;We are going to start with a list of species. You can obtain this list as a csv file &lt;a href=&quot;/arborCollections/assets/mammal_species_list.csv&quot;&gt;here&lt;/a&gt;; download and save this file somewhere to your computer.&lt;/p&gt;
+
+&lt;p&gt;Now, open an Arbor instance (e.g. &lt;a href=&quot;https://arbor.kitware.com/#&quot;&gt;arbor.kitware.com&lt;/a&gt;). You will now need to load in your species list. You can do this by dragging the file that you just downloaded onto the “Browse or drop files” box:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen1.png&quot; alt=&quot;screen1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;(you can also see our tutorial on &lt;a href=&quot;/arborCollections/tutorials/using-the-arbor-webapp/&quot;&gt;using the Arbor webapp&lt;/a&gt;) for more information on loading data into Arbor)&lt;/p&gt;
+
+&lt;p&gt;We will be building a workflow to do this analysis. Note that you need to be logged in and have write access to a collection to make the next parts work!&lt;/p&gt;
+
+&lt;p&gt;Click over to the “Analysis” tab, and create a new workflow. To do that, type the name of the new workflow it the box under “Create new analysis.” Let’s call our workflow “getOTLTreeAndPlot.”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen2.png&quot; alt=&quot;screen2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have created the workflow, you should be able to view and edit (but right now it is just a blank white space!)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen3.png&quot; alt=&quot;screen3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The first step in this workflow is to match the species names with the names in the Open Tree of Life Taxonomy (OTT). To do this, we will use a function in the “OpenTree” collection called “Lookup Names Using OpenTree Taxonomy.” Add this function to your workflow using the “+ add to workflow” button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen4.png&quot; alt=&quot;screen4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can click the tab on the left side of that new workflow step to indicate that the user will send a data table directly to this function. So our workflow is now:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen5.png&quot; alt=&quot;screen5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we need to pull out an “induced subtree” from open tree of life using the OTT ids that we obtained in the previous step. To do that, add a new function to your workflow, again from the OpenTree collection: “Return the Open Tree Subtree from a node list.” Add and connect that next step to your workflow:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen6.png&quot; alt=&quot;screen6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we just need to plot our resulting tree. You can use a function from the “Phylogenies” collection called “PlotTreeWithApe.” Add that function, connect it to your workflow, and specify that the last output be sent to the user:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen7.png&quot; alt=&quot;screen7&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now just click “Setup and run.” In the box that appears, choose your input file with the list of mammal species names.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen8.png&quot; alt=&quot;screen8&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The workflow will run for a while:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen9.png&quot; alt=&quot;screen9&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And then finish:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen10.png&quot; alt=&quot;screen10&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can then change to the “visualization” tab, and select the output from your workflow.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen11.png&quot; alt=&quot;screen11&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We then see the final result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen12.png&quot; alt=&quot;screen12&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a phylogenetic tree pulled from the Open Tree of Life synthesis that includes all of the species in the table that you supplied.&lt;/p&gt;
+
+    </content>
+  </entry>
   
   <entry>
     <title>multi2di</title>
@@ -930,25 +1009,6 @@ plot(ladderize(sal$fam,right=FALSE), cex=0.5, type=”fan”, label.offset=2.5, 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
 &lt;p&gt;Eastman JM, LJ Harmon, and DC Tank. 2013. Congruification: support for time scaling large phylogenetic trees. Methods in Ecology and Evolution, in press.&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>Megatrees</title>
-    <link href="/arborCollections/tutorials/megatrees/"/>
-    <updated>2015-10-07T00:00:00+02:00</updated>
-    <id>/arborCollections/tutorials/megatrees</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;megatrees&quot;&gt;Megatrees&lt;/h2&gt;
-
-&lt;p&gt;TBA&lt;/p&gt;
 
     </content>
   </entry>

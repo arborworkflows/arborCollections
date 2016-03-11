@@ -7,6 +7,77 @@
     <atom:link href="/arborCollections/arborCollections/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Web services</title>
+        <description>&lt;h2 id=&quot;what-are-web-services&quot;&gt;What are web services?&lt;/h2&gt;
+
+&lt;p&gt;Web services are protocols for computers to exchange information over the web (see &lt;a href=&quot;https://en.wikipedia.org/wiki/Web_service&quot;&gt;wikipedia: web service&lt;/a&gt;), typically via an &lt;a href=&quot;https://en.wikipedia.org/wiki/Application_programming_interface&quot;&gt;API&lt;/a&gt;. In biology, web services are becoming more and more common. You can obtain, for example, phylogenetic trees from &lt;a href=&quot;http://opentreeoflife.org/&quot;&gt;Open Tree of Life&lt;/a&gt;, geographic occurrences from &lt;a href=&quot;http://www.gbif.org/&quot;&gt;GBIF&lt;/a&gt;, and trait data from &lt;a href=&quot;http://eol.org/&quot;&gt;Encyclopedia of Life&lt;/a&gt;, all using web services.&lt;/p&gt;
+
+&lt;p&gt;We have a number of pre-made functions in Arbor that can obtain data through web services. These functions can be included in workflows that make it easy to combine your data with data obtained over the web and carry out analyses. In this tutorial we will illustrate one of these applications, starting with a list of species and obtaining a phylogenetic tree from Open Tree of Life.&lt;/p&gt;
+
+&lt;h2 id=&quot;example-from-a-list-of-species-to-a-phylogenetic-tree&quot;&gt;Example: from a list of species to a phylogenetic tree&lt;/h2&gt;
+
+&lt;p&gt;We are going to start with a list of species. You can obtain this list as a csv file &lt;a href=&quot;/arborCollections/assets/mammal_species_list.csv&quot;&gt;here&lt;/a&gt;; download and save this file somewhere to your computer.&lt;/p&gt;
+
+&lt;p&gt;Now, open an Arbor instance (e.g. &lt;a href=&quot;https://arbor.kitware.com/#&quot;&gt;arbor.kitware.com&lt;/a&gt;). You will now need to load in your species list. You can do this by dragging the file that you just downloaded onto the “Browse or drop files” box:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen1.png&quot; alt=&quot;screen1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;(you can also see our tutorial on &lt;a href=&quot;/arborCollections/tutorials/using-the-arbor-webapp/&quot;&gt;using the Arbor webapp&lt;/a&gt;) for more information on loading data into Arbor)&lt;/p&gt;
+
+&lt;p&gt;We will be building a workflow to do this analysis. Note that you need to be logged in and have write access to a collection to make the next parts work!&lt;/p&gt;
+
+&lt;p&gt;Click over to the “Analysis” tab, and create a new workflow. To do that, type the name of the new workflow it the box under “Create new analysis.” Let’s call our workflow “getOTLTreeAndPlot.”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen2.png&quot; alt=&quot;screen2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have created the workflow, you should be able to view and edit (but right now it is just a blank white space!)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen3.png&quot; alt=&quot;screen3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The first step in this workflow is to match the species names with the names in the Open Tree of Life Taxonomy (OTT). To do this, we will use a function in the “OpenTree” collection called “Lookup Names Using OpenTree Taxonomy.” Add this function to your workflow using the “+ add to workflow” button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen4.png&quot; alt=&quot;screen4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can click the tab on the left side of that new workflow step to indicate that the user will send a data table directly to this function. So our workflow is now:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen5.png&quot; alt=&quot;screen5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we need to pull out an “induced subtree” from open tree of life using the OTT ids that we obtained in the previous step. To do that, add a new function to your workflow, again from the OpenTree collection: “Return the Open Tree Subtree from a node list.” Add and connect that next step to your workflow:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen6.png&quot; alt=&quot;screen6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we just need to plot our resulting tree. You can use a function from the “Phylogenies” collection called “PlotTreeWithApe.” Add that function, connect it to your workflow, and specify that the last output be sent to the user:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen7.png&quot; alt=&quot;screen7&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now just click “Setup and run.” In the box that appears, choose your input file with the list of mammal species names.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen8.png&quot; alt=&quot;screen8&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The workflow will run for a while:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen9.png&quot; alt=&quot;screen9&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And then finish:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen10.png&quot; alt=&quot;screen10&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can then change to the “visualization” tab, and select the output from your workflow.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen11.png&quot; alt=&quot;screen11&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We then see the final result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen12.png&quot; alt=&quot;screen12&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a phylogenetic tree pulled from the Open Tree of Life synthesis that includes all of the species in the table that you supplied.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 11 Mar 2016 00:00:00 +0100</pubDate>
+        <link>/arborCollections/arborCollections/tutorials/webservices/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/webservices/</guid>
+      </item>
+    
+      <item>
         <title>multi2di</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -260,60 +331,6 @@
         <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
         <link>/arborCollections/arborCollections/collections/base/matrix/extractSpeciesNamesFromATraitMatrix/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/matrix/extractSpeciesNamesFromATraitMatrix/</guid>
-      </item>
-    
-      <item>
-        <title>Arbor apps</title>
-        <description>&lt;h2 id=&quot;what-are-arbor-apps&quot;&gt;What are Arbor apps?&lt;/h2&gt;
-
-&lt;p&gt;As a part of the Arbor project, we are developing a few simple-to-use web apps that allow users to quickly and easily carry out a few of the most common comparative methods. These pages present a drag-and-drop interface to test for phylogenetic signal, reconstruct ancestral character states, test for character correlations, and other common analyses.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-can-i-do-in-arbor-apps&quot;&gt;What can I do in Arbor apps?&lt;/h2&gt;
-
-&lt;p&gt;To use an Arbor app, you can navigate to our &lt;a href=&quot;/arborCollections/arborapps/&quot;&gt;app index&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;walkthrough---phylogenetic-signal-arbor-app&quot;&gt;Walkthrough - Phylogenetic Signal Arbor app&lt;/h2&gt;
-
-&lt;p&gt;Let’s walk through one example analysis in an Arbor app. We will work on testing for phylogenetic signal. I will use two data files for &lt;em&gt;Anolis&lt;/em&gt; lizards, linked below.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/arborCollections/assets/anolis.phy&quot;&gt;anolis.phy&lt;/a&gt;: a phylogenetic tree of anoles&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/arborCollections/assets/anolis.csv&quot;&gt;anolis.csv&lt;/a&gt;: character data for anoles (comma-separated format)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Download these two files, and locate them on your computer’s file browser.&lt;/p&gt;
-
-&lt;p&gt;Now, navigate to the Arbor app for phylogenetic signal. You should see something like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Next, you need to input your datafiles into the website. You can do that by dragging and dropping the files onto the blue box that says “browse or drop files here.”&lt;/p&gt;
-
-&lt;p&gt;When you hover over the correct place, the box will turn green. Arbor can automatically detect whether you have uploaded a tree or a data file.&lt;/p&gt;
-
-&lt;p&gt;After you upload both files, you should see them listed in the appropriate place, like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_3.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You might also notice that you can see a preview of your input table at the bottom of the page:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_4.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now you need to specify a column that will define the trait that you want to use for the phylogenetic signal test. Right now, this test can only handle one trait at a time! Let’s choose “SVL.” Grab that column name from the left hand side and drag and drop it onto the box that says “Drag column of interest here.” You should end up with this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_5.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;No just press “Go!” and your analysis will run. You should get back a table of results, like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/easymode_6.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The last table shows the results of the analysis. The first two columns are the likelihoods of a Brownian motion model and Brownian motion + lambda. The third and fourth represent a chi-squared test comparing a “full” phylogenetic signal model (Brownian motion) with a model where signal is less than Brownian motion (lambda). P &amp;lt; 0.05 means that you can reject BM in favor of the lambda model. The last two columns show AICC scores for these two models. This output is formatted in a very confusing way, we are going to fix it!&lt;/p&gt;
-</description>
-        <pubDate>Thu, 03 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/tutorials/arborapps/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/arborapps/</guid>
       </item>
     
   </channel>
