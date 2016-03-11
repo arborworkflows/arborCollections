@@ -1,0 +1,140 @@
+{
+    "connections": [
+        {
+            "input": "nameTable",
+            "input_step": "Lookup names using OpenTree Taxonomy",
+            "name": "nameTable"
+        },
+        {
+            "input": "table",
+            "input_step": "Return the OpenTree subtree from a node list",
+            "output": "outTable",
+            "output_step": "Lookup names using OpenTree Taxonomy"
+        },
+        {
+            "input": "tree",
+            "input_step": "PlotTreeWithAPE",
+            "output": "tree",
+            "output_step": "Return the OpenTree subtree from a node list"
+        },
+        {
+            "name": "treePlot",
+            "output": "treePlot",
+            "output_step": "PlotTreeWithAPE"
+        }
+    ],
+    "description": "",
+    "inputs": [
+        {
+            "description": "single column table of scientific names",
+            "format": "rows",
+            "id": "nameTable",
+            "name": "nameTable",
+            "type": "table",
+            "x": 59,
+            "y": 143
+        }
+    ],
+    "mode": "workflow",
+    "name": "getOTLTreeAndPlot",
+    "outputs": [
+        {
+            "description": "R-based plot of a tree",
+            "format": "png.base64",
+            "id": "treePlot",
+            "name": "treePlot",
+            "type": "image",
+            "x": 1129,
+            "y": 147
+        }
+    ],
+    "steps": [
+        {
+            "girderId": "56c1f856e41f69033b110468",
+            "modified": "2016-02-16 18:17:29.647000",
+            "name": "Lookup names using OpenTree Taxonomy",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "description": "single column table of scientific names",
+                        "format": "rows",
+                        "name": "nameTable",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Lookup names using OpenTree Taxonomy",
+                "outputs": [
+                    {
+                        "description": "three column table of original names, OpenTree TNRS names, and OpenTree taxonomy IDs",
+                        "format": "rows",
+                        "name": "outTable",
+                        "type": "table"
+                    }
+                ],
+                "script": "#\n# Lookup names using OpenTree Taxonomy\n#\n# description: this analysis expects a single-column input table consisting of scientific names.\n# The analysis consults the OpenTree API and extracts canonical names from the OpenTree taxonomy.\n# The output table consists of three-columns, with the OpenTree name and taxonomy ID columns added to the input. \n#\n# Note:  OpenTree V2 match_names call is being used (development server currently)\n# \n# input: nameTable - single column of scientific names (table:rows format)\n# output: outTable - three column table with OpenTree name and ID appended.\n#\n# revision history:\n# 09/22/14 - CRL modified to guarantee single return only (some anoles returned multiple OttIDs)\n\n\nimport requests\n\n# look at the rows of the input table\nmatrixEntries = nameTable['rows']\n\n# find out the title of the columns in this matrix. Assuming this is a single column table\ncolumnHeader = nameTable['fields'][0]\n\noutRows = []\ncount = 0\ninputNameList = []\n\nfor matrixEntry in matrixEntries:\n    # build an OTL query to return the matching ottId we want to use to request taxa \n    inputNameList.append(matrixEntry[columnHeader])\n    \n# pack the names into a payload and perform the OpenTree lookup using v2\npayload = {'names': inputNameList}\nresp = requests.post('https://api.opentreeoflife.org/v2/tnrs/match_names',data=payload)\n\nreturnedrecs = resp.json()['results']\n# loop through the names queried and returned\nfor index in range(len(returnedrecs)):\n    thisresult = returnedrecs[index]\n    #for j in range(len(thisresult['matches'])):\n    # force return of the first result for each original name\n    candidate = thisresult['matches'][0]\n    outrow = {}\n    outrow[columnHeader] = candidate['search_string']\n    outrow['ottName'] = candidate['ot:ottTaxonName']\n    outrow['ottId'] = candidate['ot:ottId']\n    outRows.append(outrow)\n\n# build the headers for the output table\naugmentedColumnHeaders = [columnHeader, 'ottName','ottId']\n\n# setup the output in table:rows format with the headers explicitly listed\noutTable = {'fields': augmentedColumnHeaders,\n            'rows':  outRows}\n            \n     \n     "
+            },
+            "visualization": false,
+            "x": 311,
+            "y": 197
+        },
+        {
+            "girderId": "56c1f856e41f69033b110465",
+            "modified": "2016-03-11 13:01:45.183326",
+            "name": "Return the OpenTree subtree from a node list",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "description": "input matrix containing a column ottid",
+                        "format": "rows",
+                        "name": "table",
+                        "type": "table"
+                    }
+                ],
+                "mode": "python",
+                "name": "Return the OpenTree subtree from a node list",
+                "outputs": [
+                    {
+                        "format": "newick",
+                        "name": "tree",
+                        "type": "tree"
+                    }
+                ],
+                "script": "import requests\n\nrows = table['rows']\nidList = []\nfor i in range(len(rows)):\n    idList.append(rows[i]['ottId'])\n\n# lookup the tree that contains these nodes\n#payload = {\"ottIds\": idList}\n#resp = requests.post('http://api.opentreeoflife.org/treemachine/v1/getDraftTreeSubtreeForNodes',data=payload)\n#tree = str(resp.json()[\"subtree\"])\n\n# moving to API v2\npayload = {\"ott_ids\": idList}\nresp = requests.post('https://api.opentreeoflife.org/v2/tree_of_life/induced_subtree',data=payload)\ntree = str(resp.json()[\"newick\"])\n\n# create output table to list any problem IDs\n# u'ott_ids_not_in_tree': [], u'node_ids_not_in_tree': [], u'node_ids_not_in_graph': [], 'ott_ids_not_in_graph': [xxxxxxx]\n\n# tree as a string to preview \ntreeNewickString = tree\n"
+            },
+            "visualization": false,
+            "x": 593,
+            "y": 164
+        },
+        {
+            "girderId": "56c1f89ee41f69033b11048d",
+            "modified": "2016-02-15 16:11:10.445000",
+            "name": "PlotTreeWithAPE",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    }
+                ],
+                "mode": "r",
+                "name": "PlotTreeWithAPE",
+                "outputs": [
+                    {
+                        "description": "R-based plot of a tree",
+                        "format": "png.base64",
+                        "name": "treePlot",
+                        "type": "image"
+                    }
+                ],
+                "script": "library(geiger)\nlibrary(cardoonTools)\n\npicplot <- function(mytree){\n  plot(mytree,type=\"phylogram\",use.edge.length=TRUE,show.tip.label=TRUE)\n}\n\ntreePlot = cardoonPlot(expression(picplot(tree)), width=1000, height=1000, res=100)\ntreePlot = treePlot$png"
+            },
+            "visualization": false,
+            "x": 862,
+            "y": 176
+        }
+    ]
+}
