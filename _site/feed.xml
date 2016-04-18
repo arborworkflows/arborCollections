@@ -7,6 +7,44 @@
     <atom:link href="/arborCollections/arborCollections/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Timetrees</title>
+        <description>&lt;h2 id=&quot;creating-timetrees&quot;&gt;Creating timetrees&lt;/h2&gt;
+
+&lt;h2 id=&quot;using-arbor-to-rescale-your-tree&quot;&gt;Using Arbor to rescale your tree&lt;/h2&gt;
+</description>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <link>/arborCollections/arborCollections/tutorials/timetrees/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/timetrees/</guid>
+      </item>
+    
+      <item>
+        <title>Megaphylogenies</title>
+        <description>&lt;h2 id=&quot;what-is-a-megaphylogeny&quot;&gt;What is a megaphylogeny?&lt;/h2&gt;
+
+&lt;p&gt;Megaphylogenies are very large phylogenetic trees with thousands of tips.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-can-arbor-help-with-my-megaphylogenetic-analysis&quot;&gt;How can Arbor help with my megaphylogenetic analysis?&lt;/h2&gt;
+
+&lt;p&gt;Arbor can help in three ways. First, using web services, Arbor can help you obtain large trees and time-scale these trees when necessary. Second, Arbor can help you match phylogenetic and character data, a complex task with very large trees. Finally, Arbor can analyze large datasets quickly and efficiently.&lt;/p&gt;
+
+&lt;h1 id=&quot;obtaining-and-time-scaling-large-trees&quot;&gt;Obtaining and time-scaling large trees&lt;/h1&gt;
+
+&lt;p&gt;You can use Arbor’s &lt;a href=&quot;/arborCollections/tutorials/webservices/&quot;&gt;web services&lt;/a&gt; to obtain large phylogenetic trees from &lt;a href=&quot;http://www.opentreeoflife.org/&quot;&gt;Open Tree of Life&lt;/a&gt;. You can then use Arbor’s &lt;a href=&quot;/arborCollections/tutorials/timetrees/&quot;&gt;method for time-scaling trees&lt;/a&gt; to add branch lengths to this tree.&lt;/p&gt;
+
+&lt;h1 id=&quot;matching-phylogenetic-and-character-data&quot;&gt;Matching phylogenetic and character data&lt;/h1&gt;
+
+&lt;p&gt;Our new &lt;a href=&quot;https://github.com/uyedaj/treeplyr&quot;&gt;treeplyr&lt;/a&gt; package is made to help match tree and character data, and manipulate the combined dataset. Try the &lt;a href=&quot;https://github.com/uyedaj/treeplyr/wiki&quot;&gt;treeplyr tutorial&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;analyzing-large-datasets&quot;&gt;Analyzing large datasets&lt;/h1&gt;
+
+&lt;p&gt;Arbor code has been optimized to handle &lt;a href=&quot;/arborCollections/tutorials/verylargetrees/&quot;&gt;very large datasets&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <link>/arborCollections/arborCollections/tutorials/megatrees/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/megatrees/</guid>
+      </item>
+    
+      <item>
         <title>Web services</title>
         <description>&lt;h2 id=&quot;what-are-web-services&quot;&gt;What are web services?&lt;/h2&gt;
 
@@ -272,65 +310,6 @@
         <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/charactercalculate/fitDiscrete/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/charactercalculate/fitDiscrete/</guid>
-      </item>
-    
-      <item>
-        <title>fitContinuous</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Fits a particular model of evolution to a continuous character on a phylogenetic tree.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;table: Table including species names and the column of interest&lt;/li&gt;
-  &lt;li&gt;tree: Phylogenetic tree with branch lengths&lt;/li&gt;
-  &lt;li&gt;column: Column name in table to analyze&lt;/li&gt;
-  &lt;li&gt;model: Model of evolution; must match one of the options in &lt;a href=&quot;https://cran.r-project.org/web/packages/geiger/geiger.pdf&quot;&gt;geiger&lt;/a&gt; fitContinuous, currently one of: “BM”,”OU”,”EB”,”trend”,”lambda”,”kappa”,”delta”,”drift”,”white”&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;treeplot: plot of independent contrasts as a check for model adequacy. See &lt;a href=&quot;https://github.com/arborworkflows/aRbor/blob/master/R/plotting.R&quot;&gt;plotContrasts&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;result: Transformed tree&lt;/li&gt;
-  &lt;li&gt;fit: List of model fit results: model parameters, lnL, AIC, AICc&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/charactercalculate/fitContinuous/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/charactercalculate/fitContinuous/</guid>
-      </item>
-    
-      <item>
-        <title>extractSpeciesNamesFromMatrix</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Identify the column that contains species names and returns a table with only that column. Looks for the first of the following column names: ‘Scientific Name’,’species’,’Species’,’scientific name’,’name’&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;table: A data matrix including species names&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;outtable: Table with one column, the species names.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/base/matrix/extractSpeciesNamesFromATraitMatrix/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/matrix/extractSpeciesNamesFromATraitMatrix/</guid>
       </item>
     
   </channel>
