@@ -25,6 +25,20 @@ image:
 </div><!-- /.tile -->
 
 <div class="tile">
+  <a href="{{ site.baseurl }}/documentation/opentree/">
+    <h2 class="post-title">Opentree</h2>
+    <p class="post-excerpt">Data from open tree of life</p>
+  </a>
+</div><!-- /.tile -->
+
+<div class="tile">
+  <a href="{{ site.baseurl }}/documentation/timetree/">
+    <h2 class="post-title">Timetree</h2>
+    <p class="post-excerpt">Data from timetree of life</p>
+  </a>
+</div><!-- /.tile -->
+
+<div class="tile">
   <a href="{{ site.baseurl }}/documentation/datasets/">
     <h2 class="post-title">Datasets</h2>
     <p class="post-excerpt">Example data</p>

@@ -1,16 +1,16 @@
 ---
 layout: documentation
-title: anolis.phy
+title: phelsuma.csv
 author: Arbor core team
 categories: collections phylogeny data
 arbortype: data
 arborcollection: phylogeny
-description: Phylogenetic tree of anoles
+description: Data for Phelsuma
 
 ---
 
 ## Overview
 
-Phylogenetic tree of anolis lizards.
+Character data for Phelsuma lizards.
 
 ## References

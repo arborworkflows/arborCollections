@@ -73,7 +73,46 @@
       </item>
     
       <item>
-        <title>anolis.phylogeny</title>
+        <title>testTaxa.csv</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;List of species that can be used to query both open tree of life and timetree.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <link>/arborCollections/arborCollections/collections/timetree/data/testTaxa-csv/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/timetree/data/testTaxa-csv/</guid>
+      </item>
+    
+      <item>
+        <title>phelsuma.phy</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Phylogenetic tree of Phelsuma lizards.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/data/phelsuma-phy/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/data/phelsuma-phy/</guid>
+      </item>
+    
+      <item>
+        <title>phelsuma.csv</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Character data for Phelsuma lizards.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/data/phelsuma-csv/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/data/phelsuma-csv/</guid>
+      </item>
+    
+      <item>
+        <title>anolis.phy</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;Phylogenetic tree of anolis lizards.&lt;/p&gt;
@@ -83,6 +122,19 @@
         <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/data/anolis-phy/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/data/anolis-phy/</guid>
+      </item>
+    
+      <item>
+        <title>mammal_species_list.csv</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;A list of mammal species for the example on pulling from Open Tree of Life&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <link>/arborCollections/arborCollections/collections/opentree/data/mammal-species-list-csv/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/opentree/data/mammal-species-list-csv/</guid>
       </item>
     
       <item>
@@ -194,118 +246,6 @@
         <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/multi2di/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/multi2di/</guid>
-      </item>
-    
-      <item>
-        <title>makeFakeBranchLengths</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Makes fake branch lengths for phylogenetic tree using ape’s compute.brlen, method “Grafen”. These branch lengths are entirely made up and should only be used as a last resort!&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;phy: Phylogenetic tree&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;blphy: Tree with Grafen branch lengths&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/makeFakeBranchLengths/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/makeFakeBranchLengths/</guid>
-      </item>
-    
-      <item>
-        <title>calculateKForAllCharacters</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Calculate phylogenetic signal for all characters in a matrix&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;traits: Trait data with species names&lt;/li&gt;
-  &lt;li&gt;phy: Phylogenetic tree with branch lengths&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;KCalc_out: single column table with K for each character&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/charactercalculate/kCalc/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/charactercalculate/kCalc/</guid>
-      </item>
-    
-      <item>
-        <title>hclustDendrogram</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Build tree from distance matrix using hierarchical clustering algorithm&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;dist: Pairwise distance matrix&lt;/li&gt;
-  &lt;li&gt;y_label: y label for plot&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;plotClust: plot of dendogram&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/treebuild/hclustDendrogram/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treebuild/hclustDendrogram/</guid>
-      </item>
-    
-      <item>
-        <title>graftTreeOntoNamedNode</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Attach two trees by grafting a subtree onto a named node in a recipient tree&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;receivingTree: Phylogenetic tree that will get subtree attached to it&lt;/li&gt;
-  &lt;li&gt;subTree: Tree that will be attached&lt;/li&gt;
-  &lt;li&gt;nodename: Name of node in receivingTree to attach subTree&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;combinedTree: tree with subtree attached to receivingTree&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/graftTreeOntoNamedNode/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/graftTreeOntoNamedNode/</guid>
       </item>
     
   </channel>

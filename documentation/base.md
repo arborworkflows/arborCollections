@@ -16,8 +16,10 @@ image:
 <div class="tiles">
 
 {% capture posts %}
-  {% for post in site.categories.matrix %}
-    |{{ post.title }}#{{ post.url }}#{{ post.description }}
+  {% for post in site.categories.base %}
+    {% if post.categories contains "matrix" %}
+      |{{ post.title }}#{{ post.url }}#{{ post.description }}
+    {% endif %}
   {% endfor %}
 {% endcapture %}
 {% assign sortedposts = posts | split: '|' | sort %}
@@ -33,8 +35,10 @@ image:
 <div class="tiles">
 
 {% capture posts %}
-  {% for post in site.categories.data %}
-    |{{ post.title }}#{{ post.url }}#{{ post.description }}
+  {% for post in site.categories.base %}
+    {% if post.categories contains "data" %}
+      |{{ post.title }}#{{ post.url }}#{{ post.description }}
+    {% endif %}  
   {% endfor %}
 {% endcapture %}
 {% assign sortedposts = posts | split: '|' | sort %}
