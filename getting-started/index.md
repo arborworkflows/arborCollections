@@ -18,7 +18,7 @@ The basics for getting started with Arbor.
 
 ## Running Arbor
 
-You can run Arbor on our [server](https://arbor.kitware.com).
+You can run Arbor on our [server](https://arbor1.arborworkflows.com).
 
 If you want to try Arbor, start with our tutorial on [using the Arbor webapp]({{ site.baseurl }}/tutorials/using-the-arbor-webapp/). You can also get information on [creating your own collection]({{ site.baseurl }}/tutorials/creating-a-new-collection/) to save data and analyses. There are several [more advanced tutorials]({{ site.baseurl }}/tutorials/) that carry on from there.
 

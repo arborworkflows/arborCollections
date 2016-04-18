@@ -56,7 +56,7 @@
 
 &lt;p&gt;We are going to start with a list of species. You can obtain this list as a csv file &lt;a href=&quot;/arborCollections/assets/mammal_species_list.csv&quot;&gt;here&lt;/a&gt;; download and save this file somewhere to your computer.&lt;/p&gt;
 
-&lt;p&gt;Now, open an Arbor instance (e.g. &lt;a href=&quot;https://arbor.kitware.com/#&quot;&gt;arbor.kitware.com&lt;/a&gt;). You will now need to load in your species list. You can do this by dragging the file that you just downloaded onto the “Browse or drop files” box:&lt;/p&gt;
+&lt;p&gt;Now, open an Arbor instance (e.g. &lt;a href=&quot;https://arbor1.arborworkflows.com/#&quot;&gt;arbor1.arborworkflows.com&lt;/a&gt;). You will now need to load in your species list. You can do this by dragging the file that you just downloaded onto the “Browse or drop files” box:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen1.png&quot; alt=&quot;screen1&quot; /&gt;&lt;/p&gt;
 

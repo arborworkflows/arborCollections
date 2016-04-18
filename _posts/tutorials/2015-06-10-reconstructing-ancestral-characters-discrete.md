@@ -18,7 +18,7 @@ Imagine that you have a phylogenetic tree with information on some discrete char
 
 You will need the anolis example data files, anolis.phy and anolis.csv, from [Arbor datasets]({{ site.baseurl}}/docs_datasets.html). Save those files somewhere on your computer.
 
-Now open the [Arbor web app](https://arbor.kitware.com). Drag and drop the two anolis data files on the blue "Browse or drop files" box to load them into your browser.
+Now open the [Arbor web app](https://arbor1.arborworkflows.com). Drag and drop the two anolis data files on the blue "Browse or drop files" box to load them into your browser.
 
 Finally, [log in and create a personal collection]({{ site.baseurl }}/2015/06/09/creating-a-new-collection/).
 
