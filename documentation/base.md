@@ -6,7 +6,7 @@ modified:
 tags: []
 image:
   feature:
-  teaser:
+  teaser: base-400x250.png
 ---
 #### Sorted by category | [Sorted alphabetically]({{ site.baseurl }}/documentation/base_allsort/)
 ---
