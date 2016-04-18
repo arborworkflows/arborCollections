@@ -6,7 +6,7 @@ summary: You can use web services to obtain data as part of an Arbor workflow
 comments: true
 image:
   feature:
-  teaser:
+  teaser: otol-to-arbor-400x250.png
 ---
 
 ## What are web services?

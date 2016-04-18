@@ -6,7 +6,7 @@ summary: You can analyze very large phylogenetic trees using Arbor
 comments: true
 image:
   feature:
-  teaser:
+  teaser: onezoom-400x250.png
 ---
 
 ## What is a megaphylogeny?

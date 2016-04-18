@@ -6,7 +6,7 @@ summary: You can time-scale phylogenetic trees with Arbor
 comments: true
 image:
   feature:
-  teaser:
+  teaser: swiss-clock-400x250.png
 ---
 
 ## Creating timetrees
