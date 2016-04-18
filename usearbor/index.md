@@ -18,7 +18,7 @@ There are a few ways to use Arbor
 
 ## Run Arbor on our server
 
-You can run Arbor on our [server](https://arbor1.arborworkflows.com/).
+You can run Arbor on our [server](http://arbor1.arborworkflows.com/).
 
 ---
 
@@ -26,7 +26,7 @@ You can run Arbor on our [server](https://arbor1.arborworkflows.com/).
 
 We have a few continuously running cloud instances that you can use.
 
-- [arbor1](https://arbor1.arborworkflows.com)
+- [arbor1](http://arbor1.arborworkflows.com)
 - [arbor2](https://arbor2.arborworkflows.com)
 - [arbor3](https://arbor3.arborworkflows.com)
 

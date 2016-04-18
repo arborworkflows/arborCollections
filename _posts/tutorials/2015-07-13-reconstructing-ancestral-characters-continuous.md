@@ -22,7 +22,7 @@ For this example, we will use a dataset where the species included in the tree a
 
 If you look at these files, you will see that the tree includes a few unique species for which there is no character data. Arbor will recognize this and drop those species from the analysis.
 
-Now open the [Arbor web app](https://arbor1.arborworkflows.com). Drag and drop the two phelsuma data files on the blue "Browse or drop files" box to load them into your browser.
+Now open the [Arbor web app](http://arbor1.arborworkflows.com). Drag and drop the two phelsuma data files on the blue "Browse or drop files" box to load them into your browser.
 
 Finally, [log in and create a personal collection]({{ site.baseurl }}/2015/06/09/creating-a-new-collection/).
 
