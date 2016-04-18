@@ -10,7 +10,35 @@
         <title>Timetrees</title>
         <description>&lt;h2 id=&quot;creating-timetrees&quot;&gt;Creating timetrees&lt;/h2&gt;
 
+&lt;p&gt;Arbor has a few tools to create time-scaled phylogenetic trees. You can rescale your tree using standard methods like &lt;a href=&quot;&quot;&gt;pathd8&lt;/a&gt;, &lt;a href=&quot;&quot;&gt;penalized likelihood&lt;/a&gt;, or other methods that have been implemented in R. Alternatively, you can use our new tree rescaling method, described below, that calibrates a tree using dates from &lt;a href=&quot;http://timetree.org&quot;&gt;timetree&lt;/a&gt;.&lt;/p&gt;
+
 &lt;h2 id=&quot;using-arbor-to-rescale-your-tree&quot;&gt;Using Arbor to rescale your tree&lt;/h2&gt;
+
+&lt;p&gt;In this example, we will obtain a tree from &lt;a href=&quot;http://opentree.org&quot;&gt;open tree of life&lt;/a&gt; and rescale it using dates from &lt;a href=&quot;http://timetree.org&quot;&gt;timetree of life&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We start with a list of taxa, &lt;a href=&quot;/arborCollections/assets/testTaxa.csv&quot;&gt;testTaxa.csv&lt;/a&gt;. You can upload that csv file to your arbor instance, or just find it stored in the “treeTimer” collection.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/timetree/timetree-screen1.png&quot; alt=&quot;screen1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, choose and run the function called “Match taxa to the timetree of life” from the treeTimer collection.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/timetree/timetree-screen2.png&quot; alt=&quot;screen2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Use the following settings for this function:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/timetree/timetree-screen3.png&quot; alt=&quot;screen3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When the function has stopped running, you should see a success message:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/timetree/timetree-screen4.png&quot; alt=&quot;screen4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can see a plot of the output by choosing the right settings in the Visualization tab.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/timetree/timetree-screen5.png&quot; alt=&quot;screen5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is your timetree:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/timetree/timetree-output.png&quot; alt=&quot;screen6&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
         <link>/arborCollections/arborCollections/tutorials/timetrees/</link>

@@ -147,7 +147,35 @@
 			<div id="content" class="page-content" itemprop="articleBody">
 				<h2 id="creating-timetrees">Creating timetrees</h2>
 
+<p>Arbor has a few tools to create time-scaled phylogenetic trees. You can rescale your tree using standard methods like <a href="">pathd8</a>, <a href="">penalized likelihood</a>, or other methods that have been implemented in R. Alternatively, you can use our new tree rescaling method, described below, that calibrates a tree using dates from <a href="http://timetree.org">timetree</a>.</p>
+
 <h2 id="using-arbor-to-rescale-your-tree">Using Arbor to rescale your tree</h2>
+
+<p>In this example, we will obtain a tree from <a href="http://opentree.org">open tree of life</a> and rescale it using dates from <a href="http://timetree.org">timetree of life</a>.</p>
+
+<p>We start with a list of taxa, <a href="/arborCollections/assets/testTaxa.csv">testTaxa.csv</a>. You can upload that csv file to your arbor instance, or just find it stored in the “treeTimer” collection.</p>
+
+<p><img src="/arborCollections/assets/timetree/timetree-screen1.png" alt="screen1" /></p>
+
+<p>Now, choose and run the function called “Match taxa to the timetree of life” from the treeTimer collection.</p>
+
+<p><img src="/arborCollections/assets/timetree/timetree-screen2.png" alt="screen2" /></p>
+
+<p>Use the following settings for this function:</p>
+
+<p><img src="/arborCollections/assets/timetree/timetree-screen3.png" alt="screen3" /></p>
+
+<p>When the function has stopped running, you should see a success message:</p>
+
+<p><img src="/arborCollections/assets/timetree/timetree-screen4.png" alt="screen4" /></p>
+
+<p>You can see a plot of the output by choosing the right settings in the Visualization tab.</p>
+
+<p><img src="/arborCollections/assets/timetree/timetree-screen5.png" alt="screen5" /></p>
+
+<p>Here is your timetree:</p>
+
+<p><img src="/arborCollections/assets/timetree/timetree-output.png" alt="screen6" /></p>
 
 				<hr />
 				<footer class="page-footer">
