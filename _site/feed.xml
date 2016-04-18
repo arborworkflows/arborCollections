@@ -73,6 +73,32 @@
       </item>
     
       <item>
+        <title>anolis.phylogeny</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Phylogenetic tree of anolis lizards.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <link>/arborCollections/arborCollections/collections/phylogeny/data/anolis-phy/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/data/anolis-phy/</guid>
+      </item>
+    
+      <item>
+        <title>anolis.csv</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Data on anolis lizards.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+</description>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <link>/arborCollections/arborCollections/collections/base/phylogeny/data/anolis-csv/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/phylogeny/data/anolis-csv/</guid>
+      </item>
+    
+      <item>
         <title>Web services</title>
         <description>&lt;h2 id=&quot;what-are-web-services&quot;&gt;What are web services?&lt;/h2&gt;
 
@@ -280,64 +306,6 @@
         <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/graftTreeOntoNamedNode/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/graftTreeOntoNamedNode/</guid>
-      </item>
-    
-      <item>
-        <title>getTipNames</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Extract column of tip names from phylogenetic tree&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;tree: Phylogenetic tree&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;tiplabels: single column matrix with tip labels&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/getTipNames/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/getTipNames/</guid>
-      </item>
-    
-      <item>
-        <title>fitDiscrete</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Fits a particular model of evolution to a discrete character on a phylogenetic tree.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;table: Table including species names and the column of interest&lt;/li&gt;
-  &lt;li&gt;tree: Phylogenetic tree with branch lengths&lt;/li&gt;
-  &lt;li&gt;column: Column name in table to analyze&lt;/li&gt;
-  &lt;li&gt;model: Model of evolution; must match one of the options in &lt;a href=&quot;https://cran.r-project.org/web/packages/geiger/geiger.pdf&quot;&gt;geiger&lt;/a&gt; fitDiscrete, currently one of: “ER”,”SYM”,”ARD”,”meristic”. Tree transforms not yet implemented.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Q: fitted Q matrix&lt;/li&gt;
-  &lt;li&gt;res: List showing model fit: lnL, aic, aicc, k&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/charactercalculate/fitDiscrete/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/charactercalculate/fitDiscrete/</guid>
       </item>
     
   </channel>

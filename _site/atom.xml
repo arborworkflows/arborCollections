@@ -7,7 +7,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-04-18T14:12:19+02:00</updated>
+  <updated>2016-04-18T14:44:55+02:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -94,6 +94,48 @@
 &lt;h1 id=&quot;analyzing-large-datasets&quot;&gt;Analyzing large datasets&lt;/h1&gt;
 
 &lt;p&gt;Arbor code has been optimized to handle &lt;a href=&quot;/arborCollections/tutorials/verylargetrees/&quot;&gt;very large datasets&lt;/a&gt;.&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>anolis.phylogeny</title>
+    <link href="/arborCollections/collections/phylogeny/data/anolis-phy/"/>
+    <updated>2016-04-18T00:00:00+02:00</updated>
+    <id>/arborCollections/collections/phylogeny/data/anolis-phy</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Phylogenetic tree of anolis lizards.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>anolis.csv</title>
+    <link href="/arborCollections/collections/base/phylogeny/data/anolis-csv/"/>
+    <updated>2016-04-18T00:00:00+02:00</updated>
+    <id>/arborCollections/collections/base/phylogeny/data/anolis-csv</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Data on anolis lizards.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
     </content>
   </entry>
@@ -923,80 +965,6 @@ This function is only needed for certain workflows where one step returns a Nexu
 
 &lt;ul&gt;
   &lt;li&gt;result: A table with the consistency index for each character (column) in the original data matrix.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>compareTrees</title>
-    <link href="/arborCollections/collections/phylogeny/treecalculate/compareTrees/"/>
-    <updated>2016-03-02T00:00:00+01:00</updated>
-    <id>/arborCollections/collections/phylogeny/treecalculate/compareTrees</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Compares the topology of two phylogenetic trees using the function phylo.diff from the R package distory.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;t1: An input phylogenetic tree&lt;/li&gt;
-  &lt;li&gt;t2: Another input phylogenetic tree&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;treeComparePlot: A plot showing all non-matching branches between the two trees.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;p&gt;Chakerian, J. and Holmes, S. P. Computational Tools for Evaluating Phylogenetic and Heirarchical
-Clustering Trees. arXiv:1006.1015v1.&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>collapseSingles</title>
-    <link href="/arborCollections/collections/phylogeny/treemanipulate/collapseSingles/"/>
-    <updated>2016-03-02T00:00:00+01:00</updated>
-    <id>/arborCollections/collections/phylogeny/treemanipulate/collapseSingles</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Collapses all singleton nodes in a phylogenetic tree (e.g. all nodes with only one descendent).&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Input tree: An input phylogenetic tree&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Output tree: Tree with all singleton nodes removed.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
