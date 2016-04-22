@@ -16,19 +16,21 @@ There are a few ways to use Arbor
 
 {% include toc.html %}
 
-## Run Arbor on our server
+## Run Arbor on the cloud
 
-You can run Arbor on our [server](http://arbor1.arborworkflows.com/).
+You can run Arbor on one of our three servers:
+
+- [arbor1](http://arbor1.arborworkflows.com/)
+- [arbor2](http://arbor2.arborworkflows.com/)
+- [arbor3](http://arbor3.arborworkflows.com/)
+
+These three servers are all built on the same base, but are not connected to one another - so if you create an account and/or save things, the changes will only be local to that server. We are working on a github connection to allow versioning and facilitate collaborations.
 
 ---
 
-## Run Arbor on the cloud, on us
+## Use Arbor apps
 
-We have a few continuously running cloud instances that you can use.
-
-- [arbor1](http://arbor1.arborworkflows.com)
-- [arbor2](https://arbor2.arborworkflows.com)
-- [arbor3](https://arbor3.arborworkflows.com)
+You can use one of our simple [Arbor Apps]({{ site.baseurl }}/arborapps/).
 
 ---
 
