@@ -1,2 +1,3 @@
-# arborCollections
-managing collections of functions and workflows in arbor
+# arborCollections: fitLinearModels
+
+Functions that allow users to fit models of trait evolution to their phylogenetic comparative data. 

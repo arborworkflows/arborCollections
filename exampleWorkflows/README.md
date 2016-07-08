@@ -1,2 +1,3 @@
-# arborCollections
-managing collections of functions and workflows in arbor
+# arborCollections: exampleWorkflows
+
+Sample Arbor workflows.

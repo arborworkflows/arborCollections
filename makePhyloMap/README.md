@@ -1,2 +1,3 @@
-# arborCollections
-managing collections of functions and workflows in arbor
+# arborCollections: makePhyloMap
+
+Functions that allow users to make basic plots involving trees and maps.
