@@ -1,0 +1,25 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "rows",
+            "name": "datatable",
+            "type": "table"
+        },
+        {
+            "format": "rows",
+            "name": "columnsToKeep",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "TableChooseColumns",
+    "outputs": [
+        {
+            "format": "rows",
+            "name": "outtable",
+            "type": "table"
+        }
+    ],
+    "script": "# this analysis expects an input table with a larger number of columns than are desired in the output table.  \n# The analysis also expects a single column input table containing the names of columns to keep in the output table. \n# This is similar to the fieldfile format for mongoDB, with one field per line....\n\n# input: datatable - data table with lots of columns (relatively speaking)\n# input: columnsToKeep - single column table with column names to keep\n# output: outtable - smaller data table that preserves only the named columns from the input datatable\n\ninfields = datatable['fields']\n\noutfields = []\noutstring = ''\n# loop through the columnsToKeep table and collect the names of columns we want to preserve in the output\nfor row in columnsToKeep['rows']:\n    outfields.append(row[columnsToKeep['fields'][0]])\n\n# now loop through the source table and append only selected columns to the output data record\n\noutrows = []\nfor row in datatable['rows']:\n    outrow = {}\n    for field in outfields:\n        outrow[field] = row[field]\n    outrows.append(outrow)\n        \nouttable = {}\nouttable['fields'] = outfields\nouttable['rows'] = outrows\n"
+}

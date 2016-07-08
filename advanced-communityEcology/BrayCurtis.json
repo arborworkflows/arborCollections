@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "community data matrix",
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table"
+        }
+    ],
+    "mode": "r",
+    "name": "BrayCurtisTest",
+    "outputs": [
+        {
+            "description": "BrayCurtis Distance matrix",
+            "format": "r.dataframe",
+            "name": "comm_bc_dist",
+            "type": "table"
+        }
+    ],
+    "script": "library(picante)\n#input community data matrix with column headers and row names\n#comm<- (table, header=TRUE)#, row.names=1)\n# convert table to relative abundance\n#comm<-decostand(comm, method=\"total\")\n#convert 'comm' to a Bray-Curtis distance matrix\n#Same rownames fix\nrownames<-table[,1]\n#rownames(table) <- table[-1]\n#table<-table[,-1]\n#table<-as.dist(table)\n\ncomm.bc.dist<-vegdist(table[,-1], method=\"bray\")\n#comm_bc_dist<-as.matrix(comm.bc.dist)\ncomm_bc_dist <- as.matrix(comm.bc.dist);comm.bc.dist <- cbind(rownames(comm.bc.dist), comm.bc.dist);colnames(comm.bc.dist)[1] <- \"rownames\"\n\n#comm_bc_dist <- cbind(rownames,comm_bc_dist)\n#comm_bc_dist<-cbind(table[,1],as.matrix(comm.bc.dist))  ## This adds numbers to the table, not rownames\n#comm_bc_dist<-comm_bc_dist[,-1]  ## It seems that we lose the rownames and they instead get numbered.  Need to remove numbers and add rownames (same as column names) back to table.\n## We lose rownames for the table.  Need to add them back\n"
+}

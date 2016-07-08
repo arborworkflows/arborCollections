@@ -1,0 +1,31 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "rows",
+            "name": "datatable",
+            "type": "table"
+        },
+        {
+            "format": "text",
+            "name": "newName",
+            "type": "string"
+        },
+        {
+            "format": "text",
+            "id": "columnToReplace",
+            "name": "columnToReplace",
+            "type": "string"
+        }
+    ],
+    "mode": "python",
+    "name": "TableChangeColumnName",
+    "outputs": [
+        {
+            "format": "rows",
+            "name": "outtable",
+            "type": "table"
+        }
+    ],
+    "script": "\n\n# input: datatable - data table with lots of columns (relatively speaking)\n# input: columnToReplace - \n# input: newName\n# output: outtable - \n\ninfields = datatable['fields']\n\noutfields = []\n\nfor field in infields:\n    if field == columnToReplace:\n        outfields.append(newName)\n    else:\n        outfields.append(field)\n        \n\n# now loop through the source table and change the fieldname\n\noutrows = []\nfor row in datatable['rows']:\n    outrow = {}\n    for field in infields:\n        if field == columnToReplace:\n            outrow[newName] = row[field]\n        else:\n            outrow[field] = row[field]\n    outrows.append(outrow)\n        \nouttable = {}\nouttable['fields'] = outfields\nouttable['rows'] = outrows\n"
+}

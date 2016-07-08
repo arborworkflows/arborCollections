@@ -1,0 +1,19 @@
+{
+    "inputs": [
+        {
+            "format": "rows",
+            "name": "nameTable",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "Lookup names using OpenTree Taxonomy first return",
+    "outputs": [
+        {
+            "format": "rows",
+            "name": "outTable",
+            "type": "table"
+        }
+    ],
+    "script": "#\n# Lookup names using OpenTree Taxonomy\n#\n# description: this analysis expects a single-column input table consisting of scientific names.\n# The analysis consults the OpenTree API and extracts canonical names from the OpenTree taxonomy.\n# The output table consists of three-columns, with the OpenTree name and taxonomy ID columns added to the input. \n#\n# Note:  OpenTree V2 match_names call is being used (development server currently)\n# \n# input: nameTable - single column of scientific names (table:rows format)\n# output: outTable - three column table with OpenTree name and ID appended.\n#\n\n\nimport requests\n\n# look at the rows of the input table\nmatrixEntries = nameTable['rows']\n\n# find out the title of the columns in this matrix. Assuming this is a single column table\ncolumnHeader = nameTable['fields'][0]\n\noutRows = []\ncount = 0\ninputNameList = []\n\nfor matrixEntry in matrixEntries:\n    # build an OTL query to return the matching ottId we want to use to request taxa \n    inputNameList.append(matrixEntry[columnHeader])\n    \n# pack the names into a payload and perform the OpenTree lookup using v2\npayload = {'names': inputNameList}\nresp = requests.post('http://api.opentreeoflife.org/v2/tnrs/match_names',data=payload)\n\nreturnedrecs = resp.json()['results']\n# loop through the names queried and returned\nfor index in range(len(returnedrecs)):\n    thisresult = returnedrecs[index]\n    #for j in range(len(thisresult['matches'])):\n    # force return of the first result for each original name\n    candidate = thisresult['matches'][0]\n    outrow = {}\n    outrow[columnHeader] = candidate['search_string']\n    outrow['ottName'] = candidate['ot:ottTaxonName']\n    outrow['ottId'] = candidate['ot:ottId']\n    outRows.append(outrow)\n\n# build the headers for the output table\naugmentedColumnHeaders = [columnHeader, 'ottName','ottId']\n\n# setup the output in table:rows format with the headers explicitly listed\noutTable = {'fields': augmentedColumnHeaders,\n            'rows':  outRows}\n            \n     "
+}

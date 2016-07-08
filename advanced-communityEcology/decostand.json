@@ -1,0 +1,20 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "r.dataframe",
+            "name": "input",
+            "type": "table"
+        }
+    ],
+    "mode": "r",
+    "name": "decostand",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "name": "output",
+            "type": "table"
+        }
+    ],
+    "script": "library(picante)\n## This is a hack for rownames\n# rownames(input) <- input[,1]\n\n#Only this line is necessary\noutput<- decostand(input[,-1], method=\"total\")\n\n#More hacking rownames...\noutput <- cbind(rownames(output), output)\ncolnames(output)[1] <- \"rownames\"\n"
+}

@@ -1,0 +1,29 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "rows",
+            "id": "table",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "description": "how many randomly selected columns should be kept in the output",
+            "format": "number",
+            "id": "outColumnCount",
+            "name": "outColumnCount",
+            "type": "number"
+        }
+    ],
+    "mode": "python",
+    "name": "Table Keep First Column and Random Others",
+    "outputs": [
+        {
+            "format": "rows",
+            "id": "outTable",
+            "name": "outTable",
+            "type": "table"
+        }
+    ],
+    "script": "from random import randint\n#\n# pick random columns out of a table, according to the rowcount passed as an argument.  Always pick the column passed in a control table\n\n# inputs: \n#   table\n#   outRowCount - how many rows to pick from the input table\n#   keepColumns - table with names of columns to keep for sure\n# output: outTable\n\ntableColumnCount = len(table['fields'])\noutColumns = []\n\n# put the columns to keep in the output table.  Assume the first column of the keep table is the column names\n\noutColumns.append(table['fields'][0])\n\n# loop the number of times in the output colun count; selecting a random column each time\nfor i in range(outColumnCount):\n    pickedColumnNumber = randint(0,tableColumnCount-1)\n    pickedColumnName = table['fields'][pickedColumnNumber]\n    if  (pickedColumnName not in outColumns) and (pickedColumnName != table['fields'][0]):\n        print 'chose:',pickedColumnName\n        outColumns.append(pickedColumnName)\n\n# now copy the selected columns to the output\noutTable = {}\noutTable['fields'] = outColumns\noutTable['rows'] = []\n\nfor row in table['rows']:\n    record = {}\n    for column in outColumns:\n        record[column] = row[column]\n    outTable['rows'].append(record)    \n    \n    \n"
+}

@@ -1,0 +1,21 @@
+{
+    "inputs": [
+        {
+            "description": "input table with underscores in species names",
+            "format": "rows",
+            "name": "table",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "TableUnderscoreToSpace",
+    "outputs": [
+        {
+            "description": "same as input table but name and species columns have replaced underscores",
+            "format": "rows",
+            "name": "tableOut",
+            "type": "table"
+        }
+    ],
+    "script": "# input: table - table:rows type representing a trait matrix, with \"species\" or \"name\" as the species name\n# output: tableOut - same table with substituted names  \n\n# this routine replaces underscores in species names with spaces.  E.g.  \"heliconia_robusta\" becomes \"heliconia robusta\".\n\ncolumnNames = table['fields']\noutrows = []\n\n# go through the rows and change underscores to spaces for name and species columns.  output is accumulated in outrows\nfor i in range(len(table['rows'])):\n    row = table['rows'][i]\n    if 'name' in row.keys():\n        newname = row['name'].replace('_',' ')\n        row['name'] = newname\n    elif 'species' in row.keys():\n        newname = row['species'].replace('_',' ')\n        row['species'] = newname\n    outrows.append(row)\n\n# compose output object\ntableOut = {}\ntableOut['fields'] = columnNames\ntableOut['rows'] = outrows\n\n\n    \n        "
+}

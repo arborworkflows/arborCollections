@@ -1,0 +1,26 @@
+{
+    "inputs": [
+        {
+            "description": "input matrix containing a column ottid",
+            "format": "rows",
+            "name": "table",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "Debug Return the OpenTree subtree from a node list",
+    "outputs": [
+        {
+            "format": "newick",
+            "name": "tree",
+            "type": "tree"
+        },
+        {
+            "description": "quick preview read out of the tree as a newick string",
+            "format": "text",
+            "name": "treeNewickString",
+            "type": "string"
+        }
+    ],
+    "script": "import requests\nfrom Bio import Phylo\n\nrows = table['rows']\nidList = []\nfor i in range(len(rows)):\n    idList.append(rows[i]['ottId'])\n\n# lookup the tree that contains these nodes\n#payload = {\"ottIds\": idList}\n#resp = requests.post('http://api.opentreeoflife.org/treemachine/v1/getDraftTreeSubtreeForNodes',data=payload)\n#tree = str(resp.json()[\"subtree\"])\n\n# moving to API v2\npayload = {\"ott_ids\": idList}\nresp = requests.post('http://api.opentreeoflife.org/v2/tree_of_life/induced_subtree',data=payload)\ntree = str(resp.json()[\"subtree\"])\n\n# create output table to list any problem IDs\n# u'ott_ids_not_in_tree': [], u'node_ids_not_in_tree': [], u'node_ids_not_in_graph': [], 'ott_ids_not_in_graph': [xxxxxxx]\n\n# tree as a string to preview \ntreeNewickString = tree\n"
+}

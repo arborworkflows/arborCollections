@@ -1,0 +1,39 @@
+{
+    "inputs": [
+        {
+            "description": "Community Data matrix",
+            "format": "r.dataframe",
+            "name": "comm",
+            "type": "table"
+        },
+        {
+            "description": "metadata",
+            "format": "r.dataframe",
+            "name": "metadata",
+            "type": "table"
+        }
+    ],
+    "mode": "r",
+    "name": "kembelsummarizeDiversity",
+    "outputs": [
+        {
+            "description": "Anova table",
+            "format": "r.dataframe",
+            "name": "aov_out",
+            "type": "table"
+        },
+        {
+            "description": "Summary of diversity by factor",
+            "format": "r.dataframe",
+            "name": "diversity_summary",
+            "type": "table"
+        },
+        {
+            "description": "Raw diversity data output",
+            "format": "r.dataframe",
+            "name": "raw_communities",
+            "type": "table"
+        }
+    ],
+    "script": "library(picante)\nse<-function(x) sqrt(var(x)/length(x)) \nrownames(comm) <- comm[,1]\ncomm <- comm[,-1]\nrownames(metadata) <- metadata[,1]\n# compare habitat richness among host habitat\nrichness.comm <- specnumber(comm)\n#par(mar=c(12,5,1,1)+0.5)\n#boxplot(specnumber(comm) ~ metadata$habitat, xlab = \"\", ylab = \"# of OTUs\", las=2)\nrich.comm <- as.matrix(specnumber(comm))\nrich.mean<- aggregate(rich.comm, by=list(metadata$habitat), FUN=mean)\nrich.se <- aggregate(rich.comm, by=list(metadata$habitat), FUN=se)\n# statistical test of difference\nrichness.aov <- aov(specnumber(comm) ~ habitat, data = metadata)\n# compare Shannon diversity among host habitat\ndiversity.comm <- diversity(comm, index = \"shannon\")\n#pdf('Host.habitat.Shannon.pdf')\n#par(mar=c(12,5,1,1)+0.5)\n#boxplot(diversity.comm ~ metadata$habitat, xlab = \"\", ylab = \"Shannon-Weaver Index\", las=2)\n#dev.off()\nshannon.comm <- as.matrix(diversity.comm)\nshannon.mean<- aggregate(diversity.comm, by=list(metadata$habitat), FUN=mean)\nshannon.se <- aggregate(diversity.comm, by=list(metadata$habitat), FUN=se)\n# statistical test of difference\nshannon.aov <- aov(diversity.comm ~ habitat, data = metadata)\n# compare habitat Simpson diversity between host habitat\ninvsimpson.comm <- diversity(comm, index = \"invsimpson\")\n#pdf('Host.habitat.InvSimpson.pdf')\n#par(mar=c(12,5,1,1)+0.5)\n#boxplot(invsimpson.comm ~ metadata$habitat, xlab = \"\", ylab = \"InvSimpson Index\", las=2)\n#dev.off()\ninvsimpson.comm <- as.matrix(invsimpson.comm)\ninvsimpson.mean<- aggregate(invsimpson.comm, by=list(metadata$habitat), FUN=mean)\ninvsimpson.se <- aggregate(invsimpson.comm, by=list(metadata$habitat), FUN=se)\ninvsimpson.aov <- aov(invsimpson.comm ~ habitat, data = metadata)\naov_out <- list(cbind(metric=\"richness\",factor=rownames(summary(richness.aov)[[1]]), as.data.frame(summary(richness.aov)[[1]])),\n    cbind(metric=\"shannon\", factor=rownames(summary(shannon.aov)[[1]]), as.data.frame(summary(shannon.aov)[[1]])),\n    cbind(metric=\"invsimpson\",  factor=rownames(summary(invsimpson.aov)[[1]]), as.data.frame(summary(invsimpson.aov)[[1]])))\n      \naov_out <- do.call(rbind,aov_out)\nrownames(aov_out) <- NULL\n# Make Summary table of Diversity indicies\ndiversity_summary <- cbind(rich.mean, rich.se$V1, shannon.mean$x, shannon.se$x, invsimpson.mean$V1, invsimpson.se$V1)\nnames(diversity_summary) <- c(\"habitat\", \"Mean.Richness\", \"se.Richness\", \"Mean.Shannon\", \"se.Shannon\", \"Mean.InvSimpson\", \"se.InvSimpson\")\n\n\ncomms <- list(richness=rich.comm, shannon=diversity.comm, invsimpson=invsimpson.comm)\ntmp <- lapply(1:length(comms), function(x) data.frame(comms[[x]], names(comms)[x], metadata$habitat))\ncommunities <- do.call(rbind, tmp)\n\ncolnames(communities) <- c(\"mean_diversity\", \"metric\", \"host_habitat\")\ncommunities$specimenID <- rownames(communities)\nraw_communities <- communities[,c(4,1:3)]\nraw_communities_fig <- communities[,c(4,1:3)]"
+}

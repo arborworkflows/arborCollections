@@ -1,0 +1,20 @@
+{
+    "inputs": [
+        {
+            "description": "Life Mapper hint return table format with 'id' column",
+            "format": "rows",
+            "name": "idTable",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "Return LifeMapper occurrences from Experiment Number Table",
+    "outputs": [
+        {
+            "format": "rows",
+            "name": "occurrenceTable",
+            "type": "table"
+        }
+    ],
+    "script": "#\n# LifeMapper occurrences from Experiment Number\n#\n# retrieve a list of points and output them as a table.  The input is a table containing an \n# \"id\" column (like what is returned by LifeMapper) for each experiment that should be queried.  This method\n# processes through all rows of the table, appending the query results to the output table sequentially until all the input\n# rows have been consumed\n#\n# input: idTable\n# output: occurrenceTable\n\n# update history: \n# 09/17/14 CRL - doesn't work yet, requests failing? \n\nimport requests\nimport json\n\n# retrieve the rows from the input table\ninrows = idTable['rows']\n# start with an empty output and append rows to it\noutrows = []\n\n# loop through the rows and do a LM query for selected experiment\nfor row in inrows:\n    if 'id' in row.keys():\n        # fetch the integer, convert to string, \n        experimentNumberString = str(row['id'])\n        url = str('http://lifemapper.org/services/sdm/occurrences/'+experimentNumberString+'/json')\n        #outrows.append({\"id\": experimentNumberString, 'url':url})\n        resp = requests.get(url)\n        # load the response as a json object. sometimes there is junk returned, so skip the bad ones returns by \n        # not inserting them in the table.  Sometimes the loads() would cause an exception\n        try:\n            occurrences = resp.json()['feature']\n            # return the entire feature list as a table.  Keep only a few fields because it seemed that fields varied between studies\n            # maybe there is an old and new format? \n            newrow = {}\n            for feature in occurrences:\n                newrow['geomwkt'] = feature['geomwkt']\n                #newrow['gbifurl'] = feature['gbifurl']\n                #newrow['specieskey'] = feature['specieskey']\n                newrow['experimentNumber'] = row['id']\n                outrows.append(newrow)\n        except Exception:\n            newrow = {}\n            newrow['experimentNumber'] = row['id']\n            newrow['geomwkt'] = \"NA\"\n            newrow['gbifurl'] = \"NA\"\n            newrow['specieskey'] = \"NA\"\n            newrow['experimentNumber'] = row['id']\n            outrows.append(newrow)\n    \n# build a list of the fields so the table can be specified\noutcolumns = []\nif len(outrows) >0:\n    for attrib in outrows[0]:\n        outcolumns.append(attrib)\n\n# create the output in table:rows format\noccurrenceTable = {}\noccurrenceTable['fields'] = outcolumns\noccurrenceTable['rows'] = outrows\n    \n    "
+}

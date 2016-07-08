@@ -1,0 +1,168 @@
+{
+    "connections": [
+        {
+            "name": "comm.bc.dist",
+            "output": "comm.bc.dist",
+            "output_step": "Bray-Curtis Dissimilarity"
+        },
+        {
+            "input": "dist",
+            "input_step": "hclustDendrogram",
+            "output": "comm.bc.dist",
+            "output_step": "Bray-Curtis dissimilarity for hclust (adds rownames) 1"
+        },
+        {
+            "input": "y_label",
+            "input_step": "hclustDendrogram",
+            "name": "y_label"
+        },
+        {
+            "input": "table",
+            "input_step": "Bray-Curtis Dissimilarity",
+            "name": "table 3"
+        },
+        {
+            "name": "plotClust",
+            "output": "plotClust",
+            "output_step": "hclustDendrogram"
+        },
+        {
+            "input": "table",
+            "input_step": "Bray-Curtis dissimilarity for hclust (adds rownames) 1",
+            "name": "table 3"
+        }
+    ],
+    "inputs": [
+        {
+            "default": "distance",
+            "description": "Label for y-axis",
+            "format": "text",
+            "name": "y_label",
+            "type": "string",
+            "x": 637,
+            "y": 241
+        },
+        {
+            "description": "Community data matrix",
+            "format": "r.dataframe",
+            "name": "table 3",
+            "type": "table",
+            "x": 168,
+            "y": 15
+        }
+    ],
+    "mode": "workflow",
+    "name": "kembelMultivariateCommAnalysis",
+    "outputs": [
+        {
+            "description": "Bray-Curtis dissimilarity matrix",
+            "format": "r.dataframe",
+            "name": "comm.bc.dist",
+            "type": "table",
+            "x": 1451,
+            "y": 11
+        },
+        {
+            "description": "A dendrogram",
+            "format": "png.base64",
+            "name": "plotClust",
+            "type": "image",
+            "x": 1453,
+            "y": 142
+        }
+    ],
+    "steps": [
+        {
+            "id": "Bray-Curtis Dissimilarity",
+            "name": "Bray-Curtis Dissimilarity",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "Community data matrix",
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    }
+                ],
+                "mode": "r",
+                "name": "Bray-Curtis Dissimilarity",
+                "outputs": [
+                    {
+                        "description": "Bray-Curtis dissimilarity matrix",
+                        "format": "r.dataframe",
+                        "name": "comm.bc.dist",
+                        "type": "table"
+                    }
+                ],
+                "script": "library(picante)\n#input community data matrix with column headers and row names\n#comm<- (table, header=TRUE)#, row.names=1)\n# convert table to relative abundance\n#comm<-decostand(comm, method=\"total\")\n#convert 'comm' to a Bray-Curtis distance matrix\n#Same rownames fix\nrownames(table) <- table[,1]\ntable <- table[,-1]\n\ncomm.bc.dist<-vegdist(table, method=\"bray\")\ncomm.bc.dist <- as.matrix(comm.bc.dist)\n\n## Shouldn't have to do this, remove the column names before exporting to prevent an additional row for entering the matrix.\n#colnames(comm.bc.dist) <- paste(\"N\", colnames(comm.bc.dist), sep=\"\")",
+                "x": 464,
+                "y": 18
+            },
+            "x": 464,
+            "y": 18
+        },
+        {
+            "id": "Bray-Curtis dissimilarity for hclust (adds rownames) 1",
+            "name": "Bray-Curtis dissimilarity for hclust (adds rownames) 1",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    }
+                ],
+                "mode": "r",
+                "name": "Bray-Curtis dissimilarity for hclust (adds rownames) 1",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "comm.bc.dist",
+                        "type": "table"
+                    }
+                ],
+                "script": "library(picante)\n#input community data matrix with column headers and row names\n#comm<- (table, header=TRUE)#, row.names=1)\n# convert table to relative abundance\n#comm<-decostand(comm, method=\"total\")\n#convert 'comm' to a Bray-Curtis distance matrix\n#Same rownames fix\nrownames(table) <- table[,1]\ntable <- table[,-1]\n\ncomm.bc.dist<-vegdist(table, method=\"bray\")\ncomm.bc.dist <- as.matrix(comm.bc.dist);comm.bc.dist <- cbind(rownames(comm.bc.dist), comm.bc.dist);colnames(comm.bc.dist)[1] <- \"rownames\"\n## Shouldn't have to do this, remove the column names before exporting to prevent an additional row for entering the matrix.\n#colnames(comm.bc.dist) <- paste(\"N\", colnames(comm.bc.dist), sep=\"\")",
+                "x": 463,
+                "y": 142
+            },
+            "x": 463,
+            "y": 142
+        },
+        {
+            "id": "hclustDendrogram",
+            "name": "hclustDendrogram",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "A distance matrix",
+                        "format": "r.dataframe",
+                        "name": "dist",
+                        "type": "table"
+                    },
+                    {
+                        "default": "distance",
+                        "description": "Label for y-axis",
+                        "format": "text",
+                        "name": "y_label",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "hclustDendrogram",
+                "outputs": [
+                    {
+                        "description": "A dendrogram",
+                        "format": "png.base64",
+                        "name": "plotClust",
+                        "type": "image"
+                    }
+                ],
+                "script": "require(cardoonTools)\n\n##Can expose these options later, going to leave hidden for now\nfont_size = 0.5\nmethod=\"average\"\n##\n#dist <- cbind(rownames(dist), dist)\nrownames(dist)<- dist[,1];dist<- dist[,-1];dist <- as.dist(dist)\n\nclust <- hclust(dist, method = method)\nplotClust <- cardoonPlot(expression(plot(clust,labels = rownames(dist),cex=font_size, ylab=y_label)), width=1000, height=1000, res=100)\nplotClust <- plotClust$png\n#",
+                "x": 888,
+                "y": 160
+            },
+            "x": 888,
+            "y": 160
+        }
+    ]
+}

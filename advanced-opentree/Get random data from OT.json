@@ -1,0 +1,32 @@
+{
+    "inputs": [
+        {
+            "default": "Mammalia",
+            "description": "Taxa to retrieve subtree from OT",
+            "format": "text",
+            "name": "taxon_name",
+            "type": "string"
+        },
+        {
+            "default": "random",
+            "description": "Sampling method",
+            "domain": [
+                "random"
+            ],
+            "format": "text",
+            "name": "mode",
+            "type": "string"
+        },
+        {
+            "default": "50",
+            "description": "Number of nodes in returned tree",
+            "format": "number",
+            "name": "num",
+            "type": "number"
+        }
+    ],
+    "mode": "python",
+    "name": "Get random data from OT",
+    "outputs": [],
+    "script": "import sys\r\nimport argparse\r\nimport re\r\nfrom cStringIO import StringIO\r\n#from Bio import Phylo\r\nimport opentreelib\r\nimport matplotlib\r\nimport pylab\r\nimport numpy as np\r\nfrom ete2 import Tree\r\n\r\n# use argparse to parse command line arguments, etc.\r\n#parser = argparse.ArgumentParser(description='Generate an induced subtree by random sampling')\r\n#parser.add_argument('-t', type=str, dest = 'taxon',\r\n#                   help='Taxon to sample from')\r\n#parser.add_argument('-m', dest='sampling_mode',\r\n#                   help='Sampling mode (Default: random)')\r\n#parser.add_argument('-n', dest='ntaxa', type=int,\r\n#                   help='No. of taxa in induced subtree')\r\n#parser.add_argument('-d', dest='draw', action='store_true',\r\n#                   help='Draw tree')\r\n#parser.add_argument('-f', dest='fmt',\r\n#                   help='Format (pdf,png) (Default: pdf)')\r\n#parser.add_argument('-o', dest='out',\r\n#                   help='Out prefix')\r\n#parser.set_defaults(sampling_mode = \"random\", draw=False, fmt=\"pdf\")\r\n\r\n# Given a taxon name, find the OTT id of that taxon.\r\n# Careful about unicode - arg should be unicode.\r\n# TO BE DONE: Make this robust to unknown names and to homonyms.\r\n\r\n# Methods\r\n\r\n# Given a taxon name retrieve the OTTid\r\n\r\ndef unique_ott_id(name):\r\n    tnrs_result = opentreelib.tnrs_match_names([name])\r\n    ottid = tnrs_result['results'][0]['matches'][0]['ot:ottId']\r\n    return ottid\r\n\r\n# Given an OTT id, return names and ids of species at or under that\r\n# taxon in the taxonomy.\r\n\r\ndef all_species(OTTid):\r\n    treeresult = opentreelib.tree_of_life_subtree(ott_id = OTTid)\r\n    # Look for names of the form Genus epithet\r\n    tree = Phylo.read(StringIO(treeresult['newick']), 'newick')\r\n\r\n    matchSpecies = re.compile('(^[A-Z][a-z]*)_([a-z]+)_ott([0-9]+)$')\r\n    species = {}\r\n\r\n    # Work in progress\r\n    def processNode(node):\r\n        if isinstance(node.name, str):\r\n            m = matchSpecies.search(node.name)\r\n            if m != None:\r\n                species[m.group(1) + ' ' + m.group(2)] = int(m.group(3))\r\n        else:\r\n            print \"Node name is not a string\", node.name\r\n\r\n    for node in tree.get_terminals():\r\n        processNode(node)\r\n    for node in tree.get_nonterminals():\r\n        processNode(node)\r\n\r\n    return species\r\n\r\n\r\n# Given a list of OTTids, get a random sample\r\ndef get_random_sample(OTTids_list, length):\r\n    x = np.asarray(OTTids_list.values()) # convert to numpy array\r\n    subset = np.random.choice(x,size = length, replace =False)\r\n    return subset.tolist()\r\n\r\n# Given a list of OTTids, retrieve the induced subtree\r\ndef subtree_species(species_list):\r\n    subtreeresult = opentreelib.tree_of_life_induced_subtree(ott_ids = species_list)\r\n    subtree = Phylo.read(StringIO(subtreeresult['subtree']), 'newick')\r\n    return subtree\r\n\r\noutprefix = args.out\r\nout_fmt = args.fmt\r\n\r\n# <codecell>\r\n\r\nmy_OTT_id = unique_ott_id(taxon_name)\r\nprint(my_OTT_id)\r\nmy_species = all_species(my_OTT_id)\r\n\r\n# <codecell>\r\n\r\nif mode == \"random\":\r\n    my_subset_species = get_random_sample(my_species,num)\r\n    \r\nmy_induced_subtree = subtree_species(my_subset_species)\r\n\r\n# <codecell>\r\n\r\n# Write newick to file\r\n\r\n#Phylo.write(my_induced_subtree,'{}.nwk'.format(outprefix),'newick')\r\n\r\n# Convert to ete2 Tree object \r\n\r\nt = Tree(my_induced_subtree.format('newick')) \r\n\r\n# <codecell>\r\n\r\n# Render induced subtree \r\nif args.draw:\r\n    if out_fmt == \"png\":\r\n        t.render('{}.png'.format(outprefix), w=800, h=600, units=\"mm\")\r\n    if out_fmt == \"pdf\":\r\n        t.render('{}.pdf'.format(outprefix), w=8000, h=6000, units=\"mm\" )"
+}

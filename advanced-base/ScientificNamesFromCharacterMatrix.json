@@ -1,0 +1,21 @@
+{
+    "inputs": [
+        {
+            "description": "output single column table of only unique names from the input char. matrix",
+            "format": "csv",
+            "name": "table",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "ScientificNamesFromCharacterMatrix",
+    "outputs": [
+        {
+            "description": "single column table with unique names from input character matrix",
+            "format": "rows",
+            "name": "outtable",
+            "type": "table"
+        }
+    ],
+    "script": "#\n# input a character matrix in CSV. Output a table of unique species names from the matrix. Each\n# name appears in only one row and is suitable for lookup in OpenTree. \nimport csv\n\nlines = table.splitlines(True)\nrownum = 0\nouttable = []\nfieldrecord = []\nnamelist = []\n\nfor row in csv.reader(lines):\n    if rownum == 0:\n        header = row\n        print \"header row: \",header\n        # setup the column header for the output table \n        for colnum,columntitle in enumerate(row):\n            if header[colnum] in ['Scientific Name','species','Species','scientific name','name']:\n                fieldrecord.append(header[colnum])\n        rownum = rownum+1\n    else:\n        characterEntry = dict()\n        for colnum,columntitle in enumerate(row):\n            characterEntry[header[colnum]] = columntitle\n        if ('Scientific Name' in characterEntry.keys()) and (characterEntry['Scientific Name'] not in namelist) :\n            namelist.append({'Scientific Name': characterEntry['Scientific Name']})\n        elif ('scientific name' in characterEntry.keys()) and (characterEntry['scientific name'] not in namelist):\n            namelist.append({'scientific name' : characterEntry['scientific name']})\n        elif ('species' in characterEntry.keys()) and (characterEntry['species'] not in namelist):\n            namelist.append({'species': characterEntry['species']})\n        elif ('Species' in characterEntry.keys()) and (characterEntry['Species'] not in namelist):\n            namelist.append({'Species': characterEntry['Species']})\n        elif ('name' in characterEntry.keys()) and (characterEntry['name'] not in namelist):\n            namelist.append({'name': characterEntry['name']})\n\n\n# create an output table one column wide with an entry for each unique name in the character matrix\nouttable = {'fields': fieldrecord,\n            'rows':  namelist}\n            \n            "
+}

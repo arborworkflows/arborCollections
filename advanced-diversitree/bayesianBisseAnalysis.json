@@ -1,0 +1,987 @@
+{
+    "connections": [
+        {
+            "input": "diversitreeLikelihood",
+            "input_step": "bisseBayes",
+            "output": "lik",
+            "output_step": "makeBisse"
+        },
+        {
+            "input": "tree",
+            "input_step": "makeBisse",
+            "name": "tree"
+        },
+        {
+            "input": "table",
+            "input_step": "makeBisse",
+            "name": "table"
+        },
+        {
+            "input": "column",
+            "input_step": "makeBisse",
+            "name": "column"
+        },
+        {
+            "name": "samples",
+            "output": "samples",
+            "output_step": "bisseBayes"
+        },
+        {
+            "input": "check.data",
+            "input_step": "makeBisse",
+            "name": "check.data"
+        },
+        {
+            "input": "samplingFrequency0",
+            "input_step": "makeBisse",
+            "name": "samplingFrequency0"
+        },
+        {
+            "input": "samplingFrequency1",
+            "input_step": "makeBisse",
+            "name": "samplingFrequency1"
+        },
+        {
+            "input": "mcmcTable",
+            "input_step": "plotMCMCSamples",
+            "output": "samples",
+            "output_step": "bisseBayes"
+        },
+        {
+            "name": "mcmcPlot",
+            "output": "mcmcPlot",
+            "output_step": "plotMCMCSamples"
+        },
+        {
+            "input": "diversitreePrior",
+            "input_step": "bisseBayes",
+            "output": "prior",
+            "output_step": "buildPrior"
+        },
+        {
+            "input": "min",
+            "input_step": "buildPrior",
+            "name": "q10 minimum parameter"
+        },
+        {
+            "input": "max",
+            "input_step": "buildPrior",
+            "name": "q10 maximum parameter"
+        },
+        {
+            "input": "lambda",
+            "input_step": "buildPrior",
+            "name": "lambda0 rate parameter"
+        },
+        {
+            "input": "lambda 1",
+            "input_step": "buildPrior",
+            "name": "lambda0 rate parameter 1"
+        },
+        {
+            "input": "lambda 2",
+            "input_step": "buildPrior",
+            "name": "mu0 rate parameter"
+        },
+        {
+            "input": "lambda 3",
+            "input_step": "buildPrior",
+            "name": "mu1 rate parameter"
+        },
+        {
+            "input": "lambda 4",
+            "input_step": "buildPrior",
+            "name": "q01 rate parameter"
+        },
+        {
+            "input": "generationColumn",
+            "input_step": "plotMCMCSamples",
+            "name": "generationColumn"
+        },
+        {
+            "input": "burnin",
+            "input_step": "plotMCMCSamples",
+            "name": "burnin"
+        }
+    ],
+    "description": "",
+    "inputs": [
+        {
+            "description": "A phylogeny",
+            "format": "r.apetree",
+            "id": "tree",
+            "name": "tree",
+            "type": "tree",
+            "x": 221,
+            "y": 408
+        },
+        {
+            "description": "A data frame with trait data",
+            "format": "r.dataframe",
+            "id": "table",
+            "name": "table",
+            "type": "table",
+            "x": 220,
+            "y": 513
+        },
+        {
+            "description": "The trait to analyze",
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "id": "column",
+            "name": "column",
+            "type": "string",
+            "x": 221,
+            "y": 618
+        },
+        {
+            "default": {
+                "data": "TRUE",
+                "format": "text",
+                "type": "string"
+            },
+            "domain": [
+                "TRUE",
+                "FALSE"
+            ],
+            "format": "text",
+            "id": "check.data",
+            "name": "check.data",
+            "type": "string",
+            "x": 125,
+            "y": 644
+        },
+        {
+            "default": {
+                "data": "1",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "Proportion of extant species in state 0 that are included in the phylogeny. ",
+            "format": "number",
+            "id": "samplingFrequency0",
+            "name": "samplingFrequency0",
+            "type": "number",
+            "x": 319,
+            "y": 661
+        },
+        {
+            "default": {
+                "data": "1",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "Proportion of extant species in state 1 that are included in the phylogeny. ",
+            "format": "number",
+            "id": "samplingFrequency1",
+            "name": "samplingFrequency1",
+            "type": "number",
+            "x": 390,
+            "y": 681
+        },
+        {
+            "default": {
+                "data": "0",
+                "format": "text",
+                "type": "string"
+            },
+            "format": "number",
+            "id": "q10 minimum parameter",
+            "name": "q10 minimum parameter",
+            "type": "number",
+            "x": 401,
+            "y": -20
+        },
+        {
+            "default": {
+                "data": "1",
+                "format": "text",
+                "type": "string"
+            },
+            "format": "number",
+            "id": "q10 maximum parameter",
+            "name": "q10 maximum parameter",
+            "type": "number",
+            "x": 180,
+            "y": 0
+        },
+        {
+            "default": {
+                "data": "0.5",
+                "format": "text",
+                "type": "string"
+            },
+            "format": "number",
+            "id": "lambda0 rate parameter",
+            "name": "lambda0 rate parameter",
+            "type": "number",
+            "x": 56,
+            "y": 79
+        },
+        {
+            "default": {
+                "data": "0.5",
+                "format": "text",
+                "type": "string"
+            },
+            "format": "number",
+            "id": "lambda0 rate parameter 1",
+            "name": "lambda0 rate parameter 1",
+            "type": "number",
+            "x": 138,
+            "y": 167
+        },
+        {
+            "default": {
+                "data": "0.5",
+                "format": "text",
+                "type": "string"
+            },
+            "format": "number",
+            "id": "mu0 rate parameter",
+            "name": "mu0 rate parameter",
+            "type": "number",
+            "x": 263,
+            "y": 241
+        },
+        {
+            "default": {
+                "data": "0.5",
+                "format": "text",
+                "type": "string"
+            },
+            "format": "number",
+            "id": "mu1 rate parameter",
+            "name": "mu1 rate parameter",
+            "type": "number",
+            "x": 387,
+            "y": 258
+        },
+        {
+            "default": {
+                "data": "0.5",
+                "format": "text",
+                "type": "string"
+            },
+            "format": "number",
+            "id": "q01 rate parameter",
+            "name": "q01 rate parameter",
+            "type": "number",
+            "x": 494,
+            "y": 285
+        },
+        {
+            "default": {
+                "data": "1",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "The column number or name that represents the generations in the MCMC sample",
+            "format": "number",
+            "id": "generationColumn",
+            "name": "generationColumn",
+            "type": "number",
+            "x": 937,
+            "y": 193
+        },
+        {
+            "default": {
+                "data": "0",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "The proportion of initial burnin samples to discard",
+            "format": "number",
+            "id": "burnin",
+            "name": "burnin",
+            "type": "number",
+            "x": 945,
+            "y": 85
+        }
+    ],
+    "mode": "workflow",
+    "name": "bayesianBisseAnalysis",
+    "outputs": [
+        {
+            "description": "MCMC output table",
+            "format": "r.dataframe",
+            "id": "samples",
+            "name": "samples",
+            "type": "table",
+            "x": 1129,
+            "y": 431
+        },
+        {
+            "description": "A figure showing the traces and density of parameters from an MCMC",
+            "format": "png.base64",
+            "id": "mcmcPlot",
+            "name": "mcmcPlot",
+            "type": "image",
+            "x": 1436,
+            "y": 62
+        }
+    ],
+    "steps": [
+        {
+            "girderId": "563baea756c02c05ce2df74d",
+            "modified": "2015-11-06 19:19:06.494000",
+            "name": "bisseBayes",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "default": {
+                            "data": "NULL",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "description": "A prior created by a makeBissePrior",
+                        "format": "object",
+                        "name": "diversitreePrior",
+                        "type": "r"
+                    },
+                    {
+                        "description": "A diversitree likelihood object",
+                        "format": "object",
+                        "name": "diversitreeLikelihood",
+                        "type": "r"
+                    }
+                ],
+                "mode": "r",
+                "name": "bisseBayes",
+                "outputs": [
+                    {
+                        "description": "MCMC output table",
+                        "format": "r.dataframe",
+                        "name": "samples",
+                        "type": "table"
+                    }
+                ],
+                "script": "require(diversitree)\n# inputs: like = likelihood function, con = constraints\n# outputs: fit = ml fit\n\n#if(!is.null(con))\n#\tlik<-constrain(lik, con)\n#\t\t\t\t\n#set.seed(1) # this is not general\n\n#prior <- make.prior.exponential(.5) # NOT GENERAL - we need arguments for this\n#pars<-exp(prior(1))\n#samples <- mcmc(lik, pars, 1000, w=1, prior=prior, print.every=10) # likewise, need control arguments here\n#aceSamp <- apply(samples[c(-1, -dim(samples)[2])], 1, asr.joint, lik=lik)\n#zz<-apply(aceSamp, 2, table)/1000\n#attributes(zz)$fit <- fit\n#return(t(zz))\nlik <- diversitreeLikelihood\nprior <- diversitreePrior\nif(is.null(prior)){\n  priorFn <- make.prior.exponential(.5) # NOT GENERAL - we need arguments for this\n  pars<-exp(prior(1))\n} else {\n  .prior <- prior$prior[argnames(lik)]\n  priorFn <- function(pars){\n    sum(sapply(1:length(.prior), function(x) .prior[[x]](pars[x])))\n  }\n  pars <- sapply(1:length(.prior), function(x) prior$simulator[[x]](1))\n}\n\nsamples <- mcmc(lik, pars, 1000, w=1, prior=priorFn, print.every=10) # likewise, need control arguments here\n"
+            },
+            "visualization": false,
+            "x": 886,
+            "y": 326
+        },
+        {
+            "girderId": "563bed2b56c02c05ce2df7f8",
+            "modified": "2015-11-06 00:37:30.229000",
+            "name": "makeBisse",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "description": "A phylogeny",
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "description": "A data frame with trait data",
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    },
+                    {
+                        "description": "The trait to analyze",
+                        "domain": {
+                            "format": "column.names",
+                            "input": "table"
+                        },
+                        "format": "text",
+                        "name": "column",
+                        "type": "string"
+                    },
+                    {
+                        "default": {
+                            "data": "TRUE",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "domain": [
+                            "TRUE",
+                            "FALSE"
+                        ],
+                        "format": "text",
+                        "name": "check.data",
+                        "type": "string"
+                    },
+                    {
+                        "default": {
+                            "data": "1",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "description": "Proportion of extant species in state 0 that are included in the phylogeny. ",
+                        "format": "number",
+                        "name": "samplingFrequency0",
+                        "type": "number"
+                    },
+                    {
+                        "default": {
+                            "data": "1",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "description": "Proportion of extant species in state 1 that are included in the phylogeny. ",
+                        "format": "number",
+                        "name": "samplingFrequency1",
+                        "type": "number"
+                    }
+                ],
+                "mode": "r",
+                "name": "makeBisse",
+                "outputs": [
+                    {
+                        "description": "Likelihood function for the Mk model",
+                        "format": "object",
+                        "id": "lik",
+                        "name": "lik",
+                        "type": "r"
+                    },
+                    {
+                        "description": "A phylogeny matched to the data",
+                        "format": "r.apetree",
+                        "name": "phy",
+                        "type": "tree"
+                    }
+                ],
+                "script": "require(diversitree)\nrequire(geiger)\nrequire(aRbor)\ntd <- make.treedata(tree, table)\ntd <- select_(td, column)\n## Bisse needs to keep NA's\n#td <- filter(td, !is.na(td$dat[[1]]))\n\nphy <- td$phy\ndat <- setNames(td$dat[[1]], phy$tip.label)\nk <- length(unique(dat))\n\nif(check.data == TRUE){\n  if(!is.ultrametric(phy)){\n    phy <- rescale(phy, model=\"depth\", 1)\n  }\n}\n\nif(k != 2){\n  stop(\"2 or more character states needed to make likelihood function\")\n}\n\nif(length(setdiff(k, c(0,1)))>0){\n    dat <- setNames(as.numeric(factor(dat))-1, phy$tip.label)\n }\n \nlik <- make.bisse(phy, dat, sampling.f = c(samplingFrequency0, samplingFrequency1))\n"
+            },
+            "visualization": false,
+            "x": 547,
+            "y": 541
+        },
+        {
+            "girderId": "563d024a56c02c05ce2df8bb",
+            "modified": "2015-11-06 21:39:00.226272",
+            "name": "plotMCMCSamples",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "description": "A table of MCMC results",
+                        "format": "r.dataframe",
+                        "name": "mcmcTable",
+                        "type": "table"
+                    },
+                    {
+                        "default": {
+                            "data": "1",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "description": "The column number or name that represents the generations in the MCMC sample",
+                        "format": "number",
+                        "name": "generationColumn",
+                        "type": "number"
+                    },
+                    {
+                        "default": {
+                            "data": "0",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "description": "The proportion of initial burnin samples to discard",
+                        "format": "number",
+                        "name": "burnin",
+                        "type": "number"
+                    }
+                ],
+                "mode": "r",
+                "name": "plotMCMCSamples",
+                "outputs": [
+                    {
+                        "description": "A figure showing the traces and density of parameters from an MCMC",
+                        "format": "png.base64",
+                        "name": "mcmcPlot",
+                        "type": "image"
+                    }
+                ],
+                "script": "require(coda)\nrequire(cardoonTools)\n\n## Convert table to mcmc object with generation column removed\nif(!is.null(generationColumn)){\n    plotTable <- mcmcTable[,-generationColumn]\n    } else {\n    plotTable <- mcmcTable\n    }\n\n## Exclude burnin sample\nstart <- ifelse(burnin==0, 1, floor(burnin*nrow(plotTable)))\nplotTable <- plotTable[start:nrow(plotTable),]\n## Scale the output graphics to the number of parameters\nhgt <- 100 * ncol(plotTable)\n\n## Generate the figure.\nmcmcPlot <- cardoonPlot(expression(coda:::plot.mcmc(coda::mcmc(plotTable), width=1000, height=hgt, res=100)))\nmcmcPlot <- mcmcPlot$png"
+            },
+            "visualization": false,
+            "x": 1202,
+            "y": 65
+        },
+        {
+            "girderId": "563c075756c02c05ce2df83f",
+            "modified": "2015-11-06 03:21:32.592000",
+            "name": "buildPrior",
+            "task": {
+                "connections": [
+                    {
+                        "input": "lambda",
+                        "input_step": "makePriorExponential 1",
+                        "name": "lambda"
+                    },
+                    {
+                        "input": "lambda",
+                        "input_step": "makePriorExponential 2",
+                        "name": "lambda 1"
+                    },
+                    {
+                        "input": "lambda",
+                        "input_step": "makePriorExponential 3",
+                        "name": "lambda 2"
+                    },
+                    {
+                        "input": "lambda",
+                        "input_step": "makePriorExponential 4",
+                        "name": "lambda 3"
+                    },
+                    {
+                        "input": "lambda",
+                        "input_step": "makePriorExponential 5",
+                        "name": "lambda 4"
+                    },
+                    {
+                        "name": "prior",
+                        "output": "prior",
+                        "output_step": "makePriorBisse"
+                    },
+                    {
+                        "input": "lambda0",
+                        "input_step": "makePriorBisse",
+                        "output": "fnHeader",
+                        "output_step": "makePriorExponential 1"
+                    },
+                    {
+                        "input": "lambda1",
+                        "input_step": "makePriorBisse",
+                        "output": "fnHeader",
+                        "output_step": "makePriorExponential 2"
+                    },
+                    {
+                        "input": "q01",
+                        "input_step": "makePriorBisse",
+                        "output": "fnHeader",
+                        "output_step": "makePriorExponential 3"
+                    },
+                    {
+                        "input": "q10",
+                        "input_step": "makePriorBisse",
+                        "output": "fnHeader",
+                        "output_step": "makePriorExponential 4"
+                    },
+                    {
+                        "input": "mu0",
+                        "input_step": "makePriorBisse",
+                        "output": "fnHeader",
+                        "output_step": "makePriorExponential 5"
+                    },
+                    {
+                        "input": "mu1",
+                        "input_step": "makePriorBisse",
+                        "output": "fnHeader",
+                        "output_step": "makePriorUniform"
+                    },
+                    {
+                        "input": "min",
+                        "input_step": "makePriorUniform",
+                        "name": "min"
+                    },
+                    {
+                        "input": "max",
+                        "input_step": "makePriorUniform",
+                        "name": "max"
+                    }
+                ],
+                "description": "",
+                "inputs": [
+                    {
+                        "default": {
+                            "data": "0",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "format": "number",
+                        "id": "min",
+                        "name": "q10 minimum parameter",
+                        "type": "number",
+                        "x": 81,
+                        "y": 530
+                    },
+                    {
+                        "default": {
+                            "data": "1",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "format": "number",
+                        "id": "max",
+                        "name": "q10 maximum parameter",
+                        "type": "number",
+                        "x": 78,
+                        "y": 638
+                    },
+                    {
+                        "default": {
+                            "data": "0.5",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "format": "number",
+                        "id": "lambda",
+                        "name": "lambda0 rate parameter",
+                        "type": "number",
+                        "x": 91,
+                        "y": -2
+                    },
+                    {
+                        "default": {
+                            "data": "0.5",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "format": "number",
+                        "id": "lambda 1",
+                        "name": "lambda0 rate parameter",
+                        "type": "number",
+                        "x": 86,
+                        "y": 105
+                    },
+                    {
+                        "default": {
+                            "data": "0.5",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "format": "number",
+                        "id": "lambda 2",
+                        "name": "mu0 rate parameter",
+                        "type": "number",
+                        "x": 83,
+                        "y": 213
+                    },
+                    {
+                        "default": {
+                            "data": "0.5",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "format": "number",
+                        "id": "lambda 3",
+                        "name": "mu1 rate parameter",
+                        "type": "number",
+                        "x": 88,
+                        "y": 316
+                    },
+                    {
+                        "default": {
+                            "data": "0.5",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "format": "number",
+                        "id": "lambda 4",
+                        "name": "q01 rate parameter",
+                        "type": "number",
+                        "x": 80,
+                        "y": 422
+                    }
+                ],
+                "mode": "workflow",
+                "name": "buildPrior",
+                "outputs": [
+                    {
+                        "description": "A R list of prior functions for a bisse model",
+                        "format": "object",
+                        "id": "prior",
+                        "name": "prior",
+                        "type": "r",
+                        "x": 1188,
+                        "y": 214
+                    }
+                ],
+                "steps": [
+                    {
+                        "girderId": "563c024056c02c05ce2df83c",
+                        "modified": "2015-11-06 02:23:02.833000",
+                        "name": "makePriorExponential 1",
+                        "task": {
+                            "description": "",
+                            "inputs": [
+                                {
+                                    "format": "number",
+                                    "name": "lambda",
+                                    "type": "number"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "makePriorExponential",
+                            "outputs": [
+                                {
+                                    "description": "A string specifying the model type and parameters",
+                                    "format": "text",
+                                    "name": "fnHeader",
+                                    "type": "string"
+                                }
+                            ],
+                            "script": "fnHeader <- paste(\"dexp,rate=\",lambda, sep=\"\")"
+                        },
+                        "visualization": false,
+                        "x": 525,
+                        "y": 21
+                    },
+                    {
+                        "girderId": "563c024056c02c05ce2df83c",
+                        "modified": "2015-11-06 02:23:02.833000",
+                        "name": "makePriorExponential 2",
+                        "task": {
+                            "description": "",
+                            "inputs": [
+                                {
+                                    "format": "number",
+                                    "name": "lambda",
+                                    "type": "number"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "makePriorExponential",
+                            "outputs": [
+                                {
+                                    "description": "A string specifying the model type and parameters",
+                                    "format": "text",
+                                    "name": "fnHeader",
+                                    "type": "string"
+                                }
+                            ],
+                            "script": "fnHeader <- paste(\"dexp,rate=\",lambda, sep=\"\")"
+                        },
+                        "visualization": false,
+                        "x": 525,
+                        "y": 132
+                    },
+                    {
+                        "girderId": "563c024056c02c05ce2df83c",
+                        "modified": "2015-11-06 02:23:02.833000",
+                        "name": "makePriorExponential 3",
+                        "task": {
+                            "description": "",
+                            "inputs": [
+                                {
+                                    "format": "number",
+                                    "name": "lambda",
+                                    "type": "number"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "makePriorExponential",
+                            "outputs": [
+                                {
+                                    "description": "A string specifying the model type and parameters",
+                                    "format": "text",
+                                    "name": "fnHeader",
+                                    "type": "string"
+                                }
+                            ],
+                            "script": "fnHeader <- paste(\"dexp,rate=\",lambda, sep=\"\")"
+                        },
+                        "visualization": false,
+                        "x": 526,
+                        "y": 243
+                    },
+                    {
+                        "girderId": "563c024056c02c05ce2df83c",
+                        "modified": "2015-11-06 02:23:02.833000",
+                        "name": "makePriorExponential 4",
+                        "task": {
+                            "description": "",
+                            "inputs": [
+                                {
+                                    "format": "number",
+                                    "name": "lambda",
+                                    "type": "number"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "makePriorExponential",
+                            "outputs": [
+                                {
+                                    "description": "A string specifying the model type and parameters",
+                                    "format": "text",
+                                    "name": "fnHeader",
+                                    "type": "string"
+                                }
+                            ],
+                            "script": "fnHeader <- paste(\"dexp,rate=\",lambda, sep=\"\")"
+                        },
+                        "visualization": false,
+                        "x": 524,
+                        "y": 353
+                    },
+                    {
+                        "girderId": "563c024056c02c05ce2df83c",
+                        "modified": "2015-11-06 02:23:02.833000",
+                        "name": "makePriorExponential 5",
+                        "task": {
+                            "description": "",
+                            "inputs": [
+                                {
+                                    "format": "number",
+                                    "name": "lambda",
+                                    "type": "number"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "makePriorExponential",
+                            "outputs": [
+                                {
+                                    "description": "A string specifying the model type and parameters",
+                                    "format": "text",
+                                    "name": "fnHeader",
+                                    "type": "string"
+                                }
+                            ],
+                            "script": "fnHeader <- paste(\"dexp,rate=\",lambda, sep=\"\")"
+                        },
+                        "visualization": false,
+                        "x": 523,
+                        "y": 462
+                    },
+                    {
+                        "girderId": "563c039f56c02c05ce2df83e",
+                        "modified": "2015-11-06 02:54:59.287000",
+                        "name": "makePriorBisse",
+                        "task": {
+                            "description": "",
+                            "inputs": [
+                                {
+                                    "default": {
+                                        "data": "dexp,rate=0.1",
+                                        "format": "text",
+                                        "type": "string"
+                                    },
+                                    "description": "Prior specification for speciation rate in state 0",
+                                    "format": "text",
+                                    "name": "lambda0",
+                                    "type": "string"
+                                },
+                                {
+                                    "default": {
+                                        "data": "dexp,rate=0.1",
+                                        "format": "text",
+                                        "type": "string"
+                                    },
+                                    "description": "Prior specification for speciation rate in state 1",
+                                    "format": "text",
+                                    "name": "lambda1",
+                                    "type": "string"
+                                },
+                                {
+                                    "default": {
+                                        "data": "dexp,rate=0.1",
+                                        "format": "text",
+                                        "type": "string"
+                                    },
+                                    "description": "Prior specification for the transition rate from state 0 to 1",
+                                    "format": "text",
+                                    "name": "q01",
+                                    "type": "string"
+                                },
+                                {
+                                    "default": {
+                                        "data": "dexp,rate=0.1",
+                                        "format": "text",
+                                        "type": "string"
+                                    },
+                                    "description": "Prior specification for the transition rate from state 1 to 0",
+                                    "format": "text",
+                                    "name": "q10",
+                                    "type": "string"
+                                },
+                                {
+                                    "default": {
+                                        "data": "dexp,rate=0.1",
+                                        "format": "text",
+                                        "type": "string"
+                                    },
+                                    "description": "Prior specification for the extinction rate in state 0",
+                                    "format": "text",
+                                    "name": "mu0",
+                                    "type": "string"
+                                },
+                                {
+                                    "default": {
+                                        "data": "dexp,rate=0.1",
+                                        "format": "text",
+                                        "type": "string"
+                                    },
+                                    "description": "Prior specification for the extinction rate in state 1",
+                                    "format": "text",
+                                    "name": "mu1",
+                                    "type": "string"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "makePriorBisse",
+                            "outputs": [
+                                {
+                                    "description": "A R list of prior functions for a bisse model",
+                                    "format": "object",
+                                    "name": "prior",
+                                    "type": "r"
+                                }
+                            ],
+                            "script": "priorList <- list(lambda0=lambda0, lambda1=lambda1, mu0=mu0, mu1=mu1, q01=q01, q10=q10)\npriorList <- lapply(priorList, function(x) gsub(\" \", \"\", x))\npriorList <- lapply(priorList, function(x) ifelse(is.null(x), \"dexp,lambda=0.1\", x))\nparsed <- lapply(priorList, function(x) strsplit(x, split=\",\")[[1]])\ndistributions <- lapply(parsed, function(x) x[1])\nrdistributions <- lapply(parsed, function(x) gsub(\"^[a-zA-Z]\", \"r\", x))\nparameters <- lapply(parsed, function(x) lapply(x[-1], function(x){tmp <- strsplit(x, \"=\")[[1]]; y <- as.numeric(tmp[2]); names(y)=tmp[1]; y}))\nnames.parameters <- lapply(parameters, function(x) sapply(x, names))\nparameters <- lapply(1:length(parameters), function(x){names(parameters[[x]]) <- names.parameters[[x]]; parameters[[x]]})\nprior <- lapply(1:length(distributions), function(x) get(distributions[[x]]))\nprior <- lapply(1:length(distributions), function(x) diversitree:::set.defaults(prior[[x]], defaults=c(parameters[[x]], log=TRUE)))\nsimulator <- lapply(1:length(distributions), function(x) get(rdistributions[[x]]))\nsimulator <- lapply(1:length(distributions), function(x) diversitree:::set.defaults(simulator[[x]], defaults=c(parameters[[x]])))\nnames(prior) <- names(priorList)\nnames(simulator) <- names(priorList)\nprior <- list(prior=prior, simulator=simulator)"
+                        },
+                        "visualization": false,
+                        "x": 948,
+                        "y": 280
+                    },
+                    {
+                        "girderId": "563c028156c02c05ce2df83d",
+                        "modified": "2015-11-06 01:57:36.393861",
+                        "name": "makePriorUniform",
+                        "task": {
+                            "description": "",
+                            "inputs": [
+                                {
+                                    "default": {
+                                        "data": "0",
+                                        "format": "text",
+                                        "type": "string"
+                                    },
+                                    "format": "number",
+                                    "name": "min",
+                                    "type": "number"
+                                },
+                                {
+                                    "default": {
+                                        "data": "1",
+                                        "format": "text",
+                                        "type": "string"
+                                    },
+                                    "format": "number",
+                                    "name": "max",
+                                    "type": "number"
+                                }
+                            ],
+                            "mode": "r",
+                            "name": "makePriorUniform",
+                            "outputs": [
+                                {
+                                    "description": "Description of the prior function",
+                                    "format": "text",
+                                    "name": "fnHeader",
+                                    "type": "string"
+                                }
+                            ],
+                            "script": "fnHeader <- paste(\"dunif,min=\",min,\",max=\",max,sep=\"\")"
+                        },
+                        "visualization": false,
+                        "x": 527,
+                        "y": 575
+                    }
+                ]
+            },
+            "visualization": false,
+            "x": 652,
+            "y": 150
+        }
+    ]
+}

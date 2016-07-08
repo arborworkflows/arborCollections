@@ -1,0 +1,25 @@
+{
+    "inputs": [
+        {
+            "description": "input matrix containing a column ottid",
+            "format": "rows",
+            "name": "table",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "GetOTLtreeFromTableWithIDs",
+    "outputs": [
+        {
+            "format": "text",
+            "name": "debugoutstring",
+            "type": "string"
+        },
+        {
+            "format": "newick",
+            "name": "tree",
+            "type": "tree"
+        }
+    ],
+    "script": "import requests\n\nrows = table['rows']\nidList = []\nfor i in range(len(rows)):\n    idList.append(rows[i]['ottId'])\n\n# lookup the tree that contains these nodes\npayload = {\"ottIds\": idList}\nresp = requests.post('http://api.opentreeoflife.org/treemachine/v1/getDraftTreeSubtreeForNodes',data=payload)\ntree = str(resp.json()[\"subtree\"])\ndebugoutstring = tree\n"
+}

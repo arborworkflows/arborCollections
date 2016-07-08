@@ -1,0 +1,28 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "id": "phy",
+            "name": "Input tree",
+            "type": "tree"
+        },
+        {
+            "format": "r.dataframe",
+            "id": "newNames",
+            "name": "New names",
+            "type": "table"
+        }
+    ],
+    "mode": "r",
+    "name": "renameTreeTips",
+    "outputs": [
+        {
+            "format": "r.apetree",
+            "id": "result",
+            "name": "Output tree",
+            "type": "tree"
+        }
+    ],
+    "script": "result<-phy\nresult$tip.label<-newNames[,1]"
+}

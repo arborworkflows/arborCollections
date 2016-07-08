@@ -1,0 +1,392 @@
+{
+    "connections": [
+        {
+            "input": "input",
+            "input_step": "decostand",
+            "name": "input"
+        },
+        {
+            "input": "tree",
+            "input_step": "make.treedata",
+            "name": "tree"
+        },
+        {
+            "input": "table",
+            "input_step": "make.treedata",
+            "name": "table"
+        },
+        {
+            "input": "type",
+            "input_step": "make.treedata",
+            "name": "type"
+        },
+        {
+            "input": "reorderedTable",
+            "input_step": "matchTables",
+            "output": "output",
+            "output_step": "decostand"
+        },
+        {
+            "input": "staticTable",
+            "input_step": "matchTables",
+            "output": "dat",
+            "output_step": "make.treedata"
+        },
+        {
+            "input": "tree",
+            "input_step": "rescalePhylo",
+            "output": "phy",
+            "output_step": "make.treedata"
+        },
+        {
+            "input": "model",
+            "input_step": "rescalePhylo",
+            "name": "model"
+        },
+        {
+            "input": "parameter",
+            "input_step": "rescalePhylo",
+            "name": "parameter"
+        },
+        {
+            "input": "table",
+            "input_step": "matchPhyloComm",
+            "output": "newTable",
+            "output_step": "matchTables"
+        },
+        {
+            "name": "comTable",
+            "output": "comTable",
+            "output_step": "matchPhyloComm"
+        },
+        {
+            "name": "comPhy",
+            "output": "comPhy",
+            "output_step": "matchPhyloComm"
+        },
+        {
+            "input": "tree",
+            "input_step": "matchPhyloComm",
+            "name": "tree 1"
+        }
+    ],
+    "description": "",
+    "inputs": [
+        {
+            "format": "r.dataframe",
+            "id": "input",
+            "name": "input",
+            "type": "table",
+            "x": 14.999984741210938,
+            "y": 39
+        },
+        {
+            "format": "r.apetree",
+            "id": "tree",
+            "name": "tree",
+            "type": "tree",
+            "x": 30.999984741210938,
+            "y": 248.00001525878906
+        },
+        {
+            "format": "r.dataframe",
+            "id": "table",
+            "name": "table",
+            "type": "table",
+            "x": -12.000015258789062,
+            "y": 383.00001525878906
+        },
+        {
+            "default": "both",
+            "domain": [
+                "both",
+                "discrete",
+                "continuous"
+            ],
+            "format": "text",
+            "id": "type",
+            "name": "type",
+            "type": "string",
+            "x": 109,
+            "y": 484.99998474121094
+        },
+        {
+            "default": "lambda",
+            "domain": [
+                "lambda",
+                "BM",
+                "OU",
+                "EB",
+                "nrate",
+                "lrate",
+                "trend",
+                "kappa",
+                "delta",
+                "white",
+                "depth"
+            ],
+            "format": "text",
+            "id": "model",
+            "name": "model",
+            "type": "string",
+            "x": 204,
+            "y": 600.9999847412109
+        },
+        {
+            "format": "number",
+            "id": "parameter",
+            "name": "parameter",
+            "type": "number",
+            "x": 403,
+            "y": 661.9999847412109
+        },
+        {
+            "format": "r.apetree",
+            "id": "tree 1",
+            "name": "tree",
+            "type": "tree",
+            "x": 695.9999847412109,
+            "y": 221.99998474121094
+        }
+    ],
+    "mode": "workflow",
+    "name": "coleDataPrepV2",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "id": "comTable",
+            "name": "comTable",
+            "type": "table",
+            "x": 1265.9999694824219,
+            "y": 6
+        },
+        {
+            "format": "r.apetree",
+            "id": "comPhy",
+            "name": "comPhy",
+            "type": "tree",
+            "x": 1268.9999694824219,
+            "y": 126.99998474121094
+        }
+    ],
+    "steps": [
+        {
+            "girderId": "5459147fd591e4636e0ddb90",
+            "id": "decostand",
+            "modified": "2014-11-05 16:57:08.487000",
+            "name": "decostand",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "input",
+                        "type": "table"
+                    }
+                ],
+                "mode": "r",
+                "name": "decostand",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "output",
+                        "type": "table"
+                    }
+                ],
+                "script": "library(picante)\n## This is a hack for rownames\nrownames(input) <- input[,1]\n\n#Only this line is necessary\noutput<- decostand(input[,-1], method=\"total\")\n\n#More hacking rownames...\noutput <- cbind(rownames(output), output)\ncolnames(output)[1] <- \"rownames\"\n",
+                "x": 338,
+                "y": 44.99998474121094
+            },
+            "x": 338,
+            "y": 44.99998474121094
+        },
+        {
+            "girderId": "537e3429d591e45573cc097c",
+            "id": "make.treedata",
+            "modified": "2014-11-04 16:02:38.224000",
+            "name": "make.treedata",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    },
+                    {
+                        "default": "both",
+                        "domain": [
+                            "both",
+                            "discrete",
+                            "continuous"
+                        ],
+                        "format": "text",
+                        "name": "type",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "make.treedata",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "columns",
+                        "type": "table"
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "phy",
+                        "type": "tree"
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "dat",
+                        "type": "table"
+                    }
+                ],
+                "script": "library(aRbor)\n\nif(is.binary.tree(tree)==FALSE){\n  tree <- multi2di(tree)\n}\ntd <- make.treedata(tree, table)\nif(type!=\"both\"){\n    if(type==\"discrete\"){\n      td <- checkFactor(td)\n        }\n    if(type==\"continuous\"){\n      td <- checkNumeric(td)\n        }\n    }\n#### Return these columns \ncolumns <- colnames(td$dat)\nphy <- td$phy\ndat <- td$dat",
+                "x": 420.9999694824219,
+                "y": 255
+            },
+            "x": 420.9999694824219,
+            "y": 255
+        },
+        {
+            "girderId": "545924add591e4636e0ddbbe",
+            "id": "matchTables",
+            "modified": "2014-11-07 16:31:21.508000",
+            "name": "matchTables",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "The table to match the order to",
+                        "format": "r.dataframe",
+                        "name": "staticTable",
+                        "type": "table"
+                    },
+                    {
+                        "description": "The table to reorder",
+                        "format": "r.dataframe",
+                        "name": "reorderedTable",
+                        "type": "table"
+                    }
+                ],
+                "mode": "r",
+                "name": "matchTables",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "newTable",
+                        "type": "table"
+                    }
+                ],
+                "script": "rn <- rownames(staticTable)\nnewTable <- reorderedTable[rn, ]\n",
+                "x": 667.9999694824219,
+                "y": 60.99998474121094
+            },
+            "x": 667.9999694824219,
+            "y": 60.99998474121094
+        },
+        {
+            "girderId": "54591aa1d591e4636e0ddbab",
+            "id": "rescalePhylo",
+            "modified": "2014-11-04 13:44:41.943000",
+            "name": "rescalePhylo",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "default": "lambda",
+                        "domain": [
+                            "lambda",
+                            "BM",
+                            "OU",
+                            "EB",
+                            "nrate",
+                            "lrate",
+                            "trend",
+                            "kappa",
+                            "delta",
+                            "white",
+                            "depth"
+                        ],
+                        "format": "text",
+                        "name": "model",
+                        "type": "string"
+                    },
+                    {
+                        "format": "number",
+                        "name": "parameter",
+                        "type": "number"
+                    }
+                ],
+                "mode": "r",
+                "name": "rescalePhylo",
+                "outputs": [
+                    {
+                        "format": "r.apetree",
+                        "name": "rscTree",
+                        "type": "tree"
+                    },
+                    {
+                        "format": "png.base64",
+                        "name": "plotrstree",
+                        "type": "image"
+                    }
+                ],
+                "script": "require(geiger)\nrequire(cardoonTools)\nrscFn <- rescale(tree, model=model)\nrscTree <- rscFn(parameter)\n\nTH <- max(branching.times(rscTree))\nplotrstree <- cardoonPlot(expression(plot(rscTree, label.offset=0.05*TH)), width=1000, height=1000, res=100)\nplotrstree <- plotrstree$png",
+                "x": 668.9999694824219,
+                "y": 428.00001525878906
+            },
+            "x": 668.9999694824219,
+            "y": 428.00001525878906
+        },
+        {
+            "girderId": "54595719d591e4636e0ddc1d",
+            "id": "matchPhyloComm",
+            "modified": "2014-11-05 15:39:41.003000",
+            "name": "matchPhyloComm",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "Community matrix",
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    }
+                ],
+                "mode": "r",
+                "name": "matchPhyloComm",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "comTable",
+                        "type": "table"
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "comPhy",
+                        "type": "tree"
+                    }
+                ],
+                "script": "require(picante)\ncombinedPhyloComm <- match.phylo.comm(tree, table)\ncomTable <- combinedPhyloComm$comm\nrownames(comTable) <- paste(\"N\",1:nrow(comTable), sep=\"\")\n#comTable <- rownames(table)\ncomPhy <- combinedPhyloComm$phy\n\n##If you don't do this line, the row names are dropped from the output table, even though rownames are properly read in and identified for r.dataframes otherwise.\ncomTable <- cbind(rownames=rownames(table), comTable)\n",
+                "x": 986.9999694824219,
+                "y": 68
+            },
+            "x": 986.9999694824219,
+            "y": 68
+        }
+    ]
+}

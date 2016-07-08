@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "id": "phy",
+            "name": "Input tree",
+            "type": "tree"
+        }
+    ],
+    "mode": "r",
+    "name": "collapseSingles",
+    "outputs": [
+        {
+            "format": "r.apetree",
+            "id": "result",
+            "name": "Output tree",
+            "type": "tree"
+        }
+    ],
+    "script": "result<-collapse.singles(phy)"
+}

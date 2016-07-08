@@ -1,0 +1,31 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "table whose first column will be renamed",
+            "format": "rows",
+            "id": "datatable",
+            "name": "datatable",
+            "type": "table"
+        },
+        {
+            "description": "single row, single column table containing the new name in its only cell",
+            "format": "rows",
+            "id": "newNameTable",
+            "name": "newNameTable",
+            "type": "table"
+        }
+    ],
+    "mode": "python",
+    "name": "ReplaceNameOfFirstColumn",
+    "outputs": [
+        {
+            "description": "table with updated first column name",
+            "format": "rows",
+            "id": "outtable",
+            "name": "outtable",
+            "type": "table"
+        }
+    ],
+    "script": "\n# replace the first column of a large table with a column name passed in a parameter table.  This \n# method doesn't care what value the first column has, it is changed to the passed name.  This is \n# useful in cases where column names are automatically created from taxonomies and have unknown or\n# dataset specific prefixes.\n\n# input: datatable - data table with lots of columns (relatively speaking)\n# input: newNameTable - single column, single row table containing the new name\n# output: outtable  \n\ninfields = datatable['fields']\n\n\noutfields = []\n\nrowOfNewNameTable = newNameTable['rows'][0]\nnewName = rowOfNewNameTable[newNameTable['fields'][0]]\n\nfor field in infields:\n    if field == datatable['fields'][0]:\n        outfields.append(newName)\n    else:\n        outfields.append(field)\n        \n\n# now loop through the source table and change the fieldname\n\noutrows = []\nfor row in datatable['rows']:\n    outrow = {}\n    for field in infields:\n        if field == datatable['fields'][0]:\n            outrow[newName] = row[field]\n        else:\n            outrow[field] = row[field]\n    outrows.append(outrow)\n        \nouttable = {}\nouttable['fields'] = outfields\nouttable['rows'] = outrows\n"
+}

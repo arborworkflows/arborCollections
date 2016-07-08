@@ -1,0 +1,19 @@
+{
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree"
+        }
+    ],
+    "mode": "r",
+    "name": "Tip Names from tree",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "name": "treenames",
+            "type": "table"
+        }
+    ],
+    "script": "library(ape)\ntreenames = data.frame(tree$tip.label)\nnames(treenames) <- paste(\"name\")\n# this doesn't work as hoped: to assign the column header\n#assign(\"species\",treenames)\n"
+}

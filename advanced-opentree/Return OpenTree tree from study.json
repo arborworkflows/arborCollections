@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "text",
+            "id": "study_id",
+            "name": "study_id",
+            "type": "string"
+        }
+    ],
+    "mode": "python",
+    "name": "Return OpenTree tree from study",
+    "outputs": [
+        {
+            "format": "text",
+            "id": "treeNewickString",
+            "name": "treeNewickString",
+            "type": "string"
+        }
+    ],
+    "script": "import requests\n\nresp = requests.get('https://api.opentreeoflife.org/v2/study/'+study_id+'.nex')\ntree = resp.text\n\n# tree as a string to preview \ntreeNewickString = tree\n"
+}

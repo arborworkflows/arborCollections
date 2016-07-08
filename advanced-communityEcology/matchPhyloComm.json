@@ -1,0 +1,30 @@
+{
+    "inputs": [
+        {
+            "description": "Community matrix",
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree"
+        }
+    ],
+    "mode": "r",
+    "name": "matchPhyloComm",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "name": "comTable",
+            "type": "table"
+        },
+        {
+            "format": "r.apetree",
+            "name": "comPhy",
+            "type": "tree"
+        }
+    ],
+    "script": "require(picante)\ncombinedPhyloComm <- match.phylo.comm(tree, table)\ncomTable <- combinedPhyloComm$comm\nrownames(comTable) <- paste(\"N\",1:nrow(comTable), sep=\"\")\n#comTable <- rownames(table)\ncomPhy <- combinedPhyloComm$phy\n\n##If you don't do this line, the row names are dropped from the output table, even though rownames are properly read in and identified for r.dataframes otherwise.\ncomTable <- cbind(rownames=rownames(table), comTable)\n"
+}

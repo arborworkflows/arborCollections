@@ -1,0 +1,82 @@
+{
+    "connections": [
+        {
+            "input": "staticTable",
+            "input_step": "matchTables",
+            "name": "staticTable"
+        },
+        {
+            "input": "reorderedTable",
+            "input_step": "matchTables",
+            "name": "reorderedTable"
+        },
+        {
+            "name": "newTable",
+            "output": "newTable",
+            "output_step": "matchTables"
+        }
+    ],
+    "inputs": [
+        {
+            "description": "The table to match the order to",
+            "format": "r.dataframe",
+            "name": "staticTable",
+            "type": "table",
+            "x": 200,
+            "y": 200
+        },
+        {
+            "description": "The table to reorder",
+            "format": "r.dataframe",
+            "name": "reorderedTable",
+            "type": "table",
+            "x": 177,
+            "y": 368
+        }
+    ],
+    "mode": "workflow",
+    "name": "EassonScratchWflow",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "name": "newTable",
+            "type": "table",
+            "x": 1075,
+            "y": 262
+        }
+    ],
+    "steps": [
+        {
+            "id": "matchTables",
+            "name": "matchTables",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "The table to match the order to",
+                        "format": "r.dataframe",
+                        "name": "staticTable",
+                        "type": "table"
+                    },
+                    {
+                        "description": "The table to reorder",
+                        "format": "r.dataframe",
+                        "name": "reorderedTable",
+                        "type": "table"
+                    }
+                ],
+                "mode": "r",
+                "name": "matchTables",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "newTable",
+                        "type": "table"
+                    }
+                ],
+                "script": "rn <- rownames(staticTable)\nnewTable <- reorderedTable[rn, ]\n"
+            },
+            "x": 619,
+            "y": 258
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "inputs": [
+        {
+            "format": "rows",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "description": "how many rows should the output table have?",
+            "format": "number",
+            "name": "outRowCount",
+            "type": "number"
+        }
+    ],
+    "mode": "python",
+    "name": "TableSelectRandomRows",
+    "outputs": [
+        {
+            "format": "rows",
+            "name": "outTable",
+            "type": "table"
+        }
+    ],
+    "script": "from random import randint\n#\n# pick random rows out of a table, according to the rowcount passed as an argument\n\n# input: table\n# input: outRowCount - how many rows to pick from the input table\n# output: outTable\n\ntableRowCount = len(table['rows'])\noutColumns = []\n\n# loop the number of times in the output row count; selecting a random row each time\nfor i in range(outRowCount):\n    outColumns.append(table['rows'][randint(0,tableRowCount-1)])\n    \noutTable = {}\noutTable['fields'] = table['fields']\noutTable['rows'] = outColumns\n"
+}

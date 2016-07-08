@@ -1,0 +1,29 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "rows",
+            "id": "table",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "format": "text",
+            "id": "arbor_location",
+            "name": "arbor_location",
+            "type": "string"
+        }
+    ],
+    "mode": "python",
+    "name": "Lookup Annotation Table Item Number",
+    "outputs": [
+        {
+            "description": "Table with additional column with URL to retrieve image",
+            "format": "rows",
+            "id": "table_with_urls",
+            "name": "table_with_urls",
+            "type": "table"
+        }
+    ],
+    "script": "#\n#  An annotation file is produced by phenoscape which includes the taxon name and an image name associated with the\n#  taxon.  This method looks up the annotation items in girder's storage based on their names in the association table.\n#\n#  C Lisle\n#  KnowledgeVis, LLC\n#\n\n# inputs\n#  table - annotation table with taxon and image columns\n#  arbor_location - location of the arbor instance to search\n\n# outputs\n#   table_with_urls - input table plus extra column entitled 'url'\n\n# this method accesses the girder API, so needs HTTP capabilities\nimport requests\nimport json\n\n# This method uses the girder API to lookup item numbers and build a download URL for accessing the images.\n\ntable_with_urls = {}\ntable_with_urls['fields'] = table['fields']\ntable_with_urls['fields'].append('url')\ntable_with_urls['rows'] = []\n\n# build the full url to reach the girder API\nGirderApi = 'http://'+ arbor_location +'/girder/api/v1'\n\n# for each row in the input table, try to look up the item name in girder using a search, retrieve\n# the item \"_id\" field and use this to create a download link for the item.  Add the download link\n# to the output table\n\nfor row in table['rows']:\n    \n    # ***KLUDGE*** append an '_' to the table entries because the filenames all ended with an underscore but \n    # the annotation table did not specify the underscore.\n    query = row['image']+'_'\n    \n    # look up the item in girder and return the URL of the item\n    url = \"%s/resource/search\" % (GirderApi)\n    params = {\"q\":query,\"types\":'[\"item\"]'}\n    res = requests.get(url,params=params)\n    jObj = json.loads(res.text)\n    \n    # let us determine if an item was found.  If successful, a JSON object with component 'item' will be\n    # returned.  If this is the case, build the download link.  Otherwise return an empty string\n    item_url = ''\n    try:\n        # this is true if the query was interpretted correctly\n        if 'item' in jObj:\n            # this is true if more than 0 items were found in the girder store\n            if len(jObj['item']) > 0:\n                # return the url of the first match\n                item_id = jObj['item'][0]['_id']\n                item_url = GirderApi+'item/'+ item_id+'/download'\n    except:\n            item_url = ''\n    \n    # put the calculated additional column in this row and add this row to the table output\n    row['url'] = item_url\n    table_with_urls['rows'].append(row)\n        \n   "
+}

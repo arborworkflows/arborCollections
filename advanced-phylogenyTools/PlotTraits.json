@@ -1,0 +1,42 @@
+{
+    "inputs": [
+        {
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "name": "trait1",
+            "type": "string"
+        },
+        {
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "name": "trait2",
+            "type": "string"
+        },
+        {
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree"
+        }
+    ],
+    "mode": "r",
+    "name": "PlotTraits",
+    "outputs": [
+        {
+            "format": "png.base64",
+            "name": "picPlot",
+            "type": "image"
+        }
+    ],
+    "script": "library(geiger)\nlibrary(cardoonTools)\n\ndat1 <- table[tree$tip.label,trait1]\ndat2 <- table[tree$tip.label,trait2]\n\npic1 <- pic(dat1, tree)\npic2 <- pic(dat2, tree)\n\nm1 <- lm(pic2 ~ pic1 - 1)\n\npicplot <- function(pic1, pic2, m1){\n  plot(pic1, pic2, xlab=\"PIC trait 1\", ylab=\"PIC trait 2\")\n  abline(m1, lty=2)\n}\n\npicPlot = cardoonPlot(expression(picplot(pic1, pic2, m1)), width=1000, height=1000, res=100)\npicPlot = picPlot$png"
+}

@@ -1,0 +1,22 @@
+{
+    "inputs": [
+        {
+            "default": "Mammalia",
+            "description": "Provide a scientific name to search in iDigBio in full-text manner",
+            "format": "text",
+            "name": "scientificname",
+            "type": "string"
+        }
+    ],
+    "mode": "python",
+    "name": "Get 100 ranked scientific names from iDigBio",
+    "outputs": [
+        {
+            "description": "Ranked Scientific names found in iDigBio",
+            "format": "rows",
+            "name": "rankedScientificNames",
+            "type": "table"
+        }
+    ],
+    "script": "import json\r\nimport urllib2\r\nimport requests\r\nimport csv\r\n\r\nurl = \"http://search.idigbio.org/idigbio/records/_search\"\r\ndata = {\r\n    \"query\": {\r\n\t\"query_string\" : {\r\n       \t\t\"query\" : scientificname.lower()\r\n    \t}\r\n    },\r\n    \"aggregations\": {\r\n        \"my_agg\": {\r\n            \"terms\": {\r\n               \"field\": \"scientificname\",\r\n               \"size\": 100\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\nheaders = {'Content-type': 'application/json', 'Accept': 'text/plain'}\r\nr = requests.post(url, data=json.dumps(data), headers=headers)\r\ndata = json.loads(r.text)\r\n\r\nuniqKeys = {}\r\noutrows = []\r\n#print data[\"aggregations\"][\"my_agg\"][\"buckets\"]\r\nfor item in  data[\"aggregations\"][\"my_agg\"][\"buckets\"]:\r\n    parts = item[\"key\"].split()\r\n    if len(parts) == 2:\r\n        if not \"sp\" in parts[0] and not \"sp\" in parts[1]:\r\n            if not (\"?\" in parts[0] or \"?\" in parts[1]):\r\n                if not (\".\" in parts[0] or \".\" in parts[1]):\r\n                    if item[\"key\"] in uniqKeys:\r\n                        print \"Warning: already counted\", item[\"key\"], \"parts:\", parts\r\n                    uniqKeys[item[\"key\"]] = \"\"\r\n                    outrows.append({\"species\": item[\"key\"], \"#Occurrences\": item[\"doc_count\"]})\r\n                    \r\nrankedScientificNames = {'fields': [\"species\", \"#Occurrences\"],\r\n            'rows': outrows}"
+}

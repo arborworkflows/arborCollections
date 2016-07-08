@@ -1,0 +1,28 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "id": "t1",
+            "name": "t1",
+            "type": "tree"
+        },
+        {
+            "format": "r.apetree",
+            "id": "t2",
+            "name": "t2",
+            "type": "tree"
+        }
+    ],
+    "mode": "r",
+    "name": "compareTrees",
+    "outputs": [
+        {
+            "format": "png.base64",
+            "id": "treeComparePlot",
+            "name": "Tree Comparison",
+            "type": "image"
+        }
+    ],
+    "script": "# inputs:\n# t1: a tree\n# t2: another tree\n# output: a plot\n\nlibrary(cardoonTools)\nrequire(geiger)\nrequire(distory)\n\n\n# plot and wrap the result in a PNG for output on the webpage\ntreeComparePlot <- cardoonPlot(expression(phylo.diff(t1, t2)), width=1000, height=1000, res=100)\ntreeComparePlot <- treeComparePlot$png\n"
+}

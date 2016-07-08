@@ -1,0 +1,24 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "filename for nexus tree to read",
+            "format": "text",
+            "id": "tree_filename",
+            "name": "tree_filename",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "Read Nexus Trees using rncl",
+    "outputs": [
+        {
+            "description": "tree in ape format",
+            "format": "r.apetree",
+            "id": "parsedtree",
+            "name": "parsedtree",
+            "type": "tree"
+        }
+    ],
+    "script": "library(rncl)\n\nouttree <- rncl::read_nexus_phylo(file=tree_filename)\nparsedtree <- outtree\n"
+}

@@ -1,0 +1,232 @@
+{
+    "connections": [
+        {
+            "input": "input",
+            "input_step": "decostand",
+            "name": "input"
+        },
+        {
+            "input": "table",
+            "input_step": "make.treedata",
+            "name": "table"
+        },
+        {
+            "input": "tree",
+            "input_step": "make.treedata",
+            "name": "tree"
+        },
+        {
+            "input": "type",
+            "input_step": "make.treedata",
+            "name": "type"
+        },
+        {
+            "input": "tree",
+            "input_step": "matchPhyloComm",
+            "output": "phy",
+            "output_step": "make.treedata"
+        },
+        {
+            "name": "dat",
+            "output": "dat",
+            "output_step": "make.treedata"
+        },
+        {
+            "input": "table",
+            "input_step": "matchPhyloComm",
+            "output": "output",
+            "output_step": "decostand"
+        },
+        {
+            "name": "comPhy",
+            "output": "comPhy",
+            "output_step": "matchPhyloComm"
+        },
+        {
+            "name": "comTable",
+            "output": "comTable",
+            "output_step": "matchPhyloComm"
+        }
+    ],
+    "inputs": [
+        {
+            "format": "r.dataframe",
+            "name": "input",
+            "type": "table",
+            "x": 152,
+            "y": 86
+        },
+        {
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table",
+            "x": 143,
+            "y": 434
+        },
+        {
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree",
+            "x": 142,
+            "y": 308
+        },
+        {
+            "default": "both",
+            "domain": [
+                "both",
+                "discrete",
+                "continuous"
+            ],
+            "format": "text",
+            "name": "type",
+            "type": "string",
+            "x": 143,
+            "y": 559
+        }
+    ],
+    "mode": "workflow",
+    "name": "kembelDataPrep",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "name": "dat",
+            "type": "table",
+            "x": 1425,
+            "y": 440
+        },
+        {
+            "format": "r.apetree",
+            "name": "comPhy",
+            "type": "tree",
+            "x": 1421,
+            "y": 171
+        },
+        {
+            "format": "r.dataframe",
+            "name": "comTable",
+            "type": "table",
+            "x": 1418,
+            "y": 22
+        }
+    ],
+    "steps": [
+        {
+            "id": "decostand",
+            "name": "decostand",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "input",
+                        "type": "table"
+                    }
+                ],
+                "mode": "r",
+                "name": "decostand",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "output",
+                        "type": "table"
+                    }
+                ],
+                "script": "library(picante)\n## This is a hack for rownames\nrownames(input) <- input[,1]\n\n#Only this line is necessary\noutput<- decostand(input[,-1], method=\"total\")\n\n#More hacking rownames...\noutput <- cbind(rownames(output), output)\ncolnames(output)[1] <- \"rownames\"\n",
+                "x": 446,
+                "y": 87
+            },
+            "x": 446,
+            "y": 87
+        },
+        {
+            "id": "make.treedata",
+            "name": "make.treedata",
+            "task": {
+                "inputs": [
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    },
+                    {
+                        "default": "both",
+                        "domain": [
+                            "both",
+                            "discrete",
+                            "continuous"
+                        ],
+                        "format": "text",
+                        "name": "type",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "make.treedata",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "columns",
+                        "type": "table"
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "phy",
+                        "type": "tree"
+                    },
+                    {
+                        "format": "r.dataframe",
+                        "name": "dat",
+                        "type": "table"
+                    }
+                ],
+                "script": "library(aRbor)\n\nif(is.binary.tree(tree)==FALSE){\n  tree <- multi2di(tree)\n}\ntd <- make.treedata(tree, table)\nif(type!=\"both\"){\n    if(type==\"discrete\"){\n      td <- checkFactor(td)\n        }\n    if(type==\"continuous\"){\n      td <- checkNumeric(td)\n        }\n    }\n#### Return these columns \ncolumns <- colnames(td$dat)\nphy <- td$phy\ndat <- td$dat",
+                "x": 507,
+                "y": 336
+            },
+            "x": 507,
+            "y": 336
+        },
+        {
+            "id": "matchPhyloComm",
+            "name": "matchPhyloComm",
+            "task": {
+                "inputs": [
+                    {
+                        "description": "Community matrix",
+                        "format": "r.dataframe",
+                        "name": "table",
+                        "type": "table"
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "tree",
+                        "type": "tree"
+                    }
+                ],
+                "mode": "r",
+                "name": "matchPhyloComm",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "name": "comTable",
+                        "type": "table"
+                    },
+                    {
+                        "format": "r.apetree",
+                        "name": "comPhy",
+                        "type": "tree"
+                    }
+                ],
+                "script": "require(picante)\ncombinedPhyloComm <- match.phylo.comm(tree, table)\ncomTable <- combinedPhyloComm$comm\nrownames(comTable) <- paste(\"N\",1:nrow(comTable), sep=\"\")\n#comTable <- rownames(table)\ncomPhy <- combinedPhyloComm$phy\n\n##If you don't do this line, the row names are dropped from the output table, even though rownames are properly read in and identified for r.dataframes otherwise.\ncomTable <- cbind(rownames=rownames(table), comTable)\n",
+                "x": 782,
+                "y": 127
+            },
+            "x": 782,
+            "y": 127
+        }
+    ]
+}

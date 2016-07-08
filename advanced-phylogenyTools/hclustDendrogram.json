@@ -1,0 +1,28 @@
+{
+    "inputs": [
+        {
+            "description": "A distance matrix",
+            "format": "r.dataframe",
+            "name": "dist",
+            "type": "table"
+        },
+        {
+            "default": "distance",
+            "description": "Label for y-axis",
+            "format": "text",
+            "name": "y_label",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "hclustDendrogram",
+    "outputs": [
+        {
+            "description": "A dendrogram",
+            "format": "png.base64",
+            "name": "plotClust",
+            "type": "image"
+        }
+    ],
+    "script": "require(cardoonTools)\n\n##Can expose these options later, going to leave hidden for now\nfont_size = 0.5\nmethod=\"average\"\n##\n#dist <- cbind(rownames(dist), dist)\nrownames(dist)<- dist[,1];dist<- dist[,-1];dist <- as.dist(dist)\n\nclust <- hclust(dist, method = method)\nplotClust <- cardoonPlot(expression(plot(clust,labels = rownames(dist),cex=font_size, ylab=y_label)), width=1000, height=1000, res=100)\nplotClust <- plotClust$png\n#"
+}

@@ -1,0 +1,30 @@
+{
+    "inputs": [
+        {
+            "description": "input table to be grouped by one column's discrete values",
+            "format": "rows",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "name": "column",
+            "type": "string"
+        }
+    ],
+    "mode": "python",
+    "name": "TableGroupByColumn",
+    "outputs": [
+        {
+            "description": "aggregated table output",
+            "format": "rows",
+            "name": "output",
+            "type": "table"
+        }
+    ],
+    "script": "# roll up the values of a table's rows according to discrete values in a selected \"groupBy\" column.  \n# The number of output rows in the table will be equal to the number of discrete values in the \n# groupBy column.  The values in the other columns will be the average of the values of all rows which\n# belonged to this group from the input table.   Therefore, this is a simple aggregation by one column.\n\n# input: table - input table of continuous values\n# input: column - column name used as the \"group by\" control\n# output: output - output table \n\n\n# helper function to check for numberic values only \ndef is_number(s):\n    try:\n        float(s)\n        return True\n    except ValueError:\n        return False\n\n\n# loop through the control column and build a list of the discrete values it contains\nvaluelist = []\nfor row in table['rows']:\n    if row[column] not in valuelist:\n        valuelist.append(row[column])\n\noutputrows = []\n    \n# now loop through the entire table once for each \"class\" and sum up the values for each attribute in order\n# to calculate the average value for each continuous variable for each class by accumulating the values for each\n# attribute and dividing by the number of entires in each class.\n\nfor classValue in valuelist:\n    sumobject = {}\n    classMemberCount = 0\n    # initialize an empty summation object\n    for field in table['fields']:\n        sumobject[field] = 0.0\n    # now loop through this class's entries and accumulate values\n    for row in table['rows']:\n       if (row[column] == classValue):\n           # this row is a member of the current class, so add its contribution and update the count of class members\n            for attrib in row:\n                # if this is a continuous variable, accumulate.  If it is not numberic, just copy it across\n                if is_number(row[attrib]):\n                    # make sure the previous accumulations are also numbers\n                    if is_number(sumobject[attrib]):\n                        sumobject[attrib] += float(row[attrib])\n                else:\n                    #if this is non-numeric, just copy it, unless it is 'NA'.  Also if length=0, don't copy to ignore empty cells\n                    if (row[attrib] != \"NA\") and (len(row[attrib]) != 0):\n                        sumobject[attrib] = row[attrib]\n            classMemberCount += 1\n    # create the output row corresponding to this class by dividing the accumulated sums by the number of members\n    # in each class\n    outrow = {}\n    for field in sumobject:\n        if is_number(sumobject[field]):\n            outrow[field] = sumobject[field]/classMemberCount\n        else:\n            # if this field is a non-numeric value, just copy it across instead of averaging\n            outrow[field] = sumobject[field]\n    outputrows.append(outrow)\n        \n# create an output table in the table:rows format by creating a list of the fields and a list of the table rows\noutput = {}\noutput['fields'] = table['fields']\noutput['rows'] = outputrows\n\n"
+}
