@@ -1,8 +1,0 @@
-{
-    "description": "",
-    "inputs": [],
-    "mode": "r",
-    "name": "makeMusse",
-    "outputs": [],
-    "script": "require(diversitree)\nrequire(geiger)\nrequire(aRbor)\ntd <- make.treedata(tree, table)\ntd <- select_(td, column)\n## Musse needs to keep NA's\n#td <- filter(td, !is.na(td$dat[[1]]))\n\nphy <- td$phy\ndat <- setNames(td$dat[[1]], phy$tip.label)\nk <- length(unique(dat))\n\nif(check.data == TRUE){\n  if(!is.ultrametric(phy)){\n    phy <- rescale(phy, model=\"depth\", 1)\n  }\n}\n\nif(k == 2){\n  stop(\"Only 2 traits detected. You might want to you BiSSE instead.\")\n}\n\nif(0 %in% k){\n    dat <- dat+1\n    warning(paste(\"Data states changed to 1:\",k,\" .\",sep=\"\"))\n}\n\nif(length(setdiff(k, c(0,1)))>0){\n    dat <- setNames(as.numeric(factor(dat))-1, phy$tip.label)\n }\n \nlik <- make.bisse(phy, dat, sampling.f = c(samplingFrequency0, samplingFrequency1))"
-}
