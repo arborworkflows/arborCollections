@@ -1,0 +1,59 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "A phylogeny",
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree"
+        },
+        {
+            "description": "A data frame with trait data",
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "description": "The trait to analyze",
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "name": "column",
+            "type": "string"
+        },
+        {
+            "default": {
+                "data": "TRUE",
+                "format": "text",
+                "type": "string"
+            },
+            "domain": [
+                "TRUE",
+                "FALSE"
+            ],
+            "format": "text",
+            "name": "check.data",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "makeMk",
+    "outputs": [
+        {
+            "description": "Likelihood function for the Mk model",
+            "format": "object",
+            "id": "lik",
+            "name": "lik",
+            "type": "r"
+        },
+        {
+            "description": "A phylogeny matched to the data",
+            "format": "r.apetree",
+            "name": "phy",
+            "type": "tree"
+        }
+    ],
+    "script": "require(diversitree)\nrequire(geiger)\nrequire(aRbor)\ntd <- make.treedata(tree, table)\ntd <- select_(td, column)\ntd <- filter(td, !is.na(td$dat[[1]]))\n\nphy <- td$phy\ndat <- setNames(td$dat[[1]], phy$tip.label)\nk <- length(unique(dat))\n\nif(check.data == TRUE){\n  if(!is.ultrametric(phy)){\n    phy <- rescale(phy, model=\"depth\", 1)\n  }\n}\n\nif(k < 2){\n  stop(\"2 or more character states needed to make likelihood function\")\n}\n\nif(k==2){\n  if(length(setdiff(k, c(0,1)))>0){\n    dat <- setNames(as.numeric(factor(dat))-1, phy$tip.label)\n  }\n  lik.fn <- make.mk2(phy, dat)\n} else {\n  dat <- setNames(as.numeric(factor(dat)), phy$tip.label)\n  lik.fn <- make.mkn(phy, dat, k)\n}\n\nlik <- lik.fn"
+}

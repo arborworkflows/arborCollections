@@ -1,0 +1,60 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "A Phylogenetic Tree",
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree"
+        },
+        {
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "default": "island",
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "name": "column",
+            "type": "string"
+        },
+        {
+            "default": "discrete",
+            "domain": [
+                "discrete",
+                "continuous"
+            ],
+            "format": "text",
+            "name": "type",
+            "type": "string"
+        },
+        {
+            "default": "marginal",
+            "domain": [
+                "marginal"
+            ],
+            "format": "text",
+            "name": "method",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "aceArbor",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "name": "res",
+            "type": "table"
+        },
+        {
+            "format": "png.base64",
+            "name": "treePlot",
+            "type": "image"
+        }
+    ],
+    "script": "library(cardoonTools)\nrequire(aRbor)\n\n\n# Removed this parameter to restore automated use of the analyses from Easy Mode apps\nfont_size <- 1\n\ntd <- make.treedata(tree, table)\ntd1 <- select_(td, column)\noutput <- aceArbor(td1, charType=type, aceType=method)\n\n\nTH <- max(branching.times(td$phy))\n    \n# plot and wrap the result in a PNG for output on the webpage\ntreePlot <- cardoonPlot(expression(plot(output, label.offset=0.05*TH)), width=1000, height=1000, res=100)\ntreePlot <- treePlot$png\n\nres <- output[[1]]    \nnodeLabels<-1:td1$phy$Nnode + length(td1$phy$tip.label)\nres<-cbind(nodeLabels, res)"
+}

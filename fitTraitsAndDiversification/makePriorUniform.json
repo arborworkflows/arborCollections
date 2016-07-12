@@ -1,0 +1,36 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "default": {
+                "data": "0",
+                "format": "text",
+                "type": "string"
+            },
+            "format": "number",
+            "name": "min",
+            "type": "number"
+        },
+        {
+            "default": {
+                "data": "1",
+                "format": "text",
+                "type": "string"
+            },
+            "format": "number",
+            "name": "max",
+            "type": "number"
+        }
+    ],
+    "mode": "r",
+    "name": "makePriorUniform",
+    "outputs": [
+        {
+            "description": "Description of the prior function",
+            "format": "text",
+            "name": "fnHeader",
+            "type": "string"
+        }
+    ],
+    "script": "fnHeader <- paste(\"dunif,min=\",min,\",max=\",max,sep=\"\")"
+}

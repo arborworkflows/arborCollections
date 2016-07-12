@@ -1,0 +1,139 @@
+{
+    "connections": [
+        {
+            "input": "phy",
+            "input_step": "make.mk",
+            "name": "phy 1"
+        },
+        {
+            "input": "lik",
+            "input_step": "find.mle",
+            "output": "lik",
+            "output_step": "make.mk"
+        },
+        {
+            "input": "phy",
+            "input_step": "find.mle",
+            "output": "phy",
+            "output_step": "make.mk"
+        }
+    ],
+    "description": "",
+    "inputs": [
+        {
+            "description": "Phylogeny: ape format",
+            "format": "r.apetree",
+            "id": "phy 1",
+            "name": "phy 1",
+            "type": "tree",
+            "x": 175,
+            "y": 90
+        }
+    ],
+    "mode": "workflow",
+    "name": "Make BD",
+    "outputs": [],
+    "steps": [
+        {
+            "girderId": "563ba14956c02c05ce2df6f3",
+            "modified": "2015-11-05 20:15:32.734063",
+            "name": "make.mk",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "description": "Phylogeny: ape format",
+                        "format": "r.apetree",
+                        "id": "phy",
+                        "name": "phy",
+                        "type": "tree"
+                    },
+                    {
+                        "default": {
+                            "data": "\"TRUE\"",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "description": "FALSE will disable conditioning on survival (by default, the likelihood is conditional on two lineages surviving to the present, following (Nee et al., 1994).",
+                        "format": "text",
+                        "id": "condition.surv",
+                        "name": "condition.surv",
+                        "type": "string"
+                    },
+                    {
+                        "default": {
+                            "data": "\"TRUE\"",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "description": "Want to check the phylogeny for the correct format?",
+                        "format": "text",
+                        "id": "check.data",
+                        "name": "check.data",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "make.mk",
+                "outputs": [
+                    {
+                        "description": "Likelihood function for the constant birth-death model",
+                        "format": "object",
+                        "id": "lik",
+                        "name": "lik",
+                        "type": "r"
+                    },
+                    {
+                        "description": "The phylogeny: ape format",
+                        "format": "object",
+                        "id": "phy",
+                        "name": "phy",
+                        "type": "r"
+                    }
+                ],
+                "script": "require(diversitree)\nrequire(geiger)\n\nif(check.data == TRUE){\n    if(!is.ultrametric(phy)){\n        phy <- rescale(phy, model=\"depth\", 1)\n    }\n}\n\nlik <- make.bd(phy)"
+            },
+            "visualization": false,
+            "x": 471,
+            "y": 97
+        },
+        {
+            "girderId": "563bb4df56c02c05ce2df782",
+            "modified": "2015-11-05 20:16:30.349523",
+            "name": "find.mle",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "description": "The phylogeny: ape format",
+                        "format": "object",
+                        "id": "phy",
+                        "name": "phy",
+                        "type": "r"
+                    },
+                    {
+                        "description": "Likelihood function.",
+                        "format": "object",
+                        "id": "lik",
+                        "name": "lik",
+                        "type": "r"
+                    }
+                ],
+                "mode": "r",
+                "name": "find.mle",
+                "outputs": [
+                    {
+                        "format": "object",
+                        "id": "mle",
+                        "name": "mle",
+                        "type": "r"
+                    }
+                ],
+                "script": "## This is a general block to make MLE of the BiSSE models.\n## Collapse of lik argnames is used to identify the model.\n\nrequire(diversitree)\n\nlik.type <- paste(argnames(lik), collapse = \"\")\nif(lik.type == \"lambdamu\"){\n    start <- starting.point.bd(phy)\n}\n\nmle <- find.mle(lik, x.init = start)"
+            },
+            "visualization": false,
+            "x": 781,
+            "y": 102
+        }
+    ]
+}

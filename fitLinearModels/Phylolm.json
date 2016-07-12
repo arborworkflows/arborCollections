@@ -1,0 +1,75 @@
+{
+    "inputs": [
+        {
+            "description": "Phylogenetic tree",
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree"
+        },
+        {
+            "description": "A data table with dependent and independent variables",
+            "format": "r.dataframe",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "description": "Type of model to fit",
+            "domain": [
+                "BM",
+                "OUrandomRoot",
+                "OUfixedRoot",
+                "lambda",
+                "kappa",
+                "delta",
+                "EB",
+                "trend"
+            ],
+            "format": "text",
+            "name": "model",
+            "type": "string"
+        },
+        {
+            "description": "Dependent variable in the phylogenetic regression",
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "name": "DependentVariable",
+            "type": "string"
+        },
+        {
+            "description": "Independent variables in the phylogenetic regression",
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "name": "IndependentVariable",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "Phylolm",
+    "outputs": [
+        {
+            "description": "Coefficients from the linear model fit",
+            "format": "r.dataframe",
+            "name": "coef",
+            "type": "table"
+        },
+        {
+            "description": "Residuals from the model fit",
+            "format": "r.dataframe",
+            "name": "resid",
+            "type": "table"
+        },
+        {
+            "description": "Results from the linear model fit",
+            "format": "r.dataframe",
+            "name": "fit",
+            "type": "table"
+        }
+    ],
+    "script": "#data(anolis); tree <- anolis$phy; table <- anolis$dat; column <- \"PCI_limbs\"; model=\"EB\"\n\n## phylolm script\n# require(devtools)\n# options(repos=\"http://cran.cnr.Berkeley.edu\")\n# install_github(\"aRbor\", \"arborworkflows\")\nrequire(aRbor)\n#install.packages(\"phylolm\")\nrequire(phylolm)\n\nformula <- paste(DependentVariable, \"~\", IndependentVariable, sep=\"\")\ntd <- make.treedata(tree, table)\n\nres <- treedply(td, phylolm(formula, dat, phy, model))\n\nif(is.null(res$optpar)) res$optpar <- NA\n\nout <- summary(res)\ncoef <- data.frame(variable=rownames(out$coefficients), out$coefficients)\nresid <- data.frame(tip=rownames(out$residuals), resid=out$residuals)\nfit <- data.frame(sigma2 = out$sigma2, otherpar =out$optpar, AIC=out$aic, loglik=out$logLik, df=out$df, model=out$model)\nrownames(coef) <- rownames(resid) <- rownames(fit) <- NULL"
+}

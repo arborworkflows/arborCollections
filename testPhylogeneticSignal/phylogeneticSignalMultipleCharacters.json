@@ -1,0 +1,58 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "id": "tree",
+            "name": "tree",
+            "type": "tree"
+        },
+        {
+            "format": "r.dataframe",
+            "id": "table",
+            "name": "table",
+            "type": "table"
+        },
+        {
+            "default": {
+                "data": "continuous",
+                "format": "text",
+                "type": "string"
+            },
+            "domain": [
+                "discrete",
+                "continuous"
+            ],
+            "format": "text",
+            "id": "charType",
+            "name": "charType",
+            "type": "string"
+        },
+        {
+            "default": {
+                "data": "lambda",
+                "format": "text",
+                "type": "string"
+            },
+            "domain": [
+                "lambda",
+                "K"
+            ],
+            "format": "text",
+            "id": "method",
+            "name": "method",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "phylogeneticSignalMultipleCharacters",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "id": "result",
+            "name": "result",
+            "type": "table"
+        }
+    ],
+    "script": "\n# measure phylogenetic signal for all characters in a matrix\n# requires all characters of the same type - either continuous or discrete\nrequire(aRbor)\n\ntd <- make.treedata(tree, table)\nif(charType==\"continuous\") td <- checkNumeric(td)\nif(charType==\"discrete\") td <- checkFactor(td)\n\nerror<-F\n\nif(charType==\"discrete\" & method==\"K\") {\n  cat(\"error - K is not applicable for discrete characters\\n\")\n  error<-T\n}\n\nif(charType==\"discrete\" & method==\"lambda\") {\n  result_raw <- physigArbor(td, charType=\"discrete\", signalTest=\"pagelLambda\")\n} \n\nif(charType==\"continuous\" & method==\"K\") {\n  result_raw <- physigArbor(td, charType=\"continuous\", signalTest=\"Blomberg\")\n}\n\nif(charType==\"continuous\" & method==\"lambda\") {\n  result_raw <- physigArbor(td, charType=\"continuous\", signalTest=\"pagelLambda\")\n}\n\nif(method==\"lambda\" & !error) {\n  result<-matrix(unlist(result_raw), ncol=7, byrow=T)\n  rownames(result) <- colnames(td$dat)\n  colnames(result) <- c(\"lnL-lambda0\", \"lnL-lambdaEst\", \"chiSqTest\", \"chiSqP\", \"aiccLambda0\", \"aiccLambdaEst\", \"lambdaEst\")\n}  else if(!error){\n  result<-matrix(unlist(result_raw), ncol=5, byrow=T)\n  rownames(result) <- colnames(td$dat)\n  colnames(result) <- c(\"K\", \"var-obs\", \"var-rnd\", \"P\", \"zScore\")\n}\nif(error) result<-NA\n\nif(!error) result<-cbind(rownames(result), result)\n\n"
+}
