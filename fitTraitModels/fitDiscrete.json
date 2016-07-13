@@ -1,4 +1,5 @@
 {
+    "description": "Fits a model to a discrete trait. Model should be one of equal rates (= \"ER\"), symmetric (= \"SYM\"), or all-rates-different (= \"ARD\"). Outputs model parameters as a Q matrix and table with likelihood, AIC/AICc, and number of parameters (k).",
     "inputs": [
         {
             "domain": [
@@ -50,5 +51,5 @@
             "type": "table"
         }
     ],
-    "script": "library(geiger) \n\ndata <- table[,column]+1\nnames(data) <- row.names(table)\n\n#names(data) <- rownames(table)\n#res <- 1\n#Q <- names(data)\n\no <- fitDiscrete(phy=tree, dat=data, model=model)\nres = data.frame(lnL = o$opt$lnL, aic = o$opt$aic, aicc = o$opt$aicc, k = o$opt$k)\nQ <- geiger:::.Qmatrix.from.gfit(o)\n"
+    "script": "\n## fitDiscrete script\nlibrary(aRbor)\nlibrary(geiger)\nlibrary(cardoonTools)\n\ntd <- make.treedata(tree, table)\ntd <- checkFactor(td)\nvalid.factor <- which(colnames(td$dat)==column)\nif(length(valid.factor)==0){\n  stop(\"The supplied column is not present, or is not a valid continuous trait\")\n}\ntd <- select(td, valid.factor)\n\no <- fitDiscrete(td$phy, td$dat, model=model)\n\nres = data.frame(lnL = o$opt$lnL, aic = o$opt$aic, aicc = o$opt$aicc, k = o$opt$k)\nQ <- geiger:::.Qmatrix.from.gfit(o)\nQ<-cbind(rownames(Q), Q)\n"
 }
