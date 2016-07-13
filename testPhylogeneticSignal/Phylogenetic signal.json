@@ -1,5 +1,5 @@
 {
-    "description": "",
+    "description": "Estimate phylogenetic signal for a single column in \"table.\" Specify one column and then choose either \"lambda\" = Pagel's lambda and \"K\" = Blomberg's K.",
     "inputs": [
         {
             "format": "r.dataframe",

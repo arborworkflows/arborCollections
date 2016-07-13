@@ -1,5 +1,5 @@
 {
-    "description": "",
+    "description": "Estimate phylogenetic signal for a set of columns in \"table.\" Specify charType of either \"discrete\" or \"continuous,\" and characters that do not look like they fit that type will be discarded. Then specify method, either \"lambda\" = Pagel's lambda and \"K\" = Blomberg's K.",
     "inputs": [
         {
             "format": "r.apetree",
