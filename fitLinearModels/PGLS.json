@@ -1,5 +1,18 @@
 {
+    "description": "Runs multivariate PGLS models. User supplies a matrix of traits and specifies response (Y) variable. Everything else in the matrix other than the column marked \"Species\" gets treated as an X variable. Can have additive model (i.e. Y ~ X1 + X2 + ...) or an interactive model (i.e. Y ~ X1 * X2 * ..., which includes all pairwise interactions.",
     "inputs": [
+        {
+            "default": {
+                "data": "TRUE",
+                "format": "text",
+                "type": "string"
+            },
+            "description": "If TRUE then run additive model; otherwise include interactions",
+            "format": "text",
+            "id": "additiveModel",
+            "name": "additiveModel",
+            "type": "string"
+        },
         {
             "format": "r.apetree",
             "name": "tree",
@@ -27,15 +40,6 @@
                 "input": "table"
             },
             "format": "text",
-            "name": "ind_variable",
-            "type": "string"
-        },
-        {
-            "domain": {
-                "format": "column.names",
-                "input": "table"
-            },
-            "format": "text",
             "name": "dep_variable",
             "type": "string"
         }
@@ -45,19 +49,22 @@
     "outputs": [
         {
             "format": "r.dataframe",
+            "id": "coefficients",
             "name": "coefficients",
             "type": "table"
         },
         {
-            "format": "r.dataframe",
-            "name": "modelfit_summary",
-            "type": "table"
-        },
-        {
             "format": "png.base64",
+            "id": "pglsPlot",
             "name": "pglsPlot",
             "type": "image"
+        },
+        {
+            "format": "r.dataframe",
+            "id": "modelfit_summary",
+            "name": "modelfit_summary",
+            "type": "table"
         }
     ],
-    "script": "require(ape)\nrequire(nlme)\nrequire(cardoonTools)\n\nif(correlation==\"BM\"){\n  cor <- corBrownian(1, phy=tree)\n}\nif(correlation==\"OU\"){\n  cor <- corMartins(1, phy=tree, fixed=FALSE)\n}\nif(correlation==\"Pagel\"){\n  cor <- corPagel(1, phy=tree, fixed=FALSE)\n  cor1 <- corPagel(1, phy=tree, fixed=TRUE)\n  cor0 <- corPagel(0, phy=tree, fixed=TRUE)\n}\nif(correlation==\"ACDC\"){\n  cor <- corBlomberg(1, phy=tree, fixed=FALSE)\n}\n\nfmla <- as.formula(paste(as.character(dep_variable), \"~\", as.character(ind_variable),sep=\"\"))\nres <- gls(model=fmla, correlation=cor, data=table)\nsum_res <- summary(res)\nsum_aov <- anova(res)\ncoefficients <- cbind(rownames(sum_aov), sum_aov)\ncolnames(coefficients)[1]<-\"parameter\"\n\n#coefficients <- cbind(rownames(sum_res$tTable), sum_res$tTable)\n#colnames(coefficients)[1]<-\"parameter\"\n\nmodelfit_summary <- data.frame(\"AIC\"= sum_res$AIC, loglik=sum_res$logLik, residual_SE=sum_res$sigma, df_total=sum_res$dims$N, df_residual=sum_res$dims$N-sum_res$dims$p)\n\npgls_plot <- function() {\n  plot(table[,ind_variable], table[,dep_variable], pch=21, bg=\"gray80\", xlab=ind_variable, ylab=dep_variable)\n  abline(res, lty=2, lwd=2)\n}\n\npglsPlot = cardoonPlot(expression(pgls_plot()), width=1000, height=1000, res=100)\npglsPlot = pglsPlot$png"
+    "script": "require(nlme)\nrequire(treeplyr)\nrequire(cardoonTools)\n\nrownames(table) <- NULL\ntd <- treeplyr::make.treedata(tree, table)\nphy <- td$phy\ndat <- td$dat\n\nif(correlation==\"BM\"){\n  cor <- corBrownian(1, phy=phy)\n}\nif(correlation==\"OU\"){\n  cor <- corMartins(1, phy=phy, fixed=FALSE)\n}\nif(correlation==\"Pagel\"){\n  cor <- corPagel(1, phy=phy, fixed=FALSE)\n  cor1 <- corPagel(1, phy=phy, fixed=TRUE)\n  cor0 <- corPagel(0, phy=phy, fixed=TRUE)\n}\nif(correlation==\"ACDC\"){\n  cor <- corBlomberg(1, phy=phy, fixed=FALSE)\n}\n\nyy <- as.character(dep_variable)\nxn <- colnames(dat)[which(colnames(dat) != dep_variable & colnames(dat) != \"Species\")]\n\nif(additiveModel==\"TRUE\") {\n  xx <- paste(xn, collapse=\" + \")\n} else {\n  xx <- paste(xn, collapse=\" * \")\n}\n\nfmla <- as.formula(paste(yy, \"~\", xx, sep=\"\"))\nglsfit <- gls(model=fmla, correlation=cor, data=dat)\nsum_res <- summary(glsfit)\nsum_aov <- anova(glsfit)\ncoefficients <- cbind(rownames(sum_aov), sum_aov)\ncolnames(coefficients)[1]<-\"parameter\"\n\nmodelfit_summary <- data.frame(\"AIC\"= sum_res$AIC, loglik=sum_res$logLik, residual_SE=sum_res$sigma, df_total=sum_res$dims$N, df_residual=sum_res$dims$N-sum_res$dims$p)\n\nif(correlation==\"Pagel\") modelfit_summary<-c(modelfit_summary, \"lambda\"=glsfit$modelStruct[[1]][1])\n\nplotfn <- function(){\n    print(plot(glsfit))\n}\n\npglsPlot <- cardoonPlot(expression(plotfn()), height=1000, width=1000, res=72)\npglsPlot <- pglsPlot$png\n## Bug in plot.lme used with cardoonPlot. Work around...\n#@file <- tempfile(fileext = sprintf(\".%s\", \"png\"))\n#result <- list()\n#png(file, width=1000, height=1000, res=72)\n#print(plot(glsfit))\n#dev.off()\n#bytes <- file.info(file)$size\n#result$png <- base64enc:::base64encode(readBin(file, \"raw\", n = bytes))\n#file.remove(file)\n#pglsPlot <- result$png\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 }
