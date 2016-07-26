@@ -1,4 +1,6 @@
     ##"script": "
+
+foo<-function() {
 library(cardoonTools)
 require(aRbor)
 
@@ -19,4 +21,7 @@ treePlot <- treePlot$png
 
 res <- output[[1]]    
 nodeLabels<-1:td1$phy$Nnode + length(td1$phy$tip.label)
-res<-cbind(nodeLabels, res)"
+res<-cbind(nodeLabels, res)
+
+return(res)
+}
