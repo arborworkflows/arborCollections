@@ -1,18 +1,41 @@
+from __future__ import print_function
 import json
 from pprint import pprint
-import fileinput
+import os
+import sys
 
-with open('../traitModelFitting/fitContinuous.json') as data_file:
-    data = json.load(data_file)
+if len(sys.argv) == 1:
+    dir='.'
+else:
+    dir = sys.argv[1]
 
-print("fitContinuous_fromjson<-function("),
+fileList = os.listdir(dir)
+for file in fileList:
+    fullFile = os.path.join(dir, file)  # Get the full path to the file.
+    if fullFile.endswith(".json"):
+        with open(fullFile) as data_file:
+            data = json.load(data_file)
 
-for fn_input in data["inputs"]:
-    print(fn_input["name"] + ", "),
+        print(file, end='')
+        print('<-function(', end='')
 
-print("... )")
-print("{")
+        for i, fn_input in enumerate(data["inputs"]):
+            print(fn_input["name"], end='')
+            if i != len(data["inputs"])-1:
+                print(',', end='')
 
-print(data["script"])
+        print(")")
+        print("{")
 
-print("}")
+        print(data["script"])
+
+        print('return(list(', end='')
+
+        for i, fn_output in enumerate(data["outputs"]):
+            print(fn_output["name"] + '=' + fn_output["name"], end='')
+            if i != len(data["outputs"])-1:
+                print(',', end='')
+
+        print('))')
+
+        print("}")
