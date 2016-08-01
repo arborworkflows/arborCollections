@@ -1,0 +1,136 @@
+{
+    "connections": [
+        {
+            "input": "phy",
+            "input_step": "makeBD",
+            "name": "phy"
+        },
+        {
+            "input": "check.data",
+            "input_step": "makeBD",
+            "name": "check.data"
+        },
+        {
+            "input": "lik",
+            "input_step": "bisseMLE",
+            "output": "lik",
+            "output_step": "makeBD"
+        },
+        {
+            "name": "res",
+            "output": "res",
+            "output_step": "bisseMLE"
+        }
+    ],
+    "description": "",
+    "inputs": [
+        {
+            "description": "Phylogeny: ape format",
+            "format": "r.apetree",
+            "id": "phy",
+            "name": "phy",
+            "type": "tree",
+            "x": 162,
+            "y": 71
+        },
+        {
+            "default": {
+                "data": "TRUE",
+                "format": "text",
+                "type": "string"
+            },
+            "format": "text",
+            "id": "check.data",
+            "name": "check.data",
+            "type": "string",
+            "x": 191,
+            "y": 356
+        }
+    ],
+    "mode": "workflow",
+    "name": "mlBisseAnalysis",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "id": "res",
+            "name": "res",
+            "type": "table",
+            "x": 1148,
+            "y": 245
+        }
+    ],
+    "steps": [
+        {
+            "girderId": "5797a8494c46532a28837ff5",
+            "modified": "2016-08-01 20:42:21.515796",
+            "name": "makeBD",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "description": "Phylogeny: ape format",
+                        "format": "r.apetree",
+                        "id": "phy",
+                        "name": "phy",
+                        "type": "tree"
+                    },
+                    {
+                        "default": {
+                            "data": "TRUE",
+                            "format": "text",
+                            "type": "string"
+                        },
+                        "format": "text",
+                        "id": "check.data",
+                        "name": "check.data",
+                        "type": "string"
+                    }
+                ],
+                "mode": "r",
+                "name": "makeBD",
+                "outputs": [
+                    {
+                        "format": "object",
+                        "id": "lik",
+                        "name": "lik",
+                        "type": "r"
+                    }
+                ],
+                "script": "require(diversitree)\nrequire(geiger)\n\nif(check.data == TRUE){\n    if(!is.ultrametric(phy)){\n        phy <- rescale(phy, model=\"depth\", 1)\n    }\n}\n\nlik <- make.bd(phy)"
+            },
+            "visualization": false,
+            "x": 502,
+            "y": 266
+        },
+        {
+            "girderId": "5797a8494c46532a28837feb",
+            "modified": "2016-08-01 20:47:21.207547",
+            "name": "bisseMLE",
+            "task": {
+                "description": "",
+                "inputs": [
+                    {
+                        "format": "object",
+                        "id": "lik",
+                        "name": "lik",
+                        "type": "r"
+                    }
+                ],
+                "mode": "r",
+                "name": "bisseMLE",
+                "outputs": [
+                    {
+                        "format": "r.dataframe",
+                        "id": "res",
+                        "name": "res",
+                        "type": "table"
+                    }
+                ],
+                "script": "# inputs: like = likelihood function, con = constraints\n# outputs: fit = ml fit\nrequire(diversitree)\n\t\t\npnames<-argnames(lik)\nfit<-find.mle(lik, setNames(rep(1,length(pnames)), argnames(lik)))\nfit$par\n\nres<-c(fit$par, fit$lnLik)\nnames(res)<-NULL\nres<-rbind(c(\"lambda\", \"mu\", \"lnLik\"), res)\n"
+            },
+            "visualization": false,
+            "x": 848,
+            "y": 245
+        }
+    ]
+}

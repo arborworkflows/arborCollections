@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "format": "object",
+            "id": "lik",
+            "name": "lik",
+            "type": "r"
+        }
+    ],
+    "mode": "r",
+    "name": "bisseMLE",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "id": "res",
+            "name": "res",
+            "type": "table"
+        }
+    ],
+    "script": "# inputs: like = likelihood function, con = constraints\n# outputs: fit = ml fit\nrequire(diversitree)\n\t\t\npnames<-argnames(lik)\nfit<-find.mle(lik, setNames(rep(1,length(pnames)), argnames(lik)))\nfit$par\n\nres<-c(fit$par, fit$lnLik)\nnames(res)<-NULL\nres<-rbind(c(\"lambda\", \"mu\", \"lnLik\"), res)\n"
+}

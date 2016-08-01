@@ -7,6 +7,17 @@
             "id": "phy",
             "name": "phy",
             "type": "tree"
+        },
+        {
+            "default": {
+                "data": "TRUE",
+                "format": "text",
+                "type": "string"
+            },
+            "format": "text",
+            "id": "check.data",
+            "name": "check.data",
+            "type": "string"
         }
     ],
     "mode": "r",
