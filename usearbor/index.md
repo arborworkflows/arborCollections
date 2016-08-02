@@ -12,34 +12,26 @@ image:
 share: false
 ---
 
-There are a few ways to use Arbor
 
-{% include toc.html %}
 
-## Run Arbor on the cloud
+There are two main ways to use Arbor.
 
-You can run Arbor on one of our three servers:
+## Arbor apps
 
-- [arbor1](http://arbor1.arborworkflows.com/)
-- [arbor2](http://arbor2.arborworkflows.com/)
-- [arbor3](http://arbor3.arborworkflows.com/)
+[![Arbor apps]({{ site.baseurl }}/images/app_logo.jpeg)]({{ site.baseurl }}/arborapps)
 
-These three servers are all built on the same base, but are not connected to one another - so if you create an account and/or save things, the changes will only be local to that server. We are working on a github connection to allow versioning and facilitate collaborations.
+If you want to run a common comparative analysis in a simple and clean way using a web interface, you need to use Arbor apps. Arbor apps are websites that can run analyses - like ancestral state reconstruction and PGLS - using a straighforward drag and drop interface.
 
----
+## Arbor workflows
+[![Arbor workflows]({{ site.baseurl }}/images/workflow_logo.jpeg)](#arbor-aws-instances)
 
-## Use Arbor apps
+If you want to build a workflow for your analysis, you need to use Arbor workflows. We current have three Arbor instances running on Amazon cloud that are free for you to use.
 
-You can use one of our simple [Arbor Apps]({{ site.baseurl }}/arborapps/).
-
----
-
-## Install a local Arbor instance
-
-You can [download and install your own Arbor instance using Vagrant](http://arborworkflows.readthedocs.org/en/latest/installation.html).
+#### Arbor AWS instances
+[![arbor1]({{ site.baseurl }}/images/arbor1.jpeg)](http://arbor1.arborworkflows.com/)
+[![arbor2]({{ site.baseurl }}/images/arbor2.jpeg)](http://arbor2.arborworkflows.com/)
+[![arbor3]({{ site.baseurl }}/images/arbor3.jpeg)](http://arbor3.arborworkflows.com/)
 
 ---
 
-## Create your own cloud instance of arbor
-
-(instructions coming soon)
+You can also [download and install your own Arbor instance using Vagrant](http://arborworkflows.readthedocs.org/en/latest/installation.html).

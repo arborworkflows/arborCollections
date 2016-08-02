@@ -40,7 +40,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/arborCollections/assets/timetree/timetree-output.png&quot; alt=&quot;screen6&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/tutorials/timetrees/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/timetrees/</guid>
       </item>
@@ -67,7 +67,7 @@
 
 &lt;p&gt;Arbor code has been optimized to handle &lt;a href=&quot;/arborCollections/tutorials/verylargetrees/&quot;&gt;very large datasets&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/tutorials/megatrees/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/megatrees/</guid>
       </item>
@@ -80,7 +80,7 @@
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 </description>
-        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/collections/timetree/data/testTaxa-csv/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/timetree/data/testTaxa-csv/</guid>
       </item>
@@ -93,7 +93,7 @@
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 </description>
-        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/data/phelsuma-phy/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/data/phelsuma-phy/</guid>
       </item>
@@ -106,7 +106,7 @@
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 </description>
-        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/data/phelsuma-csv/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/data/phelsuma-csv/</guid>
       </item>
@@ -119,7 +119,7 @@
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 </description>
-        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/data/anolis-phy/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/data/anolis-phy/</guid>
       </item>
@@ -132,7 +132,7 @@
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 </description>
-        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/collections/opentree/data/mammal-species-list-csv/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/opentree/data/mammal-species-list-csv/</guid>
       </item>
@@ -145,7 +145,7 @@
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 </description>
-        <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/collections/base/phylogeny/data/anolis-csv/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/phylogeny/data/anolis-csv/</guid>
       </item>
@@ -216,7 +216,7 @@
 
 &lt;p&gt;This is a phylogenetic tree pulled from the Open Tree of Life synthesis that includes all of the species in the table that you supplied.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 11 Mar 2016 00:00:00 +0100</pubDate>
+        <pubDate>Fri, 11 Mar 2016 00:00:00 -0800</pubDate>
         <link>/arborCollections/arborCollections/tutorials/webservices/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/webservices/</guid>
       </item>
@@ -243,7 +243,7 @@
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 </description>
-        <pubDate>Tue, 08 Mar 2016 00:00:00 +0100</pubDate>
+        <pubDate>Tue, 08 Mar 2016 00:00:00 -0800</pubDate>
         <link>/arborCollections/arborCollections/collections/phylogeny/treemanipulate/multi2di/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/treemanipulate/multi2di/</guid>
       </item>

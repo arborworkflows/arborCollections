@@ -2,7 +2,7 @@
 layout: home
 permalink: /
 image:
-  feature: branch-1600x800.jpg
+  feature: aspen-1600x800.jpg
 ---
 
 <div>
