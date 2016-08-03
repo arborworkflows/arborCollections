@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
+  
+
   <title>Arbor</title>
-  <generator uri="https://github.com/jekyll/jekyll">Jekyll v3.1.2</generator>
+  <generator uri="https://github.com/jekyll/jekyll">Jekyll v2.4.0</generator>
     <icon>/arborCollections/apple-touch-icon-precomposed.png</icon>
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-08-03T12:53:34-07:00</updated>
+  <updated>2016-08-03T15:22:50-07:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -15,6 +17,84 @@
     <email>lukeh@uidaho.edu</email>
   </author>
 
+  
+  <entry>
+    <title>Ancestral character states</title>
+    <link href="/arborCollections/docs/ace/"/>
+    <updated>2016-08-03T00:00:00-07:00</updated>
+    <id>/arborCollections/docs/ace</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      &lt;img src=&quot;/arborCollections/images/arbordace-400x250.jpg&quot;&gt;&lt;br/&gt;
+      &lt;p&gt;Given a phylogenetic tree and some character data, we can estimate ancestral character states at the internal nodes of the tree. These ancestral character states are estimated (with uncertainty) based on a specified model of evolution.&lt;/p&gt;
+
+&lt;p&gt;Estimating ancestral character states requires a phylogenetic tree with branch lengths and data for the tips of the tree. In Arbor, you don’t have to have a perfect match between the species in the tree and in your data file - but anything that is missing from either of those will be dropped from the analysis.&lt;/p&gt;
+
+&lt;p&gt;Arbor provides several ways to estimate ancestral character states. The easiest option is to use the Arbor App &lt;a href=&quot;/arborCollections/arborapps/ancestral-state/&quot;&gt;Ancestral state estimation&lt;/a&gt;. However, you can also estimate ancestral character states in Arbor Workflows using the aceArbor function.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/images/acearbor.png&quot; alt=&quot;aceArbor&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;acearbor-arbor-workflows-function&quot;&gt;aceArbor (Arbor Workflows function)&lt;/h2&gt;
+
+&lt;p&gt;aceArbor is a function for carrying out ancestral state reconstruction. It works for
+both discrete and continuous variables, and can reconstruct ancestral character states
+under both a maximum-likelihood and a Bayesian framework. The function returns results
+in two formats: a table of ancestral state estimates for each node in the tree, and a plot
+of the results.&lt;/p&gt;
+
+&lt;h3 id=&quot;assumptions&quot;&gt;assumptions&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;known phylogenetic tree with branch lengths&lt;/li&gt;
+  &lt;li&gt;specified model of evolution (see below)&lt;/li&gt;
+  &lt;li&gt;tip character states known without error&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;inputs&quot;&gt;inputs&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;table: A data table including species names&lt;/li&gt;
+  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
+  &lt;li&gt;type: The character type
+    &lt;ul&gt;
+      &lt;li&gt;discrete: a character with a discrete number of states&lt;/li&gt;
+      &lt;li&gt;continuous: a continuously varying character&lt;/li&gt;
+      &lt;li&gt;fromData: will attempt to determine the data type from the data itself&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;method: specifies the method used to reconstruct ancestral character states
+    &lt;ul&gt;
+      &lt;li&gt;marginal: marginal ancestral state reconstructions, which reconstruct each node integrating over all possibilities at all other nodes in the tree; this is typically the method used in the literature to reconstruce ACEs&lt;/li&gt;
+      &lt;li&gt;joint: joint ancestral reconstructions, which give the configuration of ancestral states that together maximize the likelihood of the data given model parameters&lt;/li&gt;
+      &lt;li&gt;mcmc: reconstruct ancestral states using Bayesian MCMC. Note that the discrete version of this doesn’t seem to work, and even if it did work it is not a full MCMC ancestral state method&lt;/li&gt;
+      &lt;li&gt;stochastic: create stochastic character map&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;outputs&quot;&gt;outputs&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a table and a plot with results of the ancestral state reconstruction.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;example&lt;/h3&gt;
+
+&lt;p&gt;From the &lt;a href=&quot;/arborCollections/../docs/&quot;&gt;docs&lt;/a&gt; page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
+the “ecomorph” column for analysis, and select type: discrete and method: marginal.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-of-use-in-a-workflow&quot;&gt;example of use in a workflow&lt;/h3&gt;
+
+&lt;h3 id=&quot;citation&quot;&gt;citation&lt;/h3&gt;
+
+    </content>
+  </entry>
   
   <entry>
     <title>Timetrees</title>
@@ -59,41 +139,6 @@
 &lt;p&gt;Here is your timetree:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/arborCollections/assets/timetree/timetree-output.png&quot; alt=&quot;screen6&quot; /&gt;&lt;/p&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>Megaphylogenies</title>
-    <link href="/arborCollections/tutorials/megatrees/"/>
-    <updated>2016-04-18T00:00:00-07:00</updated>
-    <id>/arborCollections/tutorials/megatrees</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;what-is-a-megaphylogeny&quot;&gt;What is a megaphylogeny?&lt;/h2&gt;
-
-&lt;p&gt;Megaphylogenies are very large phylogenetic trees with thousands of tips.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-can-arbor-help-with-my-megaphylogenetic-analysis&quot;&gt;How can Arbor help with my megaphylogenetic analysis?&lt;/h2&gt;
-
-&lt;p&gt;Arbor can help in three ways. First, using web services, Arbor can help you obtain large trees and time-scale these trees when necessary. Second, Arbor can help you match phylogenetic and character data, a complex task with very large trees. Finally, Arbor can analyze large datasets quickly and efficiently.&lt;/p&gt;
-
-&lt;h1 id=&quot;obtaining-and-time-scaling-large-trees&quot;&gt;Obtaining and time-scaling large trees&lt;/h1&gt;
-
-&lt;p&gt;You can use Arbor’s &lt;a href=&quot;/arborCollections/tutorials/webservices/&quot;&gt;web services&lt;/a&gt; to obtain large phylogenetic trees from &lt;a href=&quot;http://www.opentreeoflife.org/&quot;&gt;Open Tree of Life&lt;/a&gt;. You can then use Arbor’s &lt;a href=&quot;/arborCollections/tutorials/timetrees/&quot;&gt;method for time-scaling trees&lt;/a&gt; to add branch lengths to this tree.&lt;/p&gt;
-
-&lt;h1 id=&quot;matching-phylogenetic-and-character-data&quot;&gt;Matching phylogenetic and character data&lt;/h1&gt;
-
-&lt;p&gt;Our new &lt;a href=&quot;https://github.com/uyedaj/treeplyr&quot;&gt;treeplyr&lt;/a&gt; package is made to help match tree and character data, and manipulate the combined dataset. Try the &lt;a href=&quot;https://github.com/uyedaj/treeplyr/wiki&quot;&gt;treeplyr tutorial&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h1 id=&quot;analyzing-large-datasets&quot;&gt;Analyzing large datasets&lt;/h1&gt;
-
-&lt;p&gt;Arbor code has been optimized to handle &lt;a href=&quot;/arborCollections/tutorials/verylargetrees/&quot;&gt;very large datasets&lt;/a&gt;.&lt;/p&gt;
 
     </content>
   </entry>
@@ -162,10 +207,10 @@
   </entry>
   
   <entry>
-    <title>anolis.phy</title>
-    <link href="/arborCollections/collections/phylogeny/data/anolis-phy/"/>
+    <title>Megaphylogenies</title>
+    <link href="/arborCollections/tutorials/megatrees/"/>
     <updated>2016-04-18T00:00:00-07:00</updated>
-    <id>/arborCollections/collections/phylogeny/data/anolis-phy</id>
+    <id>/arborCollections/tutorials/megatrees</id>
     <author>
       <name>Luke Harmon</name>
       <uri>/arborCollections/</uri>
@@ -173,11 +218,25 @@
     </author>
     <content type="html">
       
-      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+      &lt;h2 id=&quot;what-is-a-megaphylogeny&quot;&gt;What is a megaphylogeny?&lt;/h2&gt;
 
-&lt;p&gt;Phylogenetic tree of anolis lizards.&lt;/p&gt;
+&lt;p&gt;Megaphylogenies are very large phylogenetic trees with thousands of tips.&lt;/p&gt;
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;h2 id=&quot;how-can-arbor-help-with-my-megaphylogenetic-analysis&quot;&gt;How can Arbor help with my megaphylogenetic analysis?&lt;/h2&gt;
+
+&lt;p&gt;Arbor can help in three ways. First, using web services, Arbor can help you obtain large trees and time-scale these trees when necessary. Second, Arbor can help you match phylogenetic and character data, a complex task with very large trees. Finally, Arbor can analyze large datasets quickly and efficiently.&lt;/p&gt;
+
+&lt;h1 id=&quot;obtaining-and-time-scaling-large-trees&quot;&gt;Obtaining and time-scaling large trees&lt;/h1&gt;
+
+&lt;p&gt;You can use Arbor’s &lt;a href=&quot;/arborCollections/tutorials/webservices/&quot;&gt;web services&lt;/a&gt; to obtain large phylogenetic trees from &lt;a href=&quot;http://www.opentreeoflife.org/&quot;&gt;Open Tree of Life&lt;/a&gt;. You can then use Arbor’s &lt;a href=&quot;/arborCollections/tutorials/timetrees/&quot;&gt;method for time-scaling trees&lt;/a&gt; to add branch lengths to this tree.&lt;/p&gt;
+
+&lt;h1 id=&quot;matching-phylogenetic-and-character-data&quot;&gt;Matching phylogenetic and character data&lt;/h1&gt;
+
+&lt;p&gt;Our new &lt;a href=&quot;https://github.com/uyedaj/treeplyr&quot;&gt;treeplyr&lt;/a&gt; package is made to help match tree and character data, and manipulate the combined dataset. Try the &lt;a href=&quot;https://github.com/uyedaj/treeplyr/wiki&quot;&gt;treeplyr tutorial&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;analyzing-large-datasets&quot;&gt;Analyzing large datasets&lt;/h1&gt;
+
+&lt;p&gt;Arbor code has been optimized to handle &lt;a href=&quot;/arborCollections/tutorials/verylargetrees/&quot;&gt;very large datasets&lt;/a&gt;.&lt;/p&gt;
 
     </content>
   </entry>
@@ -197,6 +256,27 @@
       &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;A list of mammal species for the example on pulling from Open Tree of Life&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>anolis.phy</title>
+    <link href="/arborCollections/collections/phylogeny/data/anolis-phy/"/>
+    <updated>2016-04-18T00:00:00-07:00</updated>
+    <id>/arborCollections/collections/phylogeny/data/anolis-phy</id>
+    <author>
+      <name>Luke Harmon</name>
+      <uri>/arborCollections/</uri>
+      <email>lukeh@uidaho.edu</email>
+    </author>
+    <content type="html">
+      
+      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Phylogenetic tree of anolis lizards.&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
@@ -740,9 +820,9 @@
       
       &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
-&lt;p&gt;Roll up the values of a table’s rows according to discrete values in a selected “groupBy” column. The number of output rows in the table will be equal to the number of discrete values in the groupBy column.&lt;/p&gt;
+&lt;p&gt;Roll up the values of a table’s rows according to discrete values in a selected “groupBy” column. The number of output rows in the table will be equal to the number of discrete values in the groupBy column.  &lt;/p&gt;
 
-&lt;p&gt;This is the MAX version of aggregation, so the values in the other columns will be the max value encountered out of all rows which belonged to this group from the input table.&lt;/p&gt;
+&lt;p&gt;This is the MAX version of aggregation, so the values in the other columns will be the max value encountered out of all rows which belonged to this group from the input table.   &lt;/p&gt;
 
 &lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
 
@@ -863,42 +943,6 @@ td &amp;lt;- make.treedata(anolis$phy, anolis$dat, name_column=1)&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;tree_matched: Tree with tip labels that match data names exactly.&lt;/li&gt;
   &lt;li&gt;table_matched: Table with row names that match tree tip labels exactly.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>extractGenusFromTreeTipNames</title>
-    <link href="/arborCollections/collections/phylogeny/treemanipulate/extractGenusFromTreeTipNames/"/>
-    <updated>2016-03-02T00:00:00-08:00</updated>
-    <id>/arborCollections/collections/phylogeny/treemanipulate/extractGenusFromTreeTipNames</id>
-    <author>
-      <name>Luke Harmon</name>
-      <uri>/arborCollections/</uri>
-      <email>lukeh@uidaho.edu</email>
-    </author>
-    <content type="html">
-      
-      &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Extracts and returns just the genus name from all of the tip names in the tree. Tree tips must be in the format of genus%species, where % is some special character like space or _ that is specified to the function.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Input tree: An input phylogenetic tree&lt;/li&gt;
-  &lt;li&gt;Split character: The special character that separates genus and species in the species names. For example, this would be _ for Anolis_sagrei.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Genus names: A table with a single column, the genus names.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;

@@ -7,7 +7,7 @@ image:
 
 <div>
   <p style="float: left;margin:0 10px 10px 0">
-      <img src="{{ site.baseurl}}/images/arbor_logo/arbor_128px.png" width = "150px" border="1px"></a></p>
+      <img src="{{ site.baseurl}}/images/arbor_logo/arbor_128px.png" width = "150px" border="1px"></p>
   <p>
     <br><br>Arbor is web-based software for carrying out phylogenetic comparative analyses of the tree of life. You can read more in our <a href="http://currents.plos.org/treeoflife/article/arbor-comparative-analysis-workflows-for-the-tree-of-life/">paper</a>, try the software using the links above, or get information about our core features:
 </div>

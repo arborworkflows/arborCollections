@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ancestral character states • Arbor</title>
+    <meta name="description" content="Given a phylogenetic tree and some character data, we can estimate ancestral character states at the internal nodes of the tree. These ancestral character states are estimated (with uncertainty) based on a specified model of evolution.
+
+">
+    <meta name="keywords" content="">
+    
+      
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="Ancestral character states">
+	<meta name="twitter:description" content="Given a phylogenetic tree and some character data, we can estimate ancestral character states at the internal nodes of the tree. These ancestral character states are estimated (with uncertainty) based on a specified model of evolution.
+
+">
+	<meta name="twitter:site" content="@lukejharmon">
+	
+	
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="/arborCollections/images/arbordace-400x250.jpg">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Ancestral character states">
+	<meta property="og:description" content="Given a phylogenetic tree and some character data, we can estimate ancestral character states at the internal nodes of the tree. These ancestral character states are estimated (with uncertainty) based on a specified model of evolution.
+
+">
+	<meta property="og:url" content="/arborCollections/docs/ace/">
+	<meta property="og:site_name" content="Arbor">
+
+    <link rel="canonical" href="/arborCollections/docs/ace/">
+
+    <link href="/arborCollections/atom.xml" type="application/atom+xml" rel="alternate" title="Arbor Atom Feed">
+    <link href="/arborCollections/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="/arborCollections/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="/arborCollections/js/vendor/html5shiv.min.js"></script>
+      <script src="/arborCollections/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="/arborCollections/" class="site-title">Arbor</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Arbor</a></li>
+	
+    
+        
+    
+    <li><a href="/arborCollections/faq/" >Help</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/usearbor/" >Use Arbor</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/tutorials/" >Tutorials</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/documentation/" >Documentation</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/team/" >Contact</a></li>
+  
+</ul>
+
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Arbor <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="/arborCollections/faq/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Help</div>
+        <p class="excerpt">Get help</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/usearbor/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Use Arbor</div>
+        <p class="excerpt">Run Arbor over the web or install it yourself</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/tutorials/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Tutorials</div>
+        <p class="excerpt">How to use Arbor</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/documentation/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Documentation</div>
+        <p class="excerpt">Full documentation for functions and workflows</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/team/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Contact</div>
+        <p class="excerpt">Contact us</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <a href="/arborCollections/documentation/"><img src="/arborCollections/images/arbor-docs.png"></a><br>
+      <h1>Ancestral character states: </h1><br>
+      
+        <img src="/arborCollections/images/arbordace-400x250.jpg"<br>
+      
+      <h3>collection: <a href="/arborCollections/documentation/traitAncestralStateEstimation/">traitAncestralStateEstimation</a></h3><br>
+
+      <p>Given a phylogenetic tree and some character data, we can estimate ancestral character states at the internal nodes of the tree. These ancestral character states are estimated (with uncertainty) based on a specified model of evolution.</p>
+
+<p>Estimating ancestral character states requires a phylogenetic tree with branch lengths and data for the tips of the tree. In Arbor, you don’t have to have a perfect match between the species in the tree and in your data file - but anything that is missing from either of those will be dropped from the analysis.</p>
+
+<p>Arbor provides several ways to estimate ancestral character states. The easiest option is to use the Arbor App <a href="/arborCollections/arborapps/ancestral-state/">Ancestral state estimation</a>. However, you can also estimate ancestral character states in Arbor Workflows using the aceArbor function.</p>
+
+<p><img src="/arborCollections/images/acearbor.png" alt="aceArbor" /></p>
+
+<h2 id="acearbor-arbor-workflows-function">aceArbor (Arbor Workflows function)</h2>
+
+<p>aceArbor is a function for carrying out ancestral state reconstruction. It works for
+both discrete and continuous variables, and can reconstruct ancestral character states
+under both a maximum-likelihood and a Bayesian framework. The function returns results
+in two formats: a table of ancestral state estimates for each node in the tree, and a plot
+of the results.</p>
+
+<h3 id="assumptions">assumptions</h3>
+
+<ul>
+  <li>known phylogenetic tree with branch lengths</li>
+  <li>specified model of evolution (see below)</li>
+  <li>tip character states known without error</li>
+</ul>
+
+<h3 id="inputs">inputs</h3>
+
+<ul>
+  <li>table: A data table including species names</li>
+  <li>tree: A phylogenetic tree</li>
+  <li>column: The name of the column to analyze</li>
+  <li>type: The character type
+    <ul>
+      <li>discrete: a character with a discrete number of states</li>
+      <li>continuous: a continuously varying character</li>
+      <li>fromData: will attempt to determine the data type from the data itself</li>
+    </ul>
+  </li>
+  <li>method: specifies the method used to reconstruct ancestral character states
+    <ul>
+      <li>marginal: marginal ancestral state reconstructions, which reconstruct each node integrating over all possibilities at all other nodes in the tree; this is typically the method used in the literature to reconstruce ACEs</li>
+      <li>joint: joint ancestral reconstructions, which give the configuration of ancestral states that together maximize the likelihood of the data given model parameters</li>
+      <li>mcmc: reconstruct ancestral states using Bayesian MCMC. Note that the discrete version of this doesn’t seem to work, and even if it did work it is not a full MCMC ancestral state method</li>
+      <li>stochastic: create stochastic character map</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="outputs">outputs</h3>
+
+<ul>
+  <li>a table and a plot with results of the ancestral state reconstruction.</li>
+</ul>
+
+<h3 id="example">example</h3>
+
+<p>From the <a href="/arborCollections/../docs/">docs</a> page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
+the “ecomorph” column for analysis, and select type: discrete and method: marginal.</p>
+
+<h3 id="example-of-use-in-a-workflow">example of use in a workflow</h3>
+
+<h3 id="citation">citation</h3>
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+        
+      
+			<li><a href="/arborCollections/" >Home</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/getting-started/" >Getting Started</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/about/" >About</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/team/" >Team</a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2016 <a href="/arborCollections/">Arbor</a> powered by <a href="http://jekyllrb.com">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/">Skinny Bones</a>.</p>
+</footer>
+
+    </div>
+
+    <script src="/arborCollections/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/arborCollections/js/main.js"></script>
+
+  </body>
+</html>
