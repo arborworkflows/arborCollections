@@ -46,6 +46,24 @@
 }
 
 /*
+   Gray inverse button .btn-inverse-gray
+   ========================================================================== */
+
+.btn-inverse-gray {
+	@extend .btn;
+	background-color: #DDDDDD;
+	color: $text-color;
+	&:visited,
+	&:active {
+		color: $text-color;
+	}
+	&:hover {
+		color: $white;
+		background-color: $text-color;
+	}
+}
+
+/*
    Info button .btn-info
    ========================================================================== */
 

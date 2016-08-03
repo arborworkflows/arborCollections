@@ -20,12 +20,12 @@ There are two main ways to use Arbor.
 
 [![Arbor apps]({{ site.baseurl }}/images/app_logo.jpeg)]({{ site.baseurl }}/arborapps)
 
-If you want to run a common comparative analysis in a simple and clean way using a web interface, you need to use Arbor apps. Arbor apps are websites that can run analyses - like ancestral state reconstruction and PGLS - using a straighforward drag and drop interface.
+If you want to run a common comparative analysis in a simple and clean way using a web interface, you can use [Arbor apps]({{ site.baseurl }}/arborapps). Arbor apps are websites that can run analyses - like ancestral state reconstruction and PGLS - using a straightforward drag and drop interface.
 
 ## Arbor workflows
 [![Arbor workflows]({{ site.baseurl }}/images/workflow_logo.jpeg)](#arbor-aws-instances)
 
-If you want to build a workflow for your analysis, you need to use Arbor workflows. We current have three Arbor instances running on Amazon cloud that are free for you to use.
+If you want to build a workflow for your analysis, you can use [Arbor workflows](#arbor-aws-instances). We current have three Arbor instances running on Amazon cloud that are free for you to use.
 
 #### Arbor AWS instances
 [![arbor1]({{ site.baseurl }}/images/arbor1.jpeg)](http://arbor1.arborworkflows.com/)
