@@ -20,83 +20,44 @@
 
 &lt;h2 id=&quot;how-to-do-this-analysis-in-arbor&quot;&gt;How to do this analysis in Arbor&lt;/h2&gt;
 
-&lt;p&gt;Arbor provides several ways to estimate ancestral character states. The easiest option is to use the Arbor App &lt;a href=&quot;/arborCollections/arborapps/ancestral-state/&quot;&gt;Ancestral state estimation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are two functions to fit models of trait evolution in Arbor Workflows:&lt;/p&gt;
 
-&lt;p&gt;You can also estimate ancestral character states in Arbor Workflows using the aceArbor function.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/arborCollections/collections/traitModelFitting/fitContinuous&quot;&gt;&lt;img src=&quot;/arborCollections/images/fitContinuous.png&quot; alt=&quot;fitContinuous fxn&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/arborCollections/images/acearbor.png&quot; alt=&quot;aceArbor&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/arborCollections/collections/traitModelFitting/fitContinuous&quot;&gt;fitContinuous&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h2 id=&quot;more-details-acearbor-arbor-workflows-function&quot;&gt;More details: aceArbor (Arbor Workflows function)&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;/arborCollections/collections/traitModelFitting/fitDiscrete&quot;&gt;&lt;img src=&quot;/arborCollections/images/fitDiscrete.png&quot; alt=&quot;fitDiscrete fxn&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;aceArbor is a function for carrying out ancestral state reconstruction. It works for
-both discrete and continuous variables, and can reconstruct ancestral character states
-under both a maximum-likelihood and a Bayesian framework. The function returns results
-in two formats: a table of ancestral state estimates for each node in the tree, and a plot
-of the results.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/arborCollections/docs/fitDiscrete&quot;&gt;fitDiscrete&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h3 id=&quot;acearbor-assumptions&quot;&gt;aceArbor assumptions&lt;/h3&gt;
+&lt;h2 id=&quot;method-assumptions&quot;&gt;Method assumptions&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;known phylogenetic tree with branch lengths&lt;/li&gt;
-  &lt;li&gt;specified model of evolution (see below)&lt;/li&gt;
+  &lt;li&gt;specified model of evolution&lt;/li&gt;
   &lt;li&gt;tip character states known without error&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;acearbor-inputs&quot;&gt;aceArbor inputs&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;table: A data table including species names&lt;/li&gt;
-  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
-  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
-  &lt;li&gt;type: The character type
-    &lt;ul&gt;
-      &lt;li&gt;discrete: a character with a discrete number of states&lt;/li&gt;
-      &lt;li&gt;continuous: a continuously varying character&lt;/li&gt;
-      &lt;li&gt;fromData: will attempt to determine the data type from the data itself&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;method: specifies the method used to reconstruct ancestral character states
-    &lt;ul&gt;
-      &lt;li&gt;marginal: marginal ancestral state reconstructions, which reconstruct each node integrating over all possibilities at all other nodes in the tree; this is typically the method used in the literature to reconstruce ACEs&lt;/li&gt;
-      &lt;li&gt;joint: joint ancestral reconstructions, which give the configuration of ancestral states that together maximize the likelihood of the data given model parameters&lt;/li&gt;
-      &lt;li&gt;mcmc: reconstruct ancestral states using Bayesian MCMC. Note that the discrete version of this doesn’t seem to work, and even if it did work it is not a full MCMC ancestral state method&lt;/li&gt;
-      &lt;li&gt;stochastic: create stochastic character map&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;acearbor-outputs&quot;&gt;aceArbor outputs&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;a table and a plot with results of the ancestral state reconstruction.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;acearbor-example&quot;&gt;aceArbor example&lt;/h3&gt;
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
 
 &lt;p&gt;From the &lt;a href=&quot;/arborCollections/../docs/&quot;&gt;docs&lt;/a&gt; page, get anolis.phy and anolis.csv.
-Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
-the “ecomorph” column for analysis, and select type: discrete and method: marginal.&lt;/p&gt;
+Load these files into Arbor, and use them as inputs to the fitDiscrete function (choose the “ecomorph” character).&lt;/p&gt;
 
-&lt;p&gt;Your results should look like this.&lt;/p&gt;
+&lt;h3 id=&quot;example-of-use-in-a-workflow&quot;&gt;Example of use in a workflow&lt;/h3&gt;
 
-&lt;p&gt;Table: A table showing the internal nodes of the tree (numbered following ape’s scheme) along with marginal likelihoods for each character state.
-&lt;img src=&quot;/arborCollections/images/acearbor-exampletable.png&quot; alt=&quot;acearbor-plot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;TBA&lt;/p&gt;
 
-&lt;p&gt;Plot: A plot of the tree with ancestral state estimates at every node.
-&lt;img src=&quot;/arborCollections/images/acearbor-exampleplot.png&quot; alt=&quot;acearbor-plot&quot; /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;citations&quot;&gt;Citations&lt;/h3&gt;
 
-&lt;h3 id=&quot;acearbor-example-of-use-in-a-workflow&quot;&gt;aceArbor example of use in a workflow&lt;/h3&gt;
-
-&lt;p&gt;You can see a tutorial for constructing a workflow that involves aceArbor
-&lt;a href=&quot;/arborCollections/tutorials/reconstructing-ancestral-characters-discrete&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;acearbor-citations&quot;&gt;aceArbor citations&lt;/h3&gt;
+&lt;p&gt;Harmon, L. J., J. B. Losos, J. Davies, R. G. Gillespie, J. L. Gittleman, W. B. Jennings, K. Kozak, M. A. McPeek, F. Moreno-Roark, T. J. Near, A. Purvis, R. E. Ricklefs, D. Schluter, J. A. Schulte II, O. Seehausen, B. Sidlauskas, O. Torres-Carvajal, J. T. Weir, &amp;amp; A. Ø. Mooers. 2010. Early bursts of body size and shape evolution are rare in comparative data. Evolution 64: 2385.&lt;/p&gt;
 
 &lt;p&gt;Lewis, P.O. 2001. A likelihood approach to estimating phylogeny from discrete morphological character data. Systematic Biology 50:913-925.&lt;/p&gt;
 
-&lt;p&gt;Pagel, M. 1999. The maximum likelihood approach to reconstructing ancestral character states of discrete characters on phylogenies. Systematic Biology. 48: 612-622.&lt;/p&gt;
-
-&lt;p&gt;Schluter, D., T. Price, A. O. Mooers, and D. Ludwig. 1997. Likelihood of ancestor states in adaptive radiation. Evolution 51: 1699.&lt;/p&gt;
+&lt;p&gt;Pennell, M. W., J. M. Eastman, G. J. Slater, J. W. Brown, J. C. Uyeda, R. G. Fitzjohn, M. E. Alfaro, and L. J. Harmon. 2014. geiger v2.0: an expanded suite of methods for fitting macroevolutionary models to phylogenetic trees. Bioinformatics 30: 2216-2218.&lt;/p&gt;
 </description>
         <pubDate>Thu, 04 Aug 2016 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/docs/trait-models/</link>

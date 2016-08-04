@@ -2,7 +2,7 @@
 layout: documentation
 title: fitContinuous
 author: Arbor core team
-categories: collections traitModelFitting
+categories: collections phylogeny charactercalculate
 arbortype: function
 arborcollection: phylogeny
 description: fit models of evolution to continuous characters
