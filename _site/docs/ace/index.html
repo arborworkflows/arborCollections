@@ -2,16 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Ancestral character states • Arbor</title>
-    <meta name="description" content="Given a phylogenetic tree and some character data, we can estimate ancestral character states at the internal nodes of the tree. These ancestral character states are estimated (with uncertainty) based on a specified model of evolution.
+    <title>Ancestral character state estimation with Arbor • Arbor</title>
+    <meta name="description" content="General overview
 
 ">
     <meta name="keywords" content="">
     
       
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="Ancestral character states">
-	<meta name="twitter:description" content="Given a phylogenetic tree and some character data, we can estimate ancestral character states at the internal nodes of the tree. These ancestral character states are estimated (with uncertainty) based on a specified model of evolution.
+	<meta name="twitter:title" content="Ancestral character state estimation with Arbor">
+	<meta name="twitter:description" content="General overview
 
 ">
 	<meta name="twitter:site" content="@lukejharmon">
@@ -23,8 +23,8 @@
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en_US">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Ancestral character states">
-	<meta property="og:description" content="Given a phylogenetic tree and some character data, we can estimate ancestral character states at the internal nodes of the tree. These ancestral character states are estimated (with uncertainty) based on a specified model of evolution.
+	<meta property="og:title" content="Ancestral character state estimation with Arbor">
+	<meta property="og:description" content="General overview
 
 ">
 	<meta property="og:url" content="/arborCollections/docs/ace/">
@@ -135,21 +135,37 @@
 
     <div id="page-wrapper">
       <a href="/arborCollections/documentation/"><img src="/arborCollections/images/arbor-docs.png"></a><br>
-      <h1>Ancestral character states: </h1><br>
+      <h1>Ancestral character state estimation with Arbor
+      
+      </h1><br>
       
         <img src="/arborCollections/images/arbordace-400x250.jpg"<br>
       
       <h3>collection: <a href="/arborCollections/documentation/traitAncestralStateEstimation/">traitAncestralStateEstimation</a></h3><br>
 
-      <p>Given a phylogenetic tree and some character data, we can estimate ancestral character states at the internal nodes of the tree. These ancestral character states are estimated (with uncertainty) based on a specified model of evolution.</p>
+      <h2 id="general-overview">General overview</h2>
 
-<p>Estimating ancestral character states requires a phylogenetic tree with branch lengths and data for the tips of the tree. In Arbor, you don’t have to have a perfect match between the species in the tree and in your data file - but anything that is missing from either of those will be dropped from the analysis.</p>
+<p>Ancestral state estimate uses some model of evolution - for example, Brownian motion or an Mk model - and estimates ancestral character states for each node in a phylogenetic tree. For example, if we were interested in the evolution of limb presence or absence among squamates (snakes and lizards), we could use ancestral state estimation. We would use a tree and character data from living species to reconstruct character states (limbs or not) for each internal node in the tree.</p>
 
-<p>Arbor provides several ways to estimate ancestral character states. The easiest option is to use the Arbor App <a href="/arborCollections/arborapps/ancestral-state/">Ancestral state estimation</a>. However, you can also estimate ancestral character states in Arbor Workflows using the aceArbor function.</p>
+<p>It can be difficult to estimate ancestral character states, so most methods return estimates along with some measure of uncertainty. For example, an ancestral state estimate for limbs in squamates might return an estimate with 80% of the marginal likelihood for a limbless state, and 20% for a limbed state - in other words, we think that this species did not have limbs but we are not sure based only on the tree, data, and model of evolution.</p>
+
+<p>Estimating ancestral character states requires three things:</p>
+
+<ul>
+  <li>a phylogenetic tree with branch lengths</li>
+  <li>data for the tips of the tree. In Arbor, you don’t have to have a perfect match between the species in the tree and in your data file - but anything that is missing from either of those will be dropped from the analysis.</li>
+  <li>a model of evolution</li>
+</ul>
+
+<h2 id="how-to-do-this-analysis-in-arbor">How to do this analysis in Arbor</h2>
+
+<p>Arbor provides several ways to estimate ancestral character states. The easiest option is to use the Arbor App <a href="/arborCollections/arborapps/ancestral-state/">Ancestral state estimation</a>.</p>
+
+<p>You can also estimate ancestral character states in Arbor Workflows using the aceArbor function.</p>
 
 <p><img src="/arborCollections/images/acearbor.png" alt="aceArbor" /></p>
 
-<h2 id="acearbor-arbor-workflows-function">aceArbor (Arbor Workflows function)</h2>
+<h2 id="more-details-acearbor-arbor-workflows-function">More details: aceArbor (Arbor Workflows function)</h2>
 
 <p>aceArbor is a function for carrying out ancestral state reconstruction. It works for
 both discrete and continuous variables, and can reconstruct ancestral character states
@@ -157,7 +173,7 @@ under both a maximum-likelihood and a Bayesian framework. The function returns r
 in two formats: a table of ancestral state estimates for each node in the tree, and a plot
 of the results.</p>
 
-<h3 id="assumptions">assumptions</h3>
+<h3 id="acearbor-assumptions">aceArbor assumptions</h3>
 
 <ul>
   <li>known phylogenetic tree with branch lengths</li>
@@ -165,7 +181,7 @@ of the results.</p>
   <li>tip character states known without error</li>
 </ul>
 
-<h3 id="inputs">inputs</h3>
+<h3 id="acearbor-inputs">aceArbor inputs</h3>
 
 <ul>
   <li>table: A data table including species names</li>
@@ -188,21 +204,38 @@ of the results.</p>
   </li>
 </ul>
 
-<h3 id="outputs">outputs</h3>
+<h3 id="acearbor-outputs">aceArbor outputs</h3>
 
 <ul>
   <li>a table and a plot with results of the ancestral state reconstruction.</li>
 </ul>
 
-<h3 id="example">example</h3>
+<h3 id="acearbor-example">aceArbor example</h3>
 
 <p>From the <a href="/arborCollections/../docs/">docs</a> page, get anolis.phy and anolis.csv.
 Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
 the “ecomorph” column for analysis, and select type: discrete and method: marginal.</p>
 
-<h3 id="example-of-use-in-a-workflow">example of use in a workflow</h3>
+<p>Your results should look like this.</p>
 
-<h3 id="citation">citation</h3>
+<p>Table: A table showing the internal nodes of the tree (numbered following ape’s scheme) along with marginal likelihoods for each character state.
+<img src="/arborCollections/images/acearbor-exampletable.png" alt="acearbor-plot" /></p>
+
+<p>Plot: A plot of the tree with ancestral state estimates at every node.
+<img src="/arborCollections/images/acearbor-exampleplot.png" alt="acearbor-plot" /></p>
+
+<h3 id="acearbor-example-of-use-in-a-workflow">aceArbor example of use in a workflow</h3>
+
+<p>You can see a tutorial for constructing a workflow that involves aceArbor
+<a href="/arborCollections/tutorials/reconstructing-ancestral-characters-discrete">here</a>.</p>
+
+<h3 id="acearbor-citations">aceArbor citations</h3>
+
+<p>Lewis, P.O. 2001. A likelihood approach to estimating phylogeny from discrete morphological character data. Systematic Biology 50:913-925.</p>
+
+<p>Pagel, M. 1999. The maximum likelihood approach to reconstructing ancestral character states of discrete characters on phylogenies. Systematic Biology. 48: 612-622.</p>
+
+<p>Schluter, D., T. Price, A. O. Mooers, and D. Ludwig. 1997. Likelihood of ancestor states in adaptive radiation. Evolution 51: 1699.</p>
 
       <footer role="contentinfo" id="site-footer">
 	<nav role="navigation" class="menu bottom-menu">

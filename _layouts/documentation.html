@@ -36,7 +36,11 @@
 
     <div id="page-wrapper">
       <a href="{{ site.baseurl }}/documentation/"><img src="{{ site.baseurl }}/images/arbor-docs.png"></a><br>
-      <h1>{{ page.title }}: {{ page:arbortype }}</h1><br>
+      <h1>{{ page.title }}
+      {% if page.arbortype %}
+        : {{ page:arbortype }}
+      {% endif %}
+      </h1><br>
       {% if page.image.feature %}
         <img src="{{ site.baseurl }}/images/{{ page.image.feature }}"<br>
       {% endif %}

@@ -7,16 +7,30 @@
     <atom:link href="/arborCollections/arborCollections/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Ancestral character states</title>
-        <description>&lt;p&gt;Given a phylogenetic tree and some character data, we can estimate ancestral character states at the internal nodes of the tree. These ancestral character states are estimated (with uncertainty) based on a specified model of evolution.&lt;/p&gt;
+        <title>Ancestral character state estimation with Arbor</title>
+        <description>&lt;h2 id=&quot;general-overview&quot;&gt;General overview&lt;/h2&gt;
 
-&lt;p&gt;Estimating ancestral character states requires a phylogenetic tree with branch lengths and data for the tips of the tree. In Arbor, you don’t have to have a perfect match between the species in the tree and in your data file - but anything that is missing from either of those will be dropped from the analysis.&lt;/p&gt;
+&lt;p&gt;Ancestral state estimate uses some model of evolution - for example, Brownian motion or an Mk model - and estimates ancestral character states for each node in a phylogenetic tree. For example, if we were interested in the evolution of limb presence or absence among squamates (snakes and lizards), we could use ancestral state estimation. We would use a tree and character data from living species to reconstruct character states (limbs or not) for each internal node in the tree.&lt;/p&gt;
 
-&lt;p&gt;Arbor provides several ways to estimate ancestral character states. The easiest option is to use the Arbor App &lt;a href=&quot;/arborCollections/arborapps/ancestral-state/&quot;&gt;Ancestral state estimation&lt;/a&gt;. However, you can also estimate ancestral character states in Arbor Workflows using the aceArbor function.&lt;/p&gt;
+&lt;p&gt;It can be difficult to estimate ancestral character states, so most methods return estimates along with some measure of uncertainty. For example, an ancestral state estimate for limbs in squamates might return an estimate with 80% of the marginal likelihood for a limbless state, and 20% for a limbed state - in other words, we think that this species did not have limbs but we are not sure based only on the tree, data, and model of evolution.&lt;/p&gt;
+
+&lt;p&gt;Estimating ancestral character states requires three things:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a phylogenetic tree with branch lengths&lt;/li&gt;
+  &lt;li&gt;data for the tips of the tree. In Arbor, you don’t have to have a perfect match between the species in the tree and in your data file - but anything that is missing from either of those will be dropped from the analysis.&lt;/li&gt;
+  &lt;li&gt;a model of evolution&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-to-do-this-analysis-in-arbor&quot;&gt;How to do this analysis in Arbor&lt;/h2&gt;
+
+&lt;p&gt;Arbor provides several ways to estimate ancestral character states. The easiest option is to use the Arbor App &lt;a href=&quot;/arborCollections/arborapps/ancestral-state/&quot;&gt;Ancestral state estimation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can also estimate ancestral character states in Arbor Workflows using the aceArbor function.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/arborCollections/images/acearbor.png&quot; alt=&quot;aceArbor&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;acearbor-arbor-workflows-function&quot;&gt;aceArbor (Arbor Workflows function)&lt;/h2&gt;
+&lt;h2 id=&quot;more-details-acearbor-arbor-workflows-function&quot;&gt;More details: aceArbor (Arbor Workflows function)&lt;/h2&gt;
 
 &lt;p&gt;aceArbor is a function for carrying out ancestral state reconstruction. It works for
 both discrete and continuous variables, and can reconstruct ancestral character states
@@ -24,7 +38,7 @@ under both a maximum-likelihood and a Bayesian framework. The function returns r
 in two formats: a table of ancestral state estimates for each node in the tree, and a plot
 of the results.&lt;/p&gt;
 
-&lt;h3 id=&quot;assumptions&quot;&gt;assumptions&lt;/h3&gt;
+&lt;h3 id=&quot;acearbor-assumptions&quot;&gt;aceArbor assumptions&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;known phylogenetic tree with branch lengths&lt;/li&gt;
@@ -32,7 +46,7 @@ of the results.&lt;/p&gt;
   &lt;li&gt;tip character states known without error&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;inputs&quot;&gt;inputs&lt;/h3&gt;
+&lt;h3 id=&quot;acearbor-inputs&quot;&gt;aceArbor inputs&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;table: A data table including species names&lt;/li&gt;
@@ -55,21 +69,38 @@ of the results.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;outputs&quot;&gt;outputs&lt;/h3&gt;
+&lt;h3 id=&quot;acearbor-outputs&quot;&gt;aceArbor outputs&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;a table and a plot with results of the ancestral state reconstruction.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;example&quot;&gt;example&lt;/h3&gt;
+&lt;h3 id=&quot;acearbor-example&quot;&gt;aceArbor example&lt;/h3&gt;
 
 &lt;p&gt;From the &lt;a href=&quot;/arborCollections/../docs/&quot;&gt;docs&lt;/a&gt; page, get anolis.phy and anolis.csv.
 Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
 the “ecomorph” column for analysis, and select type: discrete and method: marginal.&lt;/p&gt;
 
-&lt;h3 id=&quot;example-of-use-in-a-workflow&quot;&gt;example of use in a workflow&lt;/h3&gt;
+&lt;p&gt;Your results should look like this.&lt;/p&gt;
 
-&lt;h3 id=&quot;citation&quot;&gt;citation&lt;/h3&gt;
+&lt;p&gt;Table: A table showing the internal nodes of the tree (numbered following ape’s scheme) along with marginal likelihoods for each character state.
+&lt;img src=&quot;/arborCollections/images/acearbor-exampletable.png&quot; alt=&quot;acearbor-plot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Plot: A plot of the tree with ancestral state estimates at every node.
+&lt;img src=&quot;/arborCollections/images/acearbor-exampleplot.png&quot; alt=&quot;acearbor-plot&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;acearbor-example-of-use-in-a-workflow&quot;&gt;aceArbor example of use in a workflow&lt;/h3&gt;
+
+&lt;p&gt;You can see a tutorial for constructing a workflow that involves aceArbor
+&lt;a href=&quot;/arborCollections/tutorials/reconstructing-ancestral-characters-discrete&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;acearbor-citations&quot;&gt;aceArbor citations&lt;/h3&gt;
+
+&lt;p&gt;Lewis, P.O. 2001. A likelihood approach to estimating phylogeny from discrete morphological character data. Systematic Biology 50:913-925.&lt;/p&gt;
+
+&lt;p&gt;Pagel, M. 1999. The maximum likelihood approach to reconstructing ancestral character states of discrete characters on phylogenies. Systematic Biology. 48: 612-622.&lt;/p&gt;
+
+&lt;p&gt;Schluter, D., T. Price, A. O. Mooers, and D. Ludwig. 1997. Likelihood of ancestor states in adaptive radiation. Evolution 51: 1699.&lt;/p&gt;
 </description>
         <pubDate>Wed, 03 Aug 2016 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/docs/ace/</link>
