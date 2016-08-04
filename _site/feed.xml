@@ -7,10 +7,105 @@
     <atom:link href="/arborCollections/arborCollections/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Ancestral character state estimation with Arbor</title>
-        <description>&lt;h2 id=&quot;general-overview&quot;&gt;General overview&lt;/h2&gt;
+        <title>Fitting models of trait evolution with Arbor</title>
+        <description>&lt;p&gt;We can fit a model of evolution - for example, Brownian motion or an Mk model - to comparative data, estimating model parameters and assessing model fit. For example, if we were interested in the evolution of body size among mammals (snakes and lizards), we could fit a variety of models. For each model, we could estimate the model parameters that best fit the data. We could also compare the fit of the models and use model selection to select the best of them.&lt;/p&gt;
 
-&lt;p&gt;Ancestral state estimate uses some model of evolution - for example, Brownian motion or an Mk model - and estimates ancestral character states for each node in a phylogenetic tree. For example, if we were interested in the evolution of limb presence or absence among squamates (snakes and lizards), we could use ancestral state estimation. We would use a tree and character data from living species to reconstruct character states (limbs or not) for each internal node in the tree.&lt;/p&gt;
+&lt;p&gt;Fitting models of trait evolution requires:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a phylogenetic tree with branch lengths&lt;/li&gt;
+  &lt;li&gt;data for the tips of the tree. In Arbor, you don’t have to have a perfect match between the species in the tree and in your data file - but anything that is missing from either of those will be dropped from the analysis.&lt;/li&gt;
+  &lt;li&gt;a model of evolution&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-to-do-this-analysis-in-arbor&quot;&gt;How to do this analysis in Arbor&lt;/h2&gt;
+
+&lt;p&gt;Arbor provides several ways to estimate ancestral character states. The easiest option is to use the Arbor App &lt;a href=&quot;/arborCollections/arborapps/ancestral-state/&quot;&gt;Ancestral state estimation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can also estimate ancestral character states in Arbor Workflows using the aceArbor function.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/arborCollections/images/acearbor.png&quot; alt=&quot;aceArbor&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;more-details-acearbor-arbor-workflows-function&quot;&gt;More details: aceArbor (Arbor Workflows function)&lt;/h2&gt;
+
+&lt;p&gt;aceArbor is a function for carrying out ancestral state reconstruction. It works for
+both discrete and continuous variables, and can reconstruct ancestral character states
+under both a maximum-likelihood and a Bayesian framework. The function returns results
+in two formats: a table of ancestral state estimates for each node in the tree, and a plot
+of the results.&lt;/p&gt;
+
+&lt;h3 id=&quot;acearbor-assumptions&quot;&gt;aceArbor assumptions&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;known phylogenetic tree with branch lengths&lt;/li&gt;
+  &lt;li&gt;specified model of evolution (see below)&lt;/li&gt;
+  &lt;li&gt;tip character states known without error&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;acearbor-inputs&quot;&gt;aceArbor inputs&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;table: A data table including species names&lt;/li&gt;
+  &lt;li&gt;tree: A phylogenetic tree&lt;/li&gt;
+  &lt;li&gt;column: The name of the column to analyze&lt;/li&gt;
+  &lt;li&gt;type: The character type
+    &lt;ul&gt;
+      &lt;li&gt;discrete: a character with a discrete number of states&lt;/li&gt;
+      &lt;li&gt;continuous: a continuously varying character&lt;/li&gt;
+      &lt;li&gt;fromData: will attempt to determine the data type from the data itself&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;method: specifies the method used to reconstruct ancestral character states
+    &lt;ul&gt;
+      &lt;li&gt;marginal: marginal ancestral state reconstructions, which reconstruct each node integrating over all possibilities at all other nodes in the tree; this is typically the method used in the literature to reconstruce ACEs&lt;/li&gt;
+      &lt;li&gt;joint: joint ancestral reconstructions, which give the configuration of ancestral states that together maximize the likelihood of the data given model parameters&lt;/li&gt;
+      &lt;li&gt;mcmc: reconstruct ancestral states using Bayesian MCMC. Note that the discrete version of this doesn’t seem to work, and even if it did work it is not a full MCMC ancestral state method&lt;/li&gt;
+      &lt;li&gt;stochastic: create stochastic character map&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;acearbor-outputs&quot;&gt;aceArbor outputs&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a table and a plot with results of the ancestral state reconstruction.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;acearbor-example&quot;&gt;aceArbor example&lt;/h3&gt;
+
+&lt;p&gt;From the &lt;a href=&quot;/arborCollections/../docs/&quot;&gt;docs&lt;/a&gt; page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the aceArbor function. Choose
+the “ecomorph” column for analysis, and select type: discrete and method: marginal.&lt;/p&gt;
+
+&lt;p&gt;Your results should look like this.&lt;/p&gt;
+
+&lt;p&gt;Table: A table showing the internal nodes of the tree (numbered following ape’s scheme) along with marginal likelihoods for each character state.
+&lt;img src=&quot;/arborCollections/images/acearbor-exampletable.png&quot; alt=&quot;acearbor-plot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Plot: A plot of the tree with ancestral state estimates at every node.
+&lt;img src=&quot;/arborCollections/images/acearbor-exampleplot.png&quot; alt=&quot;acearbor-plot&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;acearbor-example-of-use-in-a-workflow&quot;&gt;aceArbor example of use in a workflow&lt;/h3&gt;
+
+&lt;p&gt;You can see a tutorial for constructing a workflow that involves aceArbor
+&lt;a href=&quot;/arborCollections/tutorials/reconstructing-ancestral-characters-discrete&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;acearbor-citations&quot;&gt;aceArbor citations&lt;/h3&gt;
+
+&lt;p&gt;Lewis, P.O. 2001. A likelihood approach to estimating phylogeny from discrete morphological character data. Systematic Biology 50:913-925.&lt;/p&gt;
+
+&lt;p&gt;Pagel, M. 1999. The maximum likelihood approach to reconstructing ancestral character states of discrete characters on phylogenies. Systematic Biology. 48: 612-622.&lt;/p&gt;
+
+&lt;p&gt;Schluter, D., T. Price, A. O. Mooers, and D. Ludwig. 1997. Likelihood of ancestor states in adaptive radiation. Evolution 51: 1699.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 04 Aug 2016 00:00:00 -0700</pubDate>
+        <link>/arborCollections/arborCollections/docs/trait-models/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/docs/trait-models/</guid>
+      </item>
+    
+      <item>
+        <title>Ancestral character state estimation with Arbor</title>
+        <description>&lt;p&gt;Ancestral state estimate uses some model of evolution - for example, Brownian motion or an Mk model - and estimates ancestral character states for each node in a phylogenetic tree. For example, if we were interested in the evolution of limb presence or absence among squamates (snakes and lizards), we could use ancestral state estimation. We would use a tree and character data from living species to reconstruct character states (limbs or not) for each internal node in the tree.&lt;/p&gt;
 
 &lt;p&gt;It can be difficult to estimate ancestral character states, so most methods return estimates along with some measure of uncertainty. For example, an ancestral state estimate for limbs in squamates might return an estimate with 80% of the marginal likelihood for a limbless state, and 20% for a limbed state - in other words, we think that this species did not have limbs but we are not sure based only on the tree, data, and model of evolution.&lt;/p&gt;
 
@@ -249,77 +344,6 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
         <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/collections/base/phylogeny/data/anolis-csv/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/base/phylogeny/data/anolis-csv/</guid>
-      </item>
-    
-      <item>
-        <title>Web services</title>
-        <description>&lt;h2 id=&quot;what-are-web-services&quot;&gt;What are web services?&lt;/h2&gt;
-
-&lt;p&gt;Web services are protocols for computers to exchange information over the web (see &lt;a href=&quot;https://en.wikipedia.org/wiki/Web_service&quot;&gt;wikipedia: web service&lt;/a&gt;), typically via an &lt;a href=&quot;https://en.wikipedia.org/wiki/Application_programming_interface&quot;&gt;API&lt;/a&gt;. In biology, web services are becoming more and more common. You can obtain, for example, phylogenetic trees from &lt;a href=&quot;http://opentreeoflife.org/&quot;&gt;Open Tree of Life&lt;/a&gt;, geographic occurrences from &lt;a href=&quot;http://www.gbif.org/&quot;&gt;GBIF&lt;/a&gt;, and trait data from &lt;a href=&quot;http://eol.org/&quot;&gt;Encyclopedia of Life&lt;/a&gt;, all using web services.&lt;/p&gt;
-
-&lt;p&gt;We have a number of pre-made functions in Arbor that can obtain data through web services. These functions can be included in workflows that make it easy to combine your data with data obtained over the web and carry out analyses. In this tutorial we will illustrate one of these applications, starting with a list of species and obtaining a phylogenetic tree from Open Tree of Life.&lt;/p&gt;
-
-&lt;h2 id=&quot;example-from-a-list-of-species-to-a-phylogenetic-tree&quot;&gt;Example: from a list of species to a phylogenetic tree&lt;/h2&gt;
-
-&lt;p&gt;We are going to start with a list of species. You can obtain this list as a csv file &lt;a href=&quot;/arborCollections/assets/mammal_species_list.csv&quot;&gt;here&lt;/a&gt;; download and save this file somewhere to your computer.&lt;/p&gt;
-
-&lt;p&gt;Now, open an Arbor instance (e.g. &lt;a href=&quot;http://arbor1.arborworkflows.com/#&quot;&gt;arbor1.arborworkflows.com&lt;/a&gt;). You will now need to load in your species list. You can do this by dragging the file that you just downloaded onto the “Browse or drop files” box:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen1.png&quot; alt=&quot;screen1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;(you can also see our tutorial on &lt;a href=&quot;/arborCollections/tutorials/using-the-arbor-webapp/&quot;&gt;using the Arbor webapp&lt;/a&gt;) for more information on loading data into Arbor)&lt;/p&gt;
-
-&lt;p&gt;We will be building a workflow to do this analysis. Note that you need to be logged in and have write access to a collection to make the next parts work!&lt;/p&gt;
-
-&lt;p&gt;Click over to the “Analysis” tab, and create a new workflow. To do that, type the name of the new workflow it the box under “Create new analysis.” Let’s call our workflow “getOTLTreeAndPlot.”&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen2.png&quot; alt=&quot;screen2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Once you have created the workflow, you should be able to view and edit (but right now it is just a blank white space!)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen3.png&quot; alt=&quot;screen3&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The first step in this workflow is to match the species names with the names in the Open Tree of Life Taxonomy (OTT). To do this, we will use a function in the “OpenTree” collection called “Lookup Names Using OpenTree Taxonomy.” Add this function to your workflow using the “+ add to workflow” button.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen4.png&quot; alt=&quot;screen4&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We can click the tab on the left side of that new workflow step to indicate that the user will send a data table directly to this function. So our workflow is now:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen5.png&quot; alt=&quot;screen5&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now we need to pull out an “induced subtree” from open tree of life using the OTT ids that we obtained in the previous step. To do that, add a new function to your workflow, again from the OpenTree collection: “Return the Open Tree Subtree from a node list.” Add and connect that next step to your workflow:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen6.png&quot; alt=&quot;screen6&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now we just need to plot our resulting tree. You can use a function from the “Phylogenies” collection called “PlotTreeWithApe.” Add that function, connect it to your workflow, and specify that the last output be sent to the user:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen7.png&quot; alt=&quot;screen7&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now just click “Setup and run.” In the box that appears, choose your input file with the list of mammal species names.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen8.png&quot; alt=&quot;screen8&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The workflow will run for a while:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen9.png&quot; alt=&quot;screen9&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;And then finish:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen10.png&quot; alt=&quot;screen10&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You can then change to the “visualization” tab, and select the output from your workflow.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen11.png&quot; alt=&quot;screen11&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We then see the final result:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/arborCollections/assets/webServices/webserv-screen12.png&quot; alt=&quot;screen12&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;This is a phylogenetic tree pulled from the Open Tree of Life synthesis that includes all of the species in the table that you supplied.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 11 Mar 2016 00:00:00 -0800</pubDate>
-        <link>/arborCollections/arborCollections/tutorials/webservices/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/webservices/</guid>
       </item>
     
   </channel>
