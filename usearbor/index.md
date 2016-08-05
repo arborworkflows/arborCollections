@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: home
 title: "Use Arbor to analyze your data"
 date: 2016-03-01
 modified:
@@ -14,24 +14,28 @@ share: false
 
 
 
+
+
 There are two main ways to use Arbor.
 
-## Arbor apps
 
-[![Arbor apps]({{ site.baseurl }}/images/app_logo.jpeg)]({{ site.baseurl }}/arborapps)
+<div class="tiles">
+<div class="tile">
+  <h2 class="post-title">Arbor Apps</h2>
+  <a href="{{ site.baseurl }}/arborapps"><img src="{{ site.baseurl }}/images/app_logo.jpeg"></a>
+  <p class="post-excerpt">If you want to run a common comparative analysis in a simple and clean way using a web interface, you can use <a href="{{ site.baseurl }}/arborapps">Arbor apps</a>. Arbor apps are websites that can run analyses - like ancestral state reconstruction and PGLS - using a drag and drop interface.</p>
+</div><!-- /.tile -->
 
-If you want to run a common comparative analysis in a simple and clean way using a web interface, you can use [Arbor apps]({{ site.baseurl }}/arborapps). Arbor apps are websites that can run analyses - like ancestral state reconstruction and PGLS - using a straightforward drag and drop interface.
+<div class="tile">
+  <h2 class="post-title">Arbor workflows</h2>
+  <a href="{{site.baseurl}}/aws-instances"><img src="{{ site.baseurl }}/images/workflow_logo.jpeg"></a>
+  <p class="post-excerpt">If you want to build a workflow for your analysis, you can use <a href="{{site.baseurl}}/aws-instances">Arbor workflows</a>. We current have three Arbor instances running on Amazon cloud that are free for you to use.</p>
+</div><!-- /.tile -->
 
-## Arbor workflows
-[![Arbor workflows]({{ site.baseurl }}/images/workflow_logo.jpeg)](#arbor-aws-instances)
+<div class="tile">
+  <h2 class="post-title">Personal installation</h2>
+  <img src="{{ site.baseurl }}/images/vagrant_arbor.jpeg">
+  <p class="post-excerpt">You can also <a href="http://arborworkflows.readthedocs.org/en/latest/installation.html">download and install your own Arbor instance using Vagrant</a>.</p>
+</div><!-- /.tile -->
 
-If you want to build a workflow for your analysis, you can use [Arbor workflows](#arbor-aws-instances). We current have three Arbor instances running on Amazon cloud that are free for you to use.
-
-#### Arbor AWS instances
-[![arbor1]({{ site.baseurl }}/images/arbor1.jpeg)](http://arbor1.arborworkflows.com/)
-[![arbor2]({{ site.baseurl }}/images/arbor2.jpeg)](http://arbor2.arborworkflows.com/)
-[![arbor3]({{ site.baseurl }}/images/arbor3.jpeg)](http://arbor3.arborworkflows.com/)
-
----
-
-You can also [download and install your own Arbor instance using Vagrant](http://arborworkflows.readthedocs.org/en/latest/installation.html).
+</div><!-- /.tiles -->
