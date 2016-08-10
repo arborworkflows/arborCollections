@@ -15,19 +15,22 @@ image:
 
 <div class="tile">
   <h2 class="post-excerpt">Build tools</h2>
+  <p class="post-excerpt">Create your own functions and workflows</p>
   <a href="{{ site.baseurl }}/build/" class="btn-inverse-gray">Build</a>
 
 </div><!-- /.tile -->
 
 <div class="tile">
   <h2 class="post-excerpt">Teach</h2>
+  <p class="post-excerpt">Use Arbor in the classroom</p>
   <a href="{{ site.baseurl }}/arbor-ed/" class="btn-inverse-gray">ArborEd</a>
 
 </div><!-- /.tile -->
 
 <div class="tile">
   <h2 class="post-excerpt">Get help</h2>
-  <a href="{{ site.baseurl }}/faq/" class="btn-inverse-gray">Documentation</a>
+  <p class="post-excerpt">How to use Arbor</p>
+  <a href="{{ site.baseurl }}/help/" class="btn-inverse-gray">Documentation</a>
 
 </div><!-- /.tile -->
 </div><!-- /.tiles -->

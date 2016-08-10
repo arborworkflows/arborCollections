@@ -16,18 +16,18 @@ share: false
 
 
 
-There are two main ways to use Arbor.
+There are three ways to use Arbor.
 
 
 <div class="tiles">
 <div class="tile">
-  <h2 class="post-title">Arbor Apps</h2>
+  <h2 class="post-title">Run Arbor Apps</h2>
   <a href="{{ site.baseurl }}/arborapps"><img src="{{ site.baseurl }}/images/app_logo.jpeg"></a>
   <p class="post-excerpt">If you want to run a common comparative analysis in a simple and clean way using a web interface, you can use <a href="{{ site.baseurl }}/arborapps">Arbor apps</a>. Arbor apps are websites that can run analyses - like ancestral state reconstruction and PGLS - using a drag and drop interface.</p>
 </div><!-- /.tile -->
 
 <div class="tile">
-  <h2 class="post-title">Arbor workflows</h2>
+  <h2 class="post-title">Use Arbor workflows</h2>
   <a href="{{site.baseurl}}/aws-instances"><img src="{{ site.baseurl }}/images/workflow_logo.jpeg"></a>
   <p class="post-excerpt">If you want to build a workflow for your analysis, you can use <a href="{{site.baseurl}}/aws-instances">Arbor workflows</a>. We current have three Arbor instances running on Amazon cloud that are free for you to use.</p>
 </div><!-- /.tile -->
