@@ -10,8 +10,7 @@ image:
   teaser:
 ---
 
-<div class="tiles">
-{% for post in site.categories.docs %}
-  {% include post-grid.html %}
-{% endfor %}
-</div><!-- /.tiles -->
+[All functions and workflows]({{ site.baseurl }}/documentation/all.html)
+
+## Documentation for each collection
+- [ancestralStates]()

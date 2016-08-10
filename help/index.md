@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Frequently asked questions"
+title: "Help"
 date: 2016-03-01
 modified:
 excerpt:
@@ -12,67 +12,30 @@ image:
 share: false
 ---
 
-Arbor FAQ
-{% include toc.html %}
+## About Arbor
 
-## What can I do with Arbor?
-
-Arbor is software that allows you to run phylogenetic comparative analyses on your data quickly and efficiently over the web. You can analyze trait evolution, diversification rates, and do many other things to understand your comparative data better.
-
-Arbor is focused on web services, which can help you obtain data from outside sources over the web while carrying out your analyses. For example, you can pull phylogenetic data from Open Tree of Life for your analyses.
-
-Arbor software comes in two flavors. Arbor Workflows are flexible visual analyses that users can build and modify for complex and customized analyses. Arbor Apps are simple ready-to-use web apps to carry out the most common comparative methods, like independent contrasts and PGLS.
+Get a [general overview]({{ site.baseurl }}/help/aboutArbor.html) of our software
 
 ---
 
-## What is visual workflow software?
+## Get started
 
-See our post on [what is Arbor]({{ site.baseurl }}/tutorials/what-is-arbor/).
+Start with our [tutorials]({{ site.baseurl }}/tutorials).
 
----
-
-## What are Arbor apps?
-
-Arbor apps are websites that run a set analyses on your data. They are not able to be greatly customized, but are fast and simple. You can also build your own Arbor app from a workflow if you know a little javascript; contact us if you want to know how.
+You can also visit our [Arbor task pages]({{ site.baseurl }}/help/arborTasks.html) for specific tasks in comparative analysis.
 
 ---
 
-## How do I cite Arbor, or the individual analyses I used?
+## Go deeper
 
-You can cite our [paper](http://currents.plos.org/treeoflife/article/arbor-comparative-analysis-workflows-for-the-tree-of-life/); individual analyses and R packages used are tracked by Arbor and should be cited as well.
+See the full [documentation]() for all current Arbor collections, including all functions and workflows.
+
+Get instructions on [adding new packages]() to Arbor.
+
+Directions on how to [create a new collection]().
 
 ---
 
-## How can I contribute to Arbor?
+## For the Arbor core team
 
-You can fork one of our [github repositories](https://github.com/arborworkflows), or [contact us]({{ site.baseurl }}/team/).
-
-
-<div class="tiles">
-
-<div class="tile">
-  <h2 class="post-title">Visual workflows</h2>
-  <p class="post-excerpt">Build your analysis</p>
-  <a href="{{ site.baseurl }}/tutorials/what-is-arbor/" class="btn">More</a>
-
-</div><!-- /.tile -->
-
-<div class="tile">
-  <h2 class="post-title">Web services</h2>
-  <p class="post-excerpt">Real-time data</p>
-  <a href="{{ site.baseurl }}/tutorials/webservices/" class="btn">More</a>
-</div><!-- /.tile -->
-
-<div class="tile">
-  <h2 class="post-title">Megaphylogenies</h2>
-  <p class="post-excerpt">Thousands of species</p>
-  <a href="{{ site.baseurl }}/tutorials/megatrees/" class="btn">More</a>
-</div><!-- /.tile -->
-
-<div class="tile">
-  <h2 class="post-title">Open-source</h2>
-  <p class="post-excerpt">Download, modify, share</p>
-  <a href="{{ site.baseurl }}/sourcecode/" class="btn">More</a>
-</div><!-- /.tile -->
-
-</div><!-- /.tiles -->
+Here are [instructions]() for editing the Arbor web pages and documentation.
