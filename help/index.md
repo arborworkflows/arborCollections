@@ -28,14 +28,16 @@ You can also visit our [Arbor task pages]({{ site.baseurl }}/help/arborTasks.htm
 
 ## Go deeper
 
-See the full [documentation]() for all current Arbor collections, including all functions and workflows.
+Visit our [Arbor for developers]({{ site.baseurl }}/build) to learn how to add functions and workflows to Arbor.
 
-Get instructions on [adding new packages]() to Arbor.
+See the full [documentation]({{ site.baseurl}}/documentation) for all current Arbor collections, including all functions and workflows.
 
-Directions on how to [create a new collection]().
+Get instructions on [adding new packages]({{ site.baseurl}}/build/addPackage.html) to Arbor.
+
+Directions on how to [create a new collection]({{ site.baseurl}}/build/addCollection.html).
 
 ---
 
 ## For the Arbor core team
 
-Here are [instructions]() for editing the Arbor web pages and documentation.
+Here are [instructions]({{ site.baseurl}}/jekyllHelp/) for editing the Arbor web pages and documentation.
