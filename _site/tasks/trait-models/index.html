@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fitting models of trait evolution with Arbor • Arbor</title>
+    <meta name="description" content="We can fit a model of evolution - for example, Brownian motion or an Mk model - to comparative data, estimating model parameters and assessing model fit. For example, if we were interested in the evolution of body size among mammals (snakes and lizards), we could fit a variety of models. For each model, we could estimate the model parameters that best fit the data. We could also compare the fit of the models and use model selection to select the best of them.
+
+">
+    <meta name="keywords" content="">
+    
+      
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="Fitting models of trait evolution with Arbor">
+	<meta name="twitter:description" content="We can fit a model of evolution - for example, Brownian motion or an Mk model - to comparative data, estimating model parameters and assessing model fit. For example, if we were interested in the evolution of body size among mammals (snakes and lizards), we could fit a variety of models. For each model, we could estimate the model parameters that best fit the data. We could also compare the fit of the models and use model selection to select the best of them.
+
+">
+	<meta name="twitter:site" content="@lukejharmon">
+	
+	
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="/arborCollections/images/traitevol.jpg">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Fitting models of trait evolution with Arbor">
+	<meta property="og:description" content="We can fit a model of evolution - for example, Brownian motion or an Mk model - to comparative data, estimating model parameters and assessing model fit. For example, if we were interested in the evolution of body size among mammals (snakes and lizards), we could fit a variety of models. For each model, we could estimate the model parameters that best fit the data. We could also compare the fit of the models and use model selection to select the best of them.
+
+">
+	<meta property="og:url" content="/arborCollections/tasks/trait-models/">
+	<meta property="og:site_name" content="Arbor">
+
+    <link rel="canonical" href="/arborCollections/tasks/trait-models/">
+
+    <link href="/arborCollections/atom.xml" type="application/atom+xml" rel="alternate" title="Arbor Atom Feed">
+    <link href="/arborCollections/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="/arborCollections/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="/arborCollections/js/vendor/html5shiv.min.js"></script>
+      <script src="/arborCollections/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="/arborCollections/" class="site-title">Arbor</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Arbor</a></li>
+	
+    
+        
+    
+    <li><a href="/arborCollections/help/" >Help</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/usearbor/" >Use Arbor</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/tutorials/" >Tutorials</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/documentation/" >Documentation</a></li>
+  
+    
+        
+    
+    <li><a href="/arborCollections/team/" >Contact</a></li>
+  
+</ul>
+
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Arbor <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="/arborCollections/help/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Help</div>
+        <p class="excerpt">Get help</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/usearbor/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Use Arbor</div>
+        <p class="excerpt">Run Arbor over the web or install it yourself</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/tutorials/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Tutorials</div>
+        <p class="excerpt">How to use Arbor</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/documentation/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Documentation</div>
+        <p class="excerpt">Full documentation for functions and workflows</p>
+      </a>
+    </li><li>
+      <a href="/arborCollections/team/">
+        <img src="/arborCollections/images/400x250.gif" alt="teaser" class="teaser">
+        <div class="title">Contact</div>
+        <p class="excerpt">Contact us</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <a href="/arborCollections/documentation/"><img src="/arborCollections/images/arbor-docs.png"></a><br>
+      <h1>Fitting models of trait evolution with Arbor
+      
+      </h1><br>
+      
+        <img src="/arborCollections/images/traitevol.jpg"<br>
+      
+      <h3>collection: <a href="/arborCollections/documentation/traitModelFitting.html">traitModelFitting</a></h3><br>
+
+      <p>We can fit a model of evolution - for example, Brownian motion or an Mk model - to comparative data, estimating model parameters and assessing model fit. For example, if we were interested in the evolution of body size among mammals (snakes and lizards), we could fit a variety of models. For each model, we could estimate the model parameters that best fit the data. We could also compare the fit of the models and use model selection to select the best of them.</p>
+
+<p>Fitting models of trait evolution requires:</p>
+
+<ul>
+  <li>a phylogenetic tree with branch lengths</li>
+  <li>data for the tips of the tree. In Arbor, you don’t have to have a perfect match between the species in the tree and in your data file - but anything that is missing from either of those will be dropped from the analysis.</li>
+  <li>a model of evolution</li>
+</ul>
+
+<h2 id="how-to-do-this-analysis-in-arbor">How to do this analysis in Arbor</h2>
+
+<p>There are two functions to fit models of trait evolution in Arbor Workflows:</p>
+
+<p><a href="/arborCollections/collections/traitModelFitting/fitContinuous"><img src="/arborCollections/images/fitContinuous.png" alt="fitContinuous fxn" /></a></p>
+
+<ul>
+  <li><a href="/arborCollections/collections/traitModelFitting/fitContinuous">fitContinuous</a></li>
+</ul>
+
+<p><a href="/arborCollections/collections/traitModelFitting/fitDiscrete"><img src="/arborCollections/images/fitDiscrete.png" alt="fitDiscrete fxn" /></a></p>
+
+<ul>
+  <li><a href="/arborCollections/docs/fitDiscrete">fitDiscrete</a></li>
+</ul>
+
+<h2 id="method-assumptions">Method assumptions</h2>
+
+<ul>
+  <li>known phylogenetic tree with branch lengths</li>
+  <li>specified model of evolution</li>
+  <li>tip character states known without error</li>
+</ul>
+
+<h3 id="example">Example</h3>
+
+<p>From the <a href="/arborCollections/../docs/">docs</a> page, get anolis.phy and anolis.csv.
+Load these files into Arbor, and use them as inputs to the fitDiscrete function (choose the “ecomorph” character).</p>
+
+<h3 id="example-of-use-in-a-workflow">Example of use in a workflow</h3>
+
+<p>TBA</p>
+
+<h3 id="citations">Citations</h3>
+
+<p>Harmon, L. J., J. B. Losos, J. Davies, R. G. Gillespie, J. L. Gittleman, W. B. Jennings, K. Kozak, M. A. McPeek, F. Moreno-Roark, T. J. Near, A. Purvis, R. E. Ricklefs, D. Schluter, J. A. Schulte II, O. Seehausen, B. Sidlauskas, O. Torres-Carvajal, J. T. Weir, &amp; A. Ø. Mooers. 2010. Early bursts of body size and shape evolution are rare in comparative data. Evolution 64: 2385.</p>
+
+<p>Lewis, P.O. 2001. A likelihood approach to estimating phylogeny from discrete morphological character data. Systematic Biology 50:913-925.</p>
+
+<p>Pennell, M. W., J. M. Eastman, G. J. Slater, J. W. Brown, J. C. Uyeda, R. G. Fitzjohn, M. E. Alfaro, and L. J. Harmon. 2014. geiger v2.0: an expanded suite of methods for fitting macroevolutionary models to phylogenetic trees. Bioinformatics 30: 2216-2218.</p>
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+        
+      
+			<li><a href="/arborCollections/" >Home</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/getting-started/" >Getting Started</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/about/" >About</a></li>
+		
+      
+        
+      
+			<li><a href="/arborCollections/team/" >Team</a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2016 <a href="/arborCollections/">Arbor</a> powered by <a href="http://jekyllrb.com">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/">Skinny Bones</a>.</p>
+</footer>
+
+    </div>
+
+    <script src="/arborCollections/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/arborCollections/js/main.js"></script>
+
+  </body>
+</html>
