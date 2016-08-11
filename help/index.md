@@ -14,7 +14,7 @@ share: false
 
 ## About Arbor
 
-Get a [general overview]({{ site.baseurl }}/help/aboutArbor.html) of our software
+Get a [general overview]({{ site.baseurl }}/help/aboutarbor.html) of our software
 
 ---
 
@@ -22,7 +22,7 @@ Get a [general overview]({{ site.baseurl }}/help/aboutArbor.html) of our softwar
 
 Start with our [tutorials]({{ site.baseurl }}/tutorials).
 
-You can also visit our [Arbor task pages]({{ site.baseurl }}/help/arborTasks.html) for specific tasks in comparative analysis.
+You can also visit our [Arbor task pages]({{ site.baseurl }}/help/arbortasks.html) for specific tasks in comparative analysis.
 
 ---
 
