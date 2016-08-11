@@ -14,7 +14,7 @@ share: false
 
 ## About Arbor
 
-Get a [general overview]({{ site.baseurl }}/help/aboutarbor.html) of our software
+Get a [general overview]({{ site.baseurl }}/help/aboutarbor/) of our software
 
 ---
 
@@ -22,7 +22,7 @@ Get a [general overview]({{ site.baseurl }}/help/aboutarbor.html) of our softwar
 
 Start with our [tutorials]({{ site.baseurl }}/tutorials).
 
-You can also visit our [Arbor task pages]({{ site.baseurl }}/help/arbortasks.html) for specific tasks in comparative analysis.
+You can also visit our [Arbor task pages]({{ site.baseurl }}/help/arbortasks/) for specific tasks in comparative analysis.
 
 ---
 
@@ -32,9 +32,9 @@ Visit our [Arbor for developers]({{ site.baseurl }}/build) to learn how to add f
 
 See the full [documentation]({{ site.baseurl}}/documentation) for all current Arbor collections, including all functions and workflows.
 
-Get instructions on [adding new packages]({{ site.baseurl}}/build/addPackage.html) to Arbor.
+Get instructions on [adding new packages]({{ site.baseurl}}/build/addPackage/) to Arbor.
 
-Directions on how to [create a new collection]({{ site.baseurl}}/build/addCollection.html).
+Directions on how to [create a new collection]({{ site.baseurl}}/build/addCollection/).
 
 ---
 

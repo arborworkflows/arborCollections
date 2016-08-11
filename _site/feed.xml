@@ -203,6 +203,33 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
       </item>
     
       <item>
+        <title>Megaphylogenies</title>
+        <description>&lt;h2 id=&quot;what-is-a-megaphylogeny&quot;&gt;What is a megaphylogeny?&lt;/h2&gt;
+
+&lt;p&gt;Megaphylogenies are very large phylogenetic trees with thousands of tips.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-can-arbor-help-with-my-megaphylogenetic-analysis&quot;&gt;How can Arbor help with my megaphylogenetic analysis?&lt;/h2&gt;
+
+&lt;p&gt;Arbor can help in three ways. First, using web services, Arbor can help you obtain large trees and time-scale these trees when necessary. Second, Arbor can help you match phylogenetic and character data, a complex task with very large trees. Finally, Arbor can analyze large datasets quickly and efficiently.&lt;/p&gt;
+
+&lt;h1 id=&quot;obtaining-and-time-scaling-large-trees&quot;&gt;Obtaining and time-scaling large trees&lt;/h1&gt;
+
+&lt;p&gt;You can use Arbor’s &lt;a href=&quot;/arborCollections/tutorials/webservices/&quot;&gt;web services&lt;/a&gt; to obtain large phylogenetic trees from &lt;a href=&quot;http://www.opentreeoflife.org/&quot;&gt;Open Tree of Life&lt;/a&gt;. You can then use Arbor’s &lt;a href=&quot;/arborCollections/tutorials/timetrees/&quot;&gt;method for time-scaling trees&lt;/a&gt; to add branch lengths to this tree.&lt;/p&gt;
+
+&lt;h1 id=&quot;matching-phylogenetic-and-character-data&quot;&gt;Matching phylogenetic and character data&lt;/h1&gt;
+
+&lt;p&gt;Our new &lt;a href=&quot;https://github.com/uyedaj/treeplyr&quot;&gt;treeplyr&lt;/a&gt; package is made to help match tree and character data, and manipulate the combined dataset. Try the &lt;a href=&quot;https://github.com/uyedaj/treeplyr/wiki&quot;&gt;treeplyr tutorial&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;analyzing-large-datasets&quot;&gt;Analyzing large datasets&lt;/h1&gt;
+
+&lt;p&gt;Arbor code has been optimized to handle &lt;a href=&quot;/arborCollections/tutorials/verylargetrees/&quot;&gt;very large datasets&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
+        <link>/arborCollections/arborCollections/tutorials/megatrees/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/megatrees/</guid>
+      </item>
+    
+      <item>
         <title>testTaxa.csv</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -242,30 +269,16 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
       </item>
     
       <item>
-        <title>Megaphylogenies</title>
-        <description>&lt;h2 id=&quot;what-is-a-megaphylogeny&quot;&gt;What is a megaphylogeny?&lt;/h2&gt;
+        <title>anolis.phy</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
-&lt;p&gt;Megaphylogenies are very large phylogenetic trees with thousands of tips.&lt;/p&gt;
+&lt;p&gt;Phylogenetic tree of anolis lizards.&lt;/p&gt;
 
-&lt;h2 id=&quot;how-can-arbor-help-with-my-megaphylogenetic-analysis&quot;&gt;How can Arbor help with my megaphylogenetic analysis?&lt;/h2&gt;
-
-&lt;p&gt;Arbor can help in three ways. First, using web services, Arbor can help you obtain large trees and time-scale these trees when necessary. Second, Arbor can help you match phylogenetic and character data, a complex task with very large trees. Finally, Arbor can analyze large datasets quickly and efficiently.&lt;/p&gt;
-
-&lt;h1 id=&quot;obtaining-and-time-scaling-large-trees&quot;&gt;Obtaining and time-scaling large trees&lt;/h1&gt;
-
-&lt;p&gt;You can use Arbor’s &lt;a href=&quot;/arborCollections/tutorials/webservices/&quot;&gt;web services&lt;/a&gt; to obtain large phylogenetic trees from &lt;a href=&quot;http://www.opentreeoflife.org/&quot;&gt;Open Tree of Life&lt;/a&gt;. You can then use Arbor’s &lt;a href=&quot;/arborCollections/tutorials/timetrees/&quot;&gt;method for time-scaling trees&lt;/a&gt; to add branch lengths to this tree.&lt;/p&gt;
-
-&lt;h1 id=&quot;matching-phylogenetic-and-character-data&quot;&gt;Matching phylogenetic and character data&lt;/h1&gt;
-
-&lt;p&gt;Our new &lt;a href=&quot;https://github.com/uyedaj/treeplyr&quot;&gt;treeplyr&lt;/a&gt; package is made to help match tree and character data, and manipulate the combined dataset. Try the &lt;a href=&quot;https://github.com/uyedaj/treeplyr/wiki&quot;&gt;treeplyr tutorial&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h1 id=&quot;analyzing-large-datasets&quot;&gt;Analyzing large datasets&lt;/h1&gt;
-
-&lt;p&gt;Arbor code has been optimized to handle &lt;a href=&quot;/arborCollections/tutorials/verylargetrees/&quot;&gt;very large datasets&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 </description>
         <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/tutorials/megatrees/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/tutorials/megatrees/</guid>
+        <link>/arborCollections/arborCollections/collections/phylogeny/data/anolis-phy/</link>
+        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/data/anolis-phy/</guid>
       </item>
     
       <item>
@@ -279,19 +292,6 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
         <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
         <link>/arborCollections/arborCollections/collections/opentree/data/mammal-species-list-csv/</link>
         <guid isPermaLink="true">/arborCollections/arborCollections/collections/opentree/data/mammal-species-list-csv/</guid>
-      </item>
-    
-      <item>
-        <title>anolis.phy</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Phylogenetic tree of anolis lizards.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-</description>
-        <pubDate>Mon, 18 Apr 2016 00:00:00 -0700</pubDate>
-        <link>/arborCollections/arborCollections/collections/phylogeny/data/anolis-phy/</link>
-        <guid isPermaLink="true">/arborCollections/arborCollections/collections/phylogeny/data/anolis-phy/</guid>
       </item>
     
       <item>
