@@ -2,7 +2,7 @@
 layout: documentation
 title: Fitting models of trait evolution with Arbor
 author: Arbor core team
-categories: docs
+categories: tasks
 summary: for both discrete and continuous characters
 arborcollection: traitModelFitting
 image:

@@ -13,7 +13,7 @@ share: false
 ---
 
 <div class="tiles">
-{% for post in site.categories.docs %}
+{% for post in site.categories.tasks %}
   {% include post-grid.html %}
 {% endfor %}
 </div><!-- /.tiles -->

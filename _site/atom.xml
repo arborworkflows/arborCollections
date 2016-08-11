@@ -9,7 +9,7 @@
   <subtitle>Arbor workflows</subtitle>
   <link href="/arborCollections/atom.xml" rel="self"/>
   <link href="/arborCollections/" rel="alternate" type="text/html"/>
-  <updated>2016-08-11T12:35:20-07:00</updated>
+  <updated>2016-08-11T12:59:58-07:00</updated>
   <id>/arborCollections/</id>
   <author>
     <name>Luke Harmon</name>
@@ -20,9 +20,9 @@
   
   <entry>
     <title>Fitting models of trait evolution with Arbor</title>
-    <link href="/arborCollections/docs/trait-models/"/>
+    <link href="/arborCollections/tasks/trait-models/"/>
     <updated>2016-08-04T00:00:00-07:00</updated>
-    <id>/arborCollections/docs/trait-models</id>
+    <id>/arborCollections/tasks/trait-models</id>
     <author>
       <name>Luke Harmon</name>
       <uri>/arborCollections/</uri>
@@ -86,9 +86,9 @@ Load these files into Arbor, and use them as inputs to the fitDiscrete function 
   
   <entry>
     <title>Ancestral character state estimation with Arbor</title>
-    <link href="/arborCollections/docs/ace/"/>
+    <link href="/arborCollections/tasks/ace/"/>
     <updated>2016-08-03T00:00:00-07:00</updated>
-    <id>/arborCollections/docs/ace</id>
+    <id>/arborCollections/tasks/ace</id>
     <author>
       <name>Luke Harmon</name>
       <uri>/arborCollections/</uri>
@@ -694,9 +694,9 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
   
   <entry>
     <title>fitDiscrete</title>
-    <link href="/arborCollections/collections/traitmodelfitting/fitDiscrete/"/>
+    <link href="/arborCollections/collections/phylogeny/charactercalculate/fitDiscrete/"/>
     <updated>2016-03-08T00:00:00-08:00</updated>
-    <id>/arborCollections/collections/traitmodelfitting/fitDiscrete</id>
+    <id>/arborCollections/collections/phylogeny/charactercalculate/fitDiscrete</id>
     <author>
       <name>Luke Harmon</name>
       <uri>/arborCollections/</uri>
@@ -733,9 +733,9 @@ the “ecomorph” column for analysis, and select type: discrete and method: ma
   
   <entry>
     <title>fitDiscrete</title>
-    <link href="/arborCollections/collections/phylogeny/charactercalculate/fitDiscrete/"/>
+    <link href="/arborCollections/collections/traitmodelfitting/fitDiscrete/"/>
     <updated>2016-03-08T00:00:00-08:00</updated>
-    <id>/arborCollections/collections/phylogeny/charactercalculate/fitDiscrete</id>
+    <id>/arborCollections/collections/traitmodelfitting/fitDiscrete</id>
     <author>
       <name>Luke Harmon</name>
       <uri>/arborCollections/</uri>
