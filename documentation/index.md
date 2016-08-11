@@ -13,4 +13,4 @@ image:
 [All functions and workflows]({{ site.baseurl }}/documentation/all.html)
 
 ## Documentation for each collection
-- [ancestralStates]()
+- [ancestral_states]({{site.baseurl}}/documentation/ancestral_states.html)
