@@ -10,7 +10,7 @@ image:
   teaser:
 ---
 
-[All functions and workflows]({{ site.baseurl }}/documentation/all.html)
+[All functions and workflows]({{ site.baseurl }}/documentation/all/)
 
 ## Documentation for each collection
 - [ancestral_states]({{site.baseurl}}/documentation/ancestral_states.html)

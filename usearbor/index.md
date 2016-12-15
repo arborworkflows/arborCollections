@@ -28,8 +28,8 @@ There are three ways to use Arbor.
 
 <div class="tile">
   <h2 class="post-title">Use Arbor workflows</h2>
-  <a href="{{site.baseurl}}/aws-instances"><img src="{{ site.baseurl }}/images/workflow_logo.jpeg"></a>
-  <p class="post-excerpt">If you want to build a workflow for your analysis, you can use <a href="{{site.baseurl}}/aws-instances">Arbor workflows</a>. We current have three Arbor instances running on Amazon cloud that are free for you to use.</p>
+  <a href="{{site.baseurl}}/usearbor/aws-instances/"><img src="{{ site.baseurl }}/images/workflow_logo.jpeg"></a>
+  <p class="post-excerpt">If you want to build a workflow for your analysis, you can use <a href="{{site.baseurl}}/usearbor/aws-instances/">Arbor workflows</a>. We current have two Arbor instances running on Amazon cloud that are free for you to use.</p>
 </div><!-- /.tile -->
 
 <div class="tile">
