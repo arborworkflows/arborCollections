@@ -1,0 +1,55 @@
+{
+    "description": "",
+    "inputs": [
+        {
+            "description": "Phylogenetic tree",
+            "format": "r.apetree",
+            "id": "tree",
+            "name": "Phylogenetic tree",
+            "type": "tree"
+        },
+        {
+            "format": "r.dataframe",
+            "id": "table",
+            "name": "Data matrix",
+            "type": "table"
+        },
+        {
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "id": "column1",
+            "name": "Column with character 1",
+            "type": "string"
+        },
+        {
+            "domain": {
+                "format": "column.names",
+                "input": "table"
+            },
+            "format": "text",
+            "id": "column2",
+            "name": "Column with character 2",
+            "type": "string"
+        }
+    ],
+    "mode": "r",
+    "name": "discreteCorrelation-app",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "id": "dcResultTable",
+            "name": "Discrete correlation results",
+            "type": "table"
+        },
+        {
+            "format": "png.base64",
+            "id": "discreteCorPlot",
+            "name": "Discrete Correlation Plot",
+            "type": "image"
+        }
+    ],
+    "script": "\n## discreteCorrelation script\n\nlibrary(cardoonTools)\nlibrary(treeplyr)\nlibrary(aRbor)\nrequire(phytools)\n\nmodelType=\"ER\"\n\n\ntd <- make.treedata(tree, table)\n\ntd1 <- select(td, column1, column2)\n\n# this changes the discrete data to 1:n and remembers the original charStates\ndatA<-as.factor(td1[[column1]])\ncharStatesA<-levels(datA)\nkA<-nlevels(datA)\n\n\ndatB<-as.factor(td1[[column2]])\ncharStatesB<-levels(datB)\nkB<-nlevels(datB)\n\nif(kA != 2 | kB != 2) stop(\"Only 2-state characters currently supported\")\n\n\nff<-fitPagel(td1$phy, datA, datB, model=modelType)\n\n\nif(modelType==\"ER\" | modelType==\"SYM\") {degf <- 2} else if(modelType==\"ARD\") {degf <- 4}\ndcResultTable<-data.frame(lrStat=ff$lik.ratio, lrDF=degf, lrPVal=ff$P)\n\nq_ind <- ff$independent.Q\nq_dep <- ff$dependent.Q\n\n# plot and wrap the result in a PNG for output on the webpage\ndiscreteCorPlot <- cardoonPlot(expression(plot(ff)), width=1000, height=2000, res=100)$png\n\n\n\n\n"
+}
