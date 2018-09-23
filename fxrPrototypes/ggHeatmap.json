@@ -1,0 +1,24 @@
+{
+    "description": "This version assumes that rows are hosts or transects and columns are OTUs or counted taxa",
+    "inputs": [
+        {
+            "description": "input table with rows as hosts/transects and columns as OTU/species",
+            "format": "r.dataframe",
+            "id": "tableInput",
+            "name": "tableInput",
+            "type": "table"
+        }
+    ],
+    "mode": "r",
+    "name": "ggHeatmap",
+    "outputs": [
+        {
+            "description": "heatmap as png64 image",
+            "format": "png.base64",
+            "id": "heatmapPlot",
+            "name": "heatmapPlot",
+            "type": "image"
+        }
+    ],
+    "script": "library(ggplot2)\nlibrary(reshape)\nlibrary(plyr)\nlibrary(scales)\nlibrary(picante)\n\n#get input table of community data for heatmap\n#this version assumes that rows are hosts or transects and columns are OTUs or counted taxa \n\n#inFile <- input$file1\n#tableInput<-read.csv(inFile$datapath, header=TRUE, row.names=1) #input$header)\n\n#the input file needs to be called tableInput\n    \n#set up temporary directory\ntd<-\"/opt/girder/tempdata\"\ntempPlotFile=paste(td, \"/temp.png\", sep=\"\")\n#later add pdf or svg\n#tempPDF=paste(td,\"/temp.pdf\", sep=\"\")\n\n#fix arbor handling of row names\nrn<-tableInput[,1]\ntableInput<-tableInput[,-1]\nrownames(tableInput)<-rn\n\ntableInput <- decostand(tableInput, method = \"total\")\ntrans<-t(tableInput)\ndata.melt<-melt(trans)\ncolnames(data.melt)<-c(\"Species\",\"OTUs\",\"value\")\ndata<-data.melt\n\n#standardizes on square root for visualization; could let users select transformation like log or ln\ndata$value<-sqrt(data$value)\n\n#need to optimize sizing\n\nplotObject<-ggplot(data, aes_string(colnames(data)[2], colnames(data)[1])) \nplotObject<- plotObject + geom_tile(aes(fill = value), colour = \"white\")\nplotObject<- plotObject + scale_fill_gradient(low = \"white\",high = \"dark blue\")\nplotObject<- plotObject + theme(axis.text.x=element_text(angle=90,hjust=1))\n\nggsave(tempPlotFile, device=\"png\", width=10, height=10, plotObject)\nbytes <- file.info(tempPlotFile)$size\nheatmapPlot <- base64enc:::base64encode(readBin(tempPlotFile,\"raw\", n = bytes))\n\n#make sure output specified is heatmapPlot as png base64\n\n#clean up the temporary directory\nfile.remove(tempPlotFile)\n\n#end\n"
+}

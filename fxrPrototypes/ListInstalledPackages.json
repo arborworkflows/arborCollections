@@ -1,0 +1,15 @@
+{
+    "description": "",
+    "inputs": [],
+    "mode": "r",
+    "name": "ListInstalledPackages",
+    "outputs": [
+        {
+            "format": "r.dataframe",
+            "id": "output",
+            "name": "output",
+            "type": "table"
+        }
+    ],
+    "script": "output<-installed.packages() #output is a matrix\noutput<-as.data.frame(output)"
+}

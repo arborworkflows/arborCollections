@@ -1,0 +1,28 @@
+{
+    "description": "Plot and Export String",
+    "inputs": [
+        {
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree"
+        }
+    ],
+    "mode": "r",
+    "name": "PlotTreeWithAPE_ExportTree_Bob",
+    "outputs": [
+        {
+            "description": "R-based plot of a tree and export nexus",
+            "format": "png.base64",
+            "name": "treePlot",
+            "type": "image"
+        },
+        {
+            "description": "String version of the tree",
+            "format": "text",
+            "id": "string.tree",
+            "name": "string.tree",
+            "type": "string"
+        }
+    ],
+    "script": "library(geiger)\nlibrary(cardoonTools)\n\npicplot <- function(mytree){\n  plot(mytree,type=\"phylogram\",use.edge.length=TRUE,show.tip.label=TRUE)\n}\n\ntreePlot = cardoonPlot(expression(picplot(tree)), width=1000, height=1000, res=100)\ntreePlot = treePlot$png\n\nstring.tree<-write.tree(tree)\n"
+}
