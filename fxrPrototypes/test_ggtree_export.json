@@ -1,0 +1,16 @@
+{
+    "description": "",
+    "inputs": [],
+    "mode": "r",
+    "name": "test_ggtree_export",
+    "outputs": [
+        {
+            "description": "treePlot image",
+            "format": "png.base64",
+            "id": "treePlot",
+            "name": "treePlot",
+            "type": "image"
+        }
+    ],
+    "script": "#testing ggtree plot export\n\n#test tree plot in Arbor\n\nlibrary(\"ape\")\nlibrary(\"geiger\")\nlibrary(\"ggplot2\")\nlibrary(\"ggtree\")\n\n#set up temporary directory\ntd<-\"/opt/girder/tempdata\"\ntempPlotFile=paste(td, \"/temp.png\", sep=\"\")\n\n#primate tree from Jeroen Smaers\nprimates<-\"(((((((Cercopithecus_mitis:6.429209,Cercopithecus_ascanius:6.429209):3.418917,Erythrocebus_patas:9.848126):1.644988,Miopithecus_talapoin:11.493113):3.382065,(Lophocebus_albigena:5.769163,Papio_anubis:5.769163):9.106015):6.535196,(Piliocolobus_badius:15.435157,Nasalis_larvatus:15.435158):5.975217):8.589626,(Hylobates_lar:19.605945,((Gorilla_gorilla_gorilla:8.652233,(Homo_sapiens:6.17588,(Pan_paniscus:2.333553,Pan_troglodytes_troglodytes:2.333553):3.842326):2.476353):6.480222,Pongo_pygmaeus:15.132455):4.473491):10.394055):16.811821,(((Alouatta_seniculus:14.76024,(Ateles_geoffroyi:9.147391,Lagothrix_lagotricha:9.147391):5.612849):6.56106,Cebus_albifrons:21.321301):1.411478,Pithecia_pithecia:22.732779):24.079043);\"\n\n#trick for writing and reading newick string from Jeroen Smaers\ncat(primates, file = \"ex.tre\", sep = \"\\n\")\ntree<- read.tree(\"ex.tre\")\n\n#plot the tree as an object\nplotObject<-ggtree(tree) + geom_tiplab() + xlim(NA, 75)\n\nggsave(tempPlotFile, device=\"png\", width=5, height=5, plotObject)\nbytes <- file.info(tempPlotFile)$size\ntreePlot <- base64enc:::base64encode(readBin(tempPlotFile,\"raw\", n = bytes))\n\n#make sure output specified is treePlot as png base64\n\n#clean up the temporary directory\nfile.remove(tempPlotFile)\nfile.remove(\"ex.tre\")\n\n#end\n\n\n"
+}
