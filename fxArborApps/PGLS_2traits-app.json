@@ -2,30 +2,31 @@
     "description": "",
     "inputs": [
         {
-            "format": "r.apetree",
-            "name": "tree",
-            "type": "tree"
-        },
-        {
             "format": "r.dataframe",
-            "name": "table",
+            "id": "dat",
+            "name": "dat",
             "type": "table"
         },
         {
             "domain": [
                 "BM",
                 "OU",
-                "Pagel",
-                "ACDC"
+                "lambda"
             ],
             "format": "text",
-            "name": "correlation",
+            "id": "model",
+            "name": "model",
             "type": "string"
+        },
+        {
+            "format": "r.apetree",
+            "name": "tree",
+            "type": "tree"
         },
         {
             "domain": {
                 "format": "column.names",
-                "input": "table"
+                "input": "dat"
             },
             "format": "text",
             "name": "ind_variable",
@@ -34,7 +35,7 @@
         {
             "domain": {
                 "format": "column.names",
-                "input": "table"
+                "input": "dat"
             },
             "format": "text",
             "name": "dep_variable",
@@ -60,5 +61,5 @@
             "type": "image"
         }
     ],
-    "script": "require(ape)\nrequire(nlme)\nrequire(cardoonTools)\n\nif(correlation==\"BM\"){\n  cor <- corBrownian(1, phy=tree)\n}\nif(correlation==\"OU\"){\n  cor <- corMartins(1, phy=tree, fixed=FALSE)\n}\nif(correlation==\"Pagel\"){\n  cor <- corPagel(1, phy=tree, fixed=FALSE)\n  cor1 <- corPagel(1, phy=tree, fixed=TRUE)\n  cor0 <- corPagel(0, phy=tree, fixed=TRUE)\n}\nif(correlation==\"ACDC\"){\n  cor <- corBlomberg(1, phy=tree, fixed=FALSE)\n}\n\nfmla <- as.formula(paste(as.character(dep_variable), \"~\", as.character(ind_variable),sep=\"\"))\nres<-gls(model=fmla, correlation=cor, data=table, control=glsControl(opt=\"optim\"))\nsum_res <- summary(res)\nsum_aov <- anova(res)\n\n\nparameter <- coef(summary(res))\ncoefficients <- cbind(rownames(parameter), parameter)\ncolnames(coefficients)[1]<-\"parameter\"\n\nif(correlation == \"OU\") {\n\talpha<-res$modelStruct[[1]][[1]]\n\tcoefficients <- rbind(coefficients, c(\"alpha\", alpha, NA, NA, NA))\n}\n\n\n\nmodelfit_summary <- data.frame(\"AIC\"= sum_res$AIC, loglik=sum_res$logLik, residual_SE=sum_res$sigma, df_total=sum_res$dims$N, df_residual=sum_res$dims$N-sum_res$dims$p)\n\npgls_plot <- function() {\n  plot(table[,ind_variable], table[,dep_variable], pch=21, bg=\"gray80\", xlab=ind_variable, ylab=dep_variable)\n  abline(res, lty=2, lwd=2)\n}\n\npglsPlot = cardoonPlot(expression(pgls_plot()), width=1000, height=1000, res=100)\npglsPlot = pglsPlot$png"
+    "script": "require(phylolm)\nrequire(cardoonTools)\nrequire(treeplyr)\n\n#ind_variable should be strung together into a character vector in the arbor input.\n#MEANS THAT ARBOR INPUT NEEDS TO BE MODIFIED TO ALLOW MULTIPLE INDEPENDENT VARIABLES\n#TO BE DRAGGED OVER THERE\n\n#we should make it possible to have the model either be additive or including an\n#interaction term between the independent variables\n\n#match your tree and data. WE SHOULD MAKE IT POSSIBLE TO SEE THE OUTPUT OF THIS PROCESS\n#NEED NEW INPUTS NAMED dat and model, GET RID OF table and correlation\nnames(dat) <- gsub(\" \", \".\", names(dat))\n\ntd <- make.treedata(tree, dat)\n\n# substitute to mimic what R does with column names that contain spaces\ndep_variable<-gsub(\" \", \".\", dep_variable)\nind_variable<-gsub(\" \", \".\", ind_variable)\n\n#cut your data down to only those columns that you want in the regression\ndesired <- c(dep_variable, ind_variable)\n\n#this should be in same order as your tree\nnewTable <- data.frame(select(td$dat, desired))\n\n#give this row names so it doesn't give annoying warnings\nrow.names(newTable) <- td$phy$tip.label\n\n#set up the model formula if we want to allow interaction terms in PGLS,\n#could add an if statement here and either collapse as + or * accordingly\nfmla <- as.formula(paste(dep_variable, \"~\",\n  paste(names(newTable)[2:dim(newTable)[2]], collapse=\"+\"), sep=\"\"))\n\n#if input is OU, switch to OUrandomRoot. NOTE THIS IN DOCUMENTATION\nif(model==\"OU\")\n{\n  model <- \"OUrandomRoot\"\n}\n\n#run the model\nres <- phylolm(formula=fmla, data=newTable, phy=td$phy, model=model)\n\nsum_res <- summary(res)\n\nparameter <- coef(summary(res))\ncoefficients <- cbind(rownames(parameter), parameter)\ncolnames(coefficients)[1]<-\"parameter\"\n\nif(model == \"OUrandomRoot\") {\n\ta <- res$optpar\n\tcoefficients <- rbind(coefficients, c(\"alpha\", a, NA, NA, NA))\n}\n\nmodelfit_summary <- data.frame(\"AIC\"= res$aic, loglik=res$logLik, sample_size=res$n)\n\n#this arbitrarily is only plotting your results over the first independent variable\npgls_plot <- function() {\n  plot(newTable[,ind_variable[1]], newTable[,dep_variable], pch=21, bg=\"gray80\", xlab=ind_variable[1], ylab=dep_variable)\n  abline(res, lty=2, lwd=2)\n}\n\npglsPlot = cardoonPlot(expression(pgls_plot()), width=1000, height=1000, res=100)\npglsPlot = pglsPlot$png\n"
 }
